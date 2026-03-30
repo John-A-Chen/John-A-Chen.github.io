@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project archive and case studies for robotics, mechatronics, CAD, and engineering workflows."
+    />
+    <title>Portfolio | John Alfred Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="portfolio-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Home">
+          <span class="brand-mark" data-profile="initials">JC</span>
+          <span class="brand-text">
+            <span class="brand-title" data-profile="name">John Alfred Chen</span>
+            <span class="brand-subtitle">Engineering Portfolio</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html">Home</a>
+          <a class="is-active" href="portfolio.html">Portfolio</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+          <a class="button button-ghost compact" data-profile-link="github" href="#"
+            >GitHub</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container section-heading reveal">
+          <p class="eyebrow">Portfolio</p>
+          <h1 class="page-title">Project Archive</h1>
+          <p class="page-subtitle">
+            Detailed case studies with direct links back to repositories, CAD,
+            drawings, print files, and technical documentation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-tight-top">
+        <div class="container filter-shell reveal">
+          <ul class="filter-list" id="filter-list"></ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" id="filter-select" type="button">
+              <span id="filter-select-value">All</span>
+              <span class="select-icon">&#9662;</span>
+            </button>
+            <ul class="select-list" id="select-list"></ul>
+          </div>
+
+          <p class="archive-summary">
+            Showing <span id="visible-count">0</span> of <span id="total-count">0</span>
+            projects
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-tight-top">
+        <div class="container">
+          <div class="project-grid portfolio-grid" id="portfolio-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-layout">
+        <div>
+          <p class="footer-title" data-profile="name">John Alfred Chen</p>
+          <p class="footer-copy" data-profile="tagline">
+            Mechanical design, robotics, and CAD-driven engineering workflows for
+            real, buildable systems.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
+          <a data-profile-link="github" href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="container footer-meta">
+        <p>Built for GitHub Pages using static HTML, CSS, and JavaScript.</p>
+        <p>&copy; <span data-current-year></span> <span data-profile="name">John Alfred Chen</span></p>
+      </div>
+    </footer>
+
+    <script type="module" src="assets/js/portfolio.js"></script>
+  </body>
+</html>

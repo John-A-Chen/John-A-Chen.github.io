@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Engineering portfolio and project archive for robotics, CAD, prototyping, and mechatronics work."
+      content="Engineering portfolio for mechatronics, CAD, robotics, and project case studies."
     />
     <title>John Alfred Chen | Engineering Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,9 +22,9 @@
     <header class="site-header">
       <nav class="nav container" aria-label="Primary">
         <a class="brand" href="index.html" aria-label="Home">
-          <span class="brand-mark" data-profile="initials">YN</span>
+          <span class="brand-mark" data-profile="initials">JC</span>
           <span class="brand-text">
-            <span class="brand-title" data-profile="name">[Your Name]</span>
+            <span class="brand-title" data-profile="name">John Alfred Chen</span>
             <span class="brand-subtitle">Engineering Portfolio</span>
           </span>
         </a>
@@ -42,10 +42,10 @@
         </button>
 
         <div class="nav-menu" id="nav-menu">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#tech-stack">Stack</a>
-          <a href="#contact">Contact</a>
+          <a class="is-active" href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
           <a class="button button-ghost compact" data-profile-link="github" href="#"
             >GitHub</a
           >
@@ -58,47 +58,46 @@
         <div class="container hero-layout">
           <div class="hero-copy reveal">
             <p class="eyebrow">Mechanical, robotics, and mechatronics work</p>
-            <h1 data-profile="name">[Your Name]</h1>
-            <p class="hero-degree" data-profile="degree">[Degree / University]</p>
+            <h1 data-profile="name">John Alfred Chen</h1>
+            <p class="hero-degree" data-profile="degree">
+              Mechatronics Engineering Student - University of Technology Sydney (UTS)
+            </p>
             <p class="hero-tagline" data-profile="tagline">
-              [Short Bio]
+              Mechanical design, robotics, and CAD-driven engineering workflows for
+              real, buildable systems.
             </p>
 
             <div class="hero-actions">
-              <a class="button" href="#projects">Browse Project Archive</a>
-              <a class="button button-ghost" data-profile-link="resume" href="#"
-                >View Resume</a
+              <a class="button" href="portfolio.html">Browse Portfolio</a>
+              <a class="button button-ghost" href="resume.html">Open Resume Page</a>
+              <a class="button button-ghost" href="docs/John_A_Chen_CV.pdf" download
+                >Download Resume PDF</a
               >
             </div>
           </div>
 
           <aside class="hero-panel reveal">
+            <figure class="headshot-slot">
+              <img
+                src="assets/images/profile/higit.png"
+                alt="Portrait of John Alfred Chen"
+                loading="lazy"
+              />
+            </figure>
+
             <div class="panel-header">
               <p class="panel-label">Archive Focus</p>
               <p class="panel-title">
-                Built to connect polished case studies back to source repos, CAD,
-                drawings, fabrication files, and media.
+                Case-study-first engineering portfolio with direct links to source
+                repositories, CAD files, drawings, print assets, and documentation.
               </p>
             </div>
 
             <div class="hero-stats">
               <article class="stat-card">
-                <span class="stat-value" id="project-count">04</span>
+                <span class="stat-value" id="project-count">00</span>
                 <span class="stat-label">Projects in archive</span>
               </article>
-              <article class="stat-card">
-                <span class="stat-value" id="discipline-count">03</span>
-                <span class="stat-label">Core engineering themes</span>
-              </article>
-              <article class="stat-card">
-                <span class="stat-value" id="network-count">4/13</span>
-                <span class="stat-label">Followers / Following</span>
-              </article>
-            </div>
-
-            <div class="hero-panel-footer">
-              <p class="mono-label">Core themes</p>
-              <div class="tag-row" id="hero-tags"></div>
             </div>
           </aside>
         </div>
@@ -106,93 +105,25 @@
 
       <section class="section" id="about">
         <div class="container section-heading reveal">
-          <p class="eyebrow">About</p>
-          <h2>
-            Engineering work presented as a structured archive, not a generic app
-            portfolio.
-          </h2>
+          <p class="eyebrow">Focus Areas</p>
+          <h2>Core areas I am currently building depth in.</h2>
         </div>
 
-        <div class="container about-grid">
-          <div class="about-copy reveal" id="about-copy"></div>
-          <div class="about-panels" id="focus-areas"></div>
+        <div class="container">
+          <div class="about-panels focus-panels" id="focus-areas"></div>
         </div>
       </section>
 
-      <section class="section" id="socials">
+      <section class="section">
         <div class="container section-heading reveal">
-          <p class="eyebrow">Socials</p>
-          <h2>Channels where I share engineering work, builds, and process.</h2>
-        </div>
-        <div class="container social-grid" id="social-grid"></div>
-      </section>
-
-      <section class="section" id="tech-stack">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">Tech Stack</p>
-          <h2>Software, tools, and platforms used across robotics and mechanical projects.</h2>
+          <p class="eyebrow">Project Snapshot</p>
+          <h2>Recent projects from the full portfolio archive.</h2>
         </div>
         <div class="container">
-          <div class="stack-grid reveal" id="stack-grid"></div>
+          <div class="project-grid portfolio-grid" id="home-project-preview"></div>
         </div>
-      </section>
-
-      <section class="section" id="projects">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">Project Archive</p>
-          <h2>All projects in one place, each linked to repo files and case-study detail pages.</h2>
-        </div>
-
-        <div class="container archive-summary reveal">
-          <p id="archive-count-label">All projects</p>
-        </div>
-
-        <div class="container project-grid" id="project-grid"></div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container section-heading reveal">
-          <p class="eyebrow">Contact And Links</p>
-          <h2>
-            Make it easy for recruiters, collaborators, and teammates to jump into
-            the work.
-          </h2>
-        </div>
-
-        <div class="container contact-grid">
-          <article class="contact-card reveal">
-            <p class="mono-label">GitHub</p>
-            <h3>Browse raw repositories and source assets</h3>
-            <a class="text-link" data-profile-link="github" href="#">Open GitHub profile</a>
-          </article>
-
-          <article class="contact-card reveal">
-            <p class="mono-label">LinkedIn</p>
-            <h3>Professional profile and experience summary</h3>
-            <a class="text-link" data-profile-link="linkedin" href="#"
-              >Open LinkedIn profile</a
-            >
-          </article>
-
-          <article class="contact-card reveal">
-            <p class="mono-label">Resume</p>
-            <h3>Single-link document for internship and application use</h3>
-            <a class="text-link" data-profile-link="resume" href="#">Open resume</a>
-          </article>
-
-          <article class="contact-card reveal">
-            <p class="mono-label">Transcript</p>
-            <h3>Academic transcript for coursework and performance context</h3>
-            <a class="text-link" data-profile-link="transcript" href="#"
-              >Open academic transcript</a
-            >
-          </article>
-
-          <article class="contact-card reveal">
-            <p class="mono-label">EDP3 Journal</p>
-            <h3>Engineering design process journal and reflection document</h3>
-            <a class="text-link" data-profile-link="journal" href="#">Open EDP3 journal</a>
-          </article>
+        <div class="container top-spaced reveal">
+          <a class="button" href="portfolio.html">View All Projects</a>
         </div>
       </section>
     </main>
@@ -200,37 +131,25 @@
     <footer class="site-footer">
       <div class="container footer-layout">
         <div>
-          <p class="footer-title" data-profile="name">[Your Name]</p>
-          <p class="footer-copy" data-profile="tagline">[Short Bio]</p>
+          <p class="footer-title" data-profile="name">John Alfred Chen</p>
+          <p class="footer-copy" data-profile="tagline">
+            Mechanical design, robotics, and CAD-driven engineering workflows for
+            real, buildable systems.
+          </p>
         </div>
 
         <div class="footer-links">
+          <a href="portfolio.html">Portfolio</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html">Contact</a>
           <a data-profile-link="github" href="#">GitHub</a>
-          <a data-profile-link="linkedin" href="#">LinkedIn</a>
-          <a data-profile-link="resume" href="#">Resume</a>
         </div>
       </div>
       <div class="container footer-meta">
-        <p>Engineering portfolio scaffold for GitHub Pages.</p>
-        <p>&copy; <span data-current-year></span> <span data-profile="name">[Your Name]</span></p>
+        <p>Built for GitHub Pages using static HTML, CSS, and JavaScript.</p>
+        <p>&copy; <span data-current-year></span> <span data-profile="name">John Alfred Chen</span></p>
       </div>
     </footer>
-
-    <div class="lightbox" id="lightbox" hidden>
-      <button class="lightbox-close" type="button" aria-label="Close image viewer">
-        &times;
-      </button>
-      <button class="lightbox-nav prev" type="button" aria-label="Previous image">
-        &#8249;
-      </button>
-      <figure class="lightbox-figure">
-        <img src="" alt="" />
-        <figcaption></figcaption>
-      </figure>
-      <button class="lightbox-nav next" type="button" aria-label="Next image">
-        &#8250;
-      </button>
-    </div>
 
     <script type="module" src="assets/js/main.js"></script>
   </body>

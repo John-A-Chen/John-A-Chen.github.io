@@ -166,6 +166,10 @@ function applyVars(card, options) {
 }
 
 function attachPointerHandlers(card) {
+  const onPointerEnter = () => {
+    card.style.setProperty("--edge-proximity", "72");
+  };
+
   const onPointerMove = (event) => {
     const rect = card.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -182,8 +186,27 @@ function attachPointerHandlers(card) {
     card.style.setProperty("--edge-proximity", "0");
   };
 
+  card.addEventListener("pointerenter", onPointerEnter);
   card.addEventListener("pointermove", onPointerMove);
   card.addEventListener("pointerleave", onPointerLeave);
+}
+
+function hasFinePointer() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
+function supportsAdvancedGlow() {
+  if (!window.CSS || typeof window.CSS.supports !== "function") {
+    return false;
+  }
+
+  return (
+    window.CSS.supports("mask-image", "conic-gradient(from 0deg, black, transparent)") ||
+    window.CSS.supports(
+      "-webkit-mask-image",
+      "conic-gradient(from 0deg, black, transparent)"
+    )
+  );
 }
 
 function runSweep(card) {
@@ -240,7 +263,16 @@ function setupBorderGlow(card, options) {
   card.classList.add("border-glow-card");
   ensureEdgeLayer(card);
   applyVars(card, options);
-  attachPointerHandlers(card);
+
+  if (!supportsAdvancedGlow()) {
+    card.classList.add("border-glow-basic");
+  }
+
+  if (hasFinePointer()) {
+    attachPointerHandlers(card);
+  } else {
+    card.classList.add("border-glow-touch");
+  }
 
   if (options.animated) {
     runSweep(card);

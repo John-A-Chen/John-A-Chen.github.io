@@ -5,7 +5,7 @@ export function populateSharedProfile(profile) {
       return href;
     }
 
-    if (href.startsWith("assets/")) {
+    if (href.startsWith("assets/") || href.startsWith("docs/")) {
       return isProjectPage ? `../${href}` : href;
     }
 

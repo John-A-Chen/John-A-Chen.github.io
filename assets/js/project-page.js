@@ -34,7 +34,7 @@ if (!project) {
     <article class="empty-state">
       <h1>Project not found</h1>
       <p>This page is missing a matching entry in <code>data/projects.js</code>.</p>
-      <a class="button" href="../index.html#projects">Back to project archive</a>
+      <a class="button" href="../portfolio.html">Back to project archive</a>
     </article>
   `;
 } else {
@@ -50,15 +50,15 @@ function initProjectBorderGlow() {
   initBorderGlow(
     ".project-hero, .content-section, .sidebar-card, .project-card",
     {
-      edgeSensitivity: 30,
+      edgeSensitivity: 18,
       glowColor: "200 90 88",
       borderRadius: 22,
-      glowRadius: 32,
-      glowIntensity: 1,
-      coneSpread: 25,
+      glowRadius: 28,
+      glowIntensity: 1.15,
+      coneSpread: 28,
       animated: false,
       colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-      fillOpacity: 0.32
+      fillOpacity: 0.44
     }
   );
 }
@@ -69,7 +69,7 @@ function renderProjectPage(activeProject) {
   const intro = document.createElement("article");
   intro.className = "project-hero reveal";
   intro.innerHTML = `
-    <a class="breadcrumb-link" href="../index.html#projects">Back to Project Archive</a>
+    <a class="breadcrumb-link" href="../portfolio.html">Back to Project Archive</a>
     <div class="project-hero-grid">
       <div class="project-hero-copy">
         <p class="eyebrow">${activeProject.year} / ${activeProject.status}</p>
@@ -256,7 +256,7 @@ function renderSidebar(activeProject) {
       <section class="sidebar-card">
         <p class="mono-label">Archive Navigation</p>
         <div class="sidebar-links">
-          <a class="text-link" href="../index.html#projects">Back to all projects</a>
+          <a class="text-link" href="../portfolio.html">Back to all projects</a>
           <a class="text-link" data-profile-link="github" href="#">Open GitHub profile</a>
           <a class="text-link" data-profile-link="resume" href="#">Open resume</a>
         </div>
