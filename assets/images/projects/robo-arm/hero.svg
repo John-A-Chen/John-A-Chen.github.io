@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Robo-Arm Hero</title>
+  <desc id="desc">Placeholder assembly board for robotic arm project.</desc>
+  <rect width="1600" height="1000" fill="#09131f"/>
+  <rect x="58" y="58" width="1484" height="884" rx="28" fill="#112133" stroke="#2c4258" stroke-width="4"/>
+  <rect x="112" y="112" width="800" height="760" rx="24" fill="#13293f"/>
+  <rect x="954" y="112" width="474" height="230" rx="24" fill="#163149"/>
+  <rect x="954" y="388" width="474" height="230" rx="24" fill="#142b41"/>
+  <rect x="954" y="664" width="474" height="208" rx="24" fill="#152b40"/>
+  <g transform="translate(186 188)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 520L292 348l196-66 156-184" stroke="#6ec7bf" stroke-width="20"/>
+    <circle cx="160" cy="520" r="62" fill="#20374f" stroke="#e0a458" stroke-width="18"/>
+    <circle cx="292" cy="348" r="40" fill="#20374f" stroke="#e0a458" stroke-width="16"/>
+    <circle cx="488" cy="282" r="40" fill="#20374f" stroke="#e0a458" stroke-width="16"/>
+    <circle cx="644" cy="98" r="40" fill="#20374f" stroke="#e0a458" stroke-width="16"/>
+  </g>
+  <path d="M1018 186h302M1018 454h338M1018 730h250" stroke="#a9bfce" stroke-width="18" stroke-linecap="round"/>
+  <text x="112" y="96" fill="#dfe9f4" font-family="IBM Plex Sans, Arial, sans-serif" font-size="42" font-weight="700">Robo-Arm overview</text>
+  <text x="114" y="915" fill="#8fb1ca" font-family="IBM Plex Mono, monospace" font-size="28">Lightweight arm / mechanism refinement / actuator efficiency</text>
+</svg>
