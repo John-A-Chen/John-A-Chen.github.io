@@ -1,17 +1,17 @@
 :root {
-  --bg: #08111b;
-  --bg-elevated: #0e1a28;
-  --surface: rgba(16, 27, 40, 0.88);
-  --surface-strong: #142334;
-  --surface-soft: #1a2d42;
-  --border: rgba(157, 176, 195, 0.18);
-  --text: #e8eef5;
-  --muted: #a6b7c9;
-  --muted-strong: #c5d1dc;
-  --accent: #e0a458;
-  --accent-soft: rgba(224, 164, 88, 0.14);
-  --accent-cool: #6ec7bf;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  --bg: #123056;
+  --bg-elevated: #1a3d68;
+  --surface: rgba(28, 57, 90, 0.84);
+  --surface-strong: #2a5687;
+  --surface-soft: #315f91;
+  --border: rgba(188, 214, 238, 0.3);
+  --text: #f4f9ff;
+  --muted: #bfd3e7;
+  --muted-strong: #dbe8f5;
+  --accent: #5caef7;
+  --accent-soft: rgba(92, 174, 247, 0.18);
+  --accent-cool: #7bd1ff;
+  --shadow: 0 20px 48px rgba(8, 29, 54, 0.22);
   --radius: 22px;
   --radius-sm: 14px;
   --container: min(1180px, calc(100vw - 2.4rem));
@@ -33,9 +33,9 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(110, 199, 191, 0.16), transparent 28%),
-    radial-gradient(circle at top right, rgba(224, 164, 88, 0.14), transparent 24%),
-    linear-gradient(180deg, #0a1420 0%, #08111b 52%, #060d15 100%);
+    radial-gradient(circle at top left, rgba(123, 209, 255, 0.3), transparent 30%),
+    radial-gradient(circle at top right, rgba(92, 174, 247, 0.24), transparent 28%),
+    linear-gradient(180deg, #1b4572 0%, #153a62 54%, #123154 100%);
   min-height: 100vh;
 }
 
@@ -109,7 +109,7 @@ button {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(18px);
-  background: rgba(8, 17, 27, 0.78);
+  background: rgba(20, 52, 84, 0.78);
   border-bottom: 1px solid rgba(157, 176, 195, 0.08);
 }
 
@@ -133,7 +133,7 @@ button {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.9rem;
-  background: linear-gradient(145deg, rgba(110, 199, 191, 0.3), rgba(224, 164, 88, 0.28));
+  background: linear-gradient(145deg, rgba(123, 209, 255, 0.34), rgba(92, 174, 247, 0.3));
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   font-family: "IBM Plex Mono", monospace;
@@ -205,9 +205,9 @@ button {
   min-height: 2.9rem;
   padding: 0.8rem 1.15rem;
   border-radius: 999px;
-  border: 1px solid rgba(224, 164, 88, 0.18);
-  background: linear-gradient(180deg, rgba(224, 164, 88, 0.28), rgba(224, 164, 88, 0.16));
-  color: #fff7eb;
+  border: 1px solid rgba(92, 174, 247, 0.28);
+  background: linear-gradient(180deg, rgba(92, 174, 247, 0.36), rgba(92, 174, 247, 0.2));
+  color: #f5fbff;
   font-weight: 600;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
@@ -500,8 +500,8 @@ button {
 .stack-pill {
   padding: 0.45rem 0.74rem;
   border-radius: 999px;
-  border: 1px solid rgba(224, 164, 88, 0.24);
-  background: rgba(224, 164, 88, 0.08);
+  border: 1px solid rgba(92, 174, 247, 0.26);
+  background: rgba(92, 174, 247, 0.12);
   color: var(--muted-strong);
   font-size: 0.9rem;
 }
@@ -525,7 +525,7 @@ button {
 .project-card-media {
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(110, 199, 191, 0.12), rgba(224, 164, 88, 0.06));
+  background: linear-gradient(180deg, rgba(123, 209, 255, 0.18), rgba(92, 174, 247, 0.08));
 }
 
 .project-card-media img {
@@ -589,9 +589,9 @@ button {
 }
 
 .tag-filter.is-active {
-  border-color: rgba(224, 164, 88, 0.4);
-  background: rgba(224, 164, 88, 0.14);
-  color: #fff7eb;
+  border-color: rgba(92, 174, 247, 0.5);
+  background: rgba(92, 174, 247, 0.2);
+  color: #f5fbff;
 }
 
 .archive-summary,
@@ -883,7 +883,7 @@ button {
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid var(--border);
-    background: rgba(8, 17, 27, 0.96);
+    background: rgba(20, 52, 84, 0.97);
     box-shadow: var(--shadow);
   }
 
