@@ -11,8 +11,6 @@ import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
   createResourceButtons,
-  getRandomProjectImage,
-  initNavigation,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile,
@@ -20,7 +18,6 @@ import {
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -52,7 +49,7 @@ if (!project) {
 }
 
 function removeFileType(text) {
-  return text.replace(/\.(png|jpe?g|gif|webp|svg|bmp|tiff?)$/i, "");
+  return text.replace(/\.(png|jpe?g|gif|webp|bmp|tiff?)$/i, "");
 }
 
 function cleanupCaption(rawText, fallback) {
@@ -80,18 +77,15 @@ function resolveProjectAsset(path) {
   return resolved;
 }
 
-function bindFallbackImage(image, fallbackSrc) {
-  if (!image || !fallbackSrc) {
-    return;
-  }
-
-  image.addEventListener("error", () => {
-    if (image.dataset.fallbackApplied === "true") {
-      return;
-    }
-    image.dataset.fallbackApplied = "true";
-    image.src = fallbackSrc;
-  });
+function buildCaseStudyUrl(slug) {
+  const configuredBase = siteProfile.links?.website || "";
+  const liveOrigin =
+    window.location.origin && window.location.origin !== "null"
+      ? window.location.origin
+      : "";
+  const fallbackBase = "https://john-a-chen.github.io";
+  const base = configuredBase || liveOrigin || fallbackBase;
+  return `${base.replace(/\/+$/, "")}/projects/${slug}.html`;
 }
 
 function uniqueBySource(items) {
@@ -101,7 +95,37 @@ function uniqueBySource(items) {
   );
 }
 
+function collectProjectGalleryItems(activeProject) {
+  const seedItems = [];
+
+  if (activeProject.heroImage) {
+    seedItems.push({
+      src: activeProject.heroImage,
+      alt: `${activeProject.title} hero image`,
+      caption: `${activeProject.title} hero image`
+    });
+  }
+
+  if (activeProject.thumbnail) {
+    seedItems.push({
+      src: activeProject.thumbnail,
+      alt: `${activeProject.title} thumbnail`,
+      caption: `${activeProject.title} thumbnail`
+    });
+  }
+
+  const customGallery = (activeProject.gallery || []).filter((item) => item?.src);
+  const importedGallery = (repoImages[activeProject.slug] || []).filter(
+    (item) => item?.src
+  );
+
+  return uniqueBySource([...seedItems, ...customGallery, ...importedGallery]);
+}
+
 function renderProjectPage(activeProject) {
+  const galleryItems = collectProjectGalleryItems(activeProject);
+  const heroItem = galleryItems[0] || null;
+
   headerRoot.innerHTML = "";
 
   const intro = document.createElement("article");
@@ -123,9 +147,13 @@ function renderProjectPage(activeProject) {
         <div class="project-priority-row">${repoButton}</div>
         <div class="project-action-row"></div>
       </div>
-      <figure class="project-hero-media">
-        <img src="" alt="${activeProject.title} hero image" />
-      </figure>
+      ${
+        heroItem
+          ? `<figure class="project-hero-media"><img src="${resolveProjectAsset(
+              heroItem.src
+            )}" alt="${heroItem.alt || `${activeProject.title} image`}" /></figure>`
+          : `<figure class="project-hero-media is-empty" aria-hidden="true"></figure>`
+      }
     </div>
   `;
 
@@ -144,36 +172,13 @@ function renderProjectPage(activeProject) {
   }
   headerRoot.appendChild(intro);
 
-  const heroImage = intro.querySelector(".project-hero-media img");
-  const heroFallback = resolveProjectAsset(
-    getRandomProjectImage(activeProject.slug) ||
-      activeProject.thumbnail ||
-      activeProject.heroImage
-  );
-  bindFallbackImage(heroImage, heroFallback);
-  if (heroImage) {
-    heroImage.dataset.fallbackApplied = "false";
-    heroImage.src = resolveProjectAsset(activeProject.heroImage || heroFallback);
-  }
-
-  renderGallery(activeProject);
+  renderGallery(activeProject, galleryItems);
   renderContent(activeProject);
   renderSidebar(activeProject);
   renderRelated(activeProject);
 }
 
-function renderGallery(activeProject) {
-  const baseItems = [
-    {
-      src: activeProject.heroImage,
-      alt: `${activeProject.title} hero image`,
-      caption: `${activeProject.title} hero view`
-    },
-    ...(activeProject.gallery || []),
-    ...(repoImages[activeProject.slug] || [])
-  ];
-
-  const galleryItems = uniqueBySource(baseItems);
+function renderGallery(activeProject, galleryItems) {
   if (!galleryItems.length) {
     galleryRoot.innerHTML = "";
     return;
@@ -208,11 +213,6 @@ function renderGallery(activeProject) {
   const dotRow = document.getElementById("gallery-dot-row");
   const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
   const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
-  const galleryFallback = resolveProjectAsset(
-    getRandomProjectImage(activeProject.slug) ||
-      activeProject.thumbnail ||
-      activeProject.heroImage
-  );
 
   let currentIndex = 0;
 
@@ -232,7 +232,6 @@ function renderGallery(activeProject) {
   const syncActiveImage = () => {
     const activeItem = galleryItems[currentIndex];
     const fallbackCaption = `${activeProject.title} image ${currentIndex + 1}`;
-    imageEl.dataset.fallbackApplied = "false";
     imageEl.src = resolveProjectAsset(activeItem.src);
     imageEl.alt = activeItem.alt || fallbackCaption;
     captionEl.textContent = cleanupCaption(
@@ -247,8 +246,6 @@ function renderGallery(activeProject) {
       dot.setAttribute("aria-pressed", String(active));
     });
   };
-
-  bindFallbackImage(imageEl, galleryFallback);
 
   const stepImage = (direction) => {
     currentIndex =
@@ -368,6 +365,7 @@ function renderContent(activeProject) {
 }
 
 function renderSidebar(activeProject) {
+  const caseStudyUrl = buildCaseStudyUrl(activeProject.slug);
   const tools = activeProject.tools
     .map((tool) => `<li class="tool-chip">${tool}</li>`)
     .join("");
@@ -387,7 +385,11 @@ function renderSidebar(activeProject) {
           </div>
           <div>
             <dt>Case study URL</dt>
-            <dd>/projects/${activeProject.slug}.html</dd>
+            <dd>
+              <a class="text-link case-study-link" href="${caseStudyUrl}" target="_blank" rel="noreferrer">
+                ${caseStudyUrl}
+              </a>
+            </dd>
           </div>
         </dl>
       </section>

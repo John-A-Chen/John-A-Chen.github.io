@@ -6,14 +6,12 @@ import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
   initRandomProjectLink,
-  initNavigation,
   initRevealAnimations,
   populateSharedProfile,
   sortProjectsByType
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);

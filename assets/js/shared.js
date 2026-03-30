@@ -1,4 +1,24 @@
-import { projects } from "../../data/projects.js";
+import { repoImages } from "../../data/repo-images.js";
+
+function uniqueSources(items = []) {
+  return [...new Set(items.filter(Boolean))];
+}
+
+function getProjectImagePool(project) {
+  const directImages = [project.thumbnail, project.heroImage];
+  const galleryImages = (project.gallery || []).map((item) => item?.src);
+  const importedRepoImages = (repoImages[project.slug] || []).map(
+    (item) => item?.src
+  );
+  return uniqueSources([...directImages, ...galleryImages, ...importedRepoImages]);
+}
+
+function pickRandom(items = []) {
+  if (!items.length) {
+    return "";
+  }
+  return items[Math.floor(Math.random() * items.length)];
+}
 
 function isExternalPath(path) {
   return (
@@ -21,35 +41,29 @@ export function resolveImagePath(path, hrefPrefix = "") {
   return encodeURI(`${hrefPrefix}${path}`);
 }
 
-export function getRandomProjectImage(excludeSlug = "") {
-  const pool = projects
-    .filter((project) => project.slug !== excludeSlug)
-    .flatMap((project) => [project.heroImage, project.thumbnail])
-    .filter(Boolean);
-
-  if (!pool.length) {
-    return "";
-  }
-
-  return pool[Math.floor(Math.random() * pool.length)];
-}
-
-function bindImageFallback(image, fallbackSrc) {
-  if (!image || !fallbackSrc) {
-    return;
-  }
-
-  image.addEventListener("error", () => {
-    if (image.dataset.fallbackApplied === "true") {
-      return;
-    }
-    image.dataset.fallbackApplied = "true";
-    image.src = fallbackSrc;
-  });
-}
-
 export function populateSharedProfile(profile) {
   const isProjectPage = document.body.classList.contains("project-page");
+  const normalizeAssetPath = (path) => {
+    if (!path) {
+      return "";
+    }
+
+    if (
+      path.startsWith("http") ||
+      path.startsWith("data:") ||
+      path.startsWith("/") ||
+      path.startsWith("../")
+    ) {
+      return path;
+    }
+
+    if (path.startsWith("assets/") || path.startsWith("docs/")) {
+      return isProjectPage ? `../${path}` : path;
+    }
+
+    return path;
+  };
+
   const normalizeHref = (href) => {
     if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("/")) {
       return href;
@@ -69,6 +83,21 @@ export function populateSharedProfile(profile) {
       node.textContent = profile[key];
     }
   });
+
+  const brandLogoPath = normalizeAssetPath(profile.brandLogo || "");
+  if (brandLogoPath) {
+    document.querySelectorAll(".brand-mark").forEach((markNode) => {
+      markNode.textContent = "";
+      markNode.dataset.hasLogo = "true";
+
+      const logoImage = document.createElement("img");
+      logoImage.src = brandLogoPath;
+      logoImage.alt = `${profile.name || "Profile"} logo`;
+      logoImage.decoding = "async";
+      logoImage.loading = "lazy";
+      markNode.appendChild(logoImage);
+    });
+  }
 
   const linkTargets = document.querySelectorAll("[data-profile-link]");
   linkTargets.forEach((node) => {
@@ -94,36 +123,6 @@ export function populateSharedProfile(profile) {
 
   document.querySelectorAll("[data-current-year]").forEach((node) => {
     node.textContent = new Date().getFullYear();
-  });
-}
-
-export function initNavigation() {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
-
-  if (!toggle || !menu) {
-    return;
-  }
-
-  const closeMenu = () => {
-    toggle.setAttribute("aria-expanded", "false");
-    menu.classList.remove("is-open");
-  };
-
-  toggle.addEventListener("click", () => {
-    const expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!expanded));
-    menu.classList.toggle("is-open");
-  });
-
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
-      closeMenu();
-    }
   });
 }
 
@@ -187,14 +186,16 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
-  const placeholderImage = resolveImagePath(
-    getRandomProjectImage(project.slug),
-    hrefPrefix
-  );
-  const cardImage = resolveImagePath(
-    project.thumbnail || getRandomProjectImage(project.slug),
-    hrefPrefix
-  );
+  const projectImagePool = getProjectImagePool(project);
+  const selectedProjectImage = pickRandom(projectImagePool);
+  const cardImage = resolveImagePath(selectedProjectImage, hrefPrefix);
+  const mediaMarkup = cardImage
+    ? `
+      <div class="project-card-media">
+        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" />
+      </div>
+    `
+    : `<div class="project-card-media is-empty" aria-hidden="true"></div>`;
 
   const tagMarkup = project.tags
     .slice(0, compact ? 3 : 4)
@@ -203,9 +204,7 @@ export function createProjectCard(project, options = {}) {
 
   card.innerHTML = `
     <a class="project-card-link" href="${hrefPrefix}projects/${project.slug}.html">
-      <div class="project-card-media">
-        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" />
-      </div>
+      ${mediaMarkup}
       <div class="project-card-body">
         <div class="project-card-meta">
           <span>${project.year}</span>
@@ -223,8 +222,6 @@ export function createProjectCard(project, options = {}) {
     </a>
   `;
 
-  bindImageFallback(card.querySelector(".project-card-media img"), placeholderImage);
-
   return card;
 }
 
@@ -238,15 +235,6 @@ export function sortProjectsByType(projectList) {
     }
     return a.title.localeCompare(b.title);
   });
-}
-
-export function createTagChip(tag, isActive = false) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `tag-filter${isActive ? " is-active" : ""}`;
-  button.textContent = tag;
-  button.dataset.tag = tag;
-  return button;
 }
 
 export function createResourceButtons(links, labels) {
@@ -269,114 +257,4 @@ export function createResourceButtons(links, labels) {
   });
 
   return wrap;
-}
-
-export function createLightboxTrigger(image, groupName) {
-  const figure = document.createElement("figure");
-  figure.className = "gallery-card";
-
-  figure.innerHTML = `
-    <button
-      class="gallery-trigger"
-      type="button"
-      data-lightbox-group="${groupName}"
-      data-lightbox-src="${image.src}"
-      data-lightbox-alt="${image.alt}"
-      data-lightbox-caption="${image.caption || ""}"
-      aria-label="Open image: ${image.alt}"
-    >
-      <img src="${image.src}" alt="${image.alt}" loading="lazy" />
-    </button>
-    <figcaption>${image.caption || ""}</figcaption>
-  `;
-
-  return figure;
-}
-
-export function initLightbox() {
-  const lightbox = document.getElementById("lightbox");
-  if (!lightbox) {
-    return;
-  }
-
-  const image = lightbox.querySelector("img");
-  const caption = lightbox.querySelector("figcaption");
-  const closeButton = lightbox.querySelector(".lightbox-close");
-  const prevButton = lightbox.querySelector(".lightbox-nav.prev");
-  const nextButton = lightbox.querySelector(".lightbox-nav.next");
-  let group = [];
-  let currentIndex = 0;
-
-  const syncView = () => {
-    const activeItem = group[currentIndex];
-    if (!activeItem) {
-      return;
-    }
-
-    image.src = activeItem.dataset.lightboxSrc;
-    image.alt = activeItem.dataset.lightboxAlt || "";
-    caption.textContent = activeItem.dataset.lightboxCaption || "";
-  };
-
-  const open = (items, index) => {
-    group = items;
-    currentIndex = index;
-    syncView();
-    lightbox.hidden = false;
-    document.body.classList.add("lightbox-open");
-  };
-
-  const close = () => {
-    lightbox.hidden = true;
-    document.body.classList.remove("lightbox-open");
-  };
-
-  const step = (direction) => {
-    if (!group.length) {
-      return;
-    }
-
-    currentIndex = (currentIndex + direction + group.length) % group.length;
-    syncView();
-  };
-
-  document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-lightbox-src]");
-    if (!trigger) {
-      return;
-    }
-
-    const groupName = trigger.dataset.lightboxGroup;
-    const items = [...document.querySelectorAll(`[data-lightbox-group="${groupName}"]`)];
-    const index = items.indexOf(trigger);
-    open(items, index);
-  });
-
-  closeButton?.addEventListener("click", close);
-  prevButton?.addEventListener("click", () => step(-1));
-  nextButton?.addEventListener("click", () => step(1));
-
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      close();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (lightbox.hidden) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-      close();
-    }
-
-    if (event.key === "ArrowLeft") {
-      step(-1);
-    }
-
-    if (event.key === "ArrowRight") {
-      step(1);
-    }
-  });
 }

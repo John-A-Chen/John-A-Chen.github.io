@@ -1,80 +1,68 @@
-# John Alfred Chen Portfolio (GitHub Pages)
+# John Alfred Chen Portfolio
 
-Static multi-page engineering portfolio for mechatronics/robotics work.
+Static GitHub Pages portfolio for mechatronics, robotics, CAD, and engineering case studies.
 
-This site is:
+## Tech Stack
 
-- Static HTML/CSS/JavaScript
-- GitHub Pages friendly
-- No React, no build process, no backend
+- Static `HTML`, `CSS`, `JavaScript`
+- No backend
+- No build step
+- GitHub Pages compatible
 
-## Pages
+## Site Structure
 
 - `index.html` - Home
 - `portfolio.html` - Project archive
-- `resume.html` - Resume timeline + CV download
-- `contact.html` - Contact + Ultimo/Sydney map
-- `projects/*.html` - Individual case-study pages
+- `resume.html` - Resume page
+- `contact.html` - Contact page
+- `projects/*.html` - Project case-study page shells
+- `assets/css/styles.css` - Global styles
+- `assets/js/*.js` - Page scripts and shared UI logic
+- `data/site.js` - Profile/contact/resume content
+- `data/projects.js` - Project content and links
+- `data/repo-images.js` - Imported project image catalog
 
-## Navigation
+## Current UX
 
-- Left vertical dock with magnification effect: `assets/js/dock.js`
-- Dock includes: Home, Portfolio, Resume, Contact, GitHub
-- Dock also includes: LinkedIn
-- Top header uses a single **Random Project** button
-- Header also includes a scrolling tech badge logo loop: `assets/js/logo-loop.js`
-- Click spark interaction effect on clickable UI: `assets/js/click-spark.js`
+- Left fixed dock navigation with hover magnification (`assets/js/dock.js`)
+- Header random-project button
+- Portfolio filter supports `Solo` and `Project`
+- Project pages render a left/right carousel gallery
+- Project cards use a random thumbnail from each project's own image pool
 
-## Data Files
+## Project Images
 
-- `data/site.js` - profile, links, resume timeline, map settings
-- `data/projects.js` - all project content and metadata
+Project card thumbnails are selected at runtime from:
 
-## Project Pages
+1. `thumbnail`
+2. `heroImage`
+3. `gallery[].src`
+4. `data/repo-images.js` entries for that project slug
 
-- Gallery is a left/right carousel with caption under the active image.
-- Primary **Open GitHub Repository** button is placed in the hero section.
-- Resource links remain available in the main Files and Resources section.
+If an image fails to load, a fallback image is used automatically.
 
-## Project Type Sorting (Solo / Project Only)
+## Editing Projects
 
-Each project now supports:
+1. Update or create a project in `data/projects.js`.
+2. Keep `slug` aligned with `projects/<slug>.html`.
+3. Update `links` (`repo`, `cad`, `drawings`, `print`, `docs`, `media`).
+4. Set `projectType` to `Solo` or `Project`.
+5. Add image paths in `thumbnail`, `heroImage`, and/or `gallery`.
 
-```js
-projectType: "Solo" // or "Project"
-```
+## Editing Profile And Contact
 
-This is used in:
+Edit `data/site.js` for:
 
-- Portfolio filtering (`Solo` and `Project` only)
-- Card metadata display
-- Portfolio ordering (Solo first, then Project)
+- name, degree, tagline
+- socials and external links
+- contact email
+- map embed URL (`mapEmbedUrl`)
 
-## Add / Edit a Project
+## GitHub Pages Deploy
 
-1. Add or edit an entry in `data/projects.js`.
-2. Ensure each project has a matching page shell at `projects/<slug>.html`.
-3. Add images in `assets/images/projects/<slug>/`.
-4. Update `links` for repo/CAD/drawings/print/docs/media.
-5. Set `projectType` to `"Solo"` or `"Project"`.
+1. Push to `main`.
+2. Open repository Settings -> Pages.
+3. Source: `Deploy from branch`.
+4. Branch: `main`, folder: `/ (root)`.
 
-## Resume
-
-- Resume page content comes from `siteProfile.resumeExperience` and `siteProfile.resumeEducation` in `data/site.js`.
-- CV download file path is `docs/John_A_Chen_CV.pdf`.
-
-## Contact
-
-- Map URL is configured with `siteProfile.mapEmbedUrl` in `data/site.js`.
-- Current target is Ultimo, Sydney.
-- Map embed is tinted to match the site blue theme in `assets/css/styles.css`.
-- Contact form is static; it opens mail client if `contactEmail` is set.
-
-## Deploy on GitHub Pages
-
-1. Push repository to GitHub.
-2. Repository Settings -> Pages.
-3. Deploy from branch: `main`, folder `/ (root)`.
-4. Save.
-
-No build step required.
+No extra tooling required.

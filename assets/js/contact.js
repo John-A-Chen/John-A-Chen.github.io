@@ -5,13 +5,11 @@ import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   initRandomProjectLink,
-  initNavigation,
   initRevealAnimations,
   populateSharedProfile
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -19,6 +17,7 @@ initClickSpark();
 
 const map = document.getElementById("contact-map");
 const locationLabel = document.getElementById("contact-location");
+const contactSubheading = document.getElementById("contact-subheading");
 const socialGrid = document.getElementById("contact-social-grid");
 const form = document.getElementById("contact-form");
 const submitButton = document.getElementById("contact-submit");
@@ -38,12 +37,27 @@ const socialBadgeByLabel = {
     "https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white"
 };
 
+const socialCtaByLabel = {
+  Discord: "gift me nitro",
+  Instagram: "ping me",
+  LinkedIn: "gift me premium",
+  Pinterest: "share me some inspo",
+  TikTok: "get me off this app",
+  YouTube: "share me cool stuff"
+};
+
 if (map) {
   map.src = siteProfile.mapEmbedUrl || "";
 }
 
 if (locationLabel) {
   locationLabel.textContent = siteProfile.address || siteProfile.location || "";
+}
+
+if (contactSubheading) {
+  contactSubheading.textContent =
+    siteProfile.contactSubheading ||
+    "University of Technology Sydney (UTS) - I am practically always here.";
 }
 
 if (socialGrid) {
@@ -61,12 +75,12 @@ if (socialGrid) {
           />
         `
         : "";
+      const socialCta = socialCtaByLabel[social.label] || "Open profile";
 
       return `
-        <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer">
+        <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.label}">
           ${badgeMarkup}
-          <h3>${social.label}</h3>
-          <p class="text-link">Open profile</p>
+          <p class="text-link social-cta">${socialCta}</p>
         </a>
       `
     })

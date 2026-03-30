@@ -150,6 +150,19 @@ body.has-dock {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.92rem;
+  overflow: hidden;
+}
+
+.brand-mark[data-has-logo="true"] {
+  padding: 0;
+  background: rgba(15, 42, 73, 0.92);
+}
+
+.brand-mark[data-has-logo="true"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 .brand-text {
@@ -173,23 +186,6 @@ body.has-dock {
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 1.3rem;
-}
-
-.nav-menu a {
-  color: var(--muted-strong);
-}
-
-.nav-menu a.is-active {
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: rgba(147, 197, 253, 0.8);
-  text-underline-offset: 0.35rem;
 }
 
 .site-dock-wrap {
@@ -289,28 +285,7 @@ body.has-dock {
   z-index: 999;
 }
 
-.nav-toggle {
-  display: none;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  border-radius: 0.85rem;
-  padding: 0.75rem;
-}
-
-.nav-toggle span:not(.sr-only) {
-  display: block;
-  width: 1.2rem;
-  height: 2px;
-  background: var(--text);
-  margin: 0.22rem 0;
-}
-
-.button,
-.tag-filter,
-.gallery-trigger,
-.lightbox-close,
-.lightbox-nav {
+.button {
   transition:
     background var(--transition),
     border-color var(--transition),
@@ -335,14 +310,6 @@ body.has-dock {
 
 .button:hover,
 .button:focus-visible,
-.tag-filter:hover,
-.tag-filter:focus-visible,
-.gallery-trigger:hover,
-.gallery-trigger:focus-visible,
-.lightbox-close:hover,
-.lightbox-close:focus-visible,
-.lightbox-nav:hover,
-.lightbox-nav:focus-visible,
 .filter-item button:hover,
 .filter-item button:focus-visible,
 .select-item button:hover,
@@ -475,7 +442,6 @@ body.has-dock {
 
 .hero-layout,
 .project-hero-grid,
-.about-grid,
 .case-study-grid,
 .footer-layout {
   display: grid;
@@ -504,6 +470,9 @@ body.has-dock {
 
 .hero-copy {
   padding: 2.5rem;
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
 }
 
 .hero-copy h1,
@@ -518,6 +487,7 @@ body.has-dock {
 
 .hero-copy h1 {
   font-size: clamp(3.2rem, 8vw, 5.5rem);
+  margin: 0;
 }
 
 .page-title {
@@ -555,12 +525,13 @@ body.has-dock {
 
 .hero-degree {
   font-size: 1.15rem;
-  margin: 0 0 0.4rem;
+  margin: 0;
 }
 
 .hero-tagline {
   max-width: 44rem;
   font-size: 1.1rem;
+  margin: 0;
 }
 
 .hero-actions,
@@ -570,8 +541,14 @@ body.has-dock {
   gap: 0.8rem;
 }
 
+.hero-actions {
+  margin-top: 0.15rem;
+}
+
 .hero-focus-note {
-  margin: 0.7rem 0 0.95rem;
+  margin: 0.2rem 0 0.3rem;
+  display: grid;
+  gap: 0.35rem;
 }
 
 .hero-panel {
@@ -597,6 +574,10 @@ body.has-dock {
   background: rgba(255, 255, 255, 0.05);
 }
 
+.home-page .headshot-slot img {
+  aspect-ratio: 1 / 1;
+}
+
 .headshot-slot figcaption {
   margin-top: 0.75rem;
   color: var(--muted);
@@ -608,10 +589,19 @@ body.has-dock {
   margin: 0;
 }
 
+.panel-label {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .panel-title {
-  font-size: 1.1rem;
-  color: var(--text);
+  font-size: 1.03rem;
+  color: var(--muted-strong);
   line-height: 1.6;
+  max-width: 44rem;
 }
 
 .hero-stats {
@@ -682,18 +672,9 @@ body.has-dock {
   margin: 0 0 0.55rem;
 }
 
-.about-grid {
-  grid-template-columns: 1.15fr 0.95fr;
-}
-
-.about-copy,
 .about-panels {
   display: grid;
   gap: 1rem;
-}
-
-.about-copy {
-  align-content: start;
 }
 
 .focus-panels {
@@ -706,24 +687,12 @@ body.has-dock {
   gap: 1rem;
 }
 
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.2rem;
-}
-
 .project-grid,
 .contact-grid,
 .highlight-grid,
 .related-grid {
   display: grid;
   gap: 1.2rem;
-}
-
-.social-grid,
-.stats-card-grid {
-  display: grid;
-  gap: 1.1rem;
 }
 
 .project-grid {
@@ -735,14 +704,6 @@ body.has-dock {
 }
 
 .contact-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.social-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.stats-card-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -844,6 +805,10 @@ body.has-dock {
   background: linear-gradient(180deg, rgba(123, 209, 255, 0.18), rgba(92, 174, 247, 0.08));
 }
 
+.project-card-media.is-empty {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .project-card-media img {
   width: 100%;
   height: 100%;
@@ -868,11 +833,6 @@ body.has-dock {
 .project-card-meta {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
-}
-
-.archive-controls {
-  display: grid;
   gap: 1rem;
 }
 
@@ -911,40 +871,6 @@ body.has-dock {
   display: none;
 }
 
-.search-field input {
-  width: 100%;
-  min-height: 3.15rem;
-  padding: 0.9rem 1rem;
-  color: var(--text);
-  background: var(--surface);
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-}
-
-.search-field input::placeholder {
-  color: var(--muted);
-}
-
-.tag-filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-
-.tag-filter {
-  padding: 0.72rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--muted-strong);
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.tag-filter.is-active {
-  border-color: rgba(92, 174, 247, 0.5);
-  background: rgba(92, 174, 247, 0.2);
-  color: #f5fbff;
-}
-
 .archive-summary,
 .footer-meta {
   color: var(--muted);
@@ -953,10 +879,6 @@ body.has-dock {
 .contact-card h3 {
   font-size: 1.15rem;
   line-height: 1.5;
-}
-
-.contact-social-heading {
-  margin-top: 1.4rem;
 }
 
 .focus-panels .info-panel {
@@ -981,6 +903,16 @@ body.has-dock {
   align-items: center;
   gap: 0.35rem;
   font-weight: 600;
+}
+
+.contact-card .social-cta {
+  margin: 0;
+}
+
+.case-study-link {
+  display: inline;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .text-link:hover {
@@ -1053,20 +985,11 @@ body.has-dock {
   min-height: 100%;
 }
 
-.hero-trigger,
-.gallery-trigger {
-  width: 100%;
-  border: 0;
-  padding: 0;
-  background: transparent;
-}
-
-.hero-trigger img,
-.gallery-trigger img {
-  width: 100%;
-  border-radius: 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+.project-hero-media.is-empty {
+  border: 1px dashed rgba(188, 214, 238, 0.32);
+  border-radius: 1rem;
+  min-height: min(36vh, 320px);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .gallery-carousel {
@@ -1330,10 +1253,10 @@ body.has-dock {
   background:
     linear-gradient(
       180deg,
-      rgba(32, 90, 147, 0.18) 0%,
-      rgba(21, 63, 108, 0.34) 100%
+      rgba(36, 100, 164, 0.2) 0%,
+      rgba(16, 56, 102, 0.4) 100%
     );
-  mix-blend-mode: color;
+  mix-blend-mode: multiply;
 }
 
 .mapbox iframe {
@@ -1341,12 +1264,10 @@ body.has-dock {
   border: 0;
   display: block;
   filter:
-    grayscale(0.18)
-    sepia(0.14)
-    hue-rotate(175deg)
-    saturate(1.25)
-    brightness(0.92)
-    contrast(1.06);
+    grayscale(0.58)
+    saturate(0.42)
+    brightness(0.9)
+    contrast(1.12);
 }
 
 .contact-form {
@@ -1414,67 +1335,6 @@ textarea.form-input {
   text-underline-offset: 0.12rem;
 }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem;
-  background: rgba(2, 7, 12, 0.88);
-  z-index: 200;
-}
-
-.lightbox[hidden] {
-  display: none;
-}
-
-.lightbox-figure {
-  margin: 0;
-}
-
-.lightbox-figure img {
-  max-height: min(74vh, 900px);
-  width: auto;
-  margin-inline: auto;
-  border-radius: 1rem;
-}
-
-.lightbox-figure figcaption {
-  margin-top: 0.9rem;
-  text-align: center;
-  color: var(--muted-strong);
-}
-
-.lightbox-close,
-.lightbox-nav {
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 999px;
-  font-size: 1.5rem;
-}
-
-.lightbox-nav {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  font-size: 2rem;
-}
-
-.lightbox-open {
-  overflow: hidden;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1492,15 +1352,11 @@ textarea.form-input {
   }
 
   .hero-layout,
-  .about-grid,
   .project-hero-grid,
   .case-study-grid,
   .footer-layout,
   .contact-grid,
-  .featured-grid,
-  .project-grid,
-  .social-grid,
-  .stats-card-grid {
+  .project-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1529,14 +1385,26 @@ textarea.form-input {
 
 @media (max-width: 900px) {
   body.has-dock {
-    --container: min(1180px, calc(100vw - 6.2rem));
+    --container: min(1180px, calc(100vw - 2.4rem));
+    padding-bottom: 6.4rem;
   }
 
   .site-dock-wrap {
-    left: 0.45rem;
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: 0.65rem;
+    transform: translateX(-50%);
+    width: calc(100vw - 1rem);
+    display: flex;
+    justify-content: center;
   }
 
   .site-dock {
+    width: min(680px, 100%);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 0.55rem;
     padding: 0.45rem;
   }
@@ -1545,31 +1413,13 @@ textarea.form-input {
     border-radius: 0.68rem;
   }
 
+  .dock-link:hover,
+  .dock-link:focus-visible {
+    transform: translateY(-2px);
+  }
+
   .dock-label {
     display: none;
-  }
-
-  .nav-toggle {
-    display: inline-block;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: calc(100% + 0.75rem);
-    right: 1rem;
-    left: 1rem;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid var(--border);
-    background: rgba(20, 52, 84, 0.97);
-    box-shadow: var(--shadow);
-  }
-
-  .nav-menu.is-open {
-    display: flex;
   }
 
   .hero-copy,
@@ -1671,28 +1521,17 @@ textarea.form-input {
     background: rgba(255, 255, 255, 0.08);
   }
 
-  .lightbox {
-    grid-template-columns: 1fr;
-  }
-
-  .lightbox-nav.prev {
-    order: 2;
-    justify-self: start;
-  }
-
-  .lightbox-nav.next {
-    order: 3;
-    justify-self: end;
-  }
 }
 
 @media (max-width: 680px) {
   body.has-dock {
-    --container: min(1180px, calc(100vw - 5.7rem));
+    --container: min(1180px, calc(100vw - 2rem));
+    padding-bottom: 6.1rem;
   }
 
   .site-dock-wrap {
-    left: 0.3rem;
+    bottom: 0.5rem;
+    width: calc(100vw - 0.6rem);
   }
 
   .dock-link {

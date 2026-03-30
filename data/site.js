@@ -4,6 +4,7 @@ export const siteProfile = {
   degree: "Mechatronics Engineering Student - University of Technology Sydney (UTS)",
   tagline:
     "Mechanical design, robotics, and CAD-driven engineering workflows for real, buildable systems.",
+  brandLogo: "assets/images/profile/channels4_profile.jpg",
   headshot: "assets/images/profile/higit.png",
   focusAreas: [
     {
@@ -24,27 +25,22 @@ export const siteProfile = {
   ],
   location: "Sydney, Australia",
   address: "Ultimo NSW 2007, Sydney, Australia",
+  contactSubheading: "University of Technology Sydney (UTS) - I am practically always here.",
   contactEmail: "johnalfredchen@gmail.com",
   mapEmbedUrl:
     "https://www.google.com/maps?q=Ultimo+NSW+2007+Australia&output=embed",
   resumeExperience: [
     {
-      title: "Independent Mechatronics Project Development",
-      period: "2022 - Present",
+      title: "Mechanical Design Intern, OpenTech Designs",
+      period: "May 2025 - Present",
       detail:
-        "Designing and documenting robotics and mechanical systems across CAD, prototyping, controls, and iteration workflows."
+        "Automated CAD configuration and drawing-pack tasks to speed iteration and reduce drafting errors. Created and documented 230+ controlled part configurations with compliant AS 1100 drawings, tracked design changes for revision traceability, and worked with engineers, technicians, and machinists to resolve mark-ups and build updates."
     },
     {
-      title: "Autonomous Test Platform Development (TechFest)",
-      period: "2024",
+      title: "Testbench Vehicle Engineer, UTS Motorsports Autonomous",
+      period: "February 2024 - August 2025",
       detail:
-        "Co-developed a compact test-bench vehicle focused on modular sensor mounting, rapid prototyping, and early autonomy stack experiments."
-    },
-    {
-      title: "Parametric Cycloidal Drive Study",
-      period: "2025 - Present",
-      detail:
-        "Built a SolidWorks-first workflow for cycloidal transmission geometry with manufacturing-aware constraints and documentation for replication."
+        "Designed and integrated a scaled testbench chassis to validate the autonomous sensor suite. Set hardpoints to improve mounting reliability, alignment, and serviceability with FEA support, and structured repeatable validation tests to document faults, corrections, and improvements."
     }
   ],
   resumeEducation: [
@@ -65,11 +61,10 @@ export const siteProfile = {
   ],
   links: {
     github: "https://github.com/John-A-Chen",
+    website: "https://john-a-chen.github.io",
     linkedin: "https://linkedin.com/in/John-A-Chen",
     resume: "docs/John_A_Chen_CV.pdf",
     transcript: "docs/John_Chen_Academic_Transcript.pdf",
     journal: "docs/41070_EDP3_Journal_Final.pdf"
   }
 };
-
-

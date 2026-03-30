@@ -85,16 +85,22 @@ function setItemSize(item, size) {
 function initMagnify(dock, options) {
   const { baseItemSize, magnification, distance } = options;
   const items = [...dock.querySelectorAll("[data-dock-item]")];
+  const isHorizontalLayout = () =>
+    window.matchMedia("(max-width: 900px)").matches;
 
   const reset = () => {
     items.forEach((item) => setItemSize(item, baseItemSize));
   };
 
-  const updateByY = (clientY) => {
+  const updateByPointer = (clientX, clientY) => {
+    const useHorizontal = isHorizontalLayout();
     items.forEach((item) => {
       const rect = item.getBoundingClientRect();
-      const centerY = rect.top + rect.height / 2;
-      const delta = Math.abs(clientY - centerY);
+      const center = useHorizontal
+        ? rect.left + rect.width / 2
+        : rect.top + rect.height / 2;
+      const pointer = useHorizontal ? clientX : clientY;
+      const delta = Math.abs(pointer - center);
       const influence = Math.max(0, 1 - delta / distance);
       const eased = influence * influence * (3 - 2 * influence);
       const size = baseItemSize + (magnification - baseItemSize) * eased;
@@ -103,10 +109,11 @@ function initMagnify(dock, options) {
   };
 
   dock.addEventListener("pointermove", (event) => {
-    updateByY(event.clientY);
+    updateByPointer(event.clientX, event.clientY);
   });
 
   dock.addEventListener("pointerleave", reset);
+  window.addEventListener("resize", reset);
 
   items.forEach((item) => {
     item.addEventListener("focus", () => {
