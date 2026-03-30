@@ -22,6 +22,10 @@ const focusAreas = document.getElementById("focus-areas");
 const heroTags = document.getElementById("hero-tags");
 const projectCount = document.getElementById("project-count");
 const disciplineCount = document.getElementById("discipline-count");
+const networkCount = document.getElementById("network-count");
+const socialGrid = document.getElementById("social-grid");
+const stackGrid = document.getElementById("stack-grid");
+const githubCardGrid = document.getElementById("github-card-grid");
 
 const state = {
   search: "",
@@ -29,6 +33,11 @@ const state = {
 };
 
 function renderAboutSection() {
+  const emailValue =
+    siteProfile.contactEmail && siteProfile.contactEmail.trim().length
+      ? siteProfile.contactEmail
+      : "Not listed";
+
   aboutCopy.innerHTML = `
     <p>${siteProfile.shortBio}</p>
     ${siteProfile.aboutParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
@@ -38,8 +47,12 @@ function renderAboutSection() {
         <p>${siteProfile.location}</p>
       </div>
       <div>
-        <p class="mono-label">Email</p>
-        <p>${siteProfile.contactEmail}</p>
+        <p class="mono-label">Pronouns</p>
+        <p>${siteProfile.pronouns || "Not listed"}</p>
+      </div>
+      <div>
+        <p class="mono-label">Contact</p>
+        <p>${emailValue}</p>
       </div>
     </div>
   `;
@@ -61,10 +74,56 @@ function renderHeroStats() {
   const uniqueTags = [...new Set(projects.flatMap((project) => project.tags))];
   projectCount.textContent = String(projects.length).padStart(2, "0");
   disciplineCount.textContent = String(Math.min(uniqueTags.length, 9)).padStart(2, "0");
+  networkCount.textContent = `${siteProfile.githubStats.followers}/${siteProfile.githubStats.following}`;
 
   heroTags.innerHTML = uniqueTags
     .slice(0, 6)
     .map((tag) => `<span class="tag-pill">${tag}</span>`)
+    .join("");
+}
+
+function renderSocials() {
+  if (!socialGrid) {
+    return;
+  }
+
+  socialGrid.innerHTML = siteProfile.socials
+    .map(
+      (social) => `
+        <a class="social-card reveal" href="${social.url}" target="_blank" rel="noreferrer">
+          <p class="mono-label">Social</p>
+          <h3>${social.label}</h3>
+          <p class="text-link">Open profile</p>
+        </a>
+      `
+    )
+    .join("");
+}
+
+function renderTechStack() {
+  if (!stackGrid) {
+    return;
+  }
+
+  stackGrid.innerHTML = siteProfile.techStack
+    .map((tool) => `<span class="stack-pill">${tool}</span>`)
+    .join("");
+}
+
+function renderGithubCards() {
+  if (!githubCardGrid) {
+    return;
+  }
+
+  githubCardGrid.innerHTML = siteProfile.githubCards
+    .map(
+      (card) => `
+        <article class="github-card reveal">
+          <p class="mono-label">${card.title}</p>
+          <img src="${card.image}" alt="${card.title} for ${siteProfile.name}" loading="lazy" />
+        </article>
+      `
+    )
     .join("");
 }
 
@@ -146,6 +205,9 @@ function bindArchiveControls() {
 
 renderAboutSection();
 renderHeroStats();
+renderSocials();
+renderTechStack();
+renderGithubCards();
 renderFeaturedProjects();
 renderTagFilters();
 renderProjectGrid();

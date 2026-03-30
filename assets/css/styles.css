@@ -424,7 +424,7 @@ button {
 
 .about-meta {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -442,12 +442,75 @@ button {
   gap: 1.2rem;
 }
 
+.social-grid,
+.stats-card-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+
 .project-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .contact-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stats-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-card,
+.github-card {
+  padding: 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.social-card h3 {
+  margin: 0.35rem 0 0.6rem;
+  color: var(--text);
+}
+
+.social-card .text-link {
+  margin: 0;
+}
+
+.social-card:hover {
+  border-color: rgba(110, 199, 191, 0.35);
+}
+
+.stack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.stack-pill {
+  padding: 0.45rem 0.74rem;
+  border-radius: 999px;
+  border: 1px solid rgba(224, 164, 88, 0.24);
+  background: rgba(224, 164, 88, 0.08);
+  color: var(--muted-strong);
+  font-size: 0.9rem;
+}
+
+.github-card img {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .project-card {
@@ -787,7 +850,9 @@ button {
   .footer-layout,
   .contact-grid,
   .featured-grid,
-  .project-grid {
+  .project-grid,
+  .social-grid,
+  .stats-card-grid {
     grid-template-columns: 1fr;
   }
 

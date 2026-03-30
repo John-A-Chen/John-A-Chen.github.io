@@ -75,12 +75,12 @@ export const projects = [
       "Hand tools and workshop fabrication"
     ],
     links: {
-      repo: "https://github.com/[your-username]/warman-attempts",
-      cad: "https://github.com/[your-username]/warman-attempts/tree/main/cad",
-      drawings: "https://github.com/[your-username]/warman-attempts/tree/main/drawings",
+      repo: "https://github.com/John-A-Chen/warman-attempts",
+      cad: "https://github.com/John-A-Chen/warman-attempts/tree/main/cad",
+      drawings: "https://github.com/John-A-Chen/warman-attempts/tree/main/drawings",
       print: null,
-      docs: "https://github.com/[your-username]/warman-attempts/tree/main/docs",
-      media: "https://github.com/[your-username]/warman-attempts/tree/main/renders"
+      docs: "https://github.com/John-A-Chen/warman-attempts/tree/main/docs",
+      media: "https://github.com/John-A-Chen/warman-attempts/tree/main/renders"
     },
     gallery: [
       {
@@ -180,12 +180,12 @@ export const projects = [
       "Calipers and fit-check testing"
     ],
     links: {
-      repo: "https://github.com/[your-username]/mecanum-wheel-study",
-      cad: "https://github.com/[your-username]/mecanum-wheel-study/tree/main/cad",
+      repo: "https://github.com/John-A-Chen/mecanum-wheel-study",
+      cad: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/cad",
       drawings: null,
-      print: "https://github.com/[your-username]/mecanum-wheel-study/tree/main/print-files",
-      docs: "https://github.com/[your-username]/mecanum-wheel-study/tree/main/docs",
-      media: "https://github.com/[your-username]/mecanum-wheel-study/tree/main/media"
+      print: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/print-files",
+      docs: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/docs",
+      media: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/media"
     },
     gallery: [
       {
@@ -285,12 +285,12 @@ export const projects = [
       "3D printing"
     ],
     links: {
-      repo: "https://github.com/[your-username]/robo-arm",
-      cad: "https://github.com/[your-username]/robo-arm/tree/main/cad",
+      repo: "https://github.com/John-A-Chen/robo-arm",
+      cad: "https://github.com/John-A-Chen/robo-arm/tree/main/cad",
       drawings: null,
-      print: "https://github.com/[your-username]/robo-arm/tree/main/stl",
-      docs: "https://github.com/[your-username]/robo-arm/tree/main/docs",
-      media: "https://github.com/[your-username]/robo-arm/tree/main/renders"
+      print: "https://github.com/John-A-Chen/robo-arm/tree/main/stl",
+      docs: "https://github.com/John-A-Chen/robo-arm/tree/main/docs",
+      media: "https://github.com/John-A-Chen/robo-arm/tree/main/renders"
     },
     gallery: [
       {
@@ -390,12 +390,12 @@ export const projects = [
       "System integration testing"
     ],
     links: {
-      repo: "https://github.com/[your-username]/test-bench-vehicle",
+      repo: "https://github.com/John-A-Chen/test-bench-vehicle",
       cad: null,
-      drawings: "https://github.com/[your-username]/test-bench-vehicle/tree/main/drawings",
+      drawings: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/drawings",
       print: null,
-      docs: "https://github.com/[your-username]/test-bench-vehicle/tree/main/build-notes",
-      media: "https://github.com/[your-username]/test-bench-vehicle/tree/main/photos"
+      docs: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/build-notes",
+      media: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/photos"
     },
     gallery: [
       {
@@ -425,6 +425,428 @@ export const projects = [
       "Develop a cleaner validation workflow for perception, control, and field testing on the vehicle."
     ],
     relatedProjects: ["mecanum-wheel-study", "warman-attempts"]
+  },
+  {
+    slug: "camera-study",
+    featured: true,
+    title: "Camera Study",
+    subtitle:
+      "A mechanical study of traditional film camera shutters and iris assemblies, rebuilt through CAD, prototypes, and tolerance-focused iteration.",
+    year: "2024-2026",
+    status: "Active mechanical study",
+    tags: ["Mechanisms", "CAD", "Iris Design", "Prototyping", "Documentation"],
+    thumbnail: "assets/images/projects/camera-study/overview.svg",
+    heroImage: "assets/images/projects/camera-study/assembly.svg",
+    summary:
+      "An open study documenting blade geometry, pivot placement, friction considerations, and actuation behaviour in mechanical iris systems inspired by film camera internals.",
+    overview: [
+      "Camera Study started as a curiosity project after inspecting a film camera and noticing the mechanical elegance of its articulated iris blade assembly. The goal was to recreate similar behaviour using modern CAD and fabrication methods while preserving the original mechanism logic.",
+      "The repository is structured as an engineering journal: geometry experiments, interlocking blade studies, friction and clearance notes, and prototype outcomes including both successful and failed iterations."
+    ],
+    problem: [
+      "Mechanical iris systems are visually simple but mechanically sensitive. Small changes in blade curvature, pivot location, or overlap can make motion unstable, sticky, or impossible to assemble repeatably.",
+      "The project tackled how to design a working iris mechanism that can be understood, fabricated, and iterated by students using accessible tools."
+    ],
+    role: [
+      "Mechanical decomposition of shutter and iris behaviour into CAD-ready constraints",
+      "Blade geometry exploration and pivot path studies",
+      "Prototype planning with tolerance and friction considerations",
+      "Documentation of failures and revision rationale"
+    ],
+    process: [
+      {
+        title: "Reverse-engineering visual behaviour",
+        body:
+          "Initial work focused on observing how blade overlap and actuation rings produce smooth aperture changes. Notes and sketches were translated into repeatable CAD constraints."
+      },
+      {
+        title: "Parametric blade and pivot iteration",
+        body:
+          "Blade profile, hole placement, and ring geometry were iterated to reduce binding and preserve motion continuity through opening and closing cycles."
+      },
+      {
+        title: "Prototype-informed tolerance tuning",
+        body:
+          "The mechanism was repeatedly adjusted around real friction behaviour and assembly order, not only nominal CAD fit. This shifted the design toward more forgiving interfaces."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Interlocking blade geometry",
+        body:
+          "The project maps how overlap depth, blade curvature, and pivot radius interact. Changes that looked minor in CAD often had large effects on physical actuation smoothness."
+      },
+      {
+        title: "Actuation ring and pivot relationship",
+        body:
+          "Outer ring motion and blade pivot locations were treated as a coupled system, allowing aperture changes to remain consistent rather than lurching through parts of travel."
+      },
+      {
+        title: "Practical friction management",
+        body:
+          "Print-induced roughness, pin clearances, and assembly preload were documented as first-order design inputs rather than post-build troubleshooting."
+      }
+    ],
+    tools: [
+      "SolidWorks",
+      "Fusion 360",
+      "3D printing",
+      "Mechanical measurement tools",
+      "GitHub documentation"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/Camera-Study",
+      cad: "https://github.com/John-A-Chen/Camera-Study/tree/main/cad",
+      drawings: null,
+      print: "https://github.com/John-A-Chen/Camera-Study/tree/main/stl",
+      docs: "https://github.com/John-A-Chen/Camera-Study/tree/main/docs",
+      media: null
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/camera-study/overview.svg",
+        alt: "Camera Study mechanical overview board",
+        caption: "Mechanism breakdown of iris blades, pivots, and ring actuation architecture."
+      },
+      {
+        src: "assets/images/projects/camera-study/assembly.svg",
+        alt: "Camera Study assembly and motion layout",
+        caption: "Assembly-focused view highlighting blade interactions, sequence, and aperture behaviour."
+      },
+      {
+        src: "assets/images/projects/camera-study/diagnostics.svg",
+        alt: "Camera Study tolerance and diagnostics board",
+        caption: "Iteration notes on friction, clearances, and geometry changes from prototype feedback."
+      }
+    ],
+    lessonsLearned: [
+      "Mechanical beauty often hides tight coupling between geometry and friction; both need deliberate engineering treatment.",
+      "A mechanism that looks plausible in CAD can still fail in assembly order or physical motion if tolerance strategy is weak.",
+      "Open, structured documentation makes future iterations faster and more rigorous."
+    ],
+    futureWork: [
+      "Build a fully repeatable iris prototype with controlled aperture movement and reduced friction sensitivity.",
+      "Compare behaviour across blade counts such as 5, 7, 9, and 12 to study smoothness versus complexity.",
+      "Expand fabrication paths to include laser-cut and metal-backed variants."
+    ],
+    relatedProjects: ["cycloidial-study", "robo-arm"]
+  },
+  {
+    slug: "johncar",
+    featured: false,
+    title: "JohnCar",
+    subtitle:
+      "An automotive engineering workbench repository for CAD parts, diagnostics, service notes, sensor experiments, and practical vehicle studies.",
+    year: "2024-2026",
+    status: "Ongoing archive",
+    tags: ["Automotive", "CAD", "Diagnostics", "Sensors", "Documentation"],
+    thumbnail: "assets/images/projects/johncar/overview.svg",
+    heroImage: "assets/images/projects/johncar/assembly.svg",
+    summary:
+      "A broad car-focused engineering archive that captures custom parts, maintenance notes, test scripts, and measurement workflows in one organised repository.",
+    overview: [
+      "JohnCar is intentionally not a single project. It is a central workshop repository that stores automotive experiments, practical fixes, custom components, and test findings that would otherwise be scattered across notes and local files.",
+      "The repository supports continuity: when a repair, measurement, or prototype needs revisiting later, the CAD, notes, and test context are already structured and versioned."
+    ],
+    problem: [
+      "Vehicle work often involves many small but valuable engineering tasks that do not justify separate repositories, which can make knowledge hard to retrieve.",
+      "This archive solves that by grouping car-related work under a consistent structure so parts, diagnostics, and observations remain reusable."
+    ],
+    role: [
+      "Repository architecture and taxonomy for mixed automotive work",
+      "CAD and print-ready part studies for brackets, clips, and mounts",
+      "Diagnostics and sensor experiment documentation",
+      "Maintenance logging and measurement-driven troubleshooting"
+    ],
+    process: [
+      {
+        title: "Capture and organise",
+        body:
+          "Any car-related task with future value is captured, including part numbers, measurements, diagnostics output, photos, and CAD files."
+      },
+      {
+        title: "Prototype and validate",
+        body:
+          "Custom parts and mounting concepts are modelled and tested with practical constraints such as fit, access, and serviceability."
+      },
+      {
+        title: "Document for reuse",
+        body:
+          "Service notes and experiment outcomes are logged so repairs and upgrades can be repeated or improved with less guesswork."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Mixed-discipline archive design",
+        body:
+          "The project combines mechanical CAD, electronics diagnostics, and test notes without losing navigability, which is critical for long-term utility."
+      },
+      {
+        title: "Small-part engineering workflow",
+        body:
+          "Rapidly designed replacement clips, mounts, and fittings are documented with enough context to reprint or revise safely."
+      },
+      {
+        title: "Measurement-first maintenance",
+        body:
+          "Disassembly notes, specs, and observations are treated like engineering data so decisions are traceable rather than memory-based."
+      }
+    ],
+    tools: [
+      "SolidWorks",
+      "Fusion 360",
+      "Python",
+      "OBD-II tooling",
+      "GitHub",
+      "3D printing"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/JohnCar",
+      cad: "https://github.com/John-A-Chen/JohnCar/tree/main/cad",
+      drawings: null,
+      print: "https://github.com/John-A-Chen/JohnCar/tree/main/stl",
+      docs: "https://github.com/John-A-Chen/JohnCar/tree/main/docs",
+      media: null
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/johncar/overview.svg",
+        alt: "JohnCar repository overview board",
+        caption: "Archive layout for CAD parts, diagnostics notes, and service documentation."
+      },
+      {
+        src: "assets/images/projects/johncar/assembly.svg",
+        alt: "JohnCar component and mounting studies",
+        caption: "Part design and fitment studies for practical automotive use."
+      },
+      {
+        src: "assets/images/projects/johncar/diagnostics.svg",
+        alt: "JohnCar diagnostics and maintenance documentation",
+        caption: "Structured records for measurements, troubleshooting, and repeatable fixes."
+      }
+    ],
+    lessonsLearned: [
+      "A central archive for small engineering tasks creates compounding value over time.",
+      "Structured documentation reduces repeat mistakes and speeds up future repairs and upgrades.",
+      "Designing for serviceability is as important for small car parts as it is for larger systems."
+    ],
+    futureWork: [
+      "Expand diagnostics scripts and telemetry experiments with cleaner logging workflows.",
+      "Grow the printable part library with revision history and fitment notes.",
+      "Add more formal benchmark studies for suspension and steering geometry observations."
+    ],
+    relatedProjects: ["test-bench-vehicle", "solid-connections"]
+  },
+  {
+    slug: "cycloidial-study",
+    featured: true,
+    title: "Cycloidial Study",
+    subtitle:
+      "A SolidWorks-focused cycloidal drive project emphasising parametric geometry, manufacturing constraints, and transparent engineering documentation.",
+    year: "2025-2026",
+    status: "Parametric drive development",
+    tags: ["Transmission", "Cycloidal Drive", "SolidWorks", "Parametric Design", "Robotics"],
+    thumbnail: "assets/images/projects/cycloidial-study/overview.svg",
+    heroImage: "assets/images/projects/cycloidial-study/assembly.svg",
+    summary:
+      "A manufacturing-aware cycloidal reducer study built around equations, global variables, and repeatable CAD workflows for robotic actuator applications.",
+    overview: [
+      "Cycloidial Study explores how to build a robust cycloidal drive workflow in SolidWorks rather than relying on static geometry. The project treats ratio selection, eccentricity, pin count, and output interfaces as tunable parameters with clear traceability.",
+      "The repository combines CAD, scripting support, docs, and references to turn cycloidal design into an understandable and modifiable engineering process."
+    ],
+    problem: [
+      "Many cycloidal resources are either fixed examples or optimized for other CAD tools, making adaptation and learning harder for SolidWorks users.",
+      "The project solves this by building a parameter-driven design base with manufacturing-aware assumptions and documentation that explains the tradeoffs."
+    ],
+    role: [
+      "Parametric CAD architecture in SolidWorks",
+      "Geometry and ratio control strategy using variables and equations",
+      "Manufacturing-aware design choices for prints and fabricated components",
+      "Documentation of assumptions, references, and next-stage validation plans"
+    ],
+    process: [
+      {
+        title: "Parameter and equation framework",
+        body:
+          "Core geometry was mapped into controllable variables so ratio and scale changes remain consistent and auditable."
+      },
+      {
+        title: "CAD iteration under constraints",
+        body:
+          "Disc, pin, bearing, and output interfaces were iterated with attention to assembly order, fastener access, and realistic manufacturing paths."
+      },
+      {
+        title: "Documentation and reference synthesis",
+        body:
+          "Design choices were supported with literature and comparative references to keep the project educational and technically grounded."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "SolidWorks-first parametric strategy",
+        body:
+          "The project demonstrates how to implement cycloidal theory directly into a SolidWorks workflow so geometry changes are fast and coherent."
+      },
+      {
+        title: "Manufacturing-aware gearbox design",
+        body:
+          "Tolerance, fits, and fabrication practicality are integrated from the beginning instead of postponed until after geometry generation."
+      },
+      {
+        title: "Engineering references embedded in workflow",
+        body:
+          "The repository includes literature context and assumptions, helping link CAD decisions to transmission theory and practical limitations."
+      }
+    ],
+    tools: [
+      "SolidWorks",
+      "Python",
+      "Excel",
+      "GitHub",
+      "Bambu Lab P1S (planned print validation)"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/CycloidialStudy",
+      cad: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/CAD",
+      drawings: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Drawings",
+      print: null,
+      docs: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Docs",
+      media: null
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/cycloidial-study/overview.svg",
+        alt: "Cycloidial Study design overview board",
+        caption: "Parametric architecture for cycloidal geometry and ratio-driven CAD updates."
+      },
+      {
+        src: "assets/images/projects/cycloidial-study/assembly.svg",
+        alt: "Cycloidial Study assembly and packaging board",
+        caption: "Reducer assembly packaging with manufacturing and fit considerations."
+      },
+      {
+        src: "assets/images/projects/cycloidial-study/diagnostics.svg",
+        alt: "Cycloidial Study validation and iteration board",
+        caption: "Iteration log covering assumptions, expected failure points, and planned testing."
+      }
+    ],
+    lessonsLearned: [
+      "Parameter-driven modelling is most valuable when every variable has clear physical meaning and constraints.",
+      "Transmission CAD quality improves significantly when assembly and manufacturing are considered from the first iteration.",
+      "A transparent engineering log makes complex mechanism projects easier to debug and share."
+    ],
+    futureWork: [
+      "Fabricate and test multiple drive variants to measure backlash, efficiency, and wear behaviour.",
+      "Develop an integrated motor-mount and output interface for robotic joint experiments.",
+      "Compare results against harmonic drive references for design trade-off benchmarking."
+    ],
+    relatedProjects: ["robo-arm", "camera-study"]
+  },
+  {
+    slug: "solid-connections",
+    featured: true,
+    title: "Solid Connections",
+    subtitle:
+      "A multidisciplinary mechatronic systems project integrating mechanical design, custom PCB development, embedded firmware, and iterative validation.",
+    year: "2025-2026",
+    status: "Private repository, documented case study",
+    tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],
+    thumbnail: "assets/images/projects/solid-connections/overview.svg",
+    heroImage: "assets/images/projects/solid-connections/assembly.svg",
+    summary:
+      "A full-stack hardware project centered on co-design across enclosure CAD, Altium PCB revisions, firmware updates, and integration debugging.",
+    overview: [
+      "Solid Connections is a complete mechatronic workflow project covering mechanical design, electronics development, firmware implementation, and system-level integration. The strongest value is the documented iteration process across subsystem boundaries.",
+      "The project demonstrates how professional hardware development is non-linear: schematic issues influence enclosure geometry, mechanical constraints impact layout, and firmware tuning reveals hardware assumptions."
+    ],
+    problem: [
+      "Multidisciplinary prototypes often fail when subsystems are designed in isolation and only merged late in the process.",
+      "This project addresses that by forcing co-design loops and treating design-rule checks, assembly fit, and debugging evidence as core engineering workflow."
+    ],
+    role: [
+      "Mechanical subsystem architecture and enclosure iteration",
+      "Custom PCB schematic and layout refinement in Altium",
+      "Embedded firmware implementation and calibration adjustments",
+      "Documentation of revision history and integration outcomes"
+    ],
+    process: [
+      {
+        title: "Subsystem co-design setup",
+        body:
+          "Mechanical, electrical, and firmware workstreams were developed together with shared constraints to prevent late-stage integration surprises."
+      },
+      {
+        title: "Iterative PCB and enclosure alignment",
+        body:
+          "Multiple schematic and layout revisions were run alongside enclosure updates to resolve routing, mounting, and clearance issues."
+      },
+      {
+        title: "Integration and validation loops",
+        body:
+          "Physical integration and firmware testing exposed assumptions, leading to repeated refinement in threshold logic, mounting geometry, and system packaging."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Design-rule-driven electronics iteration",
+        body:
+          "DRC feedback and routing constraints were used systematically to clean schematic and PCB issues before final integration."
+      },
+      {
+        title: "Mechanical-electrical coupling",
+        body:
+          "Mounting features, enclosure tolerances, and board placement were engineered together to improve assembly repeatability and robustness."
+      },
+      {
+        title: "Structured iteration discipline",
+        body:
+          "The project captures revision decisions across CAD, PCB, and firmware to preserve engineering traceability and reduce repeated errors."
+      }
+    ],
+    tools: [
+      "SolidWorks",
+      "Altium Designer",
+      "C++ / embedded firmware",
+      "Python",
+      "GitHub",
+      "System integration testing"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/Solid-Connections",
+      cad: "https://github.com/John-A-Chen/Solid-Connections/tree/main/CAD",
+      drawings: null,
+      print: null,
+      docs: "https://github.com/John-A-Chen/Solid-Connections",
+      media: null
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/solid-connections/overview.svg",
+        alt: "Solid Connections system overview board",
+        caption: "System architecture view across mechanical, electrical, and embedded subsystems."
+      },
+      {
+        src: "assets/images/projects/solid-connections/assembly.svg",
+        alt: "Solid Connections integration and packaging board",
+        caption: "Integrated enclosure and PCB packaging with revision-driven hardware changes."
+      },
+      {
+        src: "assets/images/projects/solid-connections/diagnostics.svg",
+        alt: "Solid Connections validation and iteration board",
+        caption: "Revision notes highlighting DRC cycles, firmware tuning, and subsystem debugging."
+      }
+    ],
+    lessonsLearned: [
+      "Hardware projects improve when subsystem boundaries are treated as design interfaces, not handoff points.",
+      "PCB and enclosure problems are easier to solve when revision notes are explicit and traceable.",
+      "Iteration is a core engineering method, not evidence of failure."
+    ],
+    futureWork: [
+      "Clean and publish a public-safe subset of the project artefacts where possible.",
+      "Expand validation coverage with repeatable subsystem test procedures.",
+      "Refine integration architecture for easier serviceability and future upgrades."
+    ],
+    relatedProjects: ["cycloidial-study", "robo-arm"]
   }
 ];
 

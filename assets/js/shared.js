@@ -11,12 +11,21 @@ export function populateSharedProfile(profile) {
   linkTargets.forEach((node) => {
     const key = node.dataset.profileLink;
     const href = profile.links?.[key];
+    const contactCard = node.closest(".contact-card");
     if (href) {
       node.setAttribute("href", href);
       node.setAttribute("target", "_blank");
       node.setAttribute("rel", "noreferrer");
+      node.hidden = false;
+      if (contactCard) {
+        contactCard.hidden = false;
+      }
     } else {
       node.removeAttribute("href");
+      node.hidden = true;
+      if (contactCard) {
+        contactCard.hidden = true;
+      }
     }
   });
 

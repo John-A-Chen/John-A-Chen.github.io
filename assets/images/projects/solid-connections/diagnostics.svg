@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Warman Attempts Diagnostics</title>
+  <desc id="desc">Placeholder review board showing diagnostics and lessons learned.</desc>
+  <rect width="1600" height="980" fill="#0a1623"/>
+  <rect x="58" y="58" width="1484" height="864" rx="28" fill="#112132" stroke="#2c4258" stroke-width="4"/>
+  <rect x="118" y="120" width="430" height="730" rx="22" fill="#172d43"/>
+  <rect x="584" y="120" width="414" height="730" rx="22" fill="#13293e"/>
+  <rect x="1034" y="120" width="448" height="730" rx="22" fill="#152b40"/>
+  <path d="M182 216h290M182 284h236M182 352h318" stroke="#a8bfce" stroke-width="16" stroke-linecap="round"/>
+  <path d="M650 246l120 120 148-198" fill="none" stroke="#6ec7bf" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1104 226l284 0M1104 296l232 0M1104 366l188 0M1104 436l150 0" stroke="#9eb5c9" stroke-width="16" stroke-linecap="round"/>
+  <path d="M188 544h286v206H188zM646 544h286v206H646zM1104 544h286v206h-286z" fill="#20364e"/>
+  <text x="120" y="98" fill="#dfe9f4" font-family="IBM Plex Sans, Arial, sans-serif" font-size="42" font-weight="700">Diagnostics and lessons learned</text>
+  <text x="120" y="894" fill="#8fb1ca" font-family="IBM Plex Mono, monospace" font-size="28">Failure review / geometry issues / next-iteration notes</text>
+</svg>

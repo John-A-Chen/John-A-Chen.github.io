@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Warman Attempts Overview</title>
+  <desc id="desc">Placeholder engineering board showing concept exploration and subsystem notes.</desc>
+  <rect width="1600" height="1050" fill="#0c1724"/>
+  <rect x="52" y="52" width="1496" height="946" rx="28" fill="#112133" stroke="#29415c" stroke-width="4"/>
+  <rect x="110" y="116" width="540" height="286" rx="20" fill="#183149"/>
+  <rect x="690" y="116" width="800" height="286" rx="20" fill="#14293f"/>
+  <rect x="110" y="438" width="430" height="470" rx="20" fill="#152b40"/>
+  <rect x="572" y="438" width="428" height="470" rx="20" fill="#162d44"/>
+  <rect x="1032" y="438" width="458" height="470" rx="20" fill="#102233"/>
+  <path d="M160 316h430l-74-72 82-56 90 82" fill="none" stroke="#6ec7bf" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="802" cy="258" r="84" fill="#223852" stroke="#e0a458" stroke-width="18"/>
+  <circle cx="802" cy="258" r="28" fill="#0c1724"/>
+  <path d="M940 212h470M940 266h402M940 320h338" stroke="#8fb1ca" stroke-width="16" stroke-linecap="round"/>
+  <path d="M168 532h310M168 586h270M168 640h330M168 694h240" stroke="#9ab4c8" stroke-width="14" stroke-linecap="round"/>
+  <path d="M620 532c86-98 224-98 310 0M620 816c94-88 220-88 310 0" fill="none" stroke="#e0a458" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1090 544h342v72h-342zM1090 650h292v72h-292zM1090 756h238v72h-238z" fill="#1d364d"/>
+  <text x="110" y="88" fill="#dfe9f4" font-family="IBM Plex Sans, Arial, sans-serif" font-size="44" font-weight="700">Warman Attempts</text>
+  <text x="112" y="970" fill="#8fb1ca" font-family="IBM Plex Mono, monospace" font-size="28">Concept archive / chassis packaging / subsystem notes</text>
+</svg>

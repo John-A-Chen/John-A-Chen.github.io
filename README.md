@@ -19,7 +19,11 @@ It is intentionally simple:
 |   |-- warman-attempts.html
 |   |-- mecanum-wheel-study.html
 |   |-- robo-arm.html
-|   `-- test-bench-vehicle.html
+|   |-- test-bench-vehicle.html
+|   |-- camera-study.html
+|   |-- johncar.html
+|   |-- cycloidial-study.html
+|   `-- solid-connections.html
 |-- assets/
 |   |-- css/
 |   |   `-- styles.css
@@ -32,7 +36,11 @@ It is intentionally simple:
 |           |-- warman-attempts/
 |           |-- mecanum-wheel-study/
 |           |-- robo-arm/
-|           `-- test-bench-vehicle/
+|           |-- test-bench-vehicle/
+|           |-- camera-study/
+|           |-- johncar/
+|           |-- cycloidial-study/
+|           `-- solid-connections/
 |-- data/
 |   |-- site.js
 |   `-- projects.js
