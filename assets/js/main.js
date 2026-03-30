@@ -29,7 +29,6 @@ function renderFocusAreas() {
     .map(
       (item) => `
         <article class="info-panel reveal">
-          <p class="mono-label">Focus Area</p>
           <h3>${item.title}</h3>
           <p>${item.body}</p>
         </article>

@@ -1,3 +1,53 @@
+import { projects } from "../../data/projects.js";
+
+function isExternalPath(path) {
+  return (
+    /^https?:\/\//i.test(path) ||
+    path.startsWith("data:") ||
+    path.startsWith("/") ||
+    path.startsWith("../")
+  );
+}
+
+export function resolveImagePath(path, hrefPrefix = "") {
+  if (!path) {
+    return "";
+  }
+
+  if (isExternalPath(path)) {
+    return path;
+  }
+
+  return encodeURI(`${hrefPrefix}${path}`);
+}
+
+export function getRandomProjectImage(excludeSlug = "") {
+  const pool = projects
+    .filter((project) => project.slug !== excludeSlug)
+    .flatMap((project) => [project.heroImage, project.thumbnail])
+    .filter(Boolean);
+
+  if (!pool.length) {
+    return "";
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function bindImageFallback(image, fallbackSrc) {
+  if (!image || !fallbackSrc) {
+    return;
+  }
+
+  image.addEventListener("error", () => {
+    if (image.dataset.fallbackApplied === "true") {
+      return;
+    }
+    image.dataset.fallbackApplied = "true";
+    image.src = fallbackSrc;
+  });
+}
+
 export function populateSharedProfile(profile) {
   const isProjectPage = document.body.classList.contains("project-page");
   const normalizeHref = (href) => {
@@ -137,6 +187,15 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
+  const placeholderImage = resolveImagePath(
+    getRandomProjectImage(project.slug),
+    hrefPrefix
+  );
+  const cardImage = resolveImagePath(
+    project.thumbnail || getRandomProjectImage(project.slug),
+    hrefPrefix
+  );
+
   const tagMarkup = project.tags
     .slice(0, compact ? 3 : 4)
     .map((tag) => `<li>${tag}</li>`)
@@ -145,7 +204,7 @@ export function createProjectCard(project, options = {}) {
   card.innerHTML = `
     <a class="project-card-link" href="${hrefPrefix}projects/${project.slug}.html">
       <div class="project-card-media">
-        <img src="${hrefPrefix}${project.thumbnail}" alt="${project.title} thumbnail" loading="lazy" />
+        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" />
       </div>
       <div class="project-card-body">
         <div class="project-card-meta">
@@ -163,6 +222,8 @@ export function createProjectCard(project, options = {}) {
       </div>
     </a>
   `;
+
+  bindImageFallback(card.querySelector(".project-card-media img"), placeholderImage);
 
   return card;
 }

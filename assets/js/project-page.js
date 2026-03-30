@@ -4,16 +4,19 @@ import {
   projectLinkLabels,
   projects
 } from "../../data/projects.js";
+import { repoImages } from "../../data/repo-images.js";
 import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
   createResourceButtons,
+  getRandomProjectImage,
   initNavigation,
   initRandomProjectLink,
   initRevealAnimations,
-  populateSharedProfile
+  populateSharedProfile,
+  resolveImagePath
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
@@ -72,17 +75,23 @@ function cleanupCaption(rawText, fallback) {
   return noType.charAt(0).toUpperCase() + noType.slice(1);
 }
 
-function withProjectPrefix(path) {
-  if (
-    path.startsWith("../") ||
-    path.startsWith("/") ||
-    /^https?:\/\//i.test(path) ||
-    path.startsWith("data:")
-  ) {
-    return path;
+function resolveProjectAsset(path) {
+  const resolved = resolveImagePath(path, "../");
+  return resolved;
+}
+
+function bindFallbackImage(image, fallbackSrc) {
+  if (!image || !fallbackSrc) {
+    return;
   }
 
-  return `../${path}`;
+  image.addEventListener("error", () => {
+    if (image.dataset.fallbackApplied === "true") {
+      return;
+    }
+    image.dataset.fallbackApplied = "true";
+    image.src = fallbackSrc;
+  });
 }
 
 function uniqueBySource(items) {
@@ -115,7 +124,7 @@ function renderProjectPage(activeProject) {
         <div class="project-action-row"></div>
       </div>
       <figure class="project-hero-media">
-        <img src="../${activeProject.heroImage}" alt="${activeProject.title} hero image" />
+        <img src="" alt="${activeProject.title} hero image" />
       </figure>
     </div>
   `;
@@ -135,6 +144,18 @@ function renderProjectPage(activeProject) {
   }
   headerRoot.appendChild(intro);
 
+  const heroImage = intro.querySelector(".project-hero-media img");
+  const heroFallback = resolveProjectAsset(
+    getRandomProjectImage(activeProject.slug) ||
+      activeProject.thumbnail ||
+      activeProject.heroImage
+  );
+  bindFallbackImage(heroImage, heroFallback);
+  if (heroImage) {
+    heroImage.dataset.fallbackApplied = "false";
+    heroImage.src = resolveProjectAsset(activeProject.heroImage || heroFallback);
+  }
+
   renderGallery(activeProject);
   renderContent(activeProject);
   renderSidebar(activeProject);
@@ -148,7 +169,8 @@ function renderGallery(activeProject) {
       alt: `${activeProject.title} hero image`,
       caption: `${activeProject.title} hero view`
     },
-    ...(activeProject.gallery || [])
+    ...(activeProject.gallery || []),
+    ...(repoImages[activeProject.slug] || [])
   ];
 
   const galleryItems = uniqueBySource(baseItems);
@@ -186,6 +208,11 @@ function renderGallery(activeProject) {
   const dotRow = document.getElementById("gallery-dot-row");
   const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
   const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
+  const galleryFallback = resolveProjectAsset(
+    getRandomProjectImage(activeProject.slug) ||
+      activeProject.thumbnail ||
+      activeProject.heroImage
+  );
 
   let currentIndex = 0;
 
@@ -205,7 +232,8 @@ function renderGallery(activeProject) {
   const syncActiveImage = () => {
     const activeItem = galleryItems[currentIndex];
     const fallbackCaption = `${activeProject.title} image ${currentIndex + 1}`;
-    imageEl.src = withProjectPrefix(activeItem.src);
+    imageEl.dataset.fallbackApplied = "false";
+    imageEl.src = resolveProjectAsset(activeItem.src);
     imageEl.alt = activeItem.alt || fallbackCaption;
     captionEl.textContent = cleanupCaption(
       activeItem.caption || activeItem.alt,
@@ -219,6 +247,8 @@ function renderGallery(activeProject) {
       dot.setAttribute("aria-pressed", String(active));
     });
   };
+
+  bindFallbackImage(imageEl, galleryFallback);
 
   const stepImage = (direction) => {
     currentIndex =

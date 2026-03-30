@@ -81,7 +81,7 @@ body.has-dock {
 }
 
 .section {
-  padding: 4.5rem 0;
+  padding: 3.4rem 0;
 }
 
 .section-tight-top {
@@ -470,7 +470,7 @@ body.has-dock {
 }
 
 .hero-section {
-  padding-top: 5.5rem;
+  padding-top: 4.7rem;
 }
 
 .hero-layout,
@@ -510,7 +510,7 @@ body.has-dock {
 .section-heading h2,
 .project-hero h1,
 .content-section h2 {
-  margin: 0 0 1rem;
+  margin: 0 0 0.72rem;
   font-family: "Space Grotesk", sans-serif;
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -529,7 +529,7 @@ body.has-dock {
 }
 
 .page-subtitle {
-  margin: 0.8rem 0 0;
+  margin: 0.55rem 0 0;
   color: var(--muted-strong);
   line-height: 1.7;
   max-width: 70ch;
@@ -571,7 +571,7 @@ body.has-dock {
 }
 
 .hero-focus-note {
-  margin: 0.8rem 0 1.2rem;
+  margin: 0.7rem 0 0.95rem;
 }
 
 .hero-panel {
@@ -673,13 +673,13 @@ body.has-dock {
 }
 
 .section-heading {
-  margin-bottom: 1.7rem;
+  margin-bottom: 1.15rem;
 }
 
 .section-heading p,
 .content-section .eyebrow,
 .project-hero .eyebrow {
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.55rem;
 }
 
 .about-grid {
@@ -956,7 +956,7 @@ body.has-dock {
 }
 
 .contact-social-heading {
-  margin-top: 2.6rem;
+  margin-top: 1.4rem;
 }
 
 .focus-panels .info-panel {
@@ -965,7 +965,15 @@ body.has-dock {
 }
 
 .focus-panels .info-panel h3 {
-  margin: 0.2rem 0 0.65rem;
+  margin: 0 0 0.5rem;
+}
+
+.social-badge {
+  display: inline-block;
+  height: 1.25rem;
+  width: auto;
+  margin-bottom: 0.4rem;
+  border-radius: 0.3rem;
 }
 
 .text-link {
@@ -1224,11 +1232,11 @@ body.has-dock {
 }
 
 .resume-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .timeline {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline .title-wrapper {
@@ -1322,17 +1330,23 @@ body.has-dock {
   background:
     linear-gradient(
       180deg,
-      rgba(21, 60, 98, 0.15) 0%,
-      rgba(30, 84, 141, 0.22) 100%
+      rgba(32, 90, 147, 0.18) 0%,
+      rgba(21, 63, 108, 0.34) 100%
     );
-  mix-blend-mode: multiply;
+  mix-blend-mode: color;
 }
 
 .mapbox iframe {
   width: 100%;
   border: 0;
   display: block;
-  filter: saturate(0.76) brightness(0.9) contrast(1.05) hue-rotate(163deg);
+  filter:
+    grayscale(0.18)
+    sepia(0.14)
+    hue-rotate(175deg)
+    saturate(1.25)
+    brightness(0.92)
+    contrast(1.06);
 }
 
 .contact-form {
@@ -1392,6 +1406,12 @@ textarea.form-input {
   margin: 0.8rem 0 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.form-help a {
+  color: var(--accent-cool);
+  text-decoration: underline;
+  text-underline-offset: 0.12rem;
 }
 
 .lightbox {
@@ -1680,11 +1700,11 @@ textarea.form-input {
   }
 
   .section {
-    padding: 3.5rem 0;
+    padding: 2.8rem 0;
   }
 
   .hero-section {
-    padding-top: 4.3rem;
+    padding-top: 3.7rem;
   }
 
   .hero-stats,

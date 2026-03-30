@@ -24,7 +24,7 @@ export const siteProfile = {
   ],
   location: "Sydney, Australia",
   address: "Ultimo NSW 2007, Sydney, Australia",
-  contactEmail: "",
+  contactEmail: "johnalfredchen@gmail.com",
   mapEmbedUrl:
     "https://www.google.com/maps?q=Ultimo+NSW+2007+Australia&output=embed",
   resumeExperience: [

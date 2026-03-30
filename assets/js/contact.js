@@ -23,6 +23,21 @@ const socialGrid = document.getElementById("contact-social-grid");
 const form = document.getElementById("contact-form");
 const submitButton = document.getElementById("contact-submit");
 
+const socialBadgeByLabel = {
+  Discord:
+    "https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white",
+  Instagram:
+    "https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white",
+  LinkedIn:
+    "https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white",
+  Pinterest:
+    "https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white",
+  TikTok:
+    "https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white",
+  YouTube:
+    "https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white"
+};
+
 if (map) {
   map.src = siteProfile.mapEmbedUrl || "";
 }
@@ -33,15 +48,28 @@ if (locationLabel) {
 
 if (socialGrid) {
   socialGrid.innerHTML = siteProfile.socials
-    .map(
-      (social) => `
+    .map((social) => {
+      const badgeSrc = socialBadgeByLabel[social.label];
+      const badgeMarkup = badgeSrc
+        ? `
+          <img
+            class="social-badge"
+            src="${badgeSrc}"
+            alt="${social.label} logo badge"
+            loading="lazy"
+            decoding="async"
+          />
+        `
+        : "";
+
+      return `
         <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer">
-          <p class="mono-label">Social</p>
+          ${badgeMarkup}
           <h3>${social.label}</h3>
           <p class="text-link">Open profile</p>
         </a>
       `
-    )
+    })
     .join("");
 }
 
@@ -77,11 +105,13 @@ if (form && submitButton) {
     const linkedInUrl = siteProfile.links?.linkedin;
     if (linkedInUrl) {
       window.open(linkedInUrl, "_blank", "noopener,noreferrer");
-      alert("No contact email is configured yet. Redirecting to LinkedIn.");
+      alert(
+        "No contact email is configured yet. Redirecting to LinkedIn. You can also email johnalfredchen@gmail.com."
+      );
       return;
     }
 
-    alert("Please configure contactEmail in data/site.js to enable email sending.");
+    alert("Please email johnalfredchen@gmail.com directly.");
   });
 }
 
