@@ -1,5 +1,6 @@
 import { siteProfile } from "../../data/site.js";
 import { initBorderGlow } from "./border-glow.js";
+import { initSiteDock } from "./dock.js";
 import {
   initNavigation,
   initRevealAnimations,
@@ -8,6 +9,7 @@ import {
 
 populateSharedProfile(siteProfile);
 initNavigation();
+initSiteDock();
 
 const map = document.getElementById("contact-map");
 const locationLabel = document.getElementById("contact-location");

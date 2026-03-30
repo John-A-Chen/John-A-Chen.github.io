@@ -1,0 +1,130 @@
+function iconSvg(name) {
+  const common = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+
+  if (name === "home") {
+    return `<svg ${common}><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13V10.5"/></svg>`;
+  }
+
+  if (name === "archive") {
+    return `<svg ${common}><rect x="3" y="4" width="18" height="5"/><path d="M5 9v11h14V9"/><path d="M10 13h4"/></svg>`;
+  }
+
+  if (name === "resume") {
+    return `<svg ${common}><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6"/><path d="M10 17h6"/></svg>`;
+  }
+
+  return `<svg ${common}><path d="M12 22s7-4.6 7-11V6l-7-3-7 3v5c0 6.4 7 11 7 11z"/><path d="M9.5 12.3 11.2 14l3.3-3.3"/></svg>`;
+}
+
+function getBasePath() {
+  return document.body.classList.contains("project-page") ? "../" : "";
+}
+
+function isActivePath(href) {
+  const current = new URL(window.location.href).pathname
+    .toLowerCase()
+    .replace(/\/+$/, "");
+  const target = new URL(href, window.location.href).pathname
+    .toLowerCase()
+    .replace(/\/+$/, "");
+
+  if (target.endsWith("index.html")) {
+    return current === target || current === target.replace(/\/index\.html$/, "");
+  }
+
+  return current === target;
+}
+
+function createDockItems(basePath) {
+  return [
+    { label: "Home", href: `${basePath}index.html`, icon: "home" },
+    { label: "Portfolio", href: `${basePath}portfolio.html`, icon: "archive" },
+    { label: "Resume", href: `${basePath}resume.html`, icon: "resume" },
+    { label: "Contact", href: `${basePath}contact.html`, icon: "contact" }
+  ];
+}
+
+function setItemSize(item, size) {
+  item.style.setProperty("--dock-item-size", `${size}px`);
+}
+
+function initMagnify(dock, options) {
+  const { baseItemSize, magnification, distance } = options;
+  const items = [...dock.querySelectorAll("[data-dock-item]")];
+
+  const reset = () => {
+    items.forEach((item) => setItemSize(item, baseItemSize));
+  };
+
+  const updateByY = (clientY) => {
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const delta = Math.abs(clientY - centerY);
+      const influence = Math.max(0, 1 - delta / distance);
+      const eased = influence * influence * (3 - 2 * influence);
+      const size = baseItemSize + (magnification - baseItemSize) * eased;
+      setItemSize(item, size);
+    });
+  };
+
+  dock.addEventListener("pointermove", (event) => {
+    updateByY(event.clientY);
+  });
+
+  dock.addEventListener("pointerleave", reset);
+
+  items.forEach((item) => {
+    item.addEventListener("focus", () => {
+      setItemSize(item, magnification);
+    });
+
+    item.addEventListener("blur", reset);
+  });
+
+  reset();
+}
+
+export function initSiteDock({
+  panelHeight = 68,
+  baseItemSize = 50,
+  magnification = 70,
+  distance = 200
+} = {}) {
+  if (document.querySelector(".site-dock-wrap")) {
+    return;
+  }
+
+  const basePath = getBasePath();
+  const items = createDockItems(basePath);
+
+  const wrap = document.createElement("aside");
+  wrap.className = "site-dock-wrap";
+
+  const dock = document.createElement("nav");
+  dock.className = "site-dock";
+  dock.setAttribute("aria-label", "Page dock");
+  dock.style.setProperty("--dock-panel-height", `${panelHeight}px`);
+
+  items.forEach((item) => {
+    const link = document.createElement("a");
+    link.className = "dock-link";
+    if (isActivePath(item.href)) {
+      link.classList.add("is-active");
+    }
+    link.href = item.href;
+    link.setAttribute("data-dock-item", "");
+    link.setAttribute("aria-label", item.label);
+    link.innerHTML = `
+      <span class="dock-icon">${iconSvg(item.icon)}</span>
+      <span class="dock-label">${item.label}</span>
+    `;
+    dock.appendChild(link);
+  });
+
+  wrap.appendChild(dock);
+  document.body.appendChild(wrap);
+  document.body.classList.add("has-dock");
+
+  initMagnify(dock, { baseItemSize, magnification, distance });
+}

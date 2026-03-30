@@ -6,6 +6,7 @@ import {
 } from "../../data/projects.js";
 import { repoImages } from "../../data/repo-images.js";
 import { initBorderGlow } from "./border-glow.js";
+import { initSiteDock } from "./dock.js";
 import {
   createLightboxTrigger,
   createProjectCard,
@@ -18,6 +19,7 @@ import {
 
 populateSharedProfile(siteProfile);
 initNavigation();
+initSiteDock();
 
 const slug = document.body.dataset.projectSlug;
 const project = getProjectBySlug(slug);

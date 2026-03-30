@@ -1,5 +1,6 @@
 import { siteProfile } from "../../data/site.js";
 import { initBorderGlow } from "./border-glow.js";
+import { initSiteDock } from "./dock.js";
 import {
   initNavigation,
   initRevealAnimations,
@@ -8,6 +9,7 @@ import {
 
 populateSharedProfile(siteProfile);
 initNavigation();
+initSiteDock();
 
 const experienceList = document.getElementById("experience-list");
 const educationList = document.getElementById("education-list");

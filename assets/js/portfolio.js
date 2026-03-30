@@ -1,6 +1,7 @@
 import { projects } from "../../data/projects.js";
 import { siteProfile } from "../../data/site.js";
 import { initBorderGlow } from "./border-glow.js";
+import { initSiteDock } from "./dock.js";
 import {
   createProjectCard,
   initNavigation,
@@ -10,6 +11,7 @@ import {
 
 populateSharedProfile(siteProfile);
 initNavigation();
+initSiteDock();
 
 const filterList = document.getElementById("filter-list");
 const filterSelect = document.getElementById("filter-select");

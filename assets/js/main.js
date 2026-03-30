@@ -1,6 +1,7 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
 import { initBorderGlow } from "./border-glow.js";
+import { initSiteDock } from "./dock.js";
 import {
   createProjectCard,
   initNavigation,
@@ -10,6 +11,7 @@ import {
 
 populateSharedProfile(siteProfile);
 initNavigation();
+initSiteDock();
 
 const focusAreas = document.getElementById("focus-areas");
 const projectCount = document.getElementById("project-count");
