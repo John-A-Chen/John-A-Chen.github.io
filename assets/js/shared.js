@@ -1,33 +1,4 @@
 import { projects } from "../../data/projects.js";
-import { repoImages } from "../../data/repo-images.js";
-
-function isSvgSource(path = "") {
-  return /\.svg($|\?)/i.test(path);
-}
-
-function getProjectPrimaryImage(project) {
-  const repoCover = repoImages[project.slug]?.[0]?.src;
-  if (repoCover) {
-    return repoCover;
-  }
-
-  const nonSvgGallery = (project.gallery || []).find(
-    (item) => item?.src && !isSvgSource(item.src)
-  )?.src;
-  if (nonSvgGallery) {
-    return nonSvgGallery;
-  }
-
-  if (project.heroImage && !isSvgSource(project.heroImage)) {
-    return project.heroImage;
-  }
-
-  if (project.thumbnail && !isSvgSource(project.thumbnail)) {
-    return project.thumbnail;
-  }
-
-  return "";
-}
 
 function isExternalPath(path) {
   return (
@@ -51,26 +22,10 @@ export function resolveImagePath(path, hrefPrefix = "") {
 }
 
 export function getRandomProjectImage(excludeSlug = "") {
-  const imageSourcesFor = (project) => {
-    const repoPool = (repoImages[project.slug] || []).map((item) => item.src);
-    const projectPool = (project.gallery || [])
-      .map((item) => item.src)
-      .filter((src) => src && !isSvgSource(src));
-    const directPool = [project.heroImage, project.thumbnail].filter(
-      (src) => src && !isSvgSource(src)
-    );
-    return [...repoPool, ...projectPool, ...directPool];
-  };
-
-  let pool = projects
+  const pool = projects
     .filter((project) => project.slug !== excludeSlug)
-    .flatMap((project) => imageSourcesFor(project))
+    .flatMap((project) => [project.heroImage, project.thumbnail])
     .filter(Boolean);
-
-  // If every other project is missing real photos, include the current project too.
-  if (!pool.length) {
-    pool = projects.flatMap((project) => imageSourcesFor(project)).filter(Boolean);
-  }
 
   if (!pool.length) {
     return "";
@@ -232,15 +187,14 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
-  const preferredCardImage =
-    getProjectPrimaryImage(project) || getRandomProjectImage(project.slug);
-
   const placeholderImage = resolveImagePath(
     getRandomProjectImage(project.slug),
     hrefPrefix
   );
-  const cardImage = resolveImagePath(preferredCardImage, hrefPrefix);
-  const safeCardImage = cardImage || placeholderImage;
+  const cardImage = resolveImagePath(
+    project.thumbnail || getRandomProjectImage(project.slug),
+    hrefPrefix
+  );
 
   const tagMarkup = project.tags
     .slice(0, compact ? 3 : 4)
@@ -250,7 +204,7 @@ export function createProjectCard(project, options = {}) {
   card.innerHTML = `
     <a class="project-card-link" href="${hrefPrefix}projects/${project.slug}.html">
       <div class="project-card-media">
-        <img src="${safeCardImage}" alt="${project.title} thumbnail" loading="lazy" />
+        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" />
       </div>
       <div class="project-card-body">
         <div class="project-card-meta">

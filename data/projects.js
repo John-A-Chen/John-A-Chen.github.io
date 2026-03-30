@@ -10,8 +10,8 @@ export const projects = [
     status: "Ongoing archive",
     projectType: "Solo",
     tags: ["Robotics", "Competition", "CAD", "Iteration", "Documentation"],
-    thumbnail: "assets/images/projects/warman-attempts/repo/render/2025/Isometric View.png",
-    heroImage: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 assembly.jpg",
+    thumbnail: "assets/images/projects/warman-attempts/overview.svg",
+    heroImage: "assets/images/projects/warman-attempts/assembly.svg",
     summary:
       "An honest record of design iterations, subsystem experiments, missed assumptions, and the practical lessons that came out of repeated Warman challenge builds.",
     overview: [
@@ -85,19 +85,19 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2025/Isometric View.png",
+        src: "assets/images/projects/warman-attempts/overview.svg",
         alt: "Concept overview board for Warman Attempts",
-        caption: ""
+        caption: "Archive overview showing concept branches, chassis layout, and subsystem callouts."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 assembly.jpg",
+        src: "assets/images/projects/warman-attempts/assembly.svg",
         alt: "Assembly and packaging view for Warman Attempts",
         caption: "Assembly-focused view emphasising packaging, access, and prototype fit-up."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 did not work.png",
+        src: "assets/images/projects/warman-attempts/diagnostics.svg",
         alt: "Diagnostics and lessons-learned layout for Warman Attempts",
-        caption: ""
+        caption: "Failure review board documenting geometry problems, maintenance pain points, and iteration notes."
       }
     ],
     lessonsLearned: [
@@ -122,8 +122,8 @@ export const projects = [
     status: "Open study",
     projectType: "Solo",
     tags: ["Robotics", "3D Printing", "Mechanisms", "Open Source", "CAD"],
-    thumbnail: "assets/images/projects/test-bench-vehicle/repo/STEERING.webp",
-    heroImage: "assets/images/projects/warman-attempts/repo/render/2025/Scooper Isometric.png",
+    thumbnail: "assets/images/projects/mecanum-wheel-study/hero.svg",
+    heroImage: "assets/images/projects/mecanum-wheel-study/rollers.svg",
     summary:
       "A printable mecanum wheel study centred on affordability, manufacturability, tolerance control, and educational clarity rather than chasing a premium industrial design.",
     overview: [
@@ -191,17 +191,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/STEERING.webp",
+        src: "assets/images/projects/mecanum-wheel-study/hero.svg",
         alt: "Mecanum wheel study hero render",
         caption: "System view showing the low-cost wheel architecture and educational positioning of the study."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2025/Scooper Isometric.png",
+        src: "assets/images/projects/mecanum-wheel-study/rollers.svg",
         alt: "Roller geometry study for mecanum wheel",
         caption: "Roller geometry and contact orientation study used to reason about manufacturability and motion."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Advanced Engineering drawing for stepper mount.png",
+        src: "assets/images/projects/mecanum-wheel-study/print-layout.svg",
         alt: "3D printing and tolerance layout for mecanum wheel components",
         caption: "Print and assembly layout highlighting tolerance-sensitive interfaces and expected print workflow."
       }
@@ -224,12 +224,12 @@ export const projects = [
     title: "Robo-Arm",
     subtitle:
       "A lightweight robotic arm exploring actuator efficiency through mechanical optimisation and four-bar linkage refinement from Gen 1 to Gen 2.",
-    year: "2023-2024",
+    year: "2024-2025",
     status: "Gen 2 concept",
     projectType: "Solo",
     tags: ["Robotics", "Mechanisms", "Simulation", "CAD", "Optimisation"],
-    thumbnail: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
-    heroImage: "assets/images/projects/robo-arm/repo/docs/GEN2 Extended.jpg",
+    thumbnail: "assets/images/projects/robo-arm/hero.svg",
+    heroImage: "assets/images/projects/robo-arm/linkage.svg",
     summary:
       "A robotic arm project focused on reducing actuator load through better linkage design, cleaner geometry, and generation-over-generation refinement informed by analysis.",
     overview: [
@@ -297,17 +297,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
+        src: "assets/images/projects/robo-arm/hero.svg",
         alt: "Robo-Arm full assembly render",
         caption: "Generation overview render showing the lightweight arm architecture and linkage placement."
       },
       {
-        src: "assets/images/projects/robo-arm/repo/docs/GEN2 Extended.jpg",
+        src: "assets/images/projects/robo-arm/linkage.svg",
         alt: "Four-bar linkage geometry study for Robo-Arm",
         caption: "Mechanism study focused on leverage management and actuator efficiency through the motion range."
       },
       {
-        src: "assets/images/projects/robo-arm/repo/docs/progress check.png",
+        src: "assets/images/projects/robo-arm/gen-comparison.svg",
         alt: "Generation comparison between Gen 1 and Gen 2 Robo-Arm designs",
         caption: "Side-by-side comparison used to evaluate whether the revised geometry improved the design goals."
       }
@@ -334,8 +334,8 @@ export const projects = [
     status: "Prototype platform",
     projectType: "Project",
     tags: ["Autonomy", "Robotics", "Rapid Prototyping", "Testing", "Team Project"],
-    thumbnail: "assets/images/projects/test-bench-vehicle/repo/1719583874326.jpg",
-    heroImage: "assets/images/projects/test-bench-vehicle/repo/STEERING.webp",
+    thumbnail: "assets/images/projects/test-bench-vehicle/chassis.svg",
+    heroImage: "assets/images/projects/test-bench-vehicle/sensors.svg",
     summary:
       "A fast-moving platform project built to get an early autonomous stack off the bench and onto a modular vehicle with practical mounting, access, and upgrade paths.",
     overview: [
@@ -403,17 +403,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/1719583874326.jpg",
+        src: "assets/images/projects/test-bench-vehicle/chassis.svg",
         alt: "Compact test-bench vehicle chassis view",
         caption: "Chassis view showing the vehicle as a modular autonomous systems test platform."
       },
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/STEERING.webp",
+        src: "assets/images/projects/test-bench-vehicle/sensors.svg",
         alt: "Sensor mounting study for test-bench vehicle",
         caption: "Sensor mounting and electronics access study for fast iteration and public demonstration readiness."
       },
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/image (2).jpg",
+        src: "assets/images/projects/test-bench-vehicle/build-notes.svg",
         alt: "Build notes and prototype workflow for test-bench vehicle",
         caption: "Build narrative board showing rapid development, team context, and likely future integration paths."
       }
@@ -436,12 +436,12 @@ export const projects = [
     title: "Camera Study",
     subtitle:
       "A mechanical study of traditional film camera shutters and iris assemblies, rebuilt through CAD, prototypes, and tolerance-focused iteration.",
-    year: "2024-2024",
+    year: "2024-2026",
     status: "Active mechanical study",
     projectType: "Solo",
     tags: ["Mechanisms", "CAD", "Iris Design", "Prototyping", "Documentation"],
-    thumbnail: "assets/images/projects/camera-study/repo/docs/lens.png",
-    heroImage: "assets/images/projects/camera-study/repo/docs/lens2.png",
+    thumbnail: "assets/images/projects/camera-study/overview.svg",
+    heroImage: "assets/images/projects/camera-study/assembly.svg",
     summary:
       "An open study documenting blade geometry, pivot placement, friction considerations, and actuation behaviour in mechanical iris systems inspired by film camera internals.",
     overview: [
@@ -509,17 +509,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/camera-study/repo/docs/lens.png",
+        src: "assets/images/projects/camera-study/overview.svg",
         alt: "Camera Study mechanical overview board",
         caption: "Mechanism breakdown of iris blades, pivots, and ring actuation architecture."
       },
       {
-        src: "assets/images/projects/camera-study/repo/docs/lens2.png",
+        src: "assets/images/projects/camera-study/assembly.svg",
         alt: "Camera Study assembly and motion layout",
         caption: "Assembly-focused view highlighting blade interactions, sequence, and aperture behaviour."
       },
       {
-        src: "assets/images/projects/camera-study/repo/docs/key learning 1.png",
+        src: "assets/images/projects/camera-study/diagnostics.svg",
         alt: "Camera Study tolerance and diagnostics board",
         caption: "Iteration notes on friction, clearances, and geometry changes from prototype feedback."
       }
@@ -542,12 +542,12 @@ export const projects = [
     title: "JohnCar",
     subtitle:
       "An automotive engineering workbench repository for CAD parts, diagnostics, service notes, sensor experiments, and practical vehicle studies.",
-    year: "2023-2026",
+    year: "2024-2026",
     status: "Ongoing archive",
     projectType: "Solo",
     tags: ["Automotive", "CAD", "Diagnostics", "Sensors", "Documentation"],
-    thumbnail: "assets/images/projects/johncar/repo/docs/Concept Sketches.png",
-    heroImage: "assets/images/projects/johncar/repo/docs/Drivetrain Goal.png",
+    thumbnail: "assets/images/projects/johncar/overview.svg",
+    heroImage: "assets/images/projects/johncar/assembly.svg",
     summary:
       "A broad car-focused engineering archive that captures custom parts, maintenance notes, test scripts, and measurement workflows in one organised repository.",
     overview: [
@@ -616,17 +616,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/johncar/repo/docs/Concept Sketches.png",
+        src: "assets/images/projects/johncar/overview.svg",
         alt: "JohnCar repository overview board",
         caption: "Archive layout for CAD parts, diagnostics notes, and service documentation."
       },
       {
-        src: "assets/images/projects/johncar/repo/docs/Drivetrain Goal.png",
+        src: "assets/images/projects/johncar/assembly.svg",
         alt: "JohnCar component and mounting studies",
         caption: "Part design and fitment studies for practical automotive use."
       },
       {
-        src: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
+        src: "assets/images/projects/johncar/diagnostics.svg",
         alt: "JohnCar diagnostics and maintenance documentation",
         caption: "Structured records for measurements, troubleshooting, and repeatable fixes."
       }
@@ -649,12 +649,12 @@ export const projects = [
     title: "Cycloidial Study",
     subtitle:
       "A SolidWorks-focused cycloidal drive project emphasising parametric geometry, manufacturing constraints, and transparent engineering documentation.",
-    year: "2025-2025",
+    year: "2025-2026",
     status: "Parametric drive development",
     projectType: "Solo",
     tags: ["Transmission", "Cycloidal Drive", "SolidWorks", "Parametric Design", "Robotics"],
-    thumbnail: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
-    heroImage: "assets/images/projects/robo-arm/repo/docs/GEN2 Retracted.jpg",
+    thumbnail: "assets/images/projects/cycloidial-study/overview.svg",
+    heroImage: "assets/images/projects/cycloidial-study/assembly.svg",
     summary:
       "A manufacturing-aware cycloidal reducer study built around equations, global variables, and repeatable CAD workflows for robotic actuator applications.",
     overview: [
@@ -722,17 +722,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
+        src: "assets/images/projects/cycloidial-study/overview.svg",
         alt: "Cycloidial Study design overview board",
         caption: "Parametric architecture for cycloidal geometry and ratio-driven CAD updates."
       },
       {
-        src: "assets/images/projects/robo-arm/repo/docs/GEN2 Retracted.jpg",
+        src: "assets/images/projects/cycloidial-study/assembly.svg",
         alt: "Cycloidial Study assembly and packaging board",
         caption: "Reducer assembly packaging with manufacturing and fit considerations."
       },
       {
-        src: "assets/images/projects/johncar/repo/docs/Requirements List.png",
+        src: "assets/images/projects/cycloidial-study/diagnostics.svg",
         alt: "Cycloidial Study validation and iteration board",
         caption: "Iteration log covering assumptions, expected failure points, and planned testing."
       }
@@ -755,12 +755,12 @@ export const projects = [
     title: "Solid Connections",
     subtitle:
       "A multidisciplinary mechatronic systems project integrating mechanical design, custom PCB development, embedded firmware, and iterative validation.",
-    year: "2025-2025",
+    year: "2025-2026",
     status: "Private repository, documented case study",
     projectType: "Project",
     tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],
-    thumbnail: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
-    heroImage: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
+    thumbnail: "assets/images/projects/solid-connections/overview.svg",
+    heroImage: "assets/images/projects/solid-connections/assembly.svg",
     summary:
       "A full-stack hardware project centered on co-design across enclosure CAD, Altium PCB revisions, firmware updates, and integration debugging.",
     overview: [
@@ -829,17 +829,17 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
+        src: "assets/images/projects/solid-connections/overview.svg",
         alt: "Solid Connections system overview board",
         caption: "System architecture view across mechanical, electrical, and embedded subsystems."
       },
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
+        src: "assets/images/projects/solid-connections/assembly.svg",
         alt: "Solid Connections integration and packaging board",
         caption: "Integrated enclosure and PCB packaging with revision-driven hardware changes."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Poorly made wiring diagram.png",
+        src: "assets/images/projects/solid-connections/diagnostics.svg",
         alt: "Solid Connections validation and iteration board",
         caption: "Revision notes highlighting DRC cycles, firmware tuning, and subsystem debugging."
       }
@@ -870,3 +870,4 @@ export const projectLinkLabels = {
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug);
 }
+

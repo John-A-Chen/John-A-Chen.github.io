@@ -80,46 +80,6 @@ function resolveProjectAsset(path) {
   return resolved;
 }
 
-function isSvgSource(path = "") {
-  return /\.svg($|\?)/i.test(path);
-}
-
-function resolvePreferredHeroImage(activeProject) {
-  const repoHero = repoImages[activeProject.slug]?.[0]?.src;
-  if (repoHero) {
-    return repoHero;
-  }
-
-  const nonSvgGallery = (activeProject.gallery || []).find(
-    (item) => item?.src && !isSvgSource(item.src)
-  )?.src;
-  if (nonSvgGallery) {
-    return nonSvgGallery;
-  }
-
-  if (activeProject.heroImage && !isSvgSource(activeProject.heroImage)) {
-    return activeProject.heroImage;
-  }
-
-  if (activeProject.thumbnail && !isSvgSource(activeProject.thumbnail)) {
-    return activeProject.thumbnail;
-  }
-
-  return getRandomProjectImage(activeProject.slug) || "";
-}
-
-function resolveProjectFallbackImage(activeProject) {
-  const nonSvgGallery = (activeProject.gallery || []).find(
-    (item) => item?.src && !isSvgSource(item.src)
-  )?.src;
-  return (
-    resolvePreferredHeroImage(activeProject) ||
-    nonSvgGallery ||
-    getRandomProjectImage(activeProject.slug) ||
-    ""
-  );
-}
-
 function bindFallbackImage(image, fallbackSrc) {
   if (!image || !fallbackSrc) {
     return;
@@ -185,12 +145,15 @@ function renderProjectPage(activeProject) {
   headerRoot.appendChild(intro);
 
   const heroImage = intro.querySelector(".project-hero-media img");
-  const heroFallback = resolveProjectAsset(resolveProjectFallbackImage(activeProject));
-  const preferredHero = resolveProjectAsset(resolvePreferredHeroImage(activeProject));
+  const heroFallback = resolveProjectAsset(
+    getRandomProjectImage(activeProject.slug) ||
+      activeProject.thumbnail ||
+      activeProject.heroImage
+  );
   bindFallbackImage(heroImage, heroFallback);
   if (heroImage) {
     heroImage.dataset.fallbackApplied = "false";
-    heroImage.src = preferredHero || heroFallback;
+    heroImage.src = resolveProjectAsset(activeProject.heroImage || heroFallback);
   }
 
   renderGallery(activeProject);
@@ -200,34 +163,17 @@ function renderProjectPage(activeProject) {
 }
 
 function renderGallery(activeProject) {
-  // Strict rule requested: only show this project's imported repo/docs images.
-  const repoDocsGallery = (repoImages[activeProject.slug] || []).filter(
-    (item) =>
-      item?.src &&
-      !isSvgSource(item.src) &&
-      item.src.toLowerCase().includes("/repo/docs/")
-  );
-<<<<<<< ours
-=======
-  const nonSvgHero =
-    activeProject.heroImage && !isSvgSource(activeProject.heroImage)
-      ? [
-          {
-            src: activeProject.heroImage,
-            alt: `${activeProject.title} image`
-          }
-        ]
-      : [];
+  const baseItems = [
+    {
+      src: activeProject.heroImage,
+      alt: `${activeProject.title} hero image`,
+      caption: `${activeProject.title} hero view`
+    },
+    ...(activeProject.gallery || []),
+    ...(repoImages[activeProject.slug] || [])
+  ];
 
-  let baseItems = [];
-  if (repoGallery.length) {
-    baseItems = [...nonSvgHero, ...repoGallery];
-  } else {
-    baseItems = [...nonSvgHero, ...nonSvgProjectGallery];
-  }
->>>>>>> theirs
-
-  const galleryItems = uniqueBySource(repoDocsGallery);
+  const galleryItems = uniqueBySource(baseItems);
   if (!galleryItems.length) {
     galleryRoot.innerHTML = "";
     return;
@@ -262,7 +208,11 @@ function renderGallery(activeProject) {
   const dotRow = document.getElementById("gallery-dot-row");
   const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
   const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
-  const galleryFallback = resolveProjectAsset(repoDocsGallery[0]?.src || "");
+  const galleryFallback = resolveProjectAsset(
+    getRandomProjectImage(activeProject.slug) ||
+      activeProject.thumbnail ||
+      activeProject.heroImage
+  );
 
   let currentIndex = 0;
 

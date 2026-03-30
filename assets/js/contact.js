@@ -63,16 +63,10 @@ if (socialGrid) {
         : "";
 
       return `
-        <a
-          class="contact-card reveal"
-          href="${social.url}"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="${social.label}"
-          title="${social.label}"
-        >
+        <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer">
           ${badgeMarkup}
-          <span class="sr-only">${social.label}</span>
+          <h3>${social.label}</h3>
+          <p class="text-link">Open profile</p>
         </a>
       `
     })
