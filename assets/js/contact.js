@@ -5,11 +5,13 @@ import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   initRandomProjectLink,
+  initNavigation,
   initRevealAnimations,
   populateSharedProfile
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
+initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -101,7 +103,6 @@ if (form && submitButton) {
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
 
-    // This is a static site, so form submit opens the user's mail client.
     if (siteProfile.contactEmail && siteProfile.contactEmail.includes("@")) {
       window.location.href = `mailto:${siteProfile.contactEmail}?subject=${subject}&body=${body}`;
       return;

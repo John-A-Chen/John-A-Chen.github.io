@@ -12,6 +12,7 @@ import {
   createProjectCard,
   createResourceButtons,
   getRandomProjectImage,
+  initNavigation,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile,
@@ -19,6 +20,7 @@ import {
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
+initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -45,7 +47,6 @@ if (!project) {
 } else {
   document.title = `${project.title} | ${siteProfile.name}`;
   renderProjectPage(project);
-  // Re-apply profile bindings after dynamic sections are injected.
   populateSharedProfile(siteProfile);
   initRevealAnimations();
 }
@@ -75,7 +76,8 @@ function cleanupCaption(rawText, fallback) {
 }
 
 function resolveProjectAsset(path) {
-  return resolveImagePath(path, "../");
+  const resolved = resolveImagePath(path, "../");
+  return resolved;
 }
 
 function isSvgSource(path = "") {
@@ -104,6 +106,18 @@ function resolvePreferredHeroImage(activeProject) {
   }
 
   return getRandomProjectImage(activeProject.slug) || "";
+}
+
+function resolveProjectFallbackImage(activeProject) {
+  const nonSvgGallery = (activeProject.gallery || []).find(
+    (item) => item?.src && !isSvgSource(item.src)
+  )?.src;
+  return (
+    resolvePreferredHeroImage(activeProject) ||
+    nonSvgGallery ||
+    getRandomProjectImage(activeProject.slug) ||
+    ""
+  );
 }
 
 function bindFallbackImage(image, fallbackSrc) {
@@ -171,11 +185,7 @@ function renderProjectPage(activeProject) {
   headerRoot.appendChild(intro);
 
   const heroImage = intro.querySelector(".project-hero-media img");
-  const heroFallback = resolveProjectAsset(
-    getRandomProjectImage(activeProject.slug) ||
-      activeProject.thumbnail ||
-      activeProject.heroImage
-  );
+  const heroFallback = resolveProjectAsset(resolveProjectFallbackImage(activeProject));
   const preferredHero = resolveProjectAsset(resolvePreferredHeroImage(activeProject));
   bindFallbackImage(heroImage, heroFallback);
   if (heroImage) {
@@ -190,11 +200,15 @@ function renderProjectPage(activeProject) {
 }
 
 function renderGallery(activeProject) {
-  const repoGallery = repoImages[activeProject.slug] || [];
-  const projectGallery = activeProject.gallery || [];
-  const nonSvgProjectGallery = projectGallery.filter(
-    (item) => !isSvgSource(item.src)
+  // Strict rule requested: only show this project's imported repo/docs images.
+  const repoDocsGallery = (repoImages[activeProject.slug] || []).filter(
+    (item) =>
+      item?.src &&
+      !isSvgSource(item.src) &&
+      item.src.toLowerCase().includes("/repo/docs/")
   );
+<<<<<<< ours
+=======
   const nonSvgHero =
     activeProject.heroImage && !isSvgSource(activeProject.heroImage)
       ? [
@@ -205,15 +219,15 @@ function renderGallery(activeProject) {
         ]
       : [];
 
-  // Prefer imported repo photos first, then non-SVG entries from project metadata.
   let baseItems = [];
   if (repoGallery.length) {
     baseItems = [...nonSvgHero, ...repoGallery];
   } else {
     baseItems = [...nonSvgHero, ...nonSvgProjectGallery];
   }
+>>>>>>> theirs
 
-  const galleryItems = uniqueBySource(baseItems);
+  const galleryItems = uniqueBySource(repoDocsGallery);
   if (!galleryItems.length) {
     galleryRoot.innerHTML = "";
     return;
@@ -248,11 +262,7 @@ function renderGallery(activeProject) {
   const dotRow = document.getElementById("gallery-dot-row");
   const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
   const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
-  const galleryFallback = resolveProjectAsset(
-    getRandomProjectImage(activeProject.slug) ||
-      activeProject.thumbnail ||
-      activeProject.heroImage
-  );
+  const galleryFallback = resolveProjectAsset(repoDocsGallery[0]?.src || "");
 
   let currentIndex = 0;
 
@@ -304,7 +314,6 @@ function renderGallery(activeProject) {
     nextButton.hidden = true;
   }
 
-  // Keep keyboard navigation aligned with carousel controls.
   document.addEventListener("keydown", (event) => {
     const tag = document.activeElement?.tagName?.toLowerCase();
     if (tag === "input" || tag === "textarea") {
