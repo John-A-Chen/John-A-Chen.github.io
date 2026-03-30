@@ -4,6 +4,7 @@ import {
   projectLinkLabels,
   projects
 } from "../../data/projects.js";
+import { repoImages } from "../../data/repo-images.js";
 import {
   createLightboxTrigger,
   createProjectCard,
@@ -86,17 +87,23 @@ function renderProjectPage(activeProject) {
 }
 
 function renderGallery(activeProject) {
+  const importedRepoImages = repoImages[activeProject.slug] || [];
+  const galleryItems = [...activeProject.gallery, ...importedRepoImages].filter(
+    (item, index, allItems) =>
+      index === allItems.findIndex((candidate) => candidate.src === item.src)
+  );
+
   galleryRoot.innerHTML = `
     <div class="section-heading reveal">
       <p class="eyebrow">Gallery</p>
-      <h2>Visual record of the design, analysis, and iteration process.</h2>
+      <h2>Visual record of the design, analysis, and iteration process, including imported repository media.</h2>
     </div>
   `;
 
   const gallery = document.createElement("div");
   gallery.className = "masonry-gallery reveal";
 
-  activeProject.gallery.forEach((image) => {
+  galleryItems.forEach((image) => {
     gallery.appendChild(
       createLightboxTrigger(
         {

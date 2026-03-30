@@ -2,7 +2,7 @@ export const siteProfile = {
   name: "John Alfred Chen",
   initials: "JC",
   pronouns: "he/him",
-  degree: "Mechatronics Engineering Student · University of Technology Sydney (UTS)",
+  degree: "Mechatronics Engineering Student - University of Technology Sydney (UTS)",
   tagline:
     "Mechanical design, robotics, and CAD-driven engineering workflows for real, buildable systems.",
   shortBio:
@@ -77,26 +77,13 @@ export const siteProfile = {
     "Pandas",
     "Plotly"
   ],
-  githubCards: [
-    {
-      title: "GitHub Overview",
-      image:
-        "https://github-readme-stats.vercel.app/api?username=John-A-Chen&theme=transparent&hide_border=true&include_all_commits=true&count_private=true"
-    },
-    {
-      title: "Commit Streak",
-      image:
-        "https://nirzak-streak-stats.vercel.app/?user=John-A-Chen&theme=transparent&hide_border=true"
-    },
-    {
-      title: "Top Languages",
-      image:
-        "https://github-readme-stats.vercel.app/api/top-langs/?username=John-A-Chen&theme=transparent&hide_border=true&include_all_commits=true&count_private=true&layout=compact"
-    }
-  ],
   links: {
     github: "https://github.com/John-A-Chen",
     linkedin: "https://linkedin.com/in/John-A-Chen",
-    resume: ""
+    resume: "assets/docs/John_A_Chen_CV.pdf",
+    transcript: "assets/docs/John_Chen_Academic_Transcript.pdf",
+    journal: "assets/docs/41070_EDP3_Journal_Final.pdf"
   }
 };
+
+

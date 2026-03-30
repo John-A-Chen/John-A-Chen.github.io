@@ -21,7 +21,6 @@ const disciplineCount = document.getElementById("discipline-count");
 const networkCount = document.getElementById("network-count");
 const socialGrid = document.getElementById("social-grid");
 const stackGrid = document.getElementById("stack-grid");
-const githubCardGrid = document.getElementById("github-card-grid");
 
 function renderAboutSection() {
   const emailValue =
@@ -101,23 +100,6 @@ function renderTechStack() {
     .join("");
 }
 
-function renderGithubCards() {
-  if (!githubCardGrid) {
-    return;
-  }
-
-  githubCardGrid.innerHTML = siteProfile.githubCards
-    .map(
-      (card) => `
-        <article class="github-card reveal">
-          <p class="mono-label">${card.title}</p>
-          <img src="${card.image}" alt="${card.title} for ${siteProfile.name}" loading="lazy" />
-        </article>
-      `
-    )
-    .join("");
-}
-
 function renderProjectGrid() {
   projectGrid.innerHTML = "";
 
@@ -141,7 +123,6 @@ renderAboutSection();
 renderHeroStats();
 renderSocials();
 renderTechStack();
-renderGithubCards();
 renderProjectGrid();
 initRevealAnimations();
 initLightbox();

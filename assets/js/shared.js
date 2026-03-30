@@ -1,4 +1,17 @@
 export function populateSharedProfile(profile) {
+  const isProjectPage = document.body.classList.contains("project-page");
+  const normalizeHref = (href) => {
+    if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("/")) {
+      return href;
+    }
+
+    if (href.startsWith("assets/")) {
+      return isProjectPage ? `../${href}` : href;
+    }
+
+    return href;
+  };
+
   const profileTargets = document.querySelectorAll("[data-profile]");
   profileTargets.forEach((node) => {
     const key = node.dataset.profile;
@@ -13,7 +26,7 @@ export function populateSharedProfile(profile) {
     const href = profile.links?.[key];
     const contactCard = node.closest(".contact-card");
     if (href) {
-      node.setAttribute("href", href);
+      node.setAttribute("href", normalizeHref(href));
       node.setAttribute("target", "_blank");
       node.setAttribute("rel", "noreferrer");
       node.hidden = false;

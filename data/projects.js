@@ -75,12 +75,12 @@ export const projects = [
       "Hand tools and workshop fabrication"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/warman-attempts",
-      cad: "https://github.com/John-A-Chen/warman-attempts/tree/main/cad",
-      drawings: "https://github.com/John-A-Chen/warman-attempts/tree/main/drawings",
+      repo: "https://github.com/John-A-Chen/Warman-Attempts",
+      cad: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/cad",
+      drawings: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/drawings",
       print: null,
-      docs: "https://github.com/John-A-Chen/warman-attempts/tree/main/docs",
-      media: "https://github.com/John-A-Chen/warman-attempts/tree/main/renders"
+      docs: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/docs",
+      media: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/renders"
     },
     gallery: [
       {
@@ -285,12 +285,12 @@ export const projects = [
       "3D printing"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/robo-arm",
-      cad: "https://github.com/John-A-Chen/robo-arm/tree/main/cad",
+      repo: "https://github.com/John-A-Chen/Robo-Arm",
+      cad: "https://github.com/John-A-Chen/Robo-Arm/tree/main/cad",
       drawings: null,
-      print: "https://github.com/John-A-Chen/robo-arm/tree/main/stl",
-      docs: "https://github.com/John-A-Chen/robo-arm/tree/main/docs",
-      media: "https://github.com/John-A-Chen/robo-arm/tree/main/renders"
+      print: "https://github.com/John-A-Chen/Robo-Arm/tree/main/stl",
+      docs: "https://github.com/John-A-Chen/Robo-Arm/tree/main/docs",
+      media: "https://github.com/John-A-Chen/Robo-Arm/tree/main/renders"
     },
     gallery: [
       {
@@ -390,12 +390,12 @@ export const projects = [
       "System integration testing"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/test-bench-vehicle",
+      repo: "https://github.com/John-A-Chen/Test-Bench-Vehicle",
       cad: null,
-      drawings: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/drawings",
+      drawings: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/drawings",
       print: null,
-      docs: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/build-notes",
-      media: "https://github.com/John-A-Chen/test-bench-vehicle/tree/main/photos"
+      docs: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/build-notes",
+      media: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/photos"
     },
     gallery: [
       {
@@ -862,3 +862,4 @@ export const projectLinkLabels = {
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug);
 }
+
