@@ -6,14 +6,12 @@ import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
   initRandomProjectLink,
-  initNavigation,
   initRevealAnimations,
   populateSharedProfile,
   sortProjectsByType
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -30,6 +28,7 @@ const totalCount = document.getElementById("total-count");
 let activeFilter = "Solo";
 const orderedProjects = sortProjectsByType(projects);
 
+// Portfolio filtering is intentionally constrained to project ownership type.
 const allTags = ["Solo", "Project"];
 
 function isVisibleForFilter(project, filter) {

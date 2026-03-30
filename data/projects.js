@@ -87,7 +87,7 @@ export const projects = [
       {
         src: "assets/images/projects/warman-attempts/overview.svg",
         alt: "Concept overview board for Warman Attempts",
-        caption: "Archive overview showing concept branches, chassis layout, and subsystem callouts."
+        caption: ""
       },
       {
         src: "assets/images/projects/warman-attempts/assembly.svg",
@@ -97,7 +97,7 @@ export const projects = [
       {
         src: "assets/images/projects/warman-attempts/diagnostics.svg",
         alt: "Diagnostics and lessons-learned layout for Warman Attempts",
-        caption: "Failure review board documenting geometry problems, maintenance pain points, and iteration notes."
+        caption: ""
       }
     ],
     lessonsLearned: [
@@ -224,7 +224,7 @@ export const projects = [
     title: "Robo-Arm",
     subtitle:
       "A lightweight robotic arm exploring actuator efficiency through mechanical optimisation and four-bar linkage refinement from Gen 1 to Gen 2.",
-    year: "2024-2025",
+    year: "2023-2024",
     status: "Gen 2 concept",
     projectType: "Solo",
     tags: ["Robotics", "Mechanisms", "Simulation", "CAD", "Optimisation"],
@@ -436,7 +436,7 @@ export const projects = [
     title: "Camera Study",
     subtitle:
       "A mechanical study of traditional film camera shutters and iris assemblies, rebuilt through CAD, prototypes, and tolerance-focused iteration.",
-    year: "2024-2026",
+    year: "2024-2024",
     status: "Active mechanical study",
     projectType: "Solo",
     tags: ["Mechanisms", "CAD", "Iris Design", "Prototyping", "Documentation"],
@@ -542,7 +542,7 @@ export const projects = [
     title: "JohnCar",
     subtitle:
       "An automotive engineering workbench repository for CAD parts, diagnostics, service notes, sensor experiments, and practical vehicle studies.",
-    year: "2024-2026",
+    year: "2023-2026",
     status: "Ongoing archive",
     projectType: "Solo",
     tags: ["Automotive", "CAD", "Diagnostics", "Sensors", "Documentation"],
@@ -649,7 +649,7 @@ export const projects = [
     title: "Cycloidial Study",
     subtitle:
       "A SolidWorks-focused cycloidal drive project emphasising parametric geometry, manufacturing constraints, and transparent engineering documentation.",
-    year: "2025-2026",
+    year: "2025-2025",
     status: "Parametric drive development",
     projectType: "Solo",
     tags: ["Transmission", "Cycloidal Drive", "SolidWorks", "Parametric Design", "Robotics"],
@@ -755,7 +755,7 @@ export const projects = [
     title: "Solid Connections",
     subtitle:
       "A multidisciplinary mechatronic systems project integrating mechanical design, custom PCB development, embedded firmware, and iterative validation.",
-    year: "2025-2026",
+    year: "2025-2025",
     status: "Private repository, documented case study",
     projectType: "Project",
     tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],

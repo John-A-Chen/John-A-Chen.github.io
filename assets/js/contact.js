@@ -5,13 +5,11 @@ import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   initRandomProjectLink,
-  initNavigation,
   initRevealAnimations,
   populateSharedProfile
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -63,10 +61,16 @@ if (socialGrid) {
         : "";
 
       return `
-        <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer">
+        <a
+          class="contact-card reveal"
+          href="${social.url}"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="${social.label}"
+          title="${social.label}"
+        >
           ${badgeMarkup}
-          <h3>${social.label}</h3>
-          <p class="text-link">Open profile</p>
+          <span class="sr-only">${social.label}</span>
         </a>
       `
     })
@@ -97,6 +101,7 @@ if (form && submitButton) {
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
 
+    // This is a static site, so form submit opens the user's mail client.
     if (siteProfile.contactEmail && siteProfile.contactEmail.includes("@")) {
       window.location.href = `mailto:${siteProfile.contactEmail}?subject=${subject}&body=${body}`;
       return;

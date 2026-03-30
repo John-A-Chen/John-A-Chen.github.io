@@ -4,6 +4,8 @@ export const siteProfile = {
   degree: "Mechatronics Engineering Student - University of Technology Sydney (UTS)",
   tagline:
     "Mechanical design, robotics, and CAD-driven engineering workflows for real, buildable systems.",
+  focusNote:
+    "Case-study-first engineering portfolio with direct links to source repositories, CAD files, drawings, print assets, and documentation.",
   headshot: "assets/images/profile/higit.png",
   focusAreas: [
     {

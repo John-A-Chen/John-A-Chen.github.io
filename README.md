@@ -12,7 +12,7 @@ This site is:
 
 - `index.html` - Home
 - `portfolio.html` - Project archive
-- `resume.html` - Resume timeline + CV download
+- `resume.html` - Resume timeline + CV page
 - `contact.html` - Contact + Ultimo/Sydney map
 - `projects/*.html` - Individual case-study pages
 
@@ -61,7 +61,7 @@ This is used in:
 ## Resume
 
 - Resume page content comes from `siteProfile.resumeExperience` and `siteProfile.resumeEducation` in `data/site.js`.
-- CV download file path is `docs/John_A_Chen_CV.pdf`.
+- CV file path is `docs/John_A_Chen_CV.pdf`.
 
 ## Contact
 

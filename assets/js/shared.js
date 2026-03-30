@@ -1,4 +1,35 @@
 import { projects } from "../../data/projects.js";
+import { repoImages } from "../../data/repo-images.js";
+
+// Treat vector placeholders as low-priority media for cards and galleries.
+function isSvgSource(path = "") {
+  return /\.svg($|\?)/i.test(path);
+}
+
+// Prefer real project photos (repo images first) over generated placeholder art.
+function getProjectPrimaryImage(project) {
+  const repoCover = repoImages[project.slug]?.[0]?.src;
+  if (repoCover) {
+    return repoCover;
+  }
+
+  const nonSvgGallery = (project.gallery || []).find(
+    (item) => item?.src && !isSvgSource(item.src)
+  )?.src;
+  if (nonSvgGallery) {
+    return nonSvgGallery;
+  }
+
+  if (project.heroImage && !isSvgSource(project.heroImage)) {
+    return project.heroImage;
+  }
+
+  if (project.thumbnail && !isSvgSource(project.thumbnail)) {
+    return project.thumbnail;
+  }
+
+  return "";
+}
 
 function isExternalPath(path) {
   return (
@@ -24,7 +55,16 @@ export function resolveImagePath(path, hrefPrefix = "") {
 export function getRandomProjectImage(excludeSlug = "") {
   const pool = projects
     .filter((project) => project.slug !== excludeSlug)
-    .flatMap((project) => [project.heroImage, project.thumbnail])
+    .flatMap((project) => {
+      const repoPool = (repoImages[project.slug] || []).map((item) => item.src);
+      const projectPool = (project.gallery || [])
+        .map((item) => item.src)
+        .filter((src) => src && !isSvgSource(src));
+      const directPool = [project.heroImage, project.thumbnail].filter(
+        (src) => src && !isSvgSource(src)
+      );
+      return [...repoPool, ...projectPool, ...directPool];
+    })
     .filter(Boolean);
 
   if (!pool.length) {
@@ -50,6 +90,7 @@ function bindImageFallback(image, fallbackSrc) {
 
 export function populateSharedProfile(profile) {
   const isProjectPage = document.body.classList.contains("project-page");
+  // Normalize relative links so shared profile data works from root and /projects pages.
   const normalizeHref = (href) => {
     if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("/")) {
       return href;
@@ -94,36 +135,6 @@ export function populateSharedProfile(profile) {
 
   document.querySelectorAll("[data-current-year]").forEach((node) => {
     node.textContent = new Date().getFullYear();
-  });
-}
-
-export function initNavigation() {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
-
-  if (!toggle || !menu) {
-    return;
-  }
-
-  const closeMenu = () => {
-    toggle.setAttribute("aria-expanded", "false");
-    menu.classList.remove("is-open");
-  };
-
-  toggle.addEventListener("click", () => {
-    const expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!expanded));
-    menu.classList.toggle("is-open");
-  });
-
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
-      closeMenu();
-    }
   });
 }
 
@@ -187,12 +198,15 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
+  const preferredCardImage =
+    getProjectPrimaryImage(project) || getRandomProjectImage(project.slug);
+
   const placeholderImage = resolveImagePath(
     getRandomProjectImage(project.slug),
     hrefPrefix
   );
   const cardImage = resolveImagePath(
-    project.thumbnail || getRandomProjectImage(project.slug),
+    preferredCardImage,
     hrefPrefix
   );
 
@@ -240,15 +254,6 @@ export function sortProjectsByType(projectList) {
   });
 }
 
-export function createTagChip(tag, isActive = false) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `tag-filter${isActive ? " is-active" : ""}`;
-  button.textContent = tag;
-  button.dataset.tag = tag;
-  return button;
-}
-
 export function createResourceButtons(links, labels) {
   const wrap = document.createElement("div");
   wrap.className = "resource-button-row";
@@ -269,114 +274,4 @@ export function createResourceButtons(links, labels) {
   });
 
   return wrap;
-}
-
-export function createLightboxTrigger(image, groupName) {
-  const figure = document.createElement("figure");
-  figure.className = "gallery-card";
-
-  figure.innerHTML = `
-    <button
-      class="gallery-trigger"
-      type="button"
-      data-lightbox-group="${groupName}"
-      data-lightbox-src="${image.src}"
-      data-lightbox-alt="${image.alt}"
-      data-lightbox-caption="${image.caption || ""}"
-      aria-label="Open image: ${image.alt}"
-    >
-      <img src="${image.src}" alt="${image.alt}" loading="lazy" />
-    </button>
-    <figcaption>${image.caption || ""}</figcaption>
-  `;
-
-  return figure;
-}
-
-export function initLightbox() {
-  const lightbox = document.getElementById("lightbox");
-  if (!lightbox) {
-    return;
-  }
-
-  const image = lightbox.querySelector("img");
-  const caption = lightbox.querySelector("figcaption");
-  const closeButton = lightbox.querySelector(".lightbox-close");
-  const prevButton = lightbox.querySelector(".lightbox-nav.prev");
-  const nextButton = lightbox.querySelector(".lightbox-nav.next");
-  let group = [];
-  let currentIndex = 0;
-
-  const syncView = () => {
-    const activeItem = group[currentIndex];
-    if (!activeItem) {
-      return;
-    }
-
-    image.src = activeItem.dataset.lightboxSrc;
-    image.alt = activeItem.dataset.lightboxAlt || "";
-    caption.textContent = activeItem.dataset.lightboxCaption || "";
-  };
-
-  const open = (items, index) => {
-    group = items;
-    currentIndex = index;
-    syncView();
-    lightbox.hidden = false;
-    document.body.classList.add("lightbox-open");
-  };
-
-  const close = () => {
-    lightbox.hidden = true;
-    document.body.classList.remove("lightbox-open");
-  };
-
-  const step = (direction) => {
-    if (!group.length) {
-      return;
-    }
-
-    currentIndex = (currentIndex + direction + group.length) % group.length;
-    syncView();
-  };
-
-  document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-lightbox-src]");
-    if (!trigger) {
-      return;
-    }
-
-    const groupName = trigger.dataset.lightboxGroup;
-    const items = [...document.querySelectorAll(`[data-lightbox-group="${groupName}"]`)];
-    const index = items.indexOf(trigger);
-    open(items, index);
-  });
-
-  closeButton?.addEventListener("click", close);
-  prevButton?.addEventListener("click", () => step(-1));
-  nextButton?.addEventListener("click", () => step(1));
-
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      close();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (lightbox.hidden) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-      close();
-    }
-
-    if (event.key === "ArrowLeft") {
-      step(-1);
-    }
-
-    if (event.key === "ArrowRight") {
-      step(1);
-    }
-  });
 }

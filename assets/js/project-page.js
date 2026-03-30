@@ -12,7 +12,6 @@ import {
   createProjectCard,
   createResourceButtons,
   getRandomProjectImage,
-  initNavigation,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile,
@@ -20,7 +19,6 @@ import {
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
-initNavigation();
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
@@ -47,6 +45,7 @@ if (!project) {
 } else {
   document.title = `${project.title} | ${siteProfile.name}`;
   renderProjectPage(project);
+  // Re-apply profile bindings after dynamic sections are injected.
   populateSharedProfile(siteProfile);
   initRevealAnimations();
 }
@@ -76,8 +75,35 @@ function cleanupCaption(rawText, fallback) {
 }
 
 function resolveProjectAsset(path) {
-  const resolved = resolveImagePath(path, "../");
-  return resolved;
+  return resolveImagePath(path, "../");
+}
+
+function isSvgSource(path = "") {
+  return /\.svg($|\?)/i.test(path);
+}
+
+function resolvePreferredHeroImage(activeProject) {
+  const repoHero = repoImages[activeProject.slug]?.[0]?.src;
+  if (repoHero) {
+    return repoHero;
+  }
+
+  const nonSvgGallery = (activeProject.gallery || []).find(
+    (item) => item?.src && !isSvgSource(item.src)
+  )?.src;
+  if (nonSvgGallery) {
+    return nonSvgGallery;
+  }
+
+  if (activeProject.heroImage && !isSvgSource(activeProject.heroImage)) {
+    return activeProject.heroImage;
+  }
+
+  if (activeProject.thumbnail && !isSvgSource(activeProject.thumbnail)) {
+    return activeProject.thumbnail;
+  }
+
+  return getRandomProjectImage(activeProject.slug) || "";
 }
 
 function bindFallbackImage(image, fallbackSrc) {
@@ -150,10 +176,11 @@ function renderProjectPage(activeProject) {
       activeProject.thumbnail ||
       activeProject.heroImage
   );
+  const preferredHero = resolveProjectAsset(resolvePreferredHeroImage(activeProject));
   bindFallbackImage(heroImage, heroFallback);
   if (heroImage) {
     heroImage.dataset.fallbackApplied = "false";
-    heroImage.src = resolveProjectAsset(activeProject.heroImage || heroFallback);
+    heroImage.src = preferredHero || heroFallback;
   }
 
   renderGallery(activeProject);
@@ -163,15 +190,28 @@ function renderProjectPage(activeProject) {
 }
 
 function renderGallery(activeProject) {
-  const baseItems = [
-    {
-      src: activeProject.heroImage,
-      alt: `${activeProject.title} hero image`,
-      caption: `${activeProject.title} hero view`
-    },
-    ...(activeProject.gallery || []),
-    ...(repoImages[activeProject.slug] || [])
-  ];
+  const repoGallery = repoImages[activeProject.slug] || [];
+  const projectGallery = activeProject.gallery || [];
+  const nonSvgProjectGallery = projectGallery.filter(
+    (item) => !isSvgSource(item.src)
+  );
+  const nonSvgHero =
+    activeProject.heroImage && !isSvgSource(activeProject.heroImage)
+      ? [
+          {
+            src: activeProject.heroImage,
+            alt: `${activeProject.title} image`
+          }
+        ]
+      : [];
+
+  // Prefer imported repo photos first, then non-SVG entries from project metadata.
+  let baseItems = [];
+  if (repoGallery.length) {
+    baseItems = [...nonSvgHero, ...repoGallery];
+  } else {
+    baseItems = [...nonSvgHero, ...nonSvgProjectGallery];
+  }
 
   const galleryItems = uniqueBySource(baseItems);
   if (!galleryItems.length) {
@@ -264,6 +304,7 @@ function renderGallery(activeProject) {
     nextButton.hidden = true;
   }
 
+  // Keep keyboard navigation aligned with carousel controls.
   document.addEventListener("keydown", (event) => {
     const tag = document.activeElement?.tagName?.toLowerCase();
     if (tag === "input" || tag === "textarea") {
