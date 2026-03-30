@@ -1,5 +1,6 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
+import { initBorderGlow } from "./border-glow.js";
 import {
   createProjectCard,
   initLightbox,
@@ -119,10 +120,28 @@ function renderProjectGrid() {
   archiveCountLabel.textContent = `${projects.length} projects in archive`;
 }
 
+function initHomeBorderGlow() {
+  initBorderGlow(
+    ".hero-copy, .hero-panel, .info-panel, .social-card, .contact-card, .project-card",
+    {
+      edgeSensitivity: 30,
+      glowColor: "200 90 88",
+      borderRadius: 22,
+      glowRadius: 34,
+      glowIntensity: 1,
+      coneSpread: 25,
+      animated: false,
+      colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
+      fillOpacity: 0.35
+    }
+  );
+}
+
 renderAboutSection();
 renderHeroStats();
 renderSocials();
 renderTechStack();
 renderProjectGrid();
+initHomeBorderGlow();
 initRevealAnimations();
 initLightbox();

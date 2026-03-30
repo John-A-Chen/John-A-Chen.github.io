@@ -5,6 +5,7 @@ import {
   projects
 } from "../../data/projects.js";
 import { repoImages } from "../../data/repo-images.js";
+import { initBorderGlow } from "./border-glow.js";
 import {
   createLightboxTrigger,
   createProjectCard,
@@ -40,8 +41,26 @@ if (!project) {
   document.title = `${project.title} | ${siteProfile.name}`;
   renderProjectPage(project);
   populateSharedProfile(siteProfile);
+  initProjectBorderGlow();
   initRevealAnimations();
   initLightbox();
+}
+
+function initProjectBorderGlow() {
+  initBorderGlow(
+    ".project-hero, .content-section, .sidebar-card, .project-card",
+    {
+      edgeSensitivity: 30,
+      glowColor: "200 90 88",
+      borderRadius: 22,
+      glowRadius: 32,
+      glowIntensity: 1,
+      coneSpread: 25,
+      animated: false,
+      colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
+      fillOpacity: 0.32
+    }
+  );
 }
 
 function renderProjectPage(activeProject) {
