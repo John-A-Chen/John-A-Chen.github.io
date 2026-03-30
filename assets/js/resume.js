@@ -1,7 +1,10 @@
 import { siteProfile } from "../../data/site.js";
-import { initBorderGlow } from "./border-glow.js";
+import { projects } from "../../data/projects.js";
+import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLogoLoop } from "./logo-loop.js";
 import {
+  initRandomProjectLink,
   initNavigation,
   initRevealAnimations,
   populateSharedProfile
@@ -10,6 +13,9 @@ import {
 populateSharedProfile(siteProfile);
 initNavigation();
 initSiteDock();
+initLogoLoop();
+initRandomProjectLink(projects);
+initClickSpark();
 
 const experienceList = document.getElementById("experience-list");
 const educationList = document.getElementById("education-list");
@@ -35,17 +41,5 @@ if (experienceList) {
 if (educationList) {
   educationList.innerHTML = createTimelineItems(siteProfile.resumeEducation || []);
 }
-
-initBorderGlow(".resume-shell, .timeline", {
-  edgeSensitivity: 18,
-  glowColor: "200 90 88",
-  borderRadius: 20,
-  glowRadius: 26,
-  glowIntensity: 1.12,
-  coneSpread: 28,
-  animated: false,
-  colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-  fillOpacity: 0.42
-});
 
 initRevealAnimations();

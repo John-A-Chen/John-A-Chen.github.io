@@ -102,6 +102,31 @@ export function initRevealAnimations() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
+export function initRandomProjectLink(allProjects) {
+  const buttons = document.querySelectorAll("[data-random-project]");
+  if (!buttons.length || !allProjects?.length) {
+    return;
+  }
+
+  const currentSlug = document.body.dataset.projectSlug;
+  const pool = currentSlug
+    ? allProjects.filter((project) => project.slug !== currentSlug)
+    : allProjects;
+  const candidates = pool.length ? pool : allProjects;
+  const randomProject =
+    candidates[Math.floor(Math.random() * candidates.length)];
+  const prefix = document.body.classList.contains("project-page") ? "../" : "";
+  const href = `${prefix}projects/${randomProject.slug}.html`;
+
+  buttons.forEach((button) => {
+    button.setAttribute("href", href);
+    button.setAttribute(
+      "title",
+      `Go to random project: ${randomProject.title}`
+    );
+  });
+}
+
 export function createProjectCard(project, options = {}) {
   const {
     compact = false,
@@ -125,7 +150,7 @@ export function createProjectCard(project, options = {}) {
       <div class="project-card-body">
         <div class="project-card-meta">
           <span>${project.year}</span>
-          <span>${project.status}</span>
+          <span>${project.projectType || "Solo"}</span>
         </div>
         <h3>${project.title}</h3>
         <p class="project-card-subtitle">${project.subtitle}</p>
@@ -140,6 +165,18 @@ export function createProjectCard(project, options = {}) {
   `;
 
   return card;
+}
+
+export function sortProjectsByType(projectList) {
+  const order = { Solo: 0, Project: 1 };
+  return [...projectList].sort((a, b) => {
+    const aRank = order[a.projectType] ?? 99;
+    const bRank = order[b.projectType] ?? 99;
+    if (aRank !== bRank) {
+      return aRank - bRank;
+    }
+    return a.title.localeCompare(b.title);
+  });
 }
 
 export function createTagChip(tag, isActive = false) {

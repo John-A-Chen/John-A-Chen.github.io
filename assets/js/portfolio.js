@@ -1,17 +1,23 @@
 import { projects } from "../../data/projects.js";
 import { siteProfile } from "../../data/site.js";
-import { initBorderGlow } from "./border-glow.js";
+import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
+  initRandomProjectLink,
   initNavigation,
   initRevealAnimations,
-  populateSharedProfile
+  populateSharedProfile,
+  sortProjectsByType
 } from "./shared.js";
 
 populateSharedProfile(siteProfile);
 initNavigation();
 initSiteDock();
+initLogoLoop();
+initRandomProjectLink(projects);
+initClickSpark();
 
 const filterList = document.getElementById("filter-list");
 const filterSelect = document.getElementById("filter-select");
@@ -21,16 +27,13 @@ const portfolioGrid = document.getElementById("portfolio-grid");
 const visibleCount = document.getElementById("visible-count");
 const totalCount = document.getElementById("total-count");
 
-let activeFilter = "All";
+let activeFilter = "Solo";
+const orderedProjects = sortProjectsByType(projects);
 
-const allTags = ["All", ...new Set(projects.flatMap((project) => project.tags))];
+const allTags = ["Solo", "Project"];
 
 function isVisibleForFilter(project, filter) {
-  if (filter === "All") {
-    return true;
-  }
-
-  return project.tags.includes(filter);
+  return (project.projectType || "Solo") === filter;
 }
 
 function setActiveFilter(filter) {
@@ -43,6 +46,7 @@ function setActiveFilter(filter) {
 
 function renderFilterControls() {
   if (filterList) {
+    filterSelectValue.textContent = activeFilter;
     filterList.innerHTML = allTags
       .map(
         (tag) => `
@@ -75,7 +79,7 @@ function renderProjects() {
   }
 
   portfolioGrid.innerHTML = "";
-  const filtered = projects.filter((project) =>
+  const filtered = orderedProjects.filter((project) =>
     isVisibleForFilter(project, activeFilter)
   );
 
@@ -91,18 +95,6 @@ function renderProjects() {
   if (totalCount) {
     totalCount.textContent = String(projects.length);
   }
-
-  initBorderGlow(".project-card, .filter-shell", {
-    edgeSensitivity: 18,
-    glowColor: "200 90 88",
-    borderRadius: 20,
-    glowRadius: 28,
-    glowIntensity: 1.15,
-    coneSpread: 28,
-    animated: false,
-    colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-    fillOpacity: 0.45
-  });
 
   initRevealAnimations();
 }

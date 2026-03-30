@@ -1,9 +1,10 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
-import { initBorderGlow } from "./border-glow.js";
+import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLogoLoop } from "./logo-loop.js";
 import {
-  createProjectCard,
+  initRandomProjectLink,
   initNavigation,
   initRevealAnimations,
   populateSharedProfile
@@ -12,10 +13,12 @@ import {
 populateSharedProfile(siteProfile);
 initNavigation();
 initSiteDock();
+initLogoLoop();
+initRandomProjectLink(projects);
+initClickSpark();
 
 const focusAreas = document.getElementById("focus-areas");
 const projectCount = document.getElementById("project-count");
-const homeProjectPreview = document.getElementById("home-project-preview");
 
 function renderFocusAreas() {
   if (!focusAreas) {
@@ -43,39 +46,6 @@ function renderProjectCount() {
   projectCount.textContent = String(projects.length).padStart(2, "0");
 }
 
-function renderHomePreview() {
-  if (!homeProjectPreview) {
-    return;
-  }
-
-  homeProjectPreview.innerHTML = "";
-
-  projects.slice(0, 6).forEach((project) => {
-    homeProjectPreview.appendChild(
-      createProjectCard(project, { compact: false, showSummary: false })
-    );
-  });
-}
-
-function initHomeBorderGlow() {
-  initBorderGlow(
-    ".hero-copy, .hero-panel, .headshot-slot, .info-panel, .project-card",
-    {
-      edgeSensitivity: 18,
-      glowColor: "200 90 88",
-      borderRadius: 22,
-      glowRadius: 30,
-      glowIntensity: 1.2,
-      coneSpread: 28,
-      animated: false,
-      colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-      fillOpacity: 0.45
-    }
-  );
-}
-
 renderFocusAreas();
 renderProjectCount();
-renderHomePreview();
-initHomeBorderGlow();
 initRevealAnimations();

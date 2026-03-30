@@ -4,15 +4,14 @@ import {
   projectLinkLabels,
   projects
 } from "../../data/projects.js";
-import { repoImages } from "../../data/repo-images.js";
-import { initBorderGlow } from "./border-glow.js";
+import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLogoLoop } from "./logo-loop.js";
 import {
-  createLightboxTrigger,
   createProjectCard,
   createResourceButtons,
-  initLightbox,
   initNavigation,
+  initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile
 } from "./shared.js";
@@ -20,6 +19,9 @@ import {
 populateSharedProfile(siteProfile);
 initNavigation();
 initSiteDock();
+initLogoLoop();
+initRandomProjectLink(projects);
+initClickSpark();
 
 const slug = document.body.dataset.projectSlug;
 const project = getProjectBySlug(slug);
@@ -43,25 +45,50 @@ if (!project) {
   document.title = `${project.title} | ${siteProfile.name}`;
   renderProjectPage(project);
   populateSharedProfile(siteProfile);
-  initProjectBorderGlow();
   initRevealAnimations();
-  initLightbox();
 }
 
-function initProjectBorderGlow() {
-  initBorderGlow(
-    ".project-hero, .content-section, .sidebar-card, .project-card",
-    {
-      edgeSensitivity: 18,
-      glowColor: "200 90 88",
-      borderRadius: 22,
-      glowRadius: 28,
-      glowIntensity: 1.15,
-      coneSpread: 28,
-      animated: false,
-      colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-      fillOpacity: 0.44
-    }
+function removeFileType(text) {
+  return text.replace(/\.(png|jpe?g|gif|webp|svg|bmp|tiff?)$/i, "");
+}
+
+function cleanupCaption(rawText, fallback) {
+  if (!rawText) {
+    return fallback;
+  }
+
+  const cleaned = rawText
+    .replace(/^Imported from repository:\s*/i, "")
+    .replace(/^[\w-]+\s+repo image:\s*/i, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const noType = removeFileType(cleaned);
+  if (!noType) {
+    return fallback;
+  }
+
+  return noType.charAt(0).toUpperCase() + noType.slice(1);
+}
+
+function withProjectPrefix(path) {
+  if (
+    path.startsWith("../") ||
+    path.startsWith("/") ||
+    /^https?:\/\//i.test(path) ||
+    path.startsWith("data:")
+  ) {
+    return path;
+  }
+
+  return `../${path}`;
+}
+
+function uniqueBySource(items) {
+  return items.filter(
+    (item, index, allItems) =>
+      index === allItems.findIndex((candidate) => candidate.src === item.src)
   );
 }
 
@@ -70,6 +97,11 @@ function renderProjectPage(activeProject) {
 
   const intro = document.createElement("article");
   intro.className = "project-hero reveal";
+
+  const repoButton = activeProject.links?.repo
+    ? `<a class="button button-repo-primary" href="${activeProject.links.repo}" target="_blank" rel="noreferrer">Open GitHub Repository</a>`
+    : "";
+
   intro.innerHTML = `
     <a class="breadcrumb-link" href="../portfolio.html">Back to Project Archive</a>
     <div class="project-hero-grid">
@@ -79,26 +111,28 @@ function renderProjectPage(activeProject) {
         <p class="project-subtitle">${activeProject.subtitle}</p>
         <p class="project-summary">${activeProject.summary}</p>
         <ul class="tag-list">${activeProject.tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>
+        <div class="project-priority-row">${repoButton}</div>
         <div class="project-action-row"></div>
       </div>
       <figure class="project-hero-media">
-        <button
-          class="gallery-trigger hero-trigger"
-          type="button"
-          data-lightbox-group="${activeProject.slug}"
-          data-lightbox-src="../${activeProject.heroImage}"
-          data-lightbox-alt="${activeProject.title} hero image"
-          data-lightbox-caption="${activeProject.title} hero image"
-          aria-label="Open project hero image"
-        >
-          <img src="../${activeProject.heroImage}" alt="${activeProject.title} hero image" />
-        </button>
+        <img src="../${activeProject.heroImage}" alt="${activeProject.title} hero image" />
       </figure>
     </div>
   `;
 
+  const nonRepoLabels = Object.fromEntries(
+    Object.entries(projectLinkLabels).filter(([key]) => key !== "repo")
+  );
+  if (!activeProject.links?.repo) {
+    intro.querySelector(".project-priority-row")?.remove();
+  }
   const actionRow = intro.querySelector(".project-action-row");
-  actionRow.appendChild(createResourceButtons(activeProject.links, projectLinkLabels));
+  const topResourceButtons = createResourceButtons(activeProject.links, nonRepoLabels);
+  if (topResourceButtons.childElementCount > 0) {
+    actionRow.appendChild(topResourceButtons);
+  } else {
+    actionRow.remove();
+  }
   headerRoot.appendChild(intro);
 
   renderGallery(activeProject);
@@ -108,35 +142,113 @@ function renderProjectPage(activeProject) {
 }
 
 function renderGallery(activeProject) {
-  const importedRepoImages = repoImages[activeProject.slug] || [];
-  const galleryItems = [...activeProject.gallery, ...importedRepoImages].filter(
-    (item, index, allItems) =>
-      index === allItems.findIndex((candidate) => candidate.src === item.src)
-  );
+  const baseItems = [
+    {
+      src: activeProject.heroImage,
+      alt: `${activeProject.title} hero image`,
+      caption: `${activeProject.title} hero view`
+    },
+    ...(activeProject.gallery || [])
+  ];
+
+  const galleryItems = uniqueBySource(baseItems);
+  if (!galleryItems.length) {
+    galleryRoot.innerHTML = "";
+    return;
+  }
 
   galleryRoot.innerHTML = `
     <div class="section-heading reveal">
       <p class="eyebrow">Gallery</p>
-      <h2>Visual record of the design, analysis, and iteration process, including imported repository media.</h2>
+      <h2>Visual record of the design, analysis, and iteration process.</h2>
+    </div>
+    <article class="gallery-carousel reveal" aria-label="Project image carousel">
+      <button class="gallery-nav-btn prev" type="button" aria-label="Previous image">
+        &#8249;
+      </button>
+      <figure class="gallery-stage">
+        <img id="gallery-active-image" src="" alt="" />
+        <figcaption id="gallery-active-caption"></figcaption>
+      </figure>
+      <button class="gallery-nav-btn next" type="button" aria-label="Next image">
+        &#8250;
+      </button>
+    </article>
+    <div class="gallery-meta-row reveal">
+      <p class="gallery-counter" id="gallery-counter"></p>
+      <div class="gallery-dot-row" id="gallery-dot-row"></div>
     </div>
   `;
 
-  const gallery = document.createElement("div");
-  gallery.className = "masonry-gallery reveal";
+  const imageEl = document.getElementById("gallery-active-image");
+  const captionEl = document.getElementById("gallery-active-caption");
+  const counterEl = document.getElementById("gallery-counter");
+  const dotRow = document.getElementById("gallery-dot-row");
+  const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
+  const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
 
-  galleryItems.forEach((image) => {
-    gallery.appendChild(
-      createLightboxTrigger(
-        {
-          ...image,
-          src: `../${image.src}`
-        },
-        activeProject.slug
-      )
-    );
+  let currentIndex = 0;
+
+  const dotButtons = galleryItems.map((item, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "gallery-dot";
+    dot.setAttribute("aria-label", `Go to image ${index + 1}`);
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      syncActiveImage();
+    });
+    dotRow.appendChild(dot);
+    return dot;
   });
 
-  galleryRoot.appendChild(gallery);
+  const syncActiveImage = () => {
+    const activeItem = galleryItems[currentIndex];
+    const fallbackCaption = `${activeProject.title} image ${currentIndex + 1}`;
+    imageEl.src = withProjectPrefix(activeItem.src);
+    imageEl.alt = activeItem.alt || fallbackCaption;
+    captionEl.textContent = cleanupCaption(
+      activeItem.caption || activeItem.alt,
+      fallbackCaption
+    );
+    counterEl.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+
+    dotButtons.forEach((dot, dotIndex) => {
+      const active = dotIndex === currentIndex;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-pressed", String(active));
+    });
+  };
+
+  const stepImage = (direction) => {
+    currentIndex =
+      (currentIndex + direction + galleryItems.length) % galleryItems.length;
+    syncActiveImage();
+  };
+
+  prevButton.addEventListener("click", () => stepImage(-1));
+  nextButton.addEventListener("click", () => stepImage(1));
+
+  if (galleryItems.length <= 1) {
+    prevButton.hidden = true;
+    nextButton.hidden = true;
+  }
+
+  document.addEventListener("keydown", (event) => {
+    const tag = document.activeElement?.tagName?.toLowerCase();
+    if (tag === "input" || tag === "textarea") {
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      stepImage(-1);
+    }
+    if (event.key === "ArrowRight") {
+      stepImage(1);
+    }
+  });
+
+  syncActiveImage();
 }
 
 function renderContent(activeProject) {

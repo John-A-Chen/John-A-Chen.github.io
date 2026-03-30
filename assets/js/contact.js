@@ -1,7 +1,10 @@
 import { siteProfile } from "../../data/site.js";
-import { initBorderGlow } from "./border-glow.js";
+import { projects } from "../../data/projects.js";
+import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLogoLoop } from "./logo-loop.js";
 import {
+  initRandomProjectLink,
   initNavigation,
   initRevealAnimations,
   populateSharedProfile
@@ -10,6 +13,9 @@ import {
 populateSharedProfile(siteProfile);
 initNavigation();
 initSiteDock();
+initLogoLoop();
+initRandomProjectLink(projects);
+initClickSpark();
 
 const map = document.getElementById("contact-map");
 const locationLabel = document.getElementById("contact-location");
@@ -78,17 +84,5 @@ if (form && submitButton) {
     alert("Please configure contactEmail in data/site.js to enable email sending.");
   });
 }
-
-initBorderGlow(".mapbox, .contact-card, .contact-form", {
-  edgeSensitivity: 18,
-  glowColor: "200 90 88",
-  borderRadius: 20,
-  glowRadius: 24,
-  glowIntensity: 1.1,
-  coneSpread: 28,
-  animated: false,
-  colors: ["#93c5fd", "#60a5fa", "#38bdf8"],
-  fillOpacity: 0.4
-});
 
 initRevealAnimations();

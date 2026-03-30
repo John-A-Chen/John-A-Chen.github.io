@@ -1,217 +1,80 @@
-# Engineering Portfolio for GitHub Pages
+# John Alfred Chen Portfolio (GitHub Pages)
 
-Static portfolio scaffold for an engineering or mechatronics student. The site is designed to act as a polished front-end to your GitHub repositories rather than a replacement for them.
+Static multi-page engineering portfolio for mechatronics/robotics work.
 
-It is intentionally simple:
+This site is:
 
-- Static HTML, CSS, and JavaScript only
-- No framework
-- No build tooling
-- Easy to host on GitHub Pages
-- Easy to edit by hand later
+- Static HTML/CSS/JavaScript
+- GitHub Pages friendly
+- No React, no build process, no backend
 
-## File Structure
+## Pages
 
-```text
-/
-|-- index.html
-|-- projects/
-|   |-- warman-attempts.html
-|   |-- mecanum-wheel-study.html
-|   |-- robo-arm.html
-|   |-- test-bench-vehicle.html
-|   |-- camera-study.html
-|   |-- johncar.html
-|   |-- cycloidial-study.html
-|   `-- solid-connections.html
-|-- assets/
-|   |-- css/
-|   |   `-- styles.css
-|   |-- js/
-|   |   |-- main.js
-|   |   |-- project-page.js
-|   |   `-- shared.js
-|   `-- images/
-|       `-- projects/
-|           |-- warman-attempts/
-|           |-- mecanum-wheel-study/
-|           |-- robo-arm/
-|           |-- test-bench-vehicle/
-|           |-- camera-study/
-|           |-- johncar/
-|           |-- cycloidial-study/
-|           `-- solid-connections/
-|-- data/
-|   |-- site.js
-|   `-- projects.js
-`-- README.md
-```
+- `index.html` - Home
+- `portfolio.html` - Project archive
+- `resume.html` - Resume timeline + CV download
+- `contact.html` - Contact + Ultimo/Sydney map
+- `projects/*.html` - Individual case-study pages
 
-## What To Edit First
+## Navigation
 
-Start with [data/site.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/site.js).
+- Left vertical dock with magnification effect: `assets/js/dock.js`
+- Dock includes: Home, Portfolio, Resume, Contact, GitHub
+- Dock also includes: LinkedIn
+- Top header uses a single **Random Project** button
+- Header also includes a scrolling tech badge logo loop: `assets/js/logo-loop.js`
+- Click spark interaction effect on clickable UI: `assets/js/click-spark.js`
 
-Replace the placeholder values for:
+## Data Files
 
-- `[Your Name]`
-- `[Degree / University]`
-- `[Short Bio]`
-- `[GitHub URL]`
-- `[LinkedIn URL]`
-- `[Resume URL]`
-- email and location if desired
+- `data/site.js` - profile, links, resume timeline, map settings
+- `data/projects.js` - all project content and metadata
 
-Then update [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js) with your real project details and links.
+## Project Pages
 
-## How To Add A New Project
+- Gallery is a left/right carousel with caption under the active image.
+- Primary **Open GitHub Repository** button is placed in the hero section.
+- Resource links remain available in the main Files and Resources section.
 
-1. Add a new project object to the `projects` array in [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js).
-2. Create a new HTML file in `/projects/` using one of the existing project pages as the pattern.
-3. Set the page's `data-project-slug` value to match the new project's `slug`.
-4. Add images to `assets/images/projects/<your-slug>/`.
-5. Point `thumbnail`, `heroImage`, and `gallery` fields to those image paths.
-6. Add resource links like repo, CAD, drawings, print files, docs, or demo URLs in the `links` object.
+## Project Type Sorting (Solo / Project Only)
 
-Minimal project object shape:
+Each project now supports:
 
 ```js
-{
-  slug: "example-project",
-  featured: true,
-  title: "Example Project",
-  subtitle: "One-line summary",
-  year: "2026",
-  status: "Prototype",
-  tags: ["Robotics", "CAD", "Testing"],
-  thumbnail: "assets/images/projects/example-project/thumb.svg",
-  heroImage: "assets/images/projects/example-project/hero.svg",
-  summary: "Short card summary for the home page.",
-  overview: [
-    "Paragraph one.",
-    "Paragraph two."
-  ],
-  problem: [
-    "What problem or challenge this project tackled."
-  ],
-  role: [
-    "Mechanical design",
-    "Documentation",
-    "Prototype assembly"
-  ],
-  process: [
-    {
-      title: "Concept and architecture",
-      body: "Describe the engineering process here."
-    }
-  ],
-  technicalHighlights: [
-    {
-      title: "Key mechanism",
-      body: "Explain the interesting technical detail."
-    }
-  ],
-  tools: ["SolidWorks", "Fusion 360", "Python"],
-  links: {
-    repo: "https://github.com/...",
-    cad: "https://github.com/.../tree/main/cad",
-    drawings: "https://github.com/.../tree/main/drawings",
-    print: "https://github.com/.../tree/main/print-files",
-    docs: "https://github.com/.../tree/main/docs",
-    media: "https://www.youtube.com/..."
-  },
-  gallery: [
-    {
-      src: "assets/images/projects/example-project/view-01.svg",
-      alt: "Short alt text",
-      caption: "Optional caption"
-    }
-  ],
-  lessonsLearned: [
-    "What changed after testing or review."
-  ],
-  futureWork: [
-    "What you would improve next."
-  ],
-  relatedProjects: ["another-project-slug"]
-}
+projectType: "Solo" // or "Project"
 ```
 
-## How To Add Images
+This is used in:
 
-1. Put project images in `assets/images/projects/<slug>/`.
-2. Use descriptive filenames like `assembly-01.jpg`, `cad-exploded.png`, or `test-rig-side-view.jpg`.
-3. Add each image to the project's `gallery` array in [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js).
-4. Update `thumbnail` and `heroImage` to whichever images you want shown on cards and at the top of the project page.
+- Portfolio filtering (`Solo` and `Project` only)
+- Card metadata display
+- Portfolio ordering (Solo first, then Project)
 
-Notes:
+## Add / Edit a Project
 
-- Mixed aspect ratios are supported.
-- The gallery uses a masonry-style layout.
-- Clicking an image opens the lightbox viewer.
-- SVG placeholders are included in this scaffold so the site works immediately before you add real images.
+1. Add or edit an entry in `data/projects.js`.
+2. Ensure each project has a matching page shell at `projects/<slug>.html`.
+3. Add images in `assets/images/projects/<slug>/`.
+4. Update `links` for repo/CAD/drawings/print/docs/media.
+5. Set `projectType` to `"Solo"` or `"Project"`.
 
-## How To Update Repo And Asset Links
+## Resume
 
-Each project has a `links` object in [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js).
+- Resume page content comes from `siteProfile.resumeExperience` and `siteProfile.resumeEducation` in `data/site.js`.
+- CV download file path is `docs/John_A_Chen_CV.pdf`.
 
-Supported link targets include:
+## Contact
 
-- GitHub repo root
-- Specific folders inside a repo
-- PDF drawings
-- STL or print-file folders
-- Documentation folders
-- Demo videos or external media pages
+- Map URL is configured with `siteProfile.mapEmbedUrl` in `data/site.js`.
+- Current target is Ultimo, Sydney.
+- Map embed is tinted to match the site blue theme in `assets/css/styles.css`.
+- Contact form is static; it opens mail client if `contactEmail` is set.
 
-If you leave a link empty or set it to `null`, that button is hidden automatically on the project page.
+## Deploy on GitHub Pages
 
-## How Project Pages Work
+1. Push repository to GitHub.
+2. Repository Settings -> Pages.
+3. Deploy from branch: `main`, folder `/ (root)`.
+4. Save.
 
-Each file inside `/projects/` is a lightweight shell. The detailed content is rendered from [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js) by [assets/js/project-page.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/assets/js/project-page.js).
-
-This means:
-
-- you keep one reusable layout pattern
-- each project still has its own internal page URL
-- content stays easy to edit from one data source
-
-## Local Preview
-
-Because this is a static site, you can preview it in several simple ways:
-
-1. Open `index.html` directly in a browser for a quick check.
-2. Or use a simple static server if you prefer cleaner routing behavior, for example from VS Code Live Server or Python's basic HTTP server.
-
-No build step is required.
-
-## Deploy With GitHub Pages
-
-1. Push this repository to GitHub.
-2. In the repository, open `Settings`.
-3. Go to `Pages`.
-4. Under `Build and deployment`, choose `Deploy from a branch`.
-5. Select the `main` branch and `/ (root)` folder.
-6. Save the settings.
-
-For a user site repository like `your-username.github.io`, the site will normally publish at the root domain.
-
-## Editing Notes
-
-- Personal profile data lives in [data/site.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/site.js).
-- Project content lives in [data/projects.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/data/projects.js).
-- Shared layout behavior lives in [assets/js/shared.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/assets/js/shared.js).
-- Home-page rendering lives in [assets/js/main.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/assets/js/main.js).
-- Project-page rendering lives in [assets/js/project-page.js](/c:/Users/John/Documents/GitHub/John-A-Chen.github.io/assets/js/project-page.js).
-
-## Replace Placeholder Images
-
-The included SVG artwork is there to show the intended layout and gallery behavior. Replace it with:
-
-- prototype photos
-- CAD renders
-- technical drawings
-- annotated screenshots
-- fabrication images
-- test footage stills
-
-The more real engineering artefacts you add, the stronger the project pages will feel.
+No build step required.
