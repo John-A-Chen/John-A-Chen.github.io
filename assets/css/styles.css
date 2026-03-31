@@ -1014,8 +1014,8 @@ body.has-dock {
 
 .gallery-stage img {
   width: 100%;
-  max-height: min(66vh, 720px);
-  object-fit: contain;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
   background: rgba(8, 24, 42, 0.28);
 }
 
@@ -1432,10 +1432,6 @@ textarea.form-input {
   .gallery-carousel {
     grid-template-columns: 1fr;
     gap: 0.7rem;
-  }
-
-  .gallery-stage img {
-    max-height: min(56vh, 520px);
   }
 
   .gallery-nav-btn {
