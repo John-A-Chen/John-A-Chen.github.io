@@ -186,13 +186,14 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
-  const projectImagePool = getProjectImagePool(project);
-  const selectedProjectImage = pickRandom(projectImagePool);
-  const cardImage = resolveImagePath(selectedProjectImage, hrefPrefix);
+  const cardImages = getProjectCardImages(project, hrefPrefix);
+  const selectedProjectImage = pickRandom(cardImages);
+  const selectedProjectImageIndex = Math.max(cardImages.indexOf(selectedProjectImage), 0);
+  const cardImage = selectedProjectImage;
   const mediaMarkup = cardImage
     ? `
       <div class="project-card-media">
-        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" />
+        <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" data-image-index="${selectedProjectImageIndex}" />
       </div>
     `
     : `<div class="project-card-media is-empty" aria-hidden="true"></div>`;
@@ -223,6 +224,10 @@ export function createProjectCard(project, options = {}) {
   `;
 
   return card;
+}
+
+export function getProjectCardImages(project, hrefPrefix = "") {
+  return getProjectImagePool(project).map((path) => resolveImagePath(path, hrefPrefix));
 }
 
 export function sortProjectsByType(projectList) {

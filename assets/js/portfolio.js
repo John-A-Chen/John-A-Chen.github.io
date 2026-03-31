@@ -5,6 +5,7 @@ import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
+  getProjectCardImages,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile,
@@ -27,6 +28,11 @@ const totalCount = document.getElementById("total-count");
 
 let activeFilter = "Solo";
 const orderedProjects = sortProjectsByType(projects);
+const archiveCycleIntervalMs = 5000;
+const archiveFadeDurationMs = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ? 0
+  : 320;
+let archiveImageCycleId = 0;
 
 const allTags = ["Solo", "Project"];
 
@@ -76,15 +82,29 @@ function renderProjects() {
     return;
   }
 
+  stopArchiveImageCycle();
   portfolioGrid.innerHTML = "";
   const filtered = orderedProjects.filter((project) =>
     isVisibleForFilter(project, activeFilter)
   );
+  const rotatingCards = [];
 
   filtered.forEach((project) => {
-    portfolioGrid.appendChild(
-      createProjectCard(project, { compact: false, showSummary: false })
-    );
+    const card = createProjectCard(project, { compact: false, showSummary: false });
+    const cardImage = card.querySelector(".project-card-media img");
+    const cardImages = getProjectCardImages(project);
+
+    if (cardImage && cardImages.length > 1) {
+      const currentIndex = Number.parseInt(cardImage.dataset.imageIndex || "0", 10);
+      rotatingCards.push({
+        cardImage,
+        cardImages,
+        imageIndex: Number.isNaN(currentIndex) ? 0 : currentIndex,
+        isTransitioning: false
+      });
+    }
+
+    portfolioGrid.appendChild(card);
   });
 
   if (visibleCount) {
@@ -95,6 +115,79 @@ function renderProjects() {
   }
 
   initRevealAnimations();
+  startArchiveImageCycle(rotatingCards);
+}
+
+function stopArchiveImageCycle() {
+  if (!archiveImageCycleId) {
+    return;
+  }
+
+  window.clearInterval(archiveImageCycleId);
+  archiveImageCycleId = 0;
+}
+
+function startArchiveImageCycle(rotatingCards) {
+  if (!rotatingCards.length) {
+    return;
+  }
+
+  archiveImageCycleId = window.setInterval(() => {
+    rotatingCards.forEach((entry) => {
+      if (!entry.cardImage.isConnected || entry.isTransitioning) {
+        return;
+      }
+
+      const nextImageIndex = (entry.imageIndex + 1) % entry.cardImages.length;
+      swapCardImage(entry, nextImageIndex);
+    });
+  }, archiveCycleIntervalMs);
+}
+
+function swapCardImage(entry, nextImageIndex) {
+  const nextImage = entry.cardImages[nextImageIndex];
+  if (!nextImage) {
+    return;
+  }
+
+  entry.isTransitioning = true;
+
+  const applySwap = () => {
+    if (!entry.cardImage.isConnected) {
+      entry.isTransitioning = false;
+      return;
+    }
+
+    if (!archiveFadeDurationMs) {
+      entry.cardImage.src = nextImage;
+      entry.cardImage.dataset.imageIndex = String(nextImageIndex);
+      entry.imageIndex = nextImageIndex;
+      entry.isTransitioning = false;
+      return;
+    }
+
+    entry.cardImage.classList.add("is-fading-out");
+    window.setTimeout(() => {
+      if (!entry.cardImage.isConnected) {
+        entry.isTransitioning = false;
+        return;
+      }
+
+      entry.cardImage.src = nextImage;
+      entry.cardImage.dataset.imageIndex = String(nextImageIndex);
+      entry.imageIndex = nextImageIndex;
+
+      window.requestAnimationFrame(() => {
+        entry.cardImage.classList.remove("is-fading-out");
+        entry.isTransitioning = false;
+      });
+    }, archiveFadeDurationMs);
+  };
+
+  const preload = new Image();
+  preload.addEventListener("load", applySwap, { once: true });
+  preload.addEventListener("error", applySwap, { once: true });
+  preload.src = nextImage;
 }
 
 document.addEventListener("click", (event) => {
@@ -122,3 +215,5 @@ document.addEventListener("click", (event) => {
 
 renderFilterControls();
 renderProjects();
+
+window.addEventListener("beforeunload", stopArchiveImageCycle);
