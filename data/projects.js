@@ -840,8 +840,8 @@ export const projects = [
     status: "Private repository, documented case study",
     projectType: "Project",
     tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],
-    thumbnail: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
-    heroImage: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
+    thumbnail: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-hero-render-red-enclosure.png",
+    heroImage: "assets/images/projects/solid-connections/repo/Documentation/Images/render-transparent-enclosure-cutaway-01.png",
     summary:
       "A full-stack hardware project centered on co-design across enclosure CAD, Altium PCB revisions, firmware updates, and integration debugging.",
     overview: [
@@ -910,19 +910,19 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
-        alt: "Solid Connections system overview board",
-        caption: "System architecture view across mechanical, electrical, and embedded subsystems."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-system-block-v2.png",
+        alt: "Solid Connections system block diagram",
+        caption: "Updated system block diagram showing current cross-domain integration points."
       },
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
-        alt: "Solid Connections integration and packaging board",
-        caption: "Integrated enclosure and PCB packaging with revision-driven hardware changes."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-cad-exploded-assembly-purple.png",
+        alt: "Solid Connections CAD exploded render",
+        caption: "Exploded CAD render highlighting enclosure and internal assembly packaging."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Poorly made wiring diagram.png",
-        alt: "Solid Connections validation and iteration board",
-        caption: "Revision notes highlighting DRC cycles, firmware tuning, and subsystem debugging."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-front-with-oled.jpg",
+        alt: "Solid Connections PCB and OLED hardware photo",
+        caption: "Hardware capture of PCB and OLED integration used during bringup and validation."
       }
     ],
     lessonsLearned: [

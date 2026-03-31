@@ -312,6 +312,263 @@ export const repoImages = {
       caption: "Imported from repository: ProximalPhalanx open.png"
     },
   ],
+  "solid-connections": [
+    {
+      src: "assets/images/projects/solid-connections/repo/Assets/Fonts/minecraftia/sample.png",
+      alt: "solid-connections repo image: sample",
+      caption: "Imported from repository: sample.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-hero-render-red-enclosure.png",
+      alt: "solid-connections repo image: diagram hero render red enclosure",
+      caption: "Imported from repository: diagram-hero-render-red-enclosure.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-system-block-v1.png",
+      alt: "solid-connections repo image: diagram system block v1",
+      caption: "Imported from repository: diagram-system-block-v1.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-system-block-v2.png",
+      alt: "solid-connections repo image: diagram system block v2",
+      caption: "Imported from repository: diagram-system-block-v2.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/cad-enclosure-concept-angle-01.png",
+      alt: "solid-connections repo image: cad enclosure concept angle 01",
+      caption: "Imported from repository: cad-enclosure-concept-angle-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/cad-enclosure-concept-angle-02.png",
+      alt: "solid-connections repo image: cad enclosure concept angle 02",
+      caption: "Imported from repository: cad-enclosure-concept-angle-02.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/flowchart-development-process.png",
+      alt: "solid-connections repo image: flowchart development process",
+      caption: "Imported from repository: flowchart-development-process.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/logo-41070-ems-variants.png",
+      alt: "solid-connections repo image: logo 41070 ems variants",
+      caption: "Imported from repository: logo-41070-ems-variants.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/logo-primary.png",
+      alt: "solid-connections repo image: logo primary",
+      caption: "Imported from repository: logo-primary.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-device-in-hand-front-view-01.jpg",
+      alt: "solid-connections repo image: photo device in hand front view 01",
+      caption: "Imported from repository: photo-device-in-hand-front-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-device-in-hand-front-view-02.jpg",
+      alt: "solid-connections repo image: photo device in hand front view 02",
+      caption: "Imported from repository: photo-device-in-hand-front-view-02.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-device-in-hand-front-view-03.jpg",
+      alt: "solid-connections repo image: photo device in hand front view 03",
+      caption: "Imported from repository: photo-device-in-hand-front-view-03.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-device-weight-on-scale.jpg",
+      alt: "solid-connections repo image: photo device weight on scale",
+      caption: "Imported from repository: photo-device-weight-on-scale.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-device-worn-on-shirt.jpg",
+      alt: "solid-connections repo image: photo device worn on shirt",
+      caption: "Imported from repository: photo-device-worn-on-shirt.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-enclosure-front-angle-01.jpg",
+      alt: "solid-connections repo image: photo enclosure front angle 01",
+      caption: "Imported from repository: photo-enclosure-front-angle-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-enclosure-front-cutout-closeup.jpg",
+      alt: "solid-connections repo image: photo enclosure front cutout closeup",
+      caption: "Imported from repository: photo-enclosure-front-cutout-closeup.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-enclosure-front-view-01.jpg",
+      alt: "solid-connections repo image: photo enclosure front view 01",
+      caption: "Imported from repository: photo-enclosure-front-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-enclosure-rear-view-01.jpg",
+      alt: "solid-connections repo image: photo enclosure rear view 01",
+      caption: "Imported from repository: photo-enclosure-rear-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-enclosure-side-view-01.jpg",
+      alt: "solid-connections repo image: photo enclosure side view 01",
+      caption: "Imported from repository: photo-enclosure-side-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-oled-module-on-desk.jpg",
+      alt: "solid-connections repo image: photo oled module on desk",
+      caption: "Imported from repository: photo-oled-module-on-desk.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-and-oled-module-on-laptop.jpg",
+      alt: "solid-connections repo image: photo pcb and oled module on laptop",
+      caption: "Imported from repository: photo-pcb-and-oled-module-on-laptop.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-bare-back-view-01.jpg",
+      alt: "solid-connections repo image: photo pcb bare back view 01",
+      caption: "Imported from repository: photo-pcb-bare-back-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-bare-back-view-02.jpg",
+      alt: "solid-connections repo image: photo pcb bare back view 02",
+      caption: "Imported from repository: photo-pcb-bare-back-view-02.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-bare-back-view-03.jpg",
+      alt: "solid-connections repo image: photo pcb bare back view 03",
+      caption: "Imported from repository: photo-pcb-bare-back-view-03.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-bare-front-view-01.jpg",
+      alt: "solid-connections repo image: photo pcb bare front view 01",
+      caption: "Imported from repository: photo-pcb-bare-front-view-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-front-with-oled.jpg",
+      alt: "solid-connections repo image: photo pcb front with oled",
+      caption: "Imported from repository: photo-pcb-front-with-oled.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-powered-test-setup-01.jpg",
+      alt: "solid-connections repo image: photo pcb powered test setup 01",
+      caption: "Imported from repository: photo-pcb-powered-test-setup-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-printed-parts-set-01.jpg",
+      alt: "solid-connections repo image: photo printed parts set 01",
+      caption: "Imported from repository: photo-printed-parts-set-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-printed-parts-set-02.jpg",
+      alt: "solid-connections repo image: photo printed parts set 02",
+      caption: "Imported from repository: photo-printed-parts-set-02.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-team-member-portrait-01.jpg",
+      alt: "solid-connections repo image: photo team member portrait 01",
+      caption: "Imported from repository: photo-team-member-portrait-01.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-team-member-portrait-02.jpg",
+      alt: "solid-connections repo image: photo team member portrait 02",
+      caption: "Imported from repository: photo-team-member-portrait-02.jpg"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/reference-tamagotchi-style.png",
+      alt: "solid-connections repo image: reference tamagotchi style",
+      caption: "Imported from repository: reference-tamagotchi-style.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-cad-exploded-assembly-purple.png",
+      alt: "solid-connections repo image: render cad exploded assembly purple",
+      caption: "Imported from repository: render-cad-exploded-assembly-purple.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-enclosure-bottom-view.png",
+      alt: "solid-connections repo image: render enclosure bottom view",
+      caption: "Imported from repository: render-enclosure-bottom-view.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-enclosure-open-with-pcb.png",
+      alt: "solid-connections repo image: render enclosure open with pcb",
+      caption: "Imported from repository: render-enclosure-open-with-pcb.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-exploded-assembly-angle-a.png",
+      alt: "solid-connections repo image: render exploded assembly angle a",
+      caption: "Imported from repository: render-exploded-assembly-angle-a.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-exploded-assembly-angle-b.png",
+      alt: "solid-connections repo image: render exploded assembly angle b",
+      caption: "Imported from repository: render-exploded-assembly-angle-b.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-exploded-assembly-horizontal-01.png",
+      alt: "solid-connections repo image: render exploded assembly horizontal 01",
+      caption: "Imported from repository: render-exploded-assembly-horizontal-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-exploded-assembly-horizontal-02.png",
+      alt: "solid-connections repo image: render exploded assembly horizontal 02",
+      caption: "Imported from repository: render-exploded-assembly-horizontal-02.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-exploded-assembly-vertical-01.png",
+      alt: "solid-connections repo image: render exploded assembly vertical 01",
+      caption: "Imported from repository: render-exploded-assembly-vertical-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-pcb-oled-closeup-01.png",
+      alt: "solid-connections repo image: render pcb oled closeup 01",
+      caption: "Imported from repository: render-pcb-oled-closeup-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-pcb-with-barrel-jack-angle-01.png",
+      alt: "solid-connections repo image: render pcb with barrel jack angle 01",
+      caption: "Imported from repository: render-pcb-with-barrel-jack-angle-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-pcb-with-controls-angle-02.png",
+      alt: "solid-connections repo image: render pcb with controls angle 02",
+      caption: "Imported from repository: render-pcb-with-controls-angle-02.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-purple-enclosure-front.png",
+      alt: "solid-connections repo image: render purple enclosure front",
+      caption: "Imported from repository: render-purple-enclosure-front.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-side-stackup-view.png",
+      alt: "solid-connections repo image: render side stackup view",
+      caption: "Imported from repository: render-side-stackup-view.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-technical-drawing-sheet.png",
+      alt: "solid-connections repo image: render technical drawing sheet",
+      caption: "Imported from repository: render-technical-drawing-sheet.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-transparent-enclosure-cutaway-01.png",
+      alt: "solid-connections repo image: render transparent enclosure cutaway 01",
+      caption: "Imported from repository: render-transparent-enclosure-cutaway-01.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-transparent-enclosure-cutaway-02.png",
+      alt: "solid-connections repo image: render transparent enclosure cutaway 02",
+      caption: "Imported from repository: render-transparent-enclosure-cutaway-02.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Firmware/Vendor/Freenove_ESP32_WROOM_Board-main/Freenove_ESP32_WROOM_Board-main/Arduino_Configuration.png",
+      alt: "solid-connections repo image: Arduino Configuration",
+      caption: "Imported from repository: Arduino_Configuration.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Firmware/Vendor/Freenove_ESP32_WROOM_Board-main/Freenove_ESP32_WROOM_Board-main/CH340/Linux/Linux.png",
+      alt: "solid-connections repo image: Linux",
+      caption: "Imported from repository: Linux.png"
+    },
+    {
+      src: "assets/images/projects/solid-connections/repo/Firmware/Vendor/Freenove_ESP32_WROOM_Board-main/Freenove_ESP32_WROOM_Board-main/Freenove_ESP32_WROOM_Board_Pinout.png",
+      alt: "solid-connections repo image: Freenove ESP32 WROOM Board Pinout",
+      caption: "Imported from repository: Freenove_ESP32_WROOM_Board_Pinout.png"
+    },
+  ],
   "test-bench-vehicle": [
     {
       src: "assets/images/projects/test-bench-vehicle/repo/1719122140949.jpg",
