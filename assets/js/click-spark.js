@@ -22,7 +22,7 @@ function getEventTargetElement(event) {
 }
 
 export function initClickSpark({
-  targetSelector = "a[href], button, [role='button'], .dock-link, .brand, .logo-loop-link",
+  targetSelector = null,
   sparkColor = "#d9eeff",
   sparkSize = 9,
   sparkRadius = 13,
@@ -42,6 +42,8 @@ export function initClickSpark({
   const ctx = canvas.getContext("2d");
   const sparks = [];
   const ease = resolveEasing(easing);
+  const keyboardTargetSelector =
+    targetSelector || "a[href], button, [role='button'], .dock-link, .brand, .logo-loop-link";
   let animationId = 0;
 
   const resizeCanvas = () => {
@@ -100,13 +102,15 @@ export function initClickSpark({
   };
 
   const handlePointerDown = (event) => {
-    if (event.button !== 0) {
+    if (event.pointerType === "mouse" && event.button !== 0) {
       return;
     }
 
-    const target = getEventTargetElement(event);
-    if (!target || !target.closest(targetSelector)) {
-      return;
+    if (targetSelector) {
+      const target = getEventTargetElement(event);
+      if (!target || !target.closest(targetSelector)) {
+        return;
+      }
     }
 
     spawnSparks(event.clientX, event.clientY);
@@ -118,7 +122,7 @@ export function initClickSpark({
     }
 
     const active = document.activeElement;
-    if (!(active instanceof Element) || !active.matches(targetSelector)) {
+    if (!(active instanceof Element) || !active.matches(keyboardTargetSelector)) {
       return;
     }
 
