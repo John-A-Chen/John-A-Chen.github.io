@@ -718,6 +718,119 @@ export const projects = [
     relatedProjects: ["robo-arm", "camera-study"]
   },
   {
+    slug: "forestguard",
+    featured: true,
+    title: "ForestGuard",
+    subtitle:
+      "A ROS 2 Humble simulation stack for a Husky-style UGV, combining Gazebo, RViz, SLAM, Nav2, joystick teleop, and autonomy bringup from one launch file.",
+    year: "2025-2026",
+    status: "Sanitized public release",
+    projectType: "Solo",
+    tags: ["ROS 2", "Autonomy", "Simulation", "Navigation", "Perception"],
+    thumbnail: "assets/images/projects/forestguard/repo/images/02_gazebo_rviz_robotmodel_nav2_panel.png",
+    heroImage: "assets/images/projects/forestguard/repo/images/25_gazebo_forest_path_perspective.png",
+    summary:
+      "A simulation-first autonomy project that packages environment generation, robot localisation, perception debugging, UI control, and mission execution into a reproducible single-terminal workflow.",
+    overview: [
+      "ForestGuard is a simulation stack built around ROS 2 Humble for a Husky-style UGV operating in a forest environment. The project integrates Ignition/Gazebo, RViz visualisation, SLAM, Nav2, teleop, and autonomy behavior into one launch path so setup overhead is low and demonstrations are consistent.",
+      "The public repository is intentionally sanitized for subject protection, but still documents system architecture, launch workflow, UI operation, and world-generation tooling. The project is designed to be usable for demonstrations, debugging, and controlled variation of forest world layouts."
+    ],
+    problem: [
+      "Multi-node robotics stacks are easy to break when each subsystem is launched and configured manually. Reproducing the same working state for simulation, localisation, perception, and control can become unreliable.",
+      "ForestGuard addresses this by centralising bringup and documenting operator flow so users can run a full mission scenario from a single launch command while still exposing tuning entry points for Nav2, SLAM, perception, and autonomy."
+    ],
+    role: [
+      "System integration across simulation, localisation, navigation, and autonomy nodes",
+      "UI and teleop workflow definition for controller-driven and mission-driven operation",
+      "Forest world pipeline development using terrain meshes and generated tree layouts",
+      "Public-safe technical documentation for setup, debugging, and parameter tuning"
+    ],
+    process: [
+      {
+        title: "Single-command bringup architecture",
+        body:
+          "The stack was organized so Gazebo, bridges, state estimation, SLAM, Nav2, UI, and autonomy services are launched together from forestguardmission.launch.py. This reduced startup mismatch and made demos repeatable."
+      },
+      {
+        title: "Operator-first UI and control flow",
+        body:
+          "Controller actions were mapped to practical runtime tasks like teleop takeover, speed scaling, camera switching, and HSV mask mode toggling so the stack can be driven and debugged without opening multiple terminals."
+      },
+      {
+        title: "Procedural forest world generation",
+        body:
+          "Terrain and tree placement were separated into reusable scripts. Tree XY samples are snapped to terrain height and converted into SDF world files, enabling fast environment variants without manual object placement."
+      },
+      {
+        title: "Troubleshooting and tuning documentation",
+        body:
+          "The README captures dependency fixes, runtime failure modes, launch prerequisites, and key parameter files so users can recover quickly when simulation, TF, joystick, or rendering issues appear."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Integrated Nav2 + SLAM + autonomy workflow",
+        body:
+          "The project combines mapping/localisation and mission behavior in one simulation loop, allowing controlled transitions between manual teleop and autonomous execution."
+      },
+      {
+        title: "Perception debugging via HSV camera mode",
+        body:
+          "Camera view cycling and HSV remap mode support faster canopy threshold debugging and visual verification of segmentation behavior during runtime."
+      },
+      {
+        title: "Terrain-aware tree placement pipeline",
+        body:
+          "World generation scripts cast tree positions onto mesh height before SDF export, which keeps generated forests physically aligned with terrain geometry."
+      }
+    ],
+    tools: [
+      "ROS 2 Humble",
+      "Nav2",
+      "SLAM Toolbox",
+      "Ignition Gazebo / ros_gz_bridge",
+      "RViz2",
+      "Python",
+      "PySide6"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/ForestGuard",
+      cad: null,
+      drawings: null,
+      print: null,
+      docs: "https://github.com/John-A-Chen/ForestGuard#readme",
+      media: "https://github.com/John-A-Chen/ForestGuard/tree/main/images"
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/forestguard/repo/images/02_gazebo_rviz_robotmodel_nav2_panel.png",
+        alt: "ForestGuard Gazebo and RViz dual-view bringup",
+        caption: "Full simulation bringup showing Husky in Gazebo with RViz overlays and Nav2 context."
+      },
+      {
+        src: "assets/images/projects/forestguard/repo/images/23_ui_camera_and_radial_tree_map.png",
+        alt: "ForestGuard runtime UI with camera and tree map",
+        caption: "Operator UI panel with camera feed and radial tree-map view for runtime monitoring."
+      },
+      {
+        src: "assets/images/projects/forestguard/repo/images/39_topdown_scan_with_tree_detections.png",
+        alt: "ForestGuard top-down LiDAR detections",
+        caption: "Top-down sensor map showing scan structure and tree detection feedback."
+      }
+    ],
+    lessonsLearned: [
+      "Single-entry launch orchestration dramatically improves reproducibility for complex robotics demos.",
+      "Operator controls and debug views should be designed as first-class system interfaces, not afterthought tooling.",
+      "Procedural environment generation becomes more useful when mesh alignment and asset paths are handled in scripts, not manual edits."
+    ],
+    futureWork: [
+      "Replace pseudocode placeholders with publishable implementation modules when release constraints allow.",
+      "Expand automated mission evaluation metrics for path quality, detection stability, and autonomy completion reliability.",
+      "Add packaged presets for different forest densities and terrain profiles to speed scenario-based testing."
+    ],
+    relatedProjects: ["camera-study", "test-bench-vehicle"]
+  },
+  {
     slug: "solid-connections",
     featured: true,
     title: "Solid Connections",
@@ -727,8 +840,8 @@ export const projects = [
     status: "Private repository, documented case study",
     projectType: "Project",
     tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],
-    thumbnail: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
-    heroImage: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
+    thumbnail: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-hero-render-red-enclosure.png",
+    heroImage: "assets/images/projects/solid-connections/repo/Documentation/Images/render-transparent-enclosure-cutaway-01.png",
     summary:
       "A full-stack hardware project centered on co-design across enclosure CAD, Altium PCB revisions, firmware updates, and integration debugging.",
     overview: [
@@ -797,19 +910,19 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/johncar/repo/docs/Grit Guard simple FEA.png",
-        alt: "Solid Connections system overview board",
-        caption: "System architecture view across mechanical, electrical, and embedded subsystems."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-system-block-v2.png",
+        alt: "Solid Connections system block diagram",
+        caption: "Updated system block diagram showing current cross-domain integration points."
       },
       {
-        src: "assets/images/projects/test-bench-vehicle/repo/1719583870771.jpg",
-        alt: "Solid Connections integration and packaging board",
-        caption: "Integrated enclosure and PCB packaging with revision-driven hardware changes."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Images/render-cad-exploded-assembly-purple.png",
+        alt: "Solid Connections CAD exploded render",
+        caption: "Exploded CAD render highlighting enclosure and internal assembly packaging."
       },
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2024/Poorly made wiring diagram.png",
-        alt: "Solid Connections validation and iteration board",
-        caption: "Revision notes highlighting DRC cycles, firmware tuning, and subsystem debugging."
+        src: "assets/images/projects/solid-connections/repo/Documentation/Images/photo-pcb-front-with-oled.jpg",
+        alt: "Solid Connections PCB and OLED hardware photo",
+        caption: "Hardware capture of PCB and OLED integration used during bringup and validation."
       }
     ],
     lessonsLearned: [
