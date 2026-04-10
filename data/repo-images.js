@@ -255,6 +255,43 @@ export const repoImages = {
       caption: "Imported from repository: Requirements List.png"
     },
   ],
+  "mecanum-wheel-study": [
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/assembly-isometric-view.png",
+      alt: "mecanum-wheel-study repo image: assembly isometric view",
+      caption: "Imported from repository: assembly-isometric-view.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/roller-mount-clearance-measurement.png",
+      alt: "mecanum-wheel-study repo image: roller mount clearance measurement",
+      caption: "Imported from repository: roller-mount-clearance-measurement.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/roller-profile-45deg-geometry.png",
+      alt: "mecanum-wheel-study repo image: roller profile 45 degree geometry",
+      caption: "Imported from repository: roller-profile-45deg-geometry.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/roller-profile-dimensions.png",
+      alt: "mecanum-wheel-study repo image: roller profile dimensions",
+      caption: "Imported from repository: roller-profile-dimensions.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/roller-sweep-envelope-overlay.png",
+      alt: "mecanum-wheel-study repo image: roller sweep envelope overlay",
+      caption: "Imported from repository: roller-sweep-envelope-overlay.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/wheel-top-layout-sketch.png",
+      alt: "mecanum-wheel-study repo image: wheel top layout sketch",
+      caption: "Imported from repository: wheel-top-layout-sketch.png"
+    },
+    {
+      src: "assets/images/projects/mecanum-wheel-study/repo/images/wheel-top-view-final.png",
+      alt: "mecanum-wheel-study repo image: wheel top view final",
+      caption: "Imported from repository: wheel-top-view-final.png"
+    },
+  ],
   "robo-arm": [
     {
       src: "assets/images/projects/robo-arm/repo/docs/copy but scale down geometry.png",

@@ -117,15 +117,17 @@ export const projects = [
     featured: true,
     title: "Mecanum Wheel Study",
     subtitle:
-      "An open-source study into low-cost, 3D-printable mecanum wheels aimed at making holonomic robotics more accessible to students and hobbyists.",
+      "An open-source exploration of low-cost, 3D-printable mecanum wheels designed to make holonomic robotics more accessible to students, hobbyists, and educators.",
     year: "2025",
     status: "Open study",
     projectType: "Solo",
     tags: ["Robotics", "3D Printing", "Mechanisms", "Open Source", "CAD"],
-    thumbnail: "",
-    heroImage: "",
+    thumbnail:
+      "assets/images/projects/mecanum-wheel-study/repo/images/wheel-top-view-final.png",
+    heroImage:
+      "assets/images/projects/mecanum-wheel-study/repo/images/assembly-isometric-view.png",
     summary:
-      "A printable mecanum wheel study centred on affordability, manufacturability, tolerance control, and educational clarity rather than chasing a premium industrial design.",
+      "An iterative, tolerance-aware mecanum wheel project focused on affordability, reproducibility, and educational value using printable components and open documentation.",
     overview: [
       "Commercial mecanum wheels can be expensive and hard to justify for student or hobby robotics projects. This study explores whether a lower-cost, mostly printable wheel can still be useful for education, experimentation, and early platform development.",
       "The work focuses on the geometry and manufacturing realities that matter for small-scale access: roller alignment, bearing support, print orientation, part count, assembly repeatability, and how much tolerance variation the design can tolerate before performance degrades noticeably."
@@ -182,12 +184,12 @@ export const projects = [
       "Calipers and fit-check testing"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/mecanum-wheel-study",
-      cad: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/cad",
+      repo: "https://github.com/John-A-Chen/MechanumWheelStudy",
+      cad: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/cad",
       drawings: null,
-      print: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/print-files",
-      docs: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/docs",
-      media: "https://github.com/John-A-Chen/mecanum-wheel-study/tree/main/media"
+      print: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/print",
+      docs: "https://github.com/John-A-Chen/MechanumWheelStudy#readme",
+      media: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/images"
     },
     gallery: [],
     lessonsLearned: [
