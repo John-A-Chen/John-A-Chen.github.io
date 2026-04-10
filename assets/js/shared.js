@@ -57,7 +57,7 @@ export function populateSharedProfile(profile) {
       return path;
     }
 
-    if (path.startsWith("assets/") || path.startsWith("docs/")) {
+    if (path.startsWith("assets/")) {
       return isProjectPage ? `../${path}` : path;
     }
 
@@ -69,7 +69,7 @@ export function populateSharedProfile(profile) {
       return href;
     }
 
-    if (href.startsWith("assets/") || href.startsWith("docs/")) {
+    if (href.startsWith("assets/")) {
       return isProjectPage ? `../${href}` : href;
     }
 

@@ -404,7 +404,7 @@ function renderSidebar(activeProject) {
         <div class="sidebar-links">
           <a class="text-link" href="../portfolio.html">Back to all projects</a>
           <a class="text-link" data-profile-link="github" href="#">Open GitHub profile</a>
-          <a class="text-link" data-profile-link="resume" href="#">Open resume</a>
+          <a class="text-link" href="../experience.html">Open experience page</a>
         </div>
       </section>
     </div>

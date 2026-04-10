@@ -13,12 +13,12 @@ Static GitHub Pages portfolio for mechatronics, robotics, CAD, and engineering c
 
 - `index.html` - Home
 - `portfolio.html` - Project archive
-- `resume.html` - Resume page
+- `experience.html` - Experience page
 - `contact.html` - Contact page
 - `projects/*.html` - Project case-study page shells
 - `assets/css/styles.css` - Global styles
 - `assets/js/*.js` - Page scripts and shared UI logic
-- `data/site.js` - Profile/contact/resume content
+- `data/site.js` - Profile/contact/experience content
 - `data/projects.js` - Project content and links
 - `data/repo-images.js` - Imported project image catalog
 

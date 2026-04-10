@@ -11,7 +11,7 @@ function iconSvg(name) {
     return `<svg ${common}><rect x="3" y="4" width="18" height="5"/><path d="M5 9v11h14V9"/><path d="M10 13h4"/></svg>`;
   }
 
-  if (name === "resume") {
+  if (name === "experience") {
     return `<svg ${common}><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6"/><path d="M10 17h6"/></svg>`;
   }
 
@@ -53,7 +53,7 @@ function createDockItems(basePath) {
   const items = [
     { label: "Home", href: `${basePath}index.html`, icon: "home" },
     { label: "Portfolio", href: `${basePath}portfolio.html`, icon: "archive" },
-    { label: "Resume", href: `${basePath}resume.html`, icon: "resume" },
+    { label: "Experience", href: `${basePath}experience.html`, icon: "experience" },
     { label: "Contact", href: `${basePath}contact.html`, icon: "contact" }
   ];
 

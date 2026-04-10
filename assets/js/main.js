@@ -17,6 +17,7 @@ initClickSpark();
 
 const focusAreas = document.getElementById("focus-areas");
 const projectCount = document.getElementById("project-count");
+const headshotSlot = document.querySelector(".headshot-slot");
 
 function renderFocusAreas() {
   if (!focusAreas) {
@@ -43,6 +44,39 @@ function renderProjectCount() {
   projectCount.textContent = String(projects.length).padStart(2, "0");
 }
 
+function initProfileHoverIconReveal() {
+  if (!headshotSlot) {
+    return;
+  }
+
+  let revealTimerId = null;
+
+  const clearTimer = () => {
+    if (revealTimerId) {
+      clearTimeout(revealTimerId);
+      revealTimerId = null;
+    }
+  };
+
+  const hideIcon = () => {
+    clearTimer();
+    headshotSlot.classList.remove("show-github-icon");
+  };
+
+  const scheduleReveal = () => {
+    clearTimer();
+    revealTimerId = setTimeout(() => {
+      headshotSlot.classList.add("show-github-icon");
+      revealTimerId = null;
+    }, 2000);
+  };
+
+  headshotSlot.addEventListener("pointerenter", scheduleReveal);
+  headshotSlot.addEventListener("pointerleave", hideIcon);
+  headshotSlot.addEventListener("pointercancel", hideIcon);
+}
+
 renderFocusAreas();
 renderProjectCount();
+initProfileHoverIconReveal();
 initRevealAnimations();

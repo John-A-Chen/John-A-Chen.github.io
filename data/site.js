@@ -29,7 +29,7 @@ export const siteProfile = {
   contactEmail: "johnalfredchen@gmail.com",
   mapEmbedUrl:
     "https://www.google.com/maps?q=Ultimo+NSW+2007+Australia&output=embed",
-  resumeExperience: [
+  experienceTimeline: [
     {
       title: "Mechanical Design Intern, OpenTech Designs",
       period: "May 2025 - Present",
@@ -43,12 +43,19 @@ export const siteProfile = {
         "Designed and integrated a scaled testbench chassis to validate the autonomous sensor suite. Set hardpoints to improve mounting reliability, alignment, and serviceability with FEA support, and structured repeatable validation tests to document faults, corrections, and improvements."
     }
   ],
-  resumeEducation: [
+  educationTimeline: [
     {
       title: "University of Technology Sydney (UTS)",
       period: "Current",
       detail:
         "Mechatronics Engineering with focus areas in mechanical design, robotics, and engineering software tooling."
+    }
+  ],
+  certifications: [
+    {
+      title: "SOLIDWORKS Associate - CAD Design",
+      image: "assets/images/profile/SOLIDWORKS Associate - CAD Design.png",
+      credential: "assets/docs/Certificate_C-QEAZYSK6NG.pdf"
     }
   ],
   socials: [
@@ -63,8 +70,8 @@ export const siteProfile = {
     github: "https://github.com/John-A-Chen",
     website: "https://john-a-chen.github.io",
     linkedin: "https://linkedin.com/in/John-A-Chen",
-    resume: "docs/John_A_Chen_CV.pdf",
-    transcript: "docs/John_Chen_Academic_Transcript.pdf",
-    journal: "docs/41070_EDP3_Journal_Final.pdf"
+    cv: "assets/docs/John_A_Chen_CV.pdf",
+    transcript: "assets/docs/John_Chen_Academic_Transcript.pdf",
+    journal: "assets/docs/41070_EDP3_Journal_Final.pdf"
   }
 };
