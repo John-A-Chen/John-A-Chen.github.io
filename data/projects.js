@@ -78,10 +78,10 @@ export const projects = [
     links: {
       repo: "https://github.com/John-A-Chen/Warman-Attempts",
       cad: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/cad",
-      drawings: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/drawings",
+      drawings: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/drawing",
       print: null,
-      docs: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/docs",
-      media: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/renders"
+      docs: null,
+      media: "https://github.com/John-A-Chen/Warman-Attempts/tree/main/render"
     },
     gallery: [
       {
@@ -279,7 +279,7 @@ export const projects = [
       drawings: null,
       print: "https://github.com/John-A-Chen/Robo-Arm/tree/main/stl",
       docs: "https://github.com/John-A-Chen/Robo-Arm/tree/main/docs",
-      media: "https://github.com/John-A-Chen/Robo-Arm/tree/main/renders"
+      media: null
     },
     gallery: [
       {
@@ -381,11 +381,11 @@ export const projects = [
     ],
     links: {
       repo: "https://github.com/John-A-Chen/Test-Bench-Vehicle",
-      cad: null,
-      drawings: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/drawings",
+      cad: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/cad",
+      drawings: null,
       print: null,
-      docs: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/build-notes",
-      media: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/photos"
+      docs: "https://github.com/John-A-Chen/Test-Bench-Vehicle/tree/main/docs",
+      media: null
     },
     gallery: [
       {
@@ -489,7 +489,7 @@ export const projects = [
       repo: "https://github.com/John-A-Chen/Camera-Study",
       cad: "https://github.com/John-A-Chen/Camera-Study/tree/main/cad",
       drawings: null,
-      print: "https://github.com/John-A-Chen/Camera-Study/tree/main/stl",
+      print: null,
       docs: "https://github.com/John-A-Chen/Camera-Study/tree/main/docs",
       media: null
     },
@@ -701,7 +701,7 @@ export const projects = [
     links: {
       repo: "https://github.com/John-A-Chen/CycloidialStudy",
       cad: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/CAD",
-      drawings: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Drawings",
+      drawings: null,
       print: null,
       docs: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Docs",
       media: null
@@ -903,11 +903,11 @@ export const projects = [
       "System integration testing"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/Solid-Connections",
-      cad: "https://github.com/John-A-Chen/Solid-Connections/tree/main/CAD",
+      repo: null,
+      cad: null,
       drawings: null,
       print: null,
-      docs: "https://github.com/John-A-Chen/Solid-Connections",
+      docs: null,
       media: null
     },
     gallery: [
