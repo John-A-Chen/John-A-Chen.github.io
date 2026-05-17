@@ -479,9 +479,9 @@ body.has-dock {
 .section-heading h2,
 .project-hero h1,
 .content-section h2 {
-  margin: 0 0 0.72rem;
+  margin: 0 0 1.1rem;
   font-family: "Space Grotesk", sans-serif;
-  line-height: 0.98;
+  line-height: 0.92;
   letter-spacing: -0.04em;
 }
 
@@ -507,7 +507,7 @@ body.has-dock {
 
 .section-heading h2,
 .content-section h2 {
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-size: clamp(1.9rem, 4vw, 3rem);
 }
 
 .hero-degree,
