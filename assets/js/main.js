@@ -1,11 +1,10 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
 import { initClickSpark } from "./click-spark.js";
+import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
-import { initLetterDrift } from "./letter-drift.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
-  createProjectCard,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile
@@ -16,10 +15,11 @@ initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
 initClickSpark();
+initCursorPlus();
 
 const focusAreas = document.getElementById("focus-areas");
-const featuredProjects = document.getElementById("featured-projects");
 const projectCount = document.getElementById("project-count");
+const headshotSlot = document.querySelector(".headshot-slot");
 
 function renderFocusAreas() {
   if (!focusAreas) {
@@ -46,25 +46,20 @@ function renderProjectCount() {
   projectCount.textContent = String(projects.length).padStart(2, "0");
 }
 
-function renderFeaturedProjects() {
-  if (!featuredProjects) {
+function initProfileHoverIconReveal() {
+  if (!headshotSlot) {
     return;
   }
 
-  const selectedProjects = projects
-    .filter((project) => project.featured)
-    .slice(0, 3);
+  const hideIcon = () => headshotSlot.classList.remove("show-github-icon");
+  const scheduleReveal = () => headshotSlot.classList.add("show-github-icon");
 
-  featuredProjects.innerHTML = "";
-  selectedProjects.forEach((project) => {
-    featuredProjects.appendChild(
-      createProjectCard(project, { compact: true, showSummary: false })
-    );
-  });
+  headshotSlot.addEventListener("pointerenter", scheduleReveal);
+  headshotSlot.addEventListener("pointerleave", hideIcon);
+  headshotSlot.addEventListener("pointercancel", hideIcon);
 }
 
 renderFocusAreas();
 renderProjectCount();
-renderFeaturedProjects();
-initLetterDrift();
+initProfileHoverIconReveal();
 initRevealAnimations();

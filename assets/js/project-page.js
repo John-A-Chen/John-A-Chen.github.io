@@ -6,22 +6,27 @@ import {
 } from "../../data/projects.js";
 import { repoImages } from "../../data/repo-images.js";
 import { initClickSpark } from "./click-spark.js";
+import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
   createProjectCard,
-  createResourceButtons,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile,
   resolveImagePath
 } from "./shared.js";
 
+let lightboxEl = null;
+let lightboxItems = [];
+let lightboxIndex = 0;
+
 populateSharedProfile(siteProfile);
 initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
 initClickSpark();
+initCursorPlus();
 
 const slug = document.body.dataset.projectSlug;
 const project = getProjectBySlug(slug);
@@ -95,6 +100,84 @@ function uniqueBySource(items) {
   );
 }
 
+function closeLightbox() {
+  if (lightboxEl) {
+    lightboxEl.remove();
+    lightboxEl = null;
+  }
+  document.removeEventListener("keydown", lightboxKeyHandler);
+}
+
+function lightboxKeyHandler(e) {
+  if (e.key === "Escape") {
+    closeLightbox();
+  } else if (e.key === "ArrowLeft") {
+    stepLightbox(-1);
+  } else if (e.key === "ArrowRight") {
+    stepLightbox(1);
+  }
+}
+
+function stepLightbox(direction) {
+  lightboxIndex =
+    (lightboxIndex + direction + lightboxItems.length) % lightboxItems.length;
+  syncLightboxImage();
+}
+
+function syncLightboxImage() {
+  if (!lightboxEl) return;
+  const item = lightboxItems[lightboxIndex];
+  const img = lightboxEl.querySelector(".lightbox-img");
+  const caption = lightboxEl.querySelector(".lightbox-caption");
+  const counter = lightboxEl.querySelector(".lightbox-counter");
+  const prevBtn = lightboxEl.querySelector(".lightbox-nav.prev");
+  const nextBtn = lightboxEl.querySelector(".lightbox-nav.next");
+
+  img.src = resolveProjectAsset(item.src);
+  img.alt = item.alt || "";
+  caption.textContent = cleanupCaption(item.caption || item.alt, "");
+  counter.textContent = `${lightboxIndex + 1} / ${lightboxItems.length}`;
+
+  const single = lightboxItems.length <= 1;
+  prevBtn.hidden = single;
+  nextBtn.hidden = single;
+}
+
+function openLightbox(items, startIndex) {
+  if (lightboxEl) closeLightbox();
+
+  lightboxItems = items;
+  lightboxIndex = startIndex;
+
+  const el = document.createElement("div");
+  el.className = "lightbox";
+  el.setAttribute("role", "dialog");
+  el.setAttribute("aria-modal", "true");
+  el.setAttribute("aria-label", "Image viewer");
+  el.innerHTML = `
+    <div class="lightbox-backdrop"></div>
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav prev" aria-label="Previous image">&#8249;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" src="" alt="" />
+      <p class="lightbox-caption"></p>
+      <p class="lightbox-counter"></p>
+    </div>
+    <button class="lightbox-nav next" aria-label="Next image">&#8250;</button>
+  `;
+
+  el.querySelector(".lightbox-backdrop").addEventListener("click", closeLightbox);
+  el.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+  el.querySelector(".lightbox-nav.prev").addEventListener("click", () => stepLightbox(-1));
+  el.querySelector(".lightbox-nav.next").addEventListener("click", () => stepLightbox(1));
+
+  document.body.appendChild(el);
+  lightboxEl = el;
+
+  document.addEventListener("keydown", lightboxKeyHandler);
+  syncLightboxImage();
+}
+
 function collectProjectGalleryItems(activeProject) {
   const seedItems = [];
 
@@ -131,20 +214,17 @@ function renderProjectPage(activeProject) {
   const intro = document.createElement("article");
   intro.className = "project-hero reveal";
 
-  const repoButton = activeProject.links?.repo
-    ? `<a class="button button-repo-primary" href="${activeProject.links.repo}" target="_blank" rel="noreferrer">Open GitHub Repository</a>`
-    : "";
-
   intro.innerHTML = `
-    <a class="breadcrumb-link" href="../portfolio.html">Back to Project Archive</a>
     <div class="project-hero-grid">
       <div class="project-hero-copy">
         <p class="eyebrow">${activeProject.year} / ${activeProject.status}</p>
         <h1>${activeProject.title}</h1>
-        <p class="project-subtitle">${activeProject.subtitle}</p>
-        <p class="project-summary">${activeProject.summary}</p>
+        <div class="project-copy-text">
+          <p class="project-subtitle">${activeProject.subtitle}</p>
+          <p class="project-summary">${activeProject.summary}</p>
+        </div>
         <ul class="tag-list">${activeProject.tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>
-        <div class="project-action-row">${repoButton}</div>
+        <div class="project-action-row"></div>
       </div>
       ${
         heroItem
@@ -156,125 +236,68 @@ function renderProjectPage(activeProject) {
     </div>
   `;
 
-  const nonRepoLabels = Object.fromEntries(
-    Object.entries(projectLinkLabels).filter(([key]) => key !== "repo")
-  );
   const actionRow = intro.querySelector(".project-action-row");
-  const topResourceButtons = createResourceButtons(activeProject.links, nonRepoLabels);
-  if (topResourceButtons.childElementCount > 0) {
-    [...topResourceButtons.children].forEach((button) => {
-      actionRow.appendChild(button);
-    });
-  }
-  if (!actionRow.childElementCount) {
+  if (activeProject.links?.repo) {
+    const repoBtn = document.createElement("a");
+    repoBtn.className = "button button-repo-primary button-full";
+    repoBtn.href = activeProject.links.repo;
+    repoBtn.target = "_blank";
+    repoBtn.rel = "noreferrer";
+    repoBtn.textContent = "View Repository";
+    actionRow.appendChild(repoBtn);
+  } else {
     actionRow.remove();
   }
   headerRoot.appendChild(intro);
 
-  renderGallery(activeProject, galleryItems);
+  const heroImg = intro.querySelector(".project-hero-media img");
+  if (heroImg) {
+    heroImg.addEventListener("click", () => openLightbox(galleryItems, 0));
+  }
+
+  renderThumbnailStrip(intro, activeProject, galleryItems);
+  renderGallery();
   renderContent(activeProject);
   renderSidebar(activeProject);
   renderRelated(activeProject);
 }
 
-function renderGallery(activeProject, galleryItems) {
-  if (!galleryItems.length) {
-    galleryRoot.innerHTML = "";
-    return;
-  }
+function renderThumbnailStrip(heroEl, activeProject, galleryItems) {
+  if (galleryItems.length <= 1) return;
 
-  galleryRoot.innerHTML = `
-    <div class="section-heading reveal">
-      <p class="eyebrow">Gallery</p>
-      <h2>Visual record of the design, analysis, and iteration process.</h2>
-    </div>
-    <article class="gallery-carousel reveal" aria-label="Project image carousel">
-      <button class="gallery-nav-btn prev" type="button" aria-label="Previous image">
-        &#8249;
-      </button>
-      <figure class="gallery-stage">
-        <img id="gallery-active-image" src="" alt="" />
-        <figcaption id="gallery-active-caption"></figcaption>
-      </figure>
-      <button class="gallery-nav-btn next" type="button" aria-label="Next image">
-        &#8250;
-      </button>
-    </article>
-    <div class="gallery-meta-row reveal">
-      <p class="gallery-counter" id="gallery-counter"></p>
-      <div class="gallery-dot-row" id="gallery-dot-row"></div>
-    </div>
-  `;
+  const mediaFigure = heroEl.querySelector(".project-hero-media");
+  if (!mediaFigure) return;
 
-  const imageEl = document.getElementById("gallery-active-image");
-  const captionEl = document.getElementById("gallery-active-caption");
-  const counterEl = document.getElementById("gallery-counter");
-  const dotRow = document.getElementById("gallery-dot-row");
-  const prevButton = galleryRoot.querySelector(".gallery-nav-btn.prev");
-  const nextButton = galleryRoot.querySelector(".gallery-nav-btn.next");
+  const grid = document.createElement("div");
+  grid.className = "gallery-thumb-grid";
 
-  let currentIndex = 0;
+  galleryItems.slice(0, 8).forEach((item, index) => {
+    const wrap = document.createElement("div");
+    wrap.className = "gallery-thumb-wrap";
+    wrap.tabIndex = 0;
 
-  const dotButtons = galleryItems.map((item, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "gallery-dot";
-    dot.setAttribute("aria-label", `Go to image ${index + 1}`);
-    dot.addEventListener("click", () => {
-      currentIndex = index;
-      syncActiveImage();
+    const img = document.createElement("img");
+    img.className = "gallery-thumb";
+    img.src = resolveProjectAsset(item.src);
+    img.alt = item.alt || `${activeProject.title} image ${index + 1}`;
+    img.loading = "lazy";
+
+    wrap.appendChild(img);
+    wrap.addEventListener("click", () => openLightbox(galleryItems, index));
+    wrap.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLightbox(galleryItems, index);
+      }
     });
-    dotRow.appendChild(dot);
-    return dot;
+    grid.appendChild(wrap);
   });
 
-  const syncActiveImage = () => {
-    const activeItem = galleryItems[currentIndex];
-    const fallbackCaption = `${activeProject.title} image ${currentIndex + 1}`;
-    imageEl.src = resolveProjectAsset(activeItem.src);
-    imageEl.alt = activeItem.alt || fallbackCaption;
-    captionEl.textContent = cleanupCaption(
-      activeItem.caption || activeItem.alt,
-      fallbackCaption
-    );
-    counterEl.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+  mediaFigure.appendChild(grid);
+}
 
-    dotButtons.forEach((dot, dotIndex) => {
-      const active = dotIndex === currentIndex;
-      dot.classList.toggle("is-active", active);
-      dot.setAttribute("aria-pressed", String(active));
-    });
-  };
-
-  const stepImage = (direction) => {
-    currentIndex =
-      (currentIndex + direction + galleryItems.length) % galleryItems.length;
-    syncActiveImage();
-  };
-
-  prevButton.addEventListener("click", () => stepImage(-1));
-  nextButton.addEventListener("click", () => stepImage(1));
-
-  if (galleryItems.length <= 1) {
-    prevButton.hidden = true;
-    nextButton.hidden = true;
-  }
-
-  document.addEventListener("keydown", (event) => {
-    const tag = document.activeElement?.tagName?.toLowerCase();
-    if (tag === "input" || tag === "textarea") {
-      return;
-    }
-
-    if (event.key === "ArrowLeft") {
-      stepImage(-1);
-    }
-    if (event.key === "ArrowRight") {
-      stepImage(1);
-    }
-  });
-
-  syncActiveImage();
+function renderGallery() {
+  galleryRoot.innerHTML = "";
 }
 
 function renderContent(activeProject) {
@@ -334,13 +357,6 @@ function renderContent(activeProject) {
     </section>
 
     <section class="content-section reveal">
-      <p class="eyebrow">Files And Resources</p>
-      <h2>Direct links back to the source material</h2>
-      <p>Use these links to move from the polished case study back into the original repository, CAD folders, documentation, fabrication files, and media.</p>
-      <div id="main-resource-buttons"></div>
-    </section>
-
-    <section class="content-section reveal">
       <p class="eyebrow">Lessons Learned</p>
       <h2>What changed after iteration and review</h2>
       <ul class="content-list">
@@ -357,10 +373,6 @@ function renderContent(activeProject) {
     </section>
   `;
 
-  const mainResourceButtons = document.getElementById("main-resource-buttons");
-  mainResourceButtons.appendChild(
-    createResourceButtons(activeProject.links, projectLinkLabels)
-  );
 }
 
 function renderSidebar(activeProject) {

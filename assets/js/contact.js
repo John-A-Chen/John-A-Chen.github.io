@@ -1,6 +1,7 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
 import { initClickSpark } from "./click-spark.js";
+import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
@@ -14,6 +15,7 @@ initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
 initClickSpark();
+initCursorPlus();
 
 const map = document.getElementById("contact-map");
 const locationLabel = document.getElementById("contact-location");
@@ -38,12 +40,12 @@ const socialBadgeByLabel = {
 };
 
 const socialCtaByLabel = {
-  Discord: "Chat on Discord",
-  Instagram: "Follow project updates",
-  LinkedIn: "Connect on LinkedIn",
-  Pinterest: "View design references",
-  TikTok: "Watch short builds",
-  YouTube: "Open video channel"
+  Discord: "gift me nitro",
+  Instagram: "ping me",
+  LinkedIn: "gift me premium",
+  Pinterest: "share me some inspo",
+  TikTok: "get me off this app",
+  YouTube: "share me cool stuff"
 };
 
 if (map) {
@@ -64,25 +66,11 @@ if (socialGrid) {
   socialGrid.innerHTML = siteProfile.socials
     .map((social) => {
       const badgeSrc = socialBadgeByLabel[social.label];
-      const badgeMarkup = badgeSrc
-        ? `
-          <img
-            class="social-badge"
-            src="${badgeSrc}"
-            alt="${social.label} logo badge"
-            loading="lazy"
-            decoding="async"
-          />
-        `
-        : "";
-      const socialCta = socialCtaByLabel[social.label] || "Open profile";
-
       return `
-        <a class="contact-card reveal" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.label}">
-          ${badgeMarkup}
-          <p class="text-link social-cta">${socialCta}</p>
+        <a class="contact-card social-icon-btn reveal" href="${social.url}" target="_blank" rel="noreferrer" aria-label="${social.label}">
+          ${badgeSrc ? `<img class="social-badge-large" src="${badgeSrc}" alt="${social.label}" loading="lazy" decoding="async" />` : `<span class="contact-platform-label">${social.label}</span>`}
         </a>
-      `
+      `;
     })
     .join("");
 }

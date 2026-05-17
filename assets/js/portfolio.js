@@ -1,6 +1,7 @@
 import { projects } from "../../data/projects.js";
 import { siteProfile } from "../../data/site.js";
 import { initClickSpark } from "./click-spark.js";
+import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
@@ -17,6 +18,7 @@ initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
 initClickSpark();
+initCursorPlus();
 
 const filterList = document.getElementById("filter-list");
 const filterSelect = document.getElementById("filter-select");
@@ -42,15 +44,15 @@ function isVisibleForFilter(project, filter) {
 
 function setActiveFilter(filter) {
   activeFilter = filter;
-  filterSelectValue.textContent = filter;
-  filterSelect.classList.remove("active");
+  if (filterSelectValue) filterSelectValue.textContent = filter;
+  if (filterSelect) filterSelect.classList.remove("active");
   renderFilterControls();
   renderProjects();
 }
 
 function renderFilterControls() {
   if (filterList) {
-    filterSelectValue.textContent = activeFilter;
+    if (filterSelectValue) filterSelectValue.textContent = activeFilter;
     filterList.innerHTML = allTags
       .map(
         (tag) => `
@@ -203,12 +205,12 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  if (event.target.closest("#filter-select")) {
+  if (filterSelect && event.target.closest("#filter-select")) {
     filterSelect.classList.toggle("active");
     return;
   }
 
-  if (!event.target.closest(".filter-select-box")) {
+  if (filterSelect && !event.target.closest(".filter-select-box")) {
     filterSelect.classList.remove("active");
   }
 });

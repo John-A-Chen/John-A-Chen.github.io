@@ -1,6 +1,7 @@
 import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
 import { initClickSpark } from "./click-spark.js";
+import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
@@ -15,6 +16,7 @@ initSiteDock();
 initLogoLoop();
 initRandomProjectLink(projects);
 initClickSpark();
+initCursorPlus();
 
 const experienceList = document.getElementById("experience-list");
 const educationList = document.getElementById("education-list");
@@ -66,6 +68,14 @@ function createCertificationCards(items) {
 
 if (certificationGrid) {
   certificationGrid.innerHTML = createCertificationCards(siteProfile.certifications || []);
+}
+
+if (certificationGrid) {
+  certificationGrid.addEventListener("click", (e) => {
+    if (e.target.tagName === "IMG") {
+      e.target.classList.toggle("is-expanded");
+    }
+  });
 }
 
 initRevealAnimations();

@@ -639,8 +639,8 @@ export const projects = [
     status: "Parametric drive development",
     projectType: "Solo",
     tags: ["Transmission", "Cycloidal Drive", "SolidWorks", "Parametric Design", "Robotics"],
-    thumbnail: "assets/images/projects/cycloidial-study/assembly.svg",
-    heroImage: "assets/images/projects/cycloidial-study/assembly.svg",
+    thumbnail: "",
+    heroImage: "",
     summary:
       "A manufacturing-aware cycloidal reducer study built around equations, global variables, and repeatable CAD workflows for robotic actuator applications.",
     overview: [
@@ -648,7 +648,7 @@ export const projects = [
       "The repository combines CAD, scripting support, docs, and references to turn cycloidal design into an understandable and modifiable engineering process."
     ],
     problem: [
-      "Many cycloidal resources are either fixed examples or optimized for other CAD tools, making adaptation and learning harder for SolidWorks users.",
+      "Many cycloidal resources are either fixed examples or optimised for other CAD tools, making adaptation and learning harder for SolidWorks users.",
       "The project solves this by building a parameter-driven design base with manufacturing-aware assumptions and documentation that explains the tradeoffs."
     ],
     role: [
@@ -706,13 +706,7 @@ export const projects = [
       docs: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Docs",
       media: null
     },
-    gallery: [
-      {
-        src: "assets/images/projects/cycloidial-study/assembly.svg",
-        alt: "Cycloidial Study assembly and access diagram",
-        caption: "Parametric reducer assembly placeholder showing package zones, access paths, and design documentation intent."
-      }
-    ],
+    gallery: [],
     lessonsLearned: [
       "Parameter-driven modelling is most valuable when every variable has clear physical meaning and constraints.",
       "Transmission CAD quality improves significantly when assembly and manufacturing are considered from the first iteration.",
@@ -757,7 +751,7 @@ export const projects = [
       {
         title: "Single-command bringup architecture",
         body:
-          "The stack was organized so Gazebo, bridges, state estimation, SLAM, Nav2, UI, and autonomy services are launched together from forestguardmission.launch.py. This reduced startup mismatch and made demos repeatable."
+          "The stack was organised so Gazebo, bridges, state estimation, SLAM, Nav2, UI, and autonomy services are launched together from forestguardmission.launch.py. This reduced startup mismatch and made demos repeatable."
       },
       {
         title: "Operator-first UI and control flow",
@@ -909,7 +903,7 @@ export const projects = [
       "System integration testing"
     ],
     links: {
-      repo: null,
+      repo: "https://github.com/John-A-Chen/Solid-Connections",
       cad: null,
       drawings: null,
       print: null,
