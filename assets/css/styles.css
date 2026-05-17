@@ -11,7 +11,7 @@
   --accent: #5caef7;
   --accent-soft: rgba(92, 174, 247, 0.18);
   --accent-cool: #7bd1ff;
-  --shadow: 0 20px 48px rgba(8, 29, 54, 0.22);
+  --shadow: 0 24px 56px rgba(8, 29, 54, 0.32);
   --radius: 22px;
   --radius-sm: 14px;
   --container: min(1180px, calc(100vw - 2.4rem));
