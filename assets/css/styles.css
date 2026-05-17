@@ -931,8 +931,14 @@ body.has-dock {
 }
 
 .focus-panels .info-panel {
-  text-align: center;
+  text-align: left;
   height: 100%;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  padding-left: 1.25rem;
 }
 
 .focus-panels .info-panel h3 {
