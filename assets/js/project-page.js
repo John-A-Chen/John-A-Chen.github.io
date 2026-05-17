@@ -144,8 +144,7 @@ function renderProjectPage(activeProject) {
         <p class="project-subtitle">${activeProject.subtitle}</p>
         <p class="project-summary">${activeProject.summary}</p>
         <ul class="tag-list">${activeProject.tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>
-        <div class="project-priority-row">${repoButton}</div>
-        <div class="project-action-row"></div>
+        <div class="project-action-row">${repoButton}</div>
       </div>
       ${
         heroItem
@@ -160,14 +159,14 @@ function renderProjectPage(activeProject) {
   const nonRepoLabels = Object.fromEntries(
     Object.entries(projectLinkLabels).filter(([key]) => key !== "repo")
   );
-  if (!activeProject.links?.repo) {
-    intro.querySelector(".project-priority-row")?.remove();
-  }
   const actionRow = intro.querySelector(".project-action-row");
   const topResourceButtons = createResourceButtons(activeProject.links, nonRepoLabels);
   if (topResourceButtons.childElementCount > 0) {
-    actionRow.appendChild(topResourceButtons);
-  } else {
+    [...topResourceButtons.children].forEach((button) => {
+      actionRow.appendChild(button);
+    });
+  }
+  if (!actionRow.childElementCount) {
     actionRow.remove();
   }
   headerRoot.appendChild(intro);

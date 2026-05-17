@@ -2,8 +2,10 @@ import { siteProfile } from "../../data/site.js";
 import { projects } from "../../data/projects.js";
 import { initClickSpark } from "./click-spark.js";
 import { initSiteDock } from "./dock.js";
+import { initLetterDrift } from "./letter-drift.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
+  createProjectCard,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile
@@ -16,8 +18,8 @@ initRandomProjectLink(projects);
 initClickSpark();
 
 const focusAreas = document.getElementById("focus-areas");
+const featuredProjects = document.getElementById("featured-projects");
 const projectCount = document.getElementById("project-count");
-const headshotSlot = document.querySelector(".headshot-slot");
 
 function renderFocusAreas() {
   if (!focusAreas) {
@@ -44,39 +46,25 @@ function renderProjectCount() {
   projectCount.textContent = String(projects.length).padStart(2, "0");
 }
 
-function initProfileHoverIconReveal() {
-  if (!headshotSlot) {
+function renderFeaturedProjects() {
+  if (!featuredProjects) {
     return;
   }
 
-  let revealTimerId = null;
+  const selectedProjects = projects
+    .filter((project) => project.featured)
+    .slice(0, 3);
 
-  const clearTimer = () => {
-    if (revealTimerId) {
-      clearTimeout(revealTimerId);
-      revealTimerId = null;
-    }
-  };
-
-  const hideIcon = () => {
-    clearTimer();
-    headshotSlot.classList.remove("show-github-icon");
-  };
-
-  const scheduleReveal = () => {
-    clearTimer();
-    revealTimerId = setTimeout(() => {
-      headshotSlot.classList.add("show-github-icon");
-      revealTimerId = null;
-    }, 2000);
-  };
-
-  headshotSlot.addEventListener("pointerenter", scheduleReveal);
-  headshotSlot.addEventListener("pointerleave", hideIcon);
-  headshotSlot.addEventListener("pointercancel", hideIcon);
+  featuredProjects.innerHTML = "";
+  selectedProjects.forEach((project) => {
+    featuredProjects.appendChild(
+      createProjectCard(project, { compact: true, showSummary: false })
+    );
+  });
 }
 
 renderFocusAreas();
 renderProjectCount();
-initProfileHoverIconReveal();
+renderFeaturedProjects();
+initLetterDrift();
 initRevealAnimations();

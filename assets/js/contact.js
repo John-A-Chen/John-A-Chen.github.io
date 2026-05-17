@@ -38,12 +38,12 @@ const socialBadgeByLabel = {
 };
 
 const socialCtaByLabel = {
-  Discord: "gift me nitro",
-  Instagram: "ping me",
-  LinkedIn: "gift me premium",
-  Pinterest: "share me some inspo",
-  TikTok: "get me off this app",
-  YouTube: "share me cool stuff"
+  Discord: "Chat on Discord",
+  Instagram: "Follow project updates",
+  LinkedIn: "Connect on LinkedIn",
+  Pinterest: "View design references",
+  TikTok: "Watch short builds",
+  YouTube: "Open video channel"
 };
 
 if (map) {

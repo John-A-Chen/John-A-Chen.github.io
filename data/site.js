@@ -3,24 +3,24 @@ export const siteProfile = {
   initials: "JC",
   degree: "Mechatronics Engineering Student - University of Technology Sydney (UTS)",
   tagline:
-    "Mechanical design, robotics, and CAD-driven engineering workflows for real, buildable systems.",
+    "I turn rough mechanical ideas into documented CAD, prototypes, and testable robotic systems.",
   brandLogo: "assets/images/profile/channels4_profile.jpg",
   headshot: "assets/images/profile/higit.png",
   focusAreas: [
     {
-      title: "Mechanism design and CAD",
+      title: "Mechanism design and CAD systems",
       body:
-        "Parametric CAD, assembly architecture, tolerance-aware geometry, and design-for-manufacture decisions grounded in real constraints."
+        "Parametric CAD, assembly architecture, tolerance-aware geometry, and design-for-manufacture decisions grounded in parts that actually need to be built."
     },
     {
-      title: "Robotics and mechatronic systems",
+      title: "Robotics and mechatronic integration",
       body:
-        "Integrated mechanical, electrical, and software work for robotics studies, actuator systems, and prototype test platforms."
+        "Mechanical, electrical, and software-aware work for robot studies, actuator systems, sensor mounts, and prototype test platforms."
     },
     {
-      title: "Automation and engineering tooling",
+      title: "Automation and engineering documentation",
       body:
-        "Applied scripting and documentation pipelines that improve repeatability, make iteration faster, and preserve technical reasoning."
+        "Scripting, repository structure, and documentation habits that make iteration faster, preserve reasoning, and keep handoff work traceable."
     }
   ],
   location: "Sydney, Australia",

@@ -639,8 +639,8 @@ export const projects = [
     status: "Parametric drive development",
     projectType: "Solo",
     tags: ["Transmission", "Cycloidal Drive", "SolidWorks", "Parametric Design", "Robotics"],
-    thumbnail: "",
-    heroImage: "",
+    thumbnail: "assets/images/projects/cycloidial-study/assembly.svg",
+    heroImage: "assets/images/projects/cycloidial-study/assembly.svg",
     summary:
       "A manufacturing-aware cycloidal reducer study built around equations, global variables, and repeatable CAD workflows for robotic actuator applications.",
     overview: [
@@ -706,7 +706,13 @@ export const projects = [
       docs: "https://github.com/John-A-Chen/CycloidialStudy/tree/main/Docs",
       media: null
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "assets/images/projects/cycloidial-study/assembly.svg",
+        alt: "Cycloidial Study assembly and access diagram",
+        caption: "Parametric reducer assembly placeholder showing package zones, access paths, and design documentation intent."
+      }
+    ],
     lessonsLearned: [
       "Parameter-driven modelling is most valuable when every variable has clear physical meaning and constraints.",
       "Transmission CAD quality improves significantly when assembly and manufacturing are considered from the first iteration.",

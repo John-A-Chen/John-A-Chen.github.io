@@ -1,4 +1,8 @@
+import { initCursorPlus } from "./cursor-plus.js";
 import { repoImages } from "../../data/repo-images.js";
+
+document.documentElement.classList.add("js-enabled");
+initCursorPlus();
 
 function uniqueSources(items = []) {
   return [...new Set(items.filter(Boolean))];
@@ -148,7 +152,16 @@ export function initRevealAnimations() {
     }
   );
 
-  revealItems.forEach((item) => observer.observe(item));
+  revealItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const isAlreadyInView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (isAlreadyInView) {
+      item.classList.add("is-visible");
+      return;
+    }
+
+    observer.observe(item);
+  });
 }
 
 export function initRandomProjectLink(allProjects) {
