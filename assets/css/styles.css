@@ -843,7 +843,7 @@ body.has-dock {
 }
 
 .project-card-media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(123, 209, 255, 0.18), rgba(92, 174, 247, 0.08));
 }
@@ -867,7 +867,7 @@ body.has-dock {
 .project-card-body {
   display: grid;
   gap: 0.9rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
 }
 
 .project-card-body h3,
@@ -877,6 +877,10 @@ body.has-dock {
 .process-card h3,
 .highlight-card h3 {
   margin: 0;
+}
+
+.project-card-body h3 {
+  font-size: 1.1rem;
 }
 
 .project-card-meta {
