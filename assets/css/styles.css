@@ -81,7 +81,7 @@ body.has-dock {
 }
 
 .section {
-  padding: 3.4rem 0;
+  padding: 4.5rem 0;
 }
 
 .section-tight-top {
@@ -437,7 +437,7 @@ body.has-dock {
 }
 
 .hero-section {
-  padding-top: 4.7rem;
+  padding-top: 6rem;
 }
 
 .hero-layout,
@@ -469,7 +469,7 @@ body.has-dock {
 }
 
 .hero-copy {
-  padding: 2.5rem;
+  padding: 3rem;
   display: grid;
   align-content: start;
   gap: 0.7rem;
