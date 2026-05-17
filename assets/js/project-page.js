@@ -82,6 +82,28 @@ function resolveProjectAsset(path) {
   return resolved;
 }
 
+function getYouTubeVideoUrlFromImage(src) {
+  if (!src) return null;
+  const match = src.match(/(?:img\.youtube\.com\/vi\/)([^/]+)\//i);
+  if (!match || !match[1]) return null;
+  return `https://www.youtube.com/watch?v=${match[1]}`;
+}
+
+function openGalleryItem(items, index) {
+  const item = items[index];
+  if (!item) {
+    return;
+  }
+
+  const videoUrl = getYouTubeVideoUrlFromImage(item.src);
+  if (videoUrl) {
+    window.open(videoUrl, "_blank", "noopener,noreferrer");
+    return;
+  }
+
+  openLightbox(items, index);
+}
+
 function buildCaseStudyUrl(slug) {
   const configuredBase = siteProfile.links?.website || "";
   const liveOrigin =
@@ -252,7 +274,7 @@ function renderProjectPage(activeProject) {
 
   const heroImg = intro.querySelector(".project-hero-media img");
   if (heroImg) {
-    heroImg.addEventListener("click", () => openLightbox(galleryItems, 0));
+    heroImg.addEventListener("click", () => openGalleryItem(galleryItems, 0));
   }
 
   renderThumbnailStrip(intro, activeProject, galleryItems);
@@ -283,11 +305,11 @@ function renderThumbnailStrip(heroEl, activeProject, galleryItems) {
     img.loading = "lazy";
 
     wrap.appendChild(img);
-    wrap.addEventListener("click", () => openLightbox(galleryItems, index));
+    wrap.addEventListener("click", () => openGalleryItem(galleryItems, index));
     wrap.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        openLightbox(galleryItems, index);
+        openGalleryItem(galleryItems, index);
       }
     });
     grid.appendChild(wrap);

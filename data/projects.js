@@ -806,7 +806,7 @@ export const projects = [
       "MATLAB UI controls and joystick input"
     ],
     links: {
-      repo: "https://github.com/John-A-Chen/AT2ChrisGuyJohn",
+      repo: "https://github.com/John-A-Chen/MATLAB-Welding-Robot",
       cad: null,
       drawings: null,
       print: null,
