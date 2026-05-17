@@ -66,3 +66,9 @@ Edit `data/site.js` for:
 4. Branch: `main`, folder: `/ (root)`.
 
 No extra tooling required.
+
+## Copyright
+
+Copyright © 2026 John Chen. All rights reserved.
+
+This repository is publicly viewable, but it is not licensed for reuse, redistribution, modification, or republication. No permission is granted to copy, deploy, rebrand, or reproduce this website or its contents without written permission.

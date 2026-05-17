@@ -28,7 +28,7 @@ const portfolioGrid = document.getElementById("portfolio-grid");
 const visibleCount = document.getElementById("visible-count");
 const totalCount = document.getElementById("total-count");
 
-let activeFilter = "Solo";
+let activeFilter = "All";
 const orderedProjects = sortProjectsByType(projects);
 const archiveCycleIntervalMs = 5000;
 const archiveFadeDurationMs = window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -36,9 +36,12 @@ const archiveFadeDurationMs = window.matchMedia("(prefers-reduced-motion: reduce
   : 320;
 let archiveImageCycleId = 0;
 
-const allTags = ["Solo", "Project"];
+const allTags = ["All", "Solo", "Project"];
 
 function isVisibleForFilter(project, filter) {
+  if (filter === "All") {
+    return true;
+  }
   return (project.projectType || "Solo") === filter;
 }
 

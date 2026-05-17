@@ -292,6 +292,23 @@ export const repoImages = {
       caption: "Imported from repository: wheel-top-view-final.png"
     },
   ],
+  "matlab-welding-robot": [
+    {
+      src: "https://img.youtube.com/vi/RnitCm5TBhw/hqdefault.jpg",
+      alt: "matlab-welding-robot video thumbnail: 41013 final",
+      caption: "Video thumbnail: 41013 Welding Robots Final Video"
+    },
+    {
+      src: "https://img.youtube.com/vi/qjHxWVd3D6w/hqdefault.jpg",
+      alt: "matlab-welding-robot video thumbnail: team welding",
+      caption: "Video thumbnail: Welding Robots (Chris, Guy, John)"
+    },
+    {
+      src: "https://img.youtube.com/vi/nlIlINuIPB4/hqdefault.jpg",
+      alt: "matlab-welding-robot video thumbnail: sensors and controls",
+      caption: "Video thumbnail: Hand-eye calibration and visual servoing"
+    },
+  ],
   "robo-arm": [
     {
       src: "assets/images/projects/robo-arm/repo/docs/copy but scale down geometry.png",

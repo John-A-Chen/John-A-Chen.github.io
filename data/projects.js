@@ -720,6 +720,129 @@ export const projects = [
     relatedProjects: ["robo-arm", "camera-study"]
   },
   {
+    slug: "matlab-welding-robot",
+    featured: true,
+    title: "MATLAB Welding Robot",
+    subtitle:
+      "A MATLAB-based dual-robot welding cell simulation developed for 41013 Industrial Robotics and extended for 41014 Sensors and Controls with camera-guided control studies.",
+    year: "2024",
+    status: "Course project archive",
+    projectType: "Project",
+    tags: [
+      "MATLAB",
+      "Industrial Robotics",
+      "Resolved Motion Rate Control",
+      "Collision Avoidance",
+      "Visual Servoing"
+    ],
+    thumbnail: "https://img.youtube.com/vi/RnitCm5TBhw/hqdefault.jpg",
+    heroImage: "https://img.youtube.com/vi/qjHxWVd3D6w/hqdefault.jpg",
+    summary:
+      "A team-built simulation coordinating a heavy-workpiece manipulator and a UR3e welding arm with IK, RMRC + damped least squares, UI-driven operation modes, and ellipsoid-based collision checks.",
+    overview: [
+      "The repository contains iterative MATLAB development for a heavy-workpiece and welding-cell simulation using Robotics Toolbox style models. Core classes (`A2.m`, `A230.m`, `A2J2.m`) orchestrate scene setup, robot instantiation, free-joint control, and automated motion sequences.",
+      "The work spans two courses. In 41013 Industrial Robotics, the focus is coordinated welding trajectories, inverse kinematics, and robot motion control. In 41014 Sensors and Controls for Mechatronic Systems, the repo extends into camera-centric experiments such as `VideoServoingLab8.m` using a central-camera model and image-based visual servoing workflow. Demo videos used in this archive: https://youtu.be/RnitCm5TBhw, https://youtu.be/qjHxWVd3D6w, and https://youtu.be/nlIlINuIPB4."
+    ],
+    problem: [
+      "Manual welding of large components is safety-critical and physically demanding, especially around heat, fumes, and line-of-sight constraints. The project explored how a coordinated robot pair can reduce operator exposure while preserving path quality.",
+      "From a controls perspective, the challenge was to generate smooth tool trajectories while avoiding poor Jacobian conditioning and handling obstacle-aware operation in the same workspace."
+    ],
+    role: [
+      "MATLAB simulation architecture and iterative class/script development",
+      "Kinematic modelling integration for UR3e and KUKA Titan variants",
+      "RMRC trajectory generation with damped least-squares Jacobian inversion",
+      "GUI workflow for free control, sequence execution, path placement, and E-stop handling",
+      "Collision-obstacle checks using ellipsoid-link approximations"
+    ],
+    process: [
+      {
+        title: "Model and scene integration",
+        body:
+          "Robot models (`UR3e.m`, `KukaTitan.m`, `NachiMZ04.m`, `LinearNachiMZ04.m`) were assembled into a common scene with textured floor/walls and PLY assets for environment and tooling."
+      },
+      {
+        title: "Control pipeline refinement",
+        body:
+          "Early standalone scripts (`A1mess*`, `RMRC*`) were consolidated into class-based flows (`A2*`) that support repeatable UI entry points for free-joint control, scripted welding sequence, and controller-based Cartesian jogging."
+      },
+      {
+        title: "Trajectory and singularity handling",
+        body:
+          "RMRC loops were implemented for both robot arms with manipulability checks and damped least-squares inverse Jacobians to reduce instability near singular configurations."
+      },
+      {
+        title: "Collision and sensing extensions",
+        body:
+          "Obstacle interaction was approximated by transforming link point-cloud segments through each joint frame and testing algebraic distance against ellipsoids. Separate visual-servoing scripts explored camera feedback control for sensor-focused coursework."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Dual-arm RMRC workflow",
+        body:
+          "`A2.m` and `A230.m` compute end-effector trajectories, solve initial IK with `ikcon`, and step joint states via Jacobian-based velocity mapping for both UR3e and KUKA branches."
+      },
+      {
+        title: "Manual and joystick control interfaces",
+        body:
+          "The project exposes uicontrol sliders for direct joint manipulation and includes joystick-based Cartesian updates (`vrjoystick`) for interactive testing and demonstration."
+      },
+      {
+        title: "Collision approximation with ellipsoids",
+        body:
+          "Link geometry is sampled/updated per transform, then checked against obstacle ellipsoids using algebraic distance tests to flag points inside exclusion volumes."
+      },
+      {
+        title: "Sensor-and-controls crossover",
+        body:
+          "`VideoServoingLab8.m` adds an image-based visual-servoing path using a central camera model, visual Jacobian (`visjac_p`), and robot Jacobian inversion for camera-to-joint control."
+      }
+    ],
+    tools: [
+      "MATLAB",
+      "Peter Corke Robotics Toolbox ecosystem",
+      "SerialLink / Link kinematics",
+      "PLY-based geometry assets",
+      "MATLAB UI controls and joystick input"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/AT2ChrisGuyJohn",
+      cad: null,
+      drawings: null,
+      print: null,
+      docs: "https://john-a-chen.github.io/assets/docs/matlab-welding-robot-source-code-map.md",
+      media: "https://youtu.be/RnitCm5TBhw"
+    },
+    gallery: [
+      {
+        src: "https://img.youtube.com/vi/RnitCm5TBhw/hqdefault.jpg",
+        alt: "MATLAB Welding Robot 41013 final video thumbnail",
+        caption: "41013 final video thumbnail."
+      },
+      {
+        src: "https://img.youtube.com/vi/qjHxWVd3D6w/hqdefault.jpg",
+        alt: "MATLAB Welding Robot team video thumbnail",
+        caption: "Team welding video thumbnail (Chris, Guy, John)."
+      },
+      {
+        src: "https://img.youtube.com/vi/nlIlINuIPB4/hqdefault.jpg",
+        alt: "MATLAB Welding Robot sensors and controls video thumbnail",
+        caption: "41014 hand-eye calibration and visual-servoing video thumbnail."
+      }
+    ],
+    lessonsLearned: [
+      "Class-based orchestration made the large collection of scripts much easier to run and extend than ad-hoc one-off files.",
+      "Damped least squares and manipulability checks are essential for robust RMRC in mixed-geometry robot setups.",
+      "Clear UI pathways (free control, sequence, E-stop, controller mode) materially improved demo reliability under assignment time pressure."
+    ],
+    futureWork: [
+      "Complete the repository rename and add a top-level README that maps primary entry scripts and dependencies.",
+      "Consolidate legacy script variants into a cleaner folder hierarchy (`models`, `controllers`, `demos`, `experiments`).",
+      "Add repeatable validation plots for path error, joint limits, and collision-margin metrics."
+    ],
+    relatedProjects: ["robo-arm", "solid-connections", "forestguard"]
+  },
+  {
     slug: "forestguard",
     featured: true,
     title: "ForestGuard",
