@@ -267,7 +267,17 @@ function renderProjectPage(activeProject) {
     repoBtn.rel = "noreferrer";
     repoBtn.textContent = "View Repository";
     actionRow.appendChild(repoBtn);
-  } else {
+  }
+  if (activeProject.links?.website) {
+    const websiteBtn = document.createElement("a");
+    websiteBtn.className = "button button-full";
+    websiteBtn.href = activeProject.links.website;
+    websiteBtn.target = "_blank";
+    websiteBtn.rel = "noreferrer";
+    websiteBtn.textContent = "View Project Site";
+    actionRow.appendChild(websiteBtn);
+  }
+  if (!actionRow.children.length) {
     actionRow.remove();
   }
   headerRoot.appendChild(intro);
@@ -293,7 +303,8 @@ function renderThumbnailStrip(heroEl, activeProject, galleryItems) {
   const grid = document.createElement("div");
   grid.className = "gallery-thumb-grid";
 
-  galleryItems.slice(0, 8).forEach((item, index) => {
+  const previewLimit = activeProject.galleryPreviewLimit || 8;
+  galleryItems.slice(0, previewLimit).forEach((item, index) => {
     const wrap = document.createElement("div");
     wrap.className = "gallery-thumb-wrap";
     wrap.tabIndex = 0;

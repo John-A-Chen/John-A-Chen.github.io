@@ -5,7 +5,7 @@ export const siteProfile = {
   tagline:
     "Mechanical design, robotics, and CAD-driven engineering workflows for real, buildable systems.",
   brandLogo: "assets/images/profile/channels4_profile.jpg",
-  headshot: "assets/images/profile/higit.png",
+  headshot: "assets/images/profile/hellogit.jpg",
   focusAreas: [
     {
       title: "Mechanism design and CAD",

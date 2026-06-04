@@ -1,7 +1,7 @@
 # MATLAB Welding Robot - Source Code Documentation (Extracted)
 
 Date: 2026-05-18  
-Source repository: https://github.com/John-A-Chen/AT2ChrisGuyJohn  
+Source repository: https://github.com/John-A-Chen/MATLAB-Welding-Robot  
 Portfolio slug: `matlab-welding-robot`
 
 ## Project Context

@@ -416,6 +416,10 @@ export const projects = [
     ],
     relatedProjects: ["mecanum-wheel-study", "warman-attempts"]
   },
+  /*
+   * Temporarily hidden while these project pages are unfinished.
+   * Restore by removing this comment block.
+   *
   {
     slug: "camera-study",
     featured: true,
@@ -719,6 +723,7 @@ export const projects = [
     ],
     relatedProjects: ["robo-arm", "camera-study"]
   },
+   */
   {
     slug: "matlab-welding-robot",
     featured: true,
@@ -843,6 +848,355 @@ export const projects = [
     relatedProjects: ["robo-arm", "solid-connections", "forestguard"]
   },
   {
+    slug: "holoassist",
+    featured: true,
+    title: "HoloAssist",
+    subtitle:
+      "An XR-based human-robot collaboration framework connecting Quest teleoperation, ROS 2 perception, RealSense AprilTag cube tracking, UR3e/RG2 control, MoveIt, and dashboard monitoring.",
+    year: "2025-2026",
+    status: "RS2 final project archive",
+    projectType: "Project",
+    tags: ["ROS 2", "XR", "Perception", "MoveIt", "Team Project"],
+    thumbnail: "https://john-a-chen.github.io/HoloAssist/screenshots/rviz_cubes.png",
+    heroImage: "https://john-a-chen.github.io/HoloAssist/screenshots/quest_ar_overlay.png",
+    summary:
+      "A team-built HRI platform where my strongest contribution was perception and integration: narrowing a broad RGB-D workspace concept into a reliable AprilTag cube-pose pipeline, then documenting the interfaces needed for Unity, RViz, MoveIt, calibration, and handover.",
+    overview: [
+      "HoloAssist was developed for Robotics Studio 2 as a human-robot collaboration system combining XR teleoperation, ROS 2 control, robot perception, robot visualisation, and semi-autonomous task execution. The system connects a Meta Quest headset and Unity interface to a physical UR3e robot with an OnRobot RG2 gripper while using perception to locate cubes and support pick-and-place style tasks.",
+      "My final reflection reframed the project around two main engineering stories: perception integration and handover readiness. The perception subsystem moved from broad RGB-D workspace understanding toward a constrained AprilTag cube-tracking interface because stable cube poses were more useful for Unity, RViz, MoveIt, and the final demo than a broader but less reliable point-cloud concept."
+    ],
+    problem: [
+      "Collaborative robot tasks require operators to understand robot state, object pose, workspace constraints, calibration, and safety limits across several tools at once. Without stable interfaces, camera detections can look correct but still be unusable by robot motion or XR visualisation.",
+      "The main challenge was not only building features, but making perception, calibration, Unity, RViz, dashboard monitoring, and MoveIt agree on topic names, TF frames, launch modes, and handover assumptions."
+    ],
+    role: [
+      "Perception subsystem design, integration, and documentation",
+      "AprilTag cube-tracking pipeline with tag groups, cube geometry, stale detection handling, and debug overlays",
+      "Calibration and TF handover work connecting camera observations to robot-base poses",
+      "Interface documentation for RViz, Unity relay topics, MoveIt pick-and-place inputs, and troubleshooting checks",
+      "Repository cleanup and handover analysis covering branch mismatch, stale paths, submodules, Unity local packages, and fresh-clone risks"
+    ],
+    process: [
+      {
+        title: "Broad RGB-D concept",
+        body:
+          "The initial direction explored RealSense RGB-D input, point-cloud workspace modelling, object detection, dynamic obstacle detection, and no-go-zone visualisation. That matched the XR collaboration goal, but it was too broad and noise-sensitive for a reliable final integrated demo."
+      },
+      {
+        title: "AprilTag cube interface",
+        body:
+          "The perception scope narrowed to AprilTags on cubes using known tag IDs, tag size, cube edge length, and face-to-centre offsets. This created clear per-cube pose topics that downstream systems could test and consume."
+      },
+      {
+        title: "Integrated perception package",
+        body:
+          "The final perception work became a proper `HoloAssist_Perception` ROS package with launch files, camera bringup, AprilTag config, cube geometry config, debug image overlays, RViz markers, service integration, fallback webcam support, and MoveIt target adapters."
+      },
+      {
+        title: "Handover and reproducibility",
+        body:
+          "The final work also audited repository structure, submodule paths, Unity package paths, launch assumptions, branch drift, stale paths, and setup documentation because the project needed to be understandable and launchable by someone other than the original developers."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "RealSense to cube-pose pipeline",
+        body:
+          "The pipeline runs from RealSense colour input through `apriltag_ros` detections, cube pose fusion, per-cube `PoseStamped` topics, RViz markers, Unity relay topics, and MoveIt pick-place inputs."
+      },
+      {
+        title: "Multi-face cube pose fusion",
+        body:
+          "Each cube maps to a six-tag group, allowing visible faces to generate candidate cube centres. Parameters such as tag size, cube edge size, face offset, detection timeout, publish rate, and consensus threshold became practical debugging handles."
+      },
+      {
+        title: "Debug overlay as an evaluation tool",
+        body:
+          "The `aprilcube_tracker_node.py` debug image made perception observable by showing tag outlines, cube wireframes, detection age, FPS-style runtime feedback, and whether the camera/tag/cube pipeline was actually behaving."
+      },
+      {
+        title: "Calibration and TF integration",
+        body:
+          "The easy_handeye2 workflow documents an eye-on-base transform from `base_link` to `camera_link`, making camera detections usable by the robot planning frame instead of remaining isolated image observations."
+      }
+    ],
+    tools: [
+      "Unity",
+      "Meta Quest",
+      "ROS 2 Humble",
+      "UR3e",
+      "OnRobot RG2",
+      "AprilTag",
+      "RealSense D435i",
+      "MoveIt",
+      "RViz",
+      "PyQt5 dashboard",
+      "ROS-TCP Connector"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/HoloAssist",
+      website: "https://john-a-chen.github.io/HoloAssist/",
+      cad: null,
+      drawings: null,
+      print: null,
+      docs: "https://john-a-chen.github.io/HoloAssist/docs/",
+      media: "https://john-a-chen.github.io/HoloAssist/#gallery"
+    },
+    galleryPreviewLimit: 18,
+    gallery: [
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/quest_ar_overlay.png",
+        alt: "HoloAssist Quest mixed-reality overlay",
+        caption: "Quest mixed-reality overlay showing robot and task context in the operator view."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/rviz_cubes.png",
+        alt: "HoloAssist AprilTag cube tracking in RViz",
+        caption: "RViz perception view showing tracked cubes and coordinate-frame context."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/dashboard.png",
+        alt: "HoloAssist dashboard",
+        caption: "Dashboard view used to inspect runtime state outside the XR headset."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/perception.png",
+        alt: "HoloAssist AprilTag perception pipeline",
+        caption: "AprilTag perception view showing cube tracking and robot-frame context."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/perception.gif",
+        alt: "HoloAssist live perception tracking",
+        caption: "Animated perception capture showing live cube tracking during runtime."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/multicubetracking.png",
+        alt: "HoloAssist multi-cube tracking in RViz",
+        caption: "Multi-cube tracking result used to validate the AprilTag cube workflow."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/cubebintracking.png",
+        alt: "HoloAssist cube and bin tracking view",
+        caption: "Cube and bin tracking view connecting perception output to task context."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/calibration.png",
+        alt: "HoloAssist hand-eye calibration",
+        caption: "Hand-eye calibration view supporting the camera-to-robot transform."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/camera_setup.jpeg",
+        alt: "HoloAssist RealSense camera setup",
+        caption: "Physical RealSense camera setup used for the sim-to-real perception path."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/teleoperation.png",
+        alt: "HoloAssist teleoperation workflow",
+        caption: "Teleoperation workflow capture showing the operator-driven robot-control mode."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/teleoperation.gif",
+        alt: "HoloAssist animated teleoperation demo",
+        caption: "Animated teleoperation demo showing the XR-to-robot interaction loop."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/visualisation.png",
+        alt: "HoloAssist robot visualisation",
+        caption: "Robot visualisation view used to communicate live system state."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/visualisation.gif",
+        alt: "HoloAssist animated visualisation",
+        caption: "Animated visualisation capture showing live robot and scene feedback."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/autonomous.png",
+        alt: "HoloAssist autonomous workflow",
+        caption: "Autonomous workflow capture from the task-execution side of the project."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/autonomous.gif",
+        alt: "HoloAssist autonomous demo animation",
+        caption: "Animated autonomous demo showing supervised task execution behavior."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/headsetstreamdashboard.png",
+        alt: "HoloAssist headset stream dashboard",
+        caption: "Dashboard headset stream used for monitoring the operator's XR view."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/debugtabdashboard.png",
+        alt: "HoloAssist dashboard debug tab",
+        caption: "Debug dashboard view exposing runtime state for faster system diagnosis."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/resourcemonitor.png",
+        alt: "HoloAssist resource monitor",
+        caption: "Resource monitoring view used to understand runtime load during demos."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/session.png",
+        alt: "HoloAssist session logging",
+        caption: "Session logging view preserving interaction and demonstration context."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/ollieteleop.png",
+        alt: "HoloAssist teleoperation demo setup",
+        caption: "Teleoperation demo setup showing operator interaction with the robot workflow."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/apriltest.png",
+        alt: "HoloAssist AprilTag test capture",
+        caption: "AprilTag test capture used during perception validation."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/aprilcube2docs.png",
+        alt: "HoloAssist AprilTag cube documentation",
+        caption: "AprilTag cube documentation capture from the physical perception setup."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/printingaprilcubes.png",
+        alt: "HoloAssist AprilTag cube printing",
+        caption: "Printed AprilTag cube preparation for repeatable physical perception tests."
+      },
+      {
+        src: "https://john-a-chen.github.io/HoloAssist/screenshots/simtestingold.png",
+        alt: "HoloAssist simulation testing",
+        caption: "Simulation testing capture from an earlier system-integration pass."
+      }
+    ],
+    lessonsLearned: [
+      "A perception subsystem is only useful when its outputs are framed, timed, documented, and connected clearly enough for the next subsystem to use.",
+      "Narrowing the perception scope from broad RGB-D workspace understanding to AprilTag cube tracking improved reliability, testability, and integration confidence.",
+      "Repository structure is a technical interface: submodules, launch scripts, Unity package paths, branch names, and documentation all affect whether another engineer can reproduce the system.",
+      "Calibration is not a side task; the TF chain determines whether a visually correct detection can become a robot-usable pose."
+    ],
+    futureWork: [
+      "Add quantitative cube-pose accuracy testing against known ground-truth positions.",
+      "Add automated launch smoke tests for fake hardware, perception-only, and MoveIt modes.",
+      "Combine the stable AprilTag pipeline with markerless RGB-D segmentation or point-cloud validation.",
+      "Create a dashboard calibration-status panel showing whether `base_link -> camera_link` is available.",
+      "Add a first-run setup script and submodule checks so fresh clones fail less mysteriously.",
+      "Tag a final handover release so docs, source code, and setup instructions refer to one exact commit."
+    ],
+    relatedProjects: ["holoassist-ai", "forestguard", "matlab-welding-robot"]
+  },
+  {
+    slug: "holoassist-ai",
+    featured: true,
+    title: "HoloAssist-AI",
+    subtitle:
+      "An AI extension to HoloAssist combining RGB-D point-cloud clustering, Gazebo/Isaac simulation, and reinforcement-learning experiments for robotic grasping.",
+    year: "2026",
+    status: "Course project site",
+    projectType: "Project",
+    tags: ["AI Robotics", "Reinforcement Learning", "Perception", "Simulation", "Team Project"],
+    thumbnail: "https://sebastian-baudille.github.io/HoloAssist-AI/screenshots/clustering_method_comparison.png",
+    heroImage: "https://sebastian-baudille.github.io/HoloAssist-AI/screenshots/mujoco.gif",
+    summary:
+      "A team-built follow-up to HoloAssist that explores marker-free cube perception and policy-learning workflows for autonomous grasping, with a dedicated documentation site and live cross-links back to the base project.",
+    overview: [
+      "HoloAssist-AI extends the base HoloAssist platform into autonomous perception and learning. Instead of relying only on AprilTag markers, the AI project explores RGB-D point-cloud preprocessing, DBSCAN clustering, centroid extraction, and reinforcement-learning pipelines for UR3e cube manipulation.",
+      "The website documents the project's simulation paths across Gazebo, MuJoCo, and Isaac Sim, while also being clear about what was demonstrated, what remained partial, and how the AI work relates back to HoloAssist calibration and teleoperation data."
+    ],
+    problem: [
+      "Robot grasping projects can get trapped between clean simulation assumptions and messy physical perception. The project needed to connect object detection, calibration, action design, and policy training without pretending that an isolated demo was a complete deployed robot.",
+      "HoloAssist-AI frames that challenge as an end-to-end pipeline problem: perceive cube positions from RGB-D data, feed useful observations to a learning agent, and evaluate whether reinforcement learning can support the grasping workflow."
+    ],
+    role: [
+      "Website and documentation development for the HoloAssist-AI public project site",
+      "RL support, training-result presentation, and pipeline explanation",
+      "Cross-linking the AI extension with the base HoloAssist perception and calibration work",
+      "Teleoperation-data context from the base HoloAssist XR workflow"
+    ],
+    process: [
+      {
+        title: "Point-cloud perception pipeline",
+        body:
+          "The project explored marker-free cube detection by cropping RGB-D point clouds, clustering candidate cube regions, and reporting object centroids for downstream control experiments."
+      },
+      {
+        title: "Simulation and policy experiments",
+        body:
+          "Team members compared simulation routes including Gazebo, MuJoCo, and Isaac Sim to understand where RL training was stable, where it broke down, and what each environment made easier or harder."
+      },
+      {
+        title: "Documentation as evidence",
+        body:
+          "The public site records successes, failures, limitations, and training plots so the project reads as an engineering investigation rather than a polished-only showcase."
+      },
+      {
+        title: "Continuity with HoloAssist",
+        body:
+          "The AI pipeline keeps the base project's calibration and sim-to-real context in view, connecting new perception work back to the original XR teleoperation stack."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "DBSCAN cube clustering",
+        body:
+          "RGB-D captures are converted into filtered point clouds, clustered, and evaluated as cube-centroid candidates without requiring AprilTag markers on every face."
+      },
+      {
+        title: "RL training comparisons",
+        body:
+          "The site documents policy-training attempts across simulation environments, including partial successes, unstable grasping behavior, and action-space lessons."
+      },
+      {
+        title: "Live project cross-linking",
+        body:
+          "The HoloAssist-AI site links back to HoloAssist's base perception and calibration pages, making the relationship between both semester projects explicit."
+      }
+    ],
+    tools: [
+      "ROS 2 Humble",
+      "Gazebo",
+      "MuJoCo",
+      "NVIDIA Isaac Sim / Isaac Lab",
+      "Python",
+      "DBSCAN",
+      "PPO",
+      "GitHub Pages"
+    ],
+    links: {
+      repo: "https://github.com/Sebastian-Baudille/HoloAssist-AI",
+      website: "https://sebastian-baudille.github.io/HoloAssist-AI/",
+      cad: null,
+      drawings: null,
+      print: null,
+      docs: "https://sebastian-baudille.github.io/HoloAssist-AI/docs/",
+      media: "https://sebastian-baudille.github.io/HoloAssist-AI/#gallery"
+    },
+    gallery: [
+      {
+        src: "https://sebastian-baudille.github.io/HoloAssist-AI/screenshots/mujoco.gif",
+        alt: "HoloAssist-AI MuJoCo policy experiment",
+        caption: "MuJoCo policy experiment used to study staged reaching and grasp behavior."
+      },
+      {
+        src: "https://sebastian-baudille.github.io/HoloAssist-AI/screenshots/clustering.gif",
+        alt: "HoloAssist-AI point-cloud clustering demo",
+        caption: "Animated clustering demo showing the RGB-D perception pipeline."
+      },
+      {
+        src: "https://sebastian-baudille.github.io/HoloAssist-AI/screenshots/isaacsim.gif",
+        alt: "HoloAssist-AI Isaac Sim experiment",
+        caption: "Isaac Sim experiment exploring scalable RL training for the UR3e task."
+      }
+    ],
+    lessonsLearned: [
+      "RL progress depends heavily on observation design, action scale, and environment fidelity; training plots need interpretation, not just display.",
+      "Marker-free point-cloud perception is portfolio-worthy when its limitations and calibration assumptions are made explicit.",
+      "Cross-linking the AI project to the base HoloAssist stack makes the semester sequence much clearer."
+    ],
+    futureWork: [
+      "Connect perception, policy output, and robot execution into one deployable end-to-end demonstration.",
+      "Compare the DBSCAN route against learned pose-estimation methods where hardware allows.",
+      "Use stronger demonstration data or staged policies to improve grasp and transport stability."
+    ],
+    relatedProjects: ["holoassist", "forestguard", "matlab-welding-robot"]
+  },
+  {
     slug: "forestguard",
     featured: true,
     title: "ForestGuard",
@@ -850,8 +1204,8 @@ export const projects = [
       "A ROS 2 Humble simulation stack for a Husky-style UGV, combining Gazebo, RViz, SLAM, Nav2, joystick teleop, and autonomy bringup from one launch file.",
     year: "2025-2026",
     status: "Sanitized public release",
-    projectType: "Solo",
-    tags: ["ROS 2", "Autonomy", "Simulation", "Navigation", "Perception"],
+    projectType: "Project",
+    tags: ["ROS 2", "Autonomy", "Simulation", "Navigation", "Team Project"],
     thumbnail: "assets/images/projects/forestguard/repo/images/02_gazebo_rviz_robotmodel_nav2_panel.png",
     heroImage: "assets/images/projects/forestguard/repo/images/25_gazebo_forest_path_perspective.png",
     summary:
@@ -953,7 +1307,7 @@ export const projects = [
       "Expand automated mission evaluation metrics for path quality, detection stability, and autonomy completion reliability.",
       "Add packaged presets for different forest densities and terrain profiles to speed scenario-based testing."
     ],
-    relatedProjects: ["camera-study", "test-bench-vehicle"]
+    relatedProjects: ["test-bench-vehicle"]
   },
   {
     slug: "solid-connections",
@@ -1060,12 +1414,13 @@ export const projects = [
       "Expand validation coverage with repeatable subsystem test procedures.",
       "Refine integration architecture for easier serviceability and future upgrades."
     ],
-    relatedProjects: ["cycloidial-study", "robo-arm"]
+    relatedProjects: ["robo-arm"]
   }
 ];
 
 export const projectLinkLabels = {
   repo: "View Repository",
+  website: "View Project Site",
   cad: "View CAD",
   drawings: "View Drawings",
   print: "View Print Files",
