@@ -32,7 +32,7 @@ export const siteProfile = {
   experienceTimeline: [
     {
       title: "Mechanical Design Intern, OpenTech Designs",
-      period: "May 2025 - Present",
+      period: "May 2025 - March 2026",
       detail:
         "Automated CAD configuration and drawing-pack tasks to speed iteration and reduce drafting errors. Created and documented 230+ controlled part configurations with compliant AS 1100 drawings, tracked design changes for revision traceability, and worked with engineers, technicians, and machinists to resolve mark-ups and build updates."
     },
