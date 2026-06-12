@@ -6,7 +6,7 @@ export const projects = [
     title: "Warman Attempts",
     subtitle:
       "A process-focused archive of repeated Warman challenge attempts across CAD, code, prototyping, assembly, and post-mortem review.",
-    year: "2022-2025",
+    year: "2023-2025",
     status: "Ongoing archive",
     projectType: "Solo",
     tags: ["Robotics", "Competition", "CAD", "Iteration", "Documentation"],
