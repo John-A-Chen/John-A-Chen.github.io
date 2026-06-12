@@ -21,6 +21,203 @@ export const repoImages = {
       caption: "Imported from repository: shutter not mine.png"
     },
   ],
+  "john-stm": [
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 0 CAD A.png",
+      alt: "john-stm repo image: Enclosure 0 CAD A",
+      caption: "Imported from repository: Enclosure 0 CAD A.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 0 CAD B.png",
+      alt: "john-stm repo image: Enclosure 0 CAD B",
+      caption: "Imported from repository: Enclosure 0 CAD B.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 CAD A.png",
+      alt: "john-stm repo image: Enclosure 1 CAD A",
+      caption: "Imported from repository: Enclosure 1 CAD A.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 CAD B.png",
+      alt: "john-stm repo image: Enclosure 1 CAD B",
+      caption: "Imported from repository: Enclosure 1 CAD B.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 CAD C.png",
+      alt: "john-stm repo image: Enclosure 1 CAD C",
+      caption: "Imported from repository: Enclosure 1 CAD C.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 CAD D.png",
+      alt: "john-stm repo image: Enclosure 1 CAD D",
+      caption: "Imported from repository: Enclosure 1 CAD D.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 Print.jpg",
+      alt: "john-stm repo image: Enclosure 1 Print",
+      caption: "Imported from repository: Enclosure 1 Print.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 1 TFT Screen Mount A.jpg",
+      alt: "john-stm repo image: Enclosure 1 TFT Screen Mount A",
+      caption: "Imported from repository: Enclosure 1 TFT Screen Mount A.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 2 CAD A.png",
+      alt: "john-stm repo image: Enclosure 2 CAD A",
+      caption: "Imported from repository: Enclosure 2 CAD A.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 2 CAD B.png",
+      alt: "john-stm repo image: Enclosure 2 CAD B",
+      caption: "Imported from repository: Enclosure 2 CAD B.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 2 TFT Screen Mount A.jpg",
+      alt: "john-stm repo image: Enclosure 2 TFT Screen Mount A",
+      caption: "Imported from repository: Enclosure 2 TFT Screen Mount A.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 2 TFT Screen Mount B.jpg",
+      alt: "john-stm repo image: Enclosure 2 TFT Screen Mount B",
+      caption: "Imported from repository: Enclosure 2 TFT Screen Mount B.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Buzzer Haptic.jpg",
+      alt: "john-stm repo image: Enclosure 3 Buzzer Haptic",
+      caption: "Imported from repository: Enclosure 3 Buzzer Haptic.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD A.png",
+      alt: "john-stm repo image: Enclosure 3 CAD A",
+      caption: "Imported from repository: Enclosure 3 CAD A.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD B.png",
+      alt: "john-stm repo image: Enclosure 3 CAD B",
+      caption: "Imported from repository: Enclosure 3 CAD B.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD C.png",
+      alt: "john-stm repo image: Enclosure 3 CAD C",
+      caption: "Imported from repository: Enclosure 3 CAD C.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD D.png",
+      alt: "john-stm repo image: Enclosure 3 CAD D",
+      caption: "Imported from repository: Enclosure 3 CAD D.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Fitment.jpg",
+      alt: "john-stm repo image: Enclosure 3 Fitment",
+      caption: "Imported from repository: Enclosure 3 Fitment.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Print.jpg",
+      alt: "john-stm repo image: Enclosure 3 Print",
+      caption: "Imported from repository: Enclosure 3 Print.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 TFT Screen Mount A.jpg",
+      alt: "john-stm repo image: Enclosure 3 TFT Screen Mount A",
+      caption: "Imported from repository: Enclosure 3 TFT Screen Mount A.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 TFT Screen Mount B.jpg",
+      alt: "john-stm repo image: Enclosure 3 TFT Screen Mount B",
+      caption: "Imported from repository: Enclosure 3 TFT Screen Mount B.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Bottom Signal Layer.png",
+      alt: "john-stm repo image: PCB1 Bottom Signal Layer",
+      caption: "Imported from repository: PCB1 Bottom Signal Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Front.png",
+      alt: "john-stm repo image: PCB1 Front",
+      caption: "Imported from repository: PCB1 Front.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Ground Layer.png",
+      alt: "john-stm repo image: PCB1 Ground Layer",
+      caption: "Imported from repository: PCB1 Ground Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Power Layer.png",
+      alt: "john-stm repo image: PCB1 Power Layer",
+      caption: "Imported from repository: PCB1 Power Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Rear.png",
+      alt: "john-stm repo image: PCB1 Rear",
+      caption: "Imported from repository: PCB1 Rear.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB1 Top Signal Layer.png",
+      alt: "john-stm repo image: PCB1 Top Signal Layer",
+      caption: "Imported from repository: PCB1 Top Signal Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Bottom Signal Layer.png",
+      alt: "john-stm repo image: PCB2 Bottom Signal Layer",
+      caption: "Imported from repository: PCB2 Bottom Signal Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Front.png",
+      alt: "john-stm repo image: PCB2 Front",
+      caption: "Imported from repository: PCB2 Front.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Ground Layer.png",
+      alt: "john-stm repo image: PCB2 Ground Layer",
+      caption: "Imported from repository: PCB2 Ground Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
+      alt: "john-stm repo image: PCB2 Mockup A",
+      caption: "Imported from repository: PCB2 Mockup A.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup B.png",
+      alt: "john-stm repo image: PCB2 Mockup B",
+      caption: "Imported from repository: PCB2 Mockup B.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup C.png",
+      alt: "john-stm repo image: PCB2 Mockup C",
+      caption: "Imported from repository: PCB2 Mockup C.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Power Layer.png",
+      alt: "john-stm repo image: PCB2 Power Layer",
+      caption: "Imported from repository: PCB2 Power Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Rear.png",
+      alt: "john-stm repo image: PCB2 Rear",
+      caption: "Imported from repository: PCB2 Rear.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Top Designator.png",
+      alt: "john-stm repo image: PCB2 Top Designator",
+      caption: "Imported from repository: PCB2 Top Designator.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Top Signal Layer.png",
+      alt: "john-stm repo image: PCB2 Top Signal Layer",
+      caption: "Imported from repository: PCB2 Top Signal Layer.png"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/hardware/parts/display-1-69-st7789v2/snapshot/Bottom Display 1.69 ST7789V2.jpg",
+      alt: "john-stm repo image: Bottom Display 1.69 ST7789V2",
+      caption: "Imported from repository: Bottom Display 1.69 ST7789V2.jpg"
+    },
+    {
+      src: "assets/images/projects/john-stm/repo/hardware/parts/display-1-69-st7789v2/snapshot/Top Display 1.69 ST7789V2.jpg",
+      alt: "john-stm repo image: Top Display 1.69 ST7789V2",
+      caption: "Imported from repository: Top Display 1.69 ST7789V2.jpg"
+    },
+  ],
   "forestguard": [
     {
       src: "assets/images/projects/forestguard/repo/images/01_rviz_husky_lidar_forest_grid.png",

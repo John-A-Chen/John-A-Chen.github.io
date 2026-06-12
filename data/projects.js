@@ -1310,6 +1310,169 @@ export const projects = [
     relatedProjects: ["test-bench-vehicle"]
   },
   {
+    slug: "john-stm",
+    featured: true,
+    title: "John STM",
+    subtitle:
+      "A compact STM32L476-based battery-powered desk device PCB, combining USB-C input, LiPo charging, 3.3 V regulation, display hardware, sensors, feedback components, enclosure CAD, and manufacturing exports.",
+    year: "2026",
+    status: "PCB design and fabrication preparation",
+    projectType: "Solo",
+    tags: ["PCB Design", "STM32", "Embedded Hardware", "Altium", "Enclosure CAD"],
+    thumbnail: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Front.png",
+    heroImage: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
+    summary:
+      "A custom embedded hardware project focused on turning a smart desk-cube idea into a manufacturable PCB and enclosure package, with real decisions around USB-C power, LiPo charging, grounding, routing, board exports, and assembly planning.",
+    overview: [
+      "John STM is a compact STM32L476-based hardware project built around a small battery-powered desk device. The repository contains Altium source files, generated PCB outputs, SolidWorks enclosure models, STEP/DXF exports, reusable part models, display module references, production files, and screenshots of PCB and enclosure iterations.",
+      "The project is not just a schematic exercise. It ties together power-system design, flat multi-sheet Altium organisation, PCB layout, ground-plane strategy, enclosure packaging, display and actuator fitment, JLCPCB fabrication workflow, stencil planning, and future firmware validation."
+    ],
+    problem: [
+      "Small embedded desk devices can become messy when power, charging, display, sensing, feedback, firmware, and enclosure requirements are designed separately.",
+      "This project addresses that by developing one compact hardware platform that can be powered from USB-C, operate from a single-cell LiPo battery, regulate logic power, drive a small display, sense movement or orientation, and support future firmware modes without staying at breadboard level."
+    ],
+    role: [
+      "Defined the embedded desk-cube hardware concept and feature set",
+      "Designed the flat multi-sheet Altium project across power, MCU, and peripheral schematic sheets",
+      "Planned USB-C input, LiPo charging, 3.3 V regulation, display, motion sensing, buttons, buzzer, and haptic feedback hardware",
+      "Routed and reviewed the PCB layout, including layer views, ground pours, ground stitching vias, and manufacturing constraints",
+      "Developed enclosure CAD iterations and fitment checks for display, battery, buzzer, haptic motor, and panels",
+      "Prepared fabrication and assembly outputs including PCB exports, BOM/reference files, production archives, STEP/DXF files, and stencil-related files"
+    ],
+    process: [
+      {
+        title: "Concept and architecture",
+        body:
+          "The project started as a calm, low-clutter smart desk cube with possible modes such as a Pomodoro timer, desk clock, system monitor, ambient display, and orientation-based interactions. That forced hardware and firmware planning to happen together from the start."
+      },
+      {
+        title: "Power and charging design",
+        body:
+          "The power path became a core subsystem: USB-C input, single-cell LiPo support, charging-current assumptions, regulator selection, 3.3 V distribution, and safe bring-up planning all had to be treated as engineering decisions rather than wiring details."
+      },
+      {
+        title: "PCB layout iteration",
+        body:
+          "The layout evolved through PCB1 and PCB2 outputs, with top/bottom signal views, inner ground and power layer checks, front/rear board views, component placement, vias, and ground stitching reviewed as the board moved toward fabrication readiness."
+      },
+      {
+        title: "Enclosure and assembly fitment",
+        body:
+          "SolidWorks enclosure iterations tested screen mounting, printed fitment, buzzer and haptic placement, panel geometry, and exported handoff files so the PCB could be considered as part of a physical object rather than a loose board."
+      },
+      {
+        title: "Manufacturing preparation",
+        body:
+          "The project moved into production-file thinking through Gerbers, drill files, board-outline checks, BOM/reference exports, JLCPCB feedback, stencil discussion, and first-power-up planning."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Flat multi-sheet Altium design",
+        body:
+          "The source project is organised as a flat Altium PCB project with separate power, MCU, and peripherals sheets, keeping subsystem boundaries readable without introducing unnecessary hierarchy."
+      },
+      {
+        title: "Battery-powered USB-C architecture",
+        body:
+          "The design includes USB-C input, single-cell LiPo support, charging circuitry, 3.3 V regulation, and power-distribution decisions that need to be safe and testable before firmware work can be trusted."
+      },
+      {
+        title: "Ground-plane and via strategy",
+        body:
+          "The layout uses ground planes, ground pours, and stitching vias to strengthen return paths and avoid relying only on local top-layer copper for ground connectivity."
+      },
+      {
+        title: "Manufacturing feedback loop",
+        body:
+          "The JLCPCB board-outline issue made fabrication files part of the engineering process, showing that a board is not submission-ready until outline, drill, copper, solder mask, silkscreen, and export settings are all checked."
+      },
+      {
+        title: "Mechanical-electrical co-design",
+        body:
+          "Display snapshots, battery models, buzzer and haptic motor CAD, enclosure prints, and screen-mount checks connect the electronic design to the physical packaging."
+      }
+    ],
+    tools: [
+      "Altium Designer",
+      "SolidWorks",
+      "STM32L476",
+      "USB-C power design",
+      "LiPo charging design",
+      "ST7789 display module",
+      "ADXL335-style motion sensing",
+      "JLCPCB fabrication workflow",
+      "PCB layout and routing",
+      "Gerber / drill / stencil exports"
+    ],
+    links: {
+      repo: "https://github.com/John-A-Chen/John-STM/",
+      cad: "https://github.com/John-A-Chen/John-STM/tree/main/hardware/enclosure",
+      drawings: "https://github.com/John-A-Chen/John-STM/blob/main/hardware/pcb/exports/John%20STM.pdf",
+      print: "https://github.com/John-A-Chen/John-STM/tree/main/docs/production%20file",
+      docs: "https://github.com/John-A-Chen/John-STM#readme",
+      media: "https://github.com/John-A-Chen/John-STM/tree/main/docs/screenshots"
+    },
+    galleryPreviewLimit: 18,
+    gallery: [
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
+        alt: "John STM PCB2 mockup view",
+        caption: "PCB2 mockup showing the compact board direction after layout iteration."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Front.png",
+        alt: "John STM PCB2 front view",
+        caption: "Front board view used to review component placement and routing density."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Top Signal Layer.png",
+        alt: "John STM PCB2 top signal layer",
+        caption: "Top signal layer view for routing and component-side layout review."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Ground Layer.png",
+        alt: "John STM PCB2 ground layer",
+        caption: "Ground layer view used to check return-path quality and plane continuity."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD A.png",
+        alt: "John STM enclosure version 3 CAD",
+        caption: "Version 3 enclosure CAD showing the physical packaging direction."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Fitment.jpg",
+        alt: "John STM enclosure fitment photo",
+        caption: "Printed enclosure fitment check for the display and internal hardware."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Buzzer Haptic.jpg",
+        alt: "John STM buzzer and haptic fitment",
+        caption: "Buzzer and haptic motor placement review inside the enclosure."
+      },
+      {
+        src: "assets/images/projects/john-stm/repo/hardware/parts/display-1-69-st7789v2/snapshot/Top Display 1.69 ST7789V2.jpg",
+        alt: "John STM ST7789V2 display top side",
+        caption: "1.69 inch ST7789V2 display module reference used for packaging and interface planning."
+      }
+    ],
+    lessonsLearned: [
+      "PCB design is a system-level process where schematic, layout, firmware, enclosure, and manufacturing all affect one another.",
+      "Battery charging and USB-C power decisions need careful review because safety and reliability are core requirements, not optional polish.",
+      "A top-layer ground pour does not replace deliberate via placement when an internal ground plane is available.",
+      "Manufacturing feedback can reveal missing mechanical/export details that are invisible during schematic capture.",
+      "Ordering the PCB is not the end of the design process; assembly, first power-up, debugging, and revision planning are just as important."
+    ],
+    futureWork: [
+      "Verify the board outline and full Gerber/drill/solder-mask/silkscreen export set before the next fabrication upload.",
+      "Confirm the selected LiPo capacity and adjust charger current if the cell datasheet requires it.",
+      "Prepare a first-power-up checklist and test the 3.3 V rail before powering sensitive components.",
+      "Validate USB power, battery charging, regulator output, display communication, sensor readings, buttons, buzzer, and haptic feedback one subsystem at a time.",
+      "Add firmware documentation once the assembled hardware has been brought up and tested."
+    ],
+    relatedProjects: ["solid-connections", "robo-arm"]
+  },
+  {
     slug: "solid-connections",
     featured: true,
     title: "Solid Connections",
@@ -1414,7 +1577,7 @@ export const projects = [
       "Expand validation coverage with repeatable subsystem test procedures.",
       "Refine integration architecture for easier serviceability and future upgrades."
     ],
-    relatedProjects: ["robo-arm"]
+    relatedProjects: ["john-stm", "robo-arm"]
   }
 ];
 

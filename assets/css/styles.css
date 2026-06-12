@@ -1167,23 +1167,28 @@ body.has-dock {
 }
 
 .project-hero-grid {
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: start;
 }
 
 .project-hero-copy {
   display: grid;
   gap: 0.55rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .project-copy-text {
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .project-copy-text p {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .project-priority-row {
@@ -1239,6 +1244,9 @@ body.has-dock {
   margin: 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .project-hero-media::before {
@@ -1262,7 +1270,9 @@ body.has-dock {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.4rem;
+  width: 100%;
   margin-top: 0.6rem;
+  max-width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
 }
