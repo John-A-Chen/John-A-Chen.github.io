@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -37,6 +38,7 @@ body {
     radial-gradient(circle at top right, rgba(92, 174, 247, 0.24), transparent 28%),
     linear-gradient(180deg, #1b4572 0%, #153a62 54%, #123154 100%);
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 body::before {
@@ -202,6 +204,7 @@ body.has-dock {
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
+  min-width: 0;
 }
 
 .brand-mark {
@@ -232,6 +235,7 @@ body.has-dock {
 
 .brand-text {
   display: grid;
+  min-width: 0;
 }
 
 .brand-title,
@@ -371,6 +375,9 @@ body.has-dock {
   color: #f5fbff;
   font-weight: 600;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .button:hover,
@@ -532,6 +539,7 @@ body.has-dock {
 .content-section,
 .project-hero,
 .empty-state {
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -589,12 +597,16 @@ body.has-dock {
 .project-subtitle,
 .project-summary,
 .content-section p,
+.content-list li,
+.process-card p,
+.highlight-card p,
 .contact-card h3,
 .project-card-body p,
 .sidebar-card,
 .info-panel p {
   color: var(--muted-strong);
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .hero-degree {
@@ -789,17 +801,20 @@ body.has-dock {
   padding: 0;
   margin: 0;
   list-style: none;
+  min-width: 0;
 }
 
 .tag-pill,
 .tag-list li,
 .tool-chip {
+  max-width: 100%;
   padding: 0.42rem 0.7rem;
   border-radius: 999px;
   border: 1px solid rgba(110, 199, 191, 0.2);
   background: rgba(110, 199, 191, 0.08);
   color: var(--muted-strong);
   font-size: 0.9rem;
+  overflow-wrap: anywhere;
 }
 
 .section-heading {
@@ -972,6 +987,7 @@ body.has-dock {
   display: grid;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
+  min-width: 0;
 }
 
 .project-card-body h3,
@@ -991,6 +1007,8 @@ body.has-dock {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .filter-shell {
@@ -1218,10 +1236,12 @@ body.has-dock {
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.5rem;
+  min-width: 0;
 }
 
 .portfolio-heading {
   margin: 0;
+  min-width: 0;
 }
 
 .experience-page .section {
@@ -1438,6 +1458,7 @@ body.has-dock {
 
 .project-hero-media img {
   aspect-ratio: 16 / 9;
+  height: clamp(220px, 22vw, 360px);
   object-fit: cover;
   width: 100%;
   border-radius: 0.6rem;
@@ -1510,12 +1531,15 @@ body.has-dock {
 .meta-list dd {
   margin: 0.25rem 0 0;
   color: var(--text);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .sidebar-links {
   display: grid;
   gap: 0.8rem;
   margin-top: 1rem;
+  min-width: 0;
 }
 
 .empty-state {
