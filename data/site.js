@@ -4,8 +4,10 @@ export const siteProfile = {
   degree:
     "Mechanical and Mechatronic Engineering student at the University of Technology Sydney, graduating in 2027.",
   tagline: "Mechanical design / Robotics / Embedded hardware",
+  // Header mark: the bird on the home page, a small portrait everywhere else.
   brandLogo: "assets/images/profile/channels4_profile.jpg",
-  headshot: "assets/images/profile/hellogit.jpg",
+  brandLogoInner: "assets/images/profile/face-mark.jpg",
+  headshot: "assets/images/profile/hellogit-square.jpg",
   // Home page tiles. Each links to a project that shows that kind of work.
   focusAreas: [
     {

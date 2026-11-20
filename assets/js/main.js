@@ -74,17 +74,31 @@ function renderProjectCount() {
   projectCount.textContent = String(projects.length).padStart(2, "0");
 }
 
+// Hovering the portrait pops the GitHub avatar up over the face, as a link to
+// the profile. On touch screens the first tap only reveals it; the link is
+// "armed" a moment later so that same tap cannot also follow it.
 function initProfileHoverIconReveal() {
   if (!headshotSlot) {
     return;
   }
 
-  const hideIcon = () => headshotSlot.classList.remove("show-github-icon");
-  const scheduleReveal = () => headshotSlot.classList.add("show-github-icon");
+  let armTimer = 0;
+  const show = (event) => {
+    headshotSlot.classList.add("show-github-icon");
+    window.clearTimeout(armTimer);
+    const delay = event?.pointerType === "touch" ? 350 : 0;
+    armTimer = window.setTimeout(() => headshotSlot.classList.add("is-armed"), delay);
+  };
+  const hide = () => {
+    window.clearTimeout(armTimer);
+    headshotSlot.classList.remove("show-github-icon", "is-armed");
+  };
 
-  headshotSlot.addEventListener("pointerenter", scheduleReveal);
-  headshotSlot.addEventListener("pointerleave", hideIcon);
-  headshotSlot.addEventListener("pointercancel", hideIcon);
+  headshotSlot.addEventListener("pointerenter", show);
+  headshotSlot.addEventListener("pointerleave", hide);
+  headshotSlot.addEventListener("pointercancel", hide);
+  headshotSlot.addEventListener("focusin", show);
+  headshotSlot.addEventListener("focusout", hide);
 }
 
 renderFeaturedProjects();

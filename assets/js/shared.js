@@ -92,7 +92,10 @@ export function populateSharedProfile(profile) {
     }
   });
 
-  const brandLogoPath = normalizeAssetPath(profile.brandLogo || "");
+  const isHomePage = document.body.classList.contains("home-page");
+  const brandLogoPath = normalizeAssetPath(
+    (isHomePage ? profile.brandLogo : profile.brandLogoInner || profile.brandLogo) || ""
+  );
   if (brandLogoPath) {
     document.querySelectorAll(".brand-mark").forEach((markNode) => {
       markNode.textContent = "";

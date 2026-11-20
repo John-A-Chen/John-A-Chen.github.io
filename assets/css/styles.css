@@ -3707,3 +3707,88 @@ body.is-scrolled .random-project-link {
   min-height: 2.9em;
   line-height: 1.45;
 }
+
+/* --- Portrait gimmick: the backdrop pattern "lights up" into the real GitHub avatar ---
+   The portrait's backdrop is a faded copy of the avatar. On hover the real
+   avatar fades in on top of it, square, at the same size and position, and
+   links to the GitHub profile. */
+.headshot-slot {
+  --photo-inset: 0.9rem;
+  /* The portrait is cropped square around its backdrop pattern
+     (hellogit-square.jpg), so the avatar fills the frame exactly. */
+  --avatar-scale: 100%;
+  --avatar-x: 50%;
+  --avatar-y: 50%;
+}
+
+.headshot-slot::after {
+  display: none;
+}
+
+.headshot-github {
+  position: absolute;
+  inset: var(--photo-inset);
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 0.85rem;
+  /* Same light grey as the avatar's own background, so the edges match. */
+  background: #f0f0f0;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.97);
+  transition: opacity 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+}
+
+.headshot-slot .headshot-github img {
+  position: absolute;
+  left: var(--avatar-x);
+  top: var(--avatar-y);
+  width: var(--avatar-scale);
+  height: auto;
+  aspect-ratio: 1;
+  max-width: none;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+}
+
+.headshot-slot.show-github-icon .headshot-github,
+.headshot-github:focus-visible {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow:
+    0 0 0 2px rgba(92, 174, 247, 0.9),
+    0 0 14px 4px rgba(92, 174, 247, 0.7);
+}
+
+.headshot-slot.is-armed .headshot-github,
+.headshot-github:focus-visible {
+  pointer-events: auto;
+}
+
+.headshot-github:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .headshot-slot.show-github-icon .headshot-github {
+    animation: headshot-glow 1.8s ease-in-out 240ms infinite;
+  }
+}
+
+@keyframes headshot-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(92, 174, 247, 0.9),
+      0 0 14px 4px rgba(92, 174, 247, 0.7);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px rgba(123, 209, 255, 1),
+      0 0 22px 8px rgba(92, 174, 247, 0.95);
+  }
+}
