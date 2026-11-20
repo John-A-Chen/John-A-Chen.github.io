@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive mecanum wheel geometry calculator: roller profile, roller coverage, sheet-metal hub flange DXF and wheel kinematics."
+    />
+    <title>Mecanum Wheel Geometry | Project Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/mecanum-geometry.css" />
+    <link rel="icon" type="image/jpeg" href="../assets/images/profile/channels4_profile.jpg" />
+  </head>
+  <body class="project-page tool-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="../index.html" aria-label="Home">
+          <span class="brand-mark" data-profile="initials">YN</span>
+          <span class="brand-text">
+            <span class="brand-title" data-profile="name">[Your Name]</span>
+            <span class="brand-subtitle">Engineering Portfolio</span>
+          </span>
+        </a>
+
+        <a class="button compact random-project-link" data-random-project href="../portfolio.html"
+          >Random Project</a
+        >
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="tool-hero">
+        <div class="container">
+          <p class="eyebrow">Mecanum Wheel Study / Calculator</p>
+          <h1>Mecanum Wheel Geometry</h1>
+          <p>
+            The maths behind the wheel, live. Set the number of rollers, their size and angle, and see
+            whether the wheel rolls round, how long the rollers need to be, and what the hub flange
+            looks like as a flat sheet-metal blank. All lengths are in millimetres.
+          </p>
+          <div class="tool-actions">
+            <a class="button" href="mecanum-wheel-study.html">Back to the project</a>
+            <button type="button" class="button button-ghost" id="open-controls">Presets and inputs</button>
+          </div>
+          <div class="tool-stats" id="stats"></div>
+        </div>
+      </section>
+
+      <section class="tool-body">
+        <div class="container">
+          <article class="doc-editor" id="tool-editor">
+            <header class="doc-editor-bar">
+              <span class="doc-tab">mecanum-geometry.md</span>
+              <div class="doc-actions">
+                <button type="button" class="doc-action" data-fold-all="open">Unfold all</button>
+                <button type="button" class="doc-action" data-fold-all="close">Fold all</button>
+              </div>
+            </header>
+
+            <details class="doc-fold" open>
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Roller profile</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">2 plots</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <div class="plot-grid">
+                  <div class="plot">
+                    <h3>Exact profile against the arc</h3>
+                    <p class="plot-legend">
+                      <span><i style="background: var(--accent)"></i>Exact profile</span>
+                      <span><i style="background: var(--warn)"></i>Circular arc</span>
+                    </p>
+                    <canvas id="plot-profile" height="290"></canvas>
+                    <p class="plot-note">
+                      Half of the roller, from its middle to one end. The faint part shows how far it
+                      would have to extend for the rollers to cover the whole circle.
+                    </p>
+                  </div>
+                  <div class="plot">
+                    <h3>Arc error</h3>
+                    <p class="plot-legend"><span><i style="background: var(--warn)"></i>Arc minus exact</span></p>
+                    <canvas id="plot-error" height="290"></canvas>
+                    <p class="plot-note">Negative means the arc is thinner than the exact profile there.</p>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="doc-fold" open>
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Rolling radius around the wheel</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">1 plot</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <div class="plot">
+                  <p class="plot-legend">
+                    <span><i style="background: var(--accent)"></i>Effective radius</span>
+                    <span><i style="background: var(--good)"></i>Nominal radius R</span>
+                    <span><i style="background: var(--bad)"></i>Hub tab reach</span>
+                  </p>
+                  <canvas id="plot-radius" height="270"></canvas>
+                  <p class="plot-note">
+                    Height of the wheel axis above a flat floor as the wheel turns through two roller
+                    pitches. Dips are where one roller hands over to the next. If the red line is above
+                    the blue one, the hub tab touches the floor.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <details class="doc-fold" open>
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Wheel views</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">2 views</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <div class="plot-grid">
+                  <div class="plot">
+                    <h3>Along the axis</h3>
+                    <canvas id="view-side" height="400"></canvas>
+                    <p class="plot-note">
+                      The green circle is the nominal rolling circle and the red circle is the hub tab reach.
+                    </p>
+                  </div>
+                  <div class="plot">
+                    <h3>Isometric</h3>
+                    <canvas id="view-iso" class="draggable" height="400"></canvas>
+                    <p class="plot-note">Drag to rotate. Double-click to return to the isometric view.</p>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="doc-fold">
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Sheet-metal hub flange</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">flat pattern, DXF</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <p>
+                  A flat blank for the hub plate, for laser cutting and bending. Each tab folds up along
+                  its bend line so that it sits square to its roller axis. Two identical blanks, one
+                  turned over, make one wheel.
+                </p>
+                <div class="field-grid" id="flange-inputs"></div>
+                <div class="plot-grid">
+                  <div class="plot">
+                    <h3>Flat pattern</h3>
+                    <p class="plot-legend">
+                      <span><i style="background: var(--accent)"></i>Cut</span>
+                      <span><i style="background: var(--warn)"></i>Bend line</span>
+                    </p>
+                    <canvas id="view-flange" height="420"></canvas>
+                  </div>
+                  <div class="plot">
+                    <h3>Derived dimensions</h3>
+                    <table class="tool-table" id="flange-table"></table>
+                    <p class="tool-warning" id="flange-warning" hidden></p>
+                    <div class="tool-row">
+                      <button type="button" class="button" id="download-dxf">Download DXF</button>
+                      <label class="tool-check" style="margin: 0"
+                        ><input type="checkbox" id="flange-mirror" /> Mirrored hand</label
+                      >
+                    </div>
+                    <p class="plot-note">
+                      The DXF has the cut outline and holes on layer CUT and the bend lines on layer BEND,
+                      in millimetres. A set of four wheels needs two wheels of each hand.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="doc-fold">
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Roller configurations</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">one row per roller count</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <p>
+                  The roller that gives full coverage for each roller count at this wheel size. The arc
+                  radius is the single arc that matches the exact profile at the middle and at the end.
+                </p>
+                <table class="tool-table" id="config-table"></table>
+                <div class="tool-row">
+                  <button type="button" class="button button-ghost" id="download-csv">Download design table (CSV)</button>
+                </div>
+                <p class="plot-note">
+                  The CSV has one row per configuration and can be pasted into a SolidWorks design table.
+                </p>
+              </div>
+            </details>
+
+            <details class="doc-fold">
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>Robot kinematics</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">four wheel speeds</span></span>
+              </summary>
+              <div class="doc-fold-body">
+                <div class="field-grid" id="motion-inputs"></div>
+                <div class="plot-grid">
+                  <div class="plot">
+                    <canvas id="view-robot" height="300"></canvas>
+                  </div>
+                  <div class="plot">
+                    <table class="tool-table" id="speed-table"></table>
+                    <p class="plot-note">
+                      x is forward, y is left, and a positive turn rate is anticlockwise seen from above.
+                      Wheel speeds use the nominal radius R.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="doc-fold">
+              <summary class="doc-fold-head">
+                <span class="doc-chevron" aria-hidden="true"></span>
+                <span class="doc-hash" aria-hidden="true">##</span>
+                <h2>The equations used</h2>
+                <span class="doc-fold-meta"><span class="doc-fold-hint">reference</span></span>
+              </summary>
+              <div class="doc-fold-body">
+<pre class="tool-equations">Roller axis point            A(t) = ( d, t sin a, t cos a )            wheel axis is z
+Distance from wheel axis     rho(t) = sqrt( d^2 + t^2 sin^2 a )
+Nominal wheel radius         R = d + r0
+
+Exact roller profile         k    = t sin^2 a / rho
+(touches a cylinder R)       s(t) = t + (R - rho) k                    position along the roller
+                             r(t) = (R - rho) sqrt(1 - k^2)            roller radius there
+Curvature radius at middle   (d + r0 sin^2 a)^2 / (d sin^2 a)
+
+Wheel angle of the contact   phi(t) = atan( t sin a / d )
+Full coverage needs          phi(t_end) = pi / N   so   t_end = d tan(pi/N) / sin a,   length = 2 s(t_end)
+
+Effective radius at angle q  max over rollers and s of   d cos q + s sin a sin q + r(s) sqrt(1 - sin^2 q sin^2 a)
+
+Hub tab                      t_h = L/2 + end clearance + T/2           tab mid-plane along the roller axis
+                             bend line offset  y_b = t_h sin a - h / tan a
+                             flat length to hole  h / sin a + q (Ri + K T) - 2 (Ri + T/2) tan(q/2),   q = a
+
+Wheel speed                  w R = v_cx + v_cy tan g                   g = +/-45 deg, roller axis on the floor
+Front left                   w = ( vx - vy - (lx + ly) wz ) / R
+Front right                  w = ( vx + vy + (lx + ly) wz ) / R
+Rear left                    w = ( vx + vy - (lx + ly) wz ) / R
+Rear right                   w = ( vx - vy + (lx + ly) wz ) / R</pre>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="calc-drawer" id="calc-drawer" aria-label="Presets and inputs">
+      <div class="calc-drawer-head">
+        <h2>Presets</h2>
+        <button type="button" class="calc-pin" id="calc-pin" aria-label="Keep the panel open"></button>
+      </div>
+      <div class="calc-presets" id="presets"></div>
+      <h2>Wheel</h2>
+      <div id="wheel-inputs"></div>
+      <label class="tool-check"><input type="checkbox" id="use-exact" /> Use the exact roller profile</label>
+    </aside>
+
+    <footer class="site-footer">
+      <div class="container footer-bar">
+        <p class="footer-id">
+          <span class="footer-title" data-profile="name">John Alfred Chen</span>
+          <span class="footer-copy" data-profile="tagline">Mechanical design / Robotics / Embedded hardware</span>
+        </p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="../portfolio.html">Portfolio</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../contact.html">Contact</a>
+          <a data-profile-link="github" href="#">GitHub</a>
+          <a data-profile-link="linkedin" href="#">LinkedIn</a>
+        </nav>
+        <p class="footer-year">&copy; <span data-current-year></span></p>
+      </div>
+    </footer>
+
+    <script type="module" src="../assets/js/mecanum-geometry.js"></script>
+  </body>
+</html>

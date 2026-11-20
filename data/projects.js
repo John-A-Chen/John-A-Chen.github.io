@@ -318,7 +318,8 @@ export const projects = [
       drawings: null,
       print: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/print",
       docs: "https://github.com/John-A-Chen/MechanumWheelStudy#readme",
-      media: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/images"
+      media: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/images",
+      tool: { href: "mecanum-geometry.html", label: "Open Geometry Calculator" }
     },
     gallery: [
       {
@@ -386,8 +387,8 @@ export const projects = [
       },
       {
         src: "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
-        alt: "Alternative hub plate (hi5), isometric view",
-        caption: "Alternative hub plate (hi5), isometric view.",
+        alt: "Alternative hub plate (v5), isometric view",
+        caption: "Alternative hub plate (v5), isometric view.",
         group: "Earlier iterations",
         source: "cad-render"
       },

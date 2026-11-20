@@ -1,0 +1,406 @@
+/* Mecanum wheel geometry calculator. Uses the site tokens from styles.css. */
+
+.tool-page {
+  --good: #58d39b;
+  --warn: #ffb057;
+  --bad: #ff7a7a;
+  --plot-bg: #070f1c;
+  --drawer-w: 320px;
+}
+
+.tool-hero {
+  padding: 2.6rem 0 1.2rem;
+}
+
+.tool-hero h1 {
+  margin: 0.5rem 0 0.7rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.tool-hero p {
+  max-width: 62ch;
+  margin: 0 0 1.2rem;
+  color: var(--muted-strong);
+}
+
+.tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.tool-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 1.4rem 0 0;
+}
+
+.tool-stat {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+}
+
+.tool-stat b {
+  display: block;
+  font: 600 1.18rem "IBM Plex Mono", monospace;
+}
+
+.tool-stat span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.tool-stat.good { border-left-color: var(--good); }
+.tool-stat.good b { color: var(--good); }
+.tool-stat.warn { border-left-color: var(--warn); }
+.tool-stat.warn b { color: var(--warn); }
+.tool-stat.bad { border-left-color: var(--bad); }
+.tool-stat.bad b { color: var(--bad); }
+
+.tool-body {
+  padding-bottom: 4rem;
+}
+
+/* Plots inside the editor folds */
+.plot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.plot-grid.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.plot h3 {
+  margin: 0 0 0.45rem;
+}
+
+.plot canvas {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--plot-bg);
+  touch-action: none;
+}
+
+.plot canvas.draggable {
+  cursor: grab;
+}
+
+.plot-note {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.plot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 0 0 0.5rem;
+  color: var(--muted-strong);
+  font-size: 0.82rem;
+}
+
+.plot-legend i {
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  margin-right: 0.4rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* Inputs */
+.field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px;
+  gap: 0.2rem 0.6rem;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.field label {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.field input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.field input[type="number"],
+.field select {
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--text);
+  font: 500 0.86rem "IBM Plex Mono", monospace;
+  text-align: right;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.tool-check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.2rem 0 1rem;
+  color: var(--muted-strong);
+  font-size: 0.88rem;
+}
+
+.tool-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.tool-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 500 0.86rem "IBM Plex Mono", monospace;
+}
+
+.tool-table th,
+.tool-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+
+.tool-table th {
+  color: var(--muted);
+  font: 600 0.72rem "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tool-table td:first-child,
+.tool-table th:first-child {
+  text-align: left;
+}
+
+.tool-table tr.is-current td {
+  background: var(--accent-soft);
+}
+
+.tool-table .bad { color: var(--bad); }
+.tool-table .good { color: var(--good); }
+
+.tool-warning {
+  margin: 0.6rem 0 0;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--bad);
+  border-radius: 8px;
+  color: var(--bad);
+  font-size: 0.86rem;
+}
+
+.tool-warning[hidden] {
+  display: none;
+}
+
+.tool-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+
+.tool-equations {
+  margin: 0;
+  overflow-x: auto;
+  color: var(--muted-strong);
+  font: 400 0.82rem/1.6 "IBM Plex Mono", monospace;
+  white-space: pre;
+}
+
+/* Controls drawer: slides out from the right edge, like the site dock on the left. */
+.calc-drawer {
+  position: fixed;
+  top: 5.4rem;
+  right: 0;
+  bottom: 1rem;
+  z-index: 40;
+  width: var(--drawer-w);
+  padding: 1rem 1rem 1.2rem;
+  overflow-y: auto;
+  border: 1px solid var(--border-strong);
+  border-right: 0;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  background: rgba(12, 28, 49, 0.96);
+  box-shadow: var(--shadow);
+  transform: translateX(100%);
+  transition: transform var(--transition);
+}
+
+.calc-shown .calc-drawer {
+  transform: translateX(0);
+}
+
+.calc-drawer h2 {
+  margin: 0 0 0.6rem;
+  color: var(--accent);
+  font: 600 0.74rem "IBM Plex Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.calc-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.calc-pin {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted-strong);
+  cursor: pointer;
+}
+
+.calc-pin svg {
+  width: 16px;
+  height: 16px;
+}
+
+.calc-pinned .calc-pin {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.calc-presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.calc-presets button {
+  padding: 0.45rem 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: 500 0.8rem "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+}
+
+.calc-presets button:hover,
+.calc-presets button.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.calc-handle {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 39;
+  width: 26px;
+  height: 132px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  background: var(--surface-strong);
+  color: var(--muted-strong);
+  font: 600 0.68rem "IBM Plex Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity var(--transition);
+}
+
+.calc-shown .calc-handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.calc-edge {
+  position: fixed;
+  top: 5rem;
+  right: 0;
+  bottom: 0;
+  z-index: 38;
+  width: 10px;
+}
+
+@media (min-width: 1101px) {
+  .tool-page main,
+  .tool-page .site-footer {
+    transition: padding-right var(--transition);
+  }
+
+  .calc-pinned.tool-page main,
+  .calc-pinned.tool-page .site-footer {
+    padding-right: calc(var(--drawer-w) - 1rem);
+  }
+
+  .calc-pinned.tool-page {
+    --container: min(1180px, calc(100vw - 8rem - var(--drawer-w) + 1rem));
+  }
+}
+
+@media (max-width: 1100px) {
+  .tool-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plot-grid,
+  .field-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .calc-drawer {
+    top: 4.6rem;
+    width: min(var(--drawer-w), calc(100vw - 2.5rem));
+  }
+}
+
+/* The editor folds are sized for reading text; plots want the full width. */
+.tool-page .doc-fold-body {
+  max-width: none;
+}
+
+.tool-page .doc-fold-body > p {
+  max-width: 72ch;
+}
+
+@media (max-width: 900px) {
+  /* stay clear of the bottom dock bar */
+  .calc-drawer {
+    bottom: 6rem;
+  }
+
+  .calc-handle {
+    top: 38%;
+  }
+}

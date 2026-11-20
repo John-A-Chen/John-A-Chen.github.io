@@ -340,6 +340,11 @@ function renderStage(activeProject) {
   };
   addAction(activeProject.links?.repo, "View Repository", "button");
   addAction(activeProject.links?.website, "View Project Site", "button button-ghost");
+  // A page on this site that belongs to the project (opens in the same tab).
+  if (activeProject.links?.tool) {
+    addAction(activeProject.links.tool.href, activeProject.links.tool.label, "button button-ghost");
+    actionRow.lastElementChild.removeAttribute("target");
+  }
   if (!actionRow.children.length) {
     actionRow.remove();
   }
