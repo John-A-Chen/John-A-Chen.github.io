@@ -1,28 +1,28 @@
-﻿[
+[
     {
         "bore":  3.2,
-        "name":  "as-printed-31mm",
+        "name":  "roller-31.00mm-as-printed",
         "mid":  15,
         "arc":  72.5,
         "length":  31
     },
     {
         "bore":  3.2,
-        "name":  "08-rollers-43.15mm",
+        "name":  "roller-43.15mm-8-roller",
         "mid":  15,
         "arc":  78.3,
         "length":  43.15
     },
     {
         "bore":  3.2,
-        "name":  "09-rollers-38.26mm",
+        "name":  "roller-38.26mm-9-roller",
         "mid":  15,
         "arc":  77.98,
         "length":  38.26
     },
     {
         "bore":  3.2,
-        "name":  "10-rollers-34.37mm",
+        "name":  "roller-34.37mm-10-roller",
         "mid":  15,
         "arc":  77.76,
         "length":  34.37

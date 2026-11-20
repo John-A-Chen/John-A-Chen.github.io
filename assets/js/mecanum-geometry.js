@@ -215,9 +215,19 @@ function flangeModel(M) {
   const y7 = Math.sqrt(Math.max(0, rb * rb - xs * xs));
   if (y7 < yB + 0.5) warnings.push("The relief slot has no length: raise the body radius or narrow the slot.");
   if (Math.abs(yA) >= rb) warnings.push("Arm length is too long for this body radius.");
+  // Between tabs the outline is a straight chamfer, as on the printed plates: it runs from the
+  // top of one tab's relief slot to the outer corner of the next tab's arm, so there is no notch.
   const x1 = Math.sqrt(Math.max(0, rb * rb - yA * yA));
-  const angleOut = Math.atan2(y7, xs), angleIn = Math.atan2(yA, x1);
-  if (angleOut > pitch + angleIn - 0.02) warnings.push("Tabs overlap: too many rollers for this tab layout.");
+  const back = (p) => [p[0] * Math.cos(pitch) + p[1] * Math.sin(pitch), -p[0] * Math.sin(pitch) + p[1] * Math.cos(pitch)];
+  const chamferFrom = back([xs, y7]);           // previous tab's slot top, in this tab's frame
+  const prevTab = back([d, yC]);                // previous tab's round end centre
+  {
+    const ax = xo - chamferFrom[0], ay = yA - chamferFrom[1], len2 = ax * ax + ay * ay;
+    const t = Math.max(0, Math.min(1, ((prevTab[0] - chamferFrom[0]) * ax + (prevTab[1] - chamferFrom[1]) * ay) / len2));
+    const chamferGap = Math.hypot(prevTab[0] - chamferFrom[0] - t * ax, prevTab[1] - chamferFrom[1] - t * ay) - w / 2;
+    if (chamferGap < 0.8) warnings.push("The chamfer runs too close to the tab before it: lower the body radius or shorten the arm.");
+    if (chamferFrom[1] > yA - 0.5) warnings.push("Tabs overlap: too many rollers for this tab layout.");
+  }
   // gap between this tab's round end and the next tab's arm
   const nextGap = -(-d * Math.sin(pitch) + yC * Math.cos(pitch)) + yA - w / 2;
   if (nextGap < 0.5) warnings.push("A tab end runs into the next arm in the flat: shorten the arm or reduce the tab width.");
@@ -230,13 +240,12 @@ function flangeModel(M) {
     const q = k * pitch;
     const line = (p1, p2) => segs.push({ type: "line", a: rot(p1, q), b: rot(p2, q) });
     const arc = (c, r, a0, a1) => segs.push({ type: "arc", c: rot(c, q), r, a0: a0 + q, a1: a1 + q });
-    line([x1, yA], [xo, yA]);
+    line(chamferFrom, [xo, yA]);
     line([xo, yA], [xo, yC]);
     arc([d, yC], w / 2, 0, Math.PI);
     line([xi, yC], [xi, yB]);
     arc([xi - s / 2, yB], s / 2, Math.PI, 2 * Math.PI);
     line([xs, yB], [xs, y7]);
-    segs.push({ type: "arc", c: [0, 0], r: rb, a0: q + angleOut, a1: q + pitch + angleIn });
     holes.push({ c: rot([d, yC], q), r: P.hole / 2 });
     bends.push({ a: rot([xi, yB], q), b: rot([xo, yB], q) });
   }
@@ -648,11 +657,11 @@ function update() {
   for (let count = 6; count <= 14; count++) {
     const c = M.coverageFor(count);
     const gap = M.neighbourGap(count, c.sEnd, (s) => Math.max(0, M.rExact(s)));
-    lastConfigs.push({ count, length: 2 * c.sEnd, end: 2 * c.rEnd, arc: c.arc, gap });
+    lastConfigs.push({ count, name: `roller-${(2 * c.sEnd).toFixed(2)}mm-${count}-roller`, length: 2 * c.sEnd, end: 2 * c.rEnd, arc: c.arc, gap });
   }
   $("config-table").innerHTML =
-    "<tr><th>Rollers</th><th>Length</th><th>Middle dia</th><th>End dia</th><th>Arc radius</th><th>Gap to neighbour</th></tr>" +
-    lastConfigs.map((c) => `<tr class="${c.count === M.N ? "is-current" : ""}"><td>${c.count}</td><td>${c.length.toFixed(2)}</td>
+    "<tr><th>Configuration</th><th>Rollers</th><th>Length</th><th>Middle dia</th><th>End dia</th><th>Arc radius</th><th>Gap to neighbour</th></tr>" +
+    lastConfigs.map((c) => `<tr class="${c.count === M.N ? "is-current" : ""}"><td>${c.name}</td><td>${c.count}</td><td>${c.length.toFixed(2)}</td>
       <td>${(2 * M.r0).toFixed(2)}</td><td>${c.end.toFixed(2)}</td><td>${c.arc.toFixed(2)}</td>
       <td class="${c.gap > 0.8 ? "good" : "bad"}">${c.gap.toFixed(2)}</td></tr>`).join("");
 }
@@ -663,17 +672,31 @@ $("download-dxf").addEventListener("click", () => {
 });
 $("download-csv").addEventListener("click", () => {
   const lines = ["Configuration,Rollers,Length,MiddleDiameter,EndDiameter,ArcRadius,BoreDiameter"];
-  lastConfigs.forEach((c) => lines.push([`${c.count}-rollers`, c.count, c.length.toFixed(3), (2 * P.r0).toFixed(3), c.end.toFixed(3), c.arc.toFixed(3), "3.200"].join(",")));
+  lastConfigs.forEach((c) => lines.push([c.name, c.count, c.length.toFixed(3), (2 * P.r0).toFixed(3), c.end.toFixed(3), c.arc.toFixed(3), "3.200"].join(",")));
   download("mecanum-roller-configurations.csv", lines.join("\r\n") + "\r\n", "text/csv");
 });
 
 // folds
 const editor = $("tool-editor");
+const folds = [...editor.querySelectorAll(".doc-fold")];
 editor.querySelectorAll("[data-fold-all]").forEach((button) => {
   button.addEventListener("click", () => {
-    editor.querySelectorAll(".doc-fold").forEach((fold) => { fold.open = button.dataset.foldAll === "open"; });
+    const open = button.dataset.foldAll === "open";
+    folds.forEach((fold) => {
+      fold.open = open;
+      fold.dataset.keepClosed = open ? "" : "1"; // "Fold all" is deliberate, so scrolling won't undo it
+    });
   });
 });
+// A section the reader closes by hand stays closed.
+folds.forEach((fold) => fold.querySelector("summary").addEventListener("click", () => { fold.dataset.keepClosed = fold.open ? "1" : ""; }));
+// Open the next folded section once its heading is well into view, one at a time.
+window.addEventListener("scroll", () => {
+  const next = folds.find((fold) => !fold.open && !fold.dataset.keepClosed);
+  if (!next) return;
+  const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+  if (atBottom || next.getBoundingClientRect().top < window.innerHeight * 0.72) next.open = true;
+}, { passive: true });
 editor.querySelectorAll(".doc-fold").forEach((fold) => fold.addEventListener("toggle", () => { if (fold.open) update(); }));
 
 // isometric view: drag to rotate

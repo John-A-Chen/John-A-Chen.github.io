@@ -240,11 +240,11 @@ export const projects = [
     summary:
       "An iterative, tolerance-aware mecanum wheel project focused on affordability, reproducibility, and educational value using printable components and open documentation.",
     overview: [
-      "Commercial mecanum wheels can be expensive and hard to justify for student or hobby robotics projects. This study explores whether a lower-cost, mostly printable wheel can still be useful for education, experimentation, and early platform development.",
+      "When I took the subject that used mecanum wheels, I could not afford a set, while most of the class bought theirs for about $90 AUD for four. This study is my answer to that: a mostly printable wheel that a student can make for the cost of filament and a bag of M3 screws.",
       "The work focuses on the geometry and manufacturing realities that matter for small-scale access: roller alignment, bearing support, print orientation, part count, assembly repeatability, and how much tolerance variation the design can tolerate before performance degrades noticeably."
     ],
     problem: [
-      "Holonomic drivetrains are attractive for robotics education because they create immediately interesting motion behaviour, but the hardware cost often becomes the barrier.",
+      "Holonomic drivetrains are attractive for robotics education because they create immediately interesting motion behaviour, but the hardware cost often becomes the barrier. I was on the wrong side of that barrier when I did the subject.",
       "The challenge was to design a wheel that is open, printable, and realistic to build with common student-level tools while still making the engineering tradeoffs visible and worth learning from."
     ],
     role: [
@@ -298,6 +298,11 @@ export const projects = [
         title: "Affordability through part strategy",
         body:
           "The design tries to reduce specialised components and keep fabrication approachable. Lower cost only matters if the assembly remains teachable and realistically buildable."
+      },
+      {
+        title: "Grip on printed rollers",
+        body:
+          "Hard printed rollers slip on smooth floors. The rollers are meant to be covered in heat-shrink tubing, or a similar sleeve, to give them grip. Anyone who would rather not sleeve them can texture the roller surface in the print instead."
       },
       {
         title: "Open-source value",
@@ -408,6 +413,7 @@ export const projects = [
       "Reprint the rollers with a setup that holds them down, such as a brim or a different orientation, since the first set failed.",
       "Assemble the wheel and run a roll test. The profile is now circular, so it should roll smoothly.",
       "Add photos of the assembled wheel.",
+      "Propose that the university sells printed sets cheaply from its printer farm, so students who cannot print their own are not priced out. The files stay open for anyone who can.",
       "Complete repeated print-and-test cycles using multiple printers and materials to validate the tolerance assumptions.",
       "Measure practical drivetrain behaviour under load to compare the printable design against commercial wheels.",
       "Add assembly documentation and troubleshooting notes targeted at first-time student builders."
