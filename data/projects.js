@@ -225,17 +225,17 @@ export const projects = [
     subtitle:
       "An open-source exploration of low-cost, 3D-printable mecanum wheels designed to make holonomic robotics more accessible to students, hobbyists, and educators.",
     year: "2025-2026",
-    status: "Open study",
+    status: "Open study, first print of the rebuild done",
     projectType: "Solo",
     tags: ["Robotics", "3D Printing", "Mechanisms", "Open Source", "CAD"],
     thumbnail: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
     heroImage: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
     cardImages: [
       "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
-      "assets/images/projects/mecanum-wheel-study/cad/part-hi4-iso.png",
+      "assets/images/projects/mecanum-wheel-study/cad/part-hi4-front.png",
+      "assets/images/projects/mecanum-wheel-study/cad/wheel-part-iso.png",
       "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
-      "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png",
-      "assets/images/projects/mecanum-wheel-study/cad/wheel-part-iso.png"
+      "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png"
     ],
     summary:
       "An iterative, tolerance-aware mecanum wheel project focused on affordability, reproducibility, and educational value using printable components and open documentation.",
@@ -272,7 +272,20 @@ export const projects = [
       {
         title: "November 2026 rebuild",
         body:
-          "The wheel was remodelled in SolidWorks with a cleaner design tree, so the roller, hub and mounting features are easier to change. The newest assembly in the repository is this iteration."
+          "The wheel was remodelled in SolidWorks with a cleaner design tree, so the roller, hub and mounting features are easier to change. The newest assembly in the repository is this iteration.",
+        figure: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png"
+      },
+      {
+        title: "Bolted hub and first print of the rebuild",
+        body:
+          "The hub plate gained four raised bosses around the square drive bore, and four bolts through them now hold the two plates together. One wheel is two hub plates and eight rollers, and all ten parts fit on a single print plate.",
+        figure: "assets/images/projects/mecanum-wheel-study/print/bambu-plate-hub-plates-and-rollers.png"
+      },
+      {
+        title: "First print result",
+        body:
+          "The first plate finished on 20 November 2026. Both hub plates printed, with the bosses, tabs and square bore all formed. The rollers failed: they were printed standing on end, and came out stringy with uneven ends, so they are not usable yet. The rollers need a different print setup before the wheel can be assembled.",
+        figure: "assets/images/projects/mecanum-wheel-study/print/first-print-hub-plates-and-rollers.jpg"
       }
     ],
     technicalHighlights: [
@@ -310,51 +323,79 @@ export const projects = [
     gallery: [
       {
         src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
-        alt: "Wheel assembly latest, isometric view",
-        caption: "Wheel assembly latest, isometric view.",
+        alt: "Latest wheel assembly, isometric view",
+        caption: "Latest wheel assembly, isometric view.",
         group: "CAD views",
         source: "cad-render"
       },
       {
         src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-front.png",
-        alt: "Wheel assembly latest, front view",
-        caption: "Wheel assembly latest, front view.",
+        alt: "Latest wheel assembly, front view",
+        caption: "Latest wheel assembly, front view.",
         group: "CAD views",
         source: "cad-render"
       },
       {
         src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-right.png",
-        alt: "Wheel assembly latest, right view",
-        caption: "Wheel assembly latest, right view.",
+        alt: "Latest wheel assembly, right view",
+        caption: "Latest wheel assembly, right view.",
         group: "CAD views",
         source: "cad-render"
       },
       {
+        src: "assets/images/projects/mecanum-wheel-study/cad/part-hi4-front.png",
+        alt: "Hub plate, front view: eight roller tabs, four bolt bosses and the square drive bore",
+        caption: "Hub plate, front view: eight roller tabs, four bolt bosses and the square drive bore.",
+        group: "Parts",
+        source: "cad-render"
+      },
+      {
         src: "assets/images/projects/mecanum-wheel-study/cad/part-hi4-iso.png",
-        alt: "Part hi4, isometric view",
-        caption: "Part hi4, isometric view.",
-        group: "Sub-assemblies and parts",
-        source: "cad-render"
-      },
-      {
-        src: "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
-        alt: "Part hi5, isometric view",
-        caption: "Part hi5, isometric view.",
-        group: "Sub-assemblies and parts",
-        source: "cad-render"
-      },
-      {
-        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png",
-        alt: "Wheel assembly earlier, isometric view",
-        caption: "Wheel assembly earlier, isometric view.",
-        group: "Sub-assemblies and parts",
+        alt: "Hub plate, isometric view",
+        caption: "Hub plate, isometric view.",
+        group: "Parts",
         source: "cad-render"
       },
       {
         src: "assets/images/projects/mecanum-wheel-study/cad/wheel-part-iso.png",
-        alt: "Wheel part, isometric view",
-        caption: "Wheel part, isometric view.",
-        group: "Sub-assemblies and parts",
+        alt: "Roller, isometric view",
+        caption: "Roller, isometric view.",
+        group: "Parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-part-front.png",
+        alt: "Roller, front view",
+        caption: "Roller, front view.",
+        group: "Parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/print/bambu-plate-hub-plates-and-rollers.png",
+        alt: "One wheel on the print plate in Bambu Studio: two hub plates and eight rollers",
+        caption: "One wheel on the print plate in Bambu Studio: two hub plates and eight rollers.",
+        group: "Printing",
+        source: "screenshot"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/print/first-print-hub-plates-and-rollers.jpg",
+        alt: "First print of the rebuilt wheel: two hub plates and eight rollers on a desk mat",
+        caption: "First print of the rebuild. The two hub plates printed; the rollers came out stringy and uneven and need reprinting.",
+        group: "Printing",
+        source: "photo"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
+        alt: "Alternative hub plate (hi5), isometric view",
+        caption: "Alternative hub plate (hi5), isometric view.",
+        group: "Earlier iterations",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png",
+        alt: "2025 wheel assembly, isometric view",
+        caption: "2025 wheel assembly, isometric view.",
+        group: "Earlier iterations",
         source: "cad-render"
       }
     ],
@@ -363,7 +404,9 @@ export const projects = [
       "The hardest parts were roller clearance and finding fasteners long enough for the assembly."
     ],
     futureWork: [
-      "Print the latest wheel and run a roll test. The profile is now circular, so it should roll smoothly.",
+      "Reprint the rollers with a setup that holds them down, such as a brim or a different orientation, since the first set failed.",
+      "Assemble the wheel and run a roll test. The profile is now circular, so it should roll smoothly.",
+      "Add photos of the assembled wheel.",
       "Complete repeated print-and-test cycles using multiple printers and materials to validate the tolerance assumptions.",
       "Measure practical drivetrain behaviour under load to compare the printable design against commercial wheels.",
       "Add assembly documentation and troubleshooting notes targeted at first-time student builders."
