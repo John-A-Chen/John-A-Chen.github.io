@@ -1,0 +1,287 @@
+[
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\John STM\\hardware\\Enclosure.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\john-stm\\enclosure-assembly",
+  "views": [
+   "iso",
+   "front",
+   "top",
+   "right"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\MechanumWheelStudy\\cad\\huh.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\mecanum-wheel-study\\wheel-assembly-latest",
+  "views": [
+   "iso",
+   "front",
+   "right"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\MechanumWheelStudy\\cad\\what.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\mecanum-wheel-study\\wheel-assembly-earlier",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\MechanumWheelStudy\\cad\\wheelwhat.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\mecanum-wheel-study\\wheel-part",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\MechanumWheelStudy\\cad\\hi5.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\mecanum-wheel-study\\part-hi5",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\MechanumWheelStudy\\cad\\hi4.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\mecanum-wheel-study\\part-hi4",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 5\\Hand3.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-5-hand",
+  "views": [
+   "iso",
+   "front",
+   "right"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 5\\Finger.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-5-finger",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 4\\Hand2.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-4-hand",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 4\\Thumb.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-4-thumb",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 3\\Hand.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-3-hand",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 2\\Assem2.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-2-assembly",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Robo-Arm\\cad\\Iteration 1\\finger.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\robo-arm\\iteration-1-finger",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Solid-Connections\\CAD\\Assemblies\\electronics package.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\solid-connections\\electronics-package",
+  "views": [
+   "iso",
+   "front",
+   "top"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Solid-Connections\\CAD\\Assemblies\\pcb bruh 5.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\solid-connections\\pcb-assembly",
+  "views": [
+   "iso",
+   "top"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Prototype 1.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-prototype-1",
+  "views": [
+   "iso",
+   "front",
+   "top"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Scooper Subassembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-scooper",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Wheel Subassembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-wheel",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Electronics Package.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-electronics-package",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Packaging Mockup.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-packaging-mockup",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2025\\My Parts\\Prototype 1.SLDDRW",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2025-prototype-1-drawing",
+  "views": [
+   "sheet"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2024\\Everything.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2024-full-assembly",
+  "views": [
+   "iso",
+   "top"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2024\\Chassis 2\\Chassis 2.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2024-chassis-2",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2024\\Chassis 1\\Chassis 1.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2024-chassis-1",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2024\\Chassis 0\\Chassis 0.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2024-chassis-0",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\Warman-Attempts\\cad\\2024\\Competition Track\\Competition Track Model.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\warman-attempts\\2024-competition-track",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Final Assembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\final-assembly",
+  "views": [
+   "iso",
+   "front",
+   "right",
+   "top"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Heat\\AssembledHE2.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\assembled-he2",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Helical Shell - Helical Shell.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\helical-shell",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Helical Interior - Helical Interior.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\helical-interior",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Helical End - Helical End.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\helical-end",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\OneDrive - UTS\\Documents\\uni\\41057 TFA\\Helical Pipe Grid.SLDPRT",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\helical-heat-exchanger\\helical-pipe-grid",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\Chassis7.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\chassis-7",
+  "views": [
+   "iso",
+   "front",
+   "top",
+   "right"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\Frontside.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\frontside",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\Rear Assembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\rear-assembly",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\WheelMountAssembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\wheel-mount",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\LinkageCadAssembly.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\steering-linkage",
+  "views": [
+   "iso"
+  ]
+ },
+ {
+  "path": "C:\\Users\\John\\Documents\\GitHub\\TB-Vehicle\\cad\\assemblies\\custom\\Frame.SLDASM",
+  "out": "C:\\Users\\John\\AppData\\Local\\Temp\\claude\\ea0b4975fdc0b144\\90577dc0-0f41-4ace-ab55-7c4b88b3052f\\scratchpad\\renders\\test-bench-vehicle\\frame",
+  "views": [
+   "iso"
+  ]
+ }
+]
