@@ -4,20 +4,28 @@ function uniqueSources(items = []) {
   return [...new Set(items.filter(Boolean))];
 }
 
+// A project can list `hiddenImages`: fragments of repo image paths that newer
+// renders have replaced (or that should not be shown). Matching images are
+// left out of that project's gallery and card pool. The files stay in place.
+export function visibleRepoImages(project) {
+  const hidden = project.hiddenImages || [];
+  return (repoImages[project.slug] || []).filter(
+    (item) => item?.src && !hidden.some((fragment) => item.src.includes(fragment))
+  );
+}
+
 function getProjectImagePool(project) {
+  // Cards cycle through a project's hand-picked hero views when it has them;
+  // otherwise they fall back to everything the project has.
+  if (project.cardImages?.length) {
+    return uniqueSources(project.cardImages);
+  }
   const directImages = [project.thumbnail, project.heroImage];
   const galleryImages = (project.gallery || []).map((item) => item?.src);
-  const importedRepoImages = (repoImages[project.slug] || []).map(
+  const importedRepoImages = visibleRepoImages(project).map(
     (item) => item?.src
   );
   return uniqueSources([...directImages, ...galleryImages, ...importedRepoImages]);
-}
-
-function pickRandom(items = []) {
-  if (!items.length) {
-    return "";
-  }
-  return items[Math.floor(Math.random() * items.length)];
 }
 
 function isExternalPath(path) {
@@ -144,7 +152,9 @@ export function initRevealAnimations() {
       });
     },
     {
-      threshold: 0.16
+      // Reveal as soon as a section edges into view so tall sections are never seen half-faded.
+      threshold: 0,
+      rootMargin: "0px 0px 80px 0px"
     }
   );
 
@@ -186,20 +196,23 @@ export function createProjectCard(project, options = {}) {
   const card = document.createElement("article");
   card.className = `project-card reveal${compact ? " compact-card" : ""}`;
 
+  // The cover is the project's chosen thumbnail (first in the pool), not a random pick.
   const cardImages = getProjectCardImages(project, hrefPrefix);
-  const selectedProjectImage = pickRandom(cardImages);
-  const selectedProjectImageIndex = Math.max(cardImages.indexOf(selectedProjectImage), 0);
-  const cardImage = selectedProjectImage;
+  const selectedProjectImageIndex = 0;
+  const cardImage = cardImages[0] || "";
+  const typeLabel = project.projectType === "Project" ? "Team" : "Solo";
+  const courseCode = project.course ? `UTS ${project.course.split(" ")[0]}` : "";
   const mediaMarkup = cardImage
     ? `
       <div class="project-card-media">
         <img src="${cardImage}" alt="${project.title} thumbnail" loading="lazy" data-image-index="${selectedProjectImageIndex}" />
+        <span class="project-card-type">${typeLabel}</span>
       </div>
     `
-    : `<div class="project-card-media is-empty" aria-hidden="true"></div>`;
+    : `<div class="project-card-media is-empty" aria-hidden="true"><span class="project-card-type">${typeLabel}</span></div>`;
 
   const tagMarkup = project.tags
-    .slice(0, compact ? 3 : 4)
+    .slice(0, 3)
     .map((tag) => `<li>${tag}</li>`)
     .join("");
 
@@ -209,7 +222,7 @@ export function createProjectCard(project, options = {}) {
       <div class="project-card-body">
         <div class="project-card-meta">
           <span>${project.year}</span>
-          <span>${project.projectType || "Solo"}</span>
+          ${courseCode ? `<span title="${project.course}">${courseCode}</span>` : ""}
         </div>
         <h3>${project.title}</h3>
         <p class="project-card-subtitle">${project.subtitle}</p>
@@ -219,6 +232,7 @@ export function createProjectCard(project, options = {}) {
             : ""
         }
         <ul class="tag-list">${tagMarkup}</ul>
+        <span class="project-card-cta" aria-hidden="true">View project &rarr;</span>
       </div>
     </a>
   `;
@@ -263,3 +277,20 @@ export function createResourceButtons(links, labels) {
 
   return wrap;
 }
+
+// The header slims down once the page is scrolled, and returns at the top.
+// Two thresholds so it doesn't flicker when hovering around one scroll position.
+function initHeaderShrink() {
+  const update = () => {
+    const scrolled = document.body.classList.contains("is-scrolled");
+    if (!scrolled && window.scrollY > 48) {
+      document.body.classList.add("is-scrolled");
+    } else if (scrolled && window.scrollY < 12) {
+      document.body.classList.remove("is-scrolled");
+    }
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+initHeaderShrink();

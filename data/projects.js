@@ -2,25 +2,46 @@
 export const projects = [
   {
     slug: "warman-attempts",
+    hiddenImages: [
+      "/render/2024/Chassis 0 CAD.png",
+      "/render/2024/Chassis 1 CAD.png",
+      "/render/2025/Back View.png",
+      "/render/2025/Bottom View.png",
+      "/render/2025/Front View.png",
+      "/render/2025/Isometric View.png",
+      "/render/2025/Side View.png",
+      "/render/2025/Top View.png",
+      "/render/2025/Scooper Isometric.png"
+    ],
+    course: "41059 Mechanical Design Fundamentals Studio 1",
     featured: true,
-    title: "Warman Attempts",
-    subtitle:
-      "A process-focused archive of repeated Warman challenge attempts across CAD, code, prototyping, assembly, and post-mortem review.",
+    title: "Warman Challenge Robots",
+    subtitle: "Two goes at the Warman design-and-build challenge: the original robot for Mechanical Design Fundamentals Studio 1, and my own redesign the following year, built mainly from plywood.",
     year: "2023-2025",
     status: "Ongoing archive",
     projectType: "Solo",
     tags: ["Robotics", "Competition", "CAD", "Iteration", "Documentation"],
-    thumbnail: "assets/images/projects/warman-attempts/repo/render/2025/Isometric View.png",
-    heroImage: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 assembly.jpg",
-    summary:
-      "An honest record of design iterations, subsystem experiments, missed assumptions, and the practical lessons that came out of repeated Warman challenge builds.",
+    thumbnail: "assets/images/projects/warman-attempts/cad/2025-prototype-1-iso.png",
+    heroImage: "assets/images/projects/warman-attempts/cad/2025-prototype-1-iso.png",
+    cardImages: [
+      "assets/images/projects/warman-attempts/cad/2025-prototype-1-iso.png",
+      "assets/images/projects/warman-attempts/cad/2024-chassis-0-iso.png",
+      "assets/images/projects/warman-attempts/cad/2024-chassis-1-iso.png",
+      "assets/images/projects/warman-attempts/cad/2024-chassis-2-iso.png",
+      "assets/images/projects/warman-attempts/cad/2024-full-assembly-iso.png",
+      "assets/images/projects/warman-attempts/cad/2025-electronics-package-iso.png",
+      "assets/images/projects/warman-attempts/cad/2025-packaging-mockup-iso.png",
+      "assets/images/projects/warman-attempts/cad/2025-scooper-iso.png",
+      "assets/images/projects/warman-attempts/cad/2025-wheel-iso.png"
+    ],
+    summary: "The first robot ran out of time. The second was a redesign I did for myself after spending a holiday improving my mechanical design.",
     overview: [
-      "Warman Attempts is intentionally framed as a working archive rather than a polished competition recap. The value of the project is in the sequence of attempts: each concept, CAD package, control approach, and fabrication decision captures what changed from one iteration to the next.",
-      "Instead of hiding weak ideas or failed assemblies, the project page is designed to show them clearly. That includes early mechanisms that looked promising in CAD but created avoidable complexity in assembly, control code that was technically functional but too brittle for event pressure, and packaging choices that made maintenance harder than it needed to be."
+      "My first Warman robot was for Mechanical Design Fundamentals Studio 1. It did not do well: I ran out of time, and my design skills were not yet up to the build.",
+      "I spent the following holidays working on my mechanical design, mainly through the Test-Bench Vehicle project. The year after, I designed a Warman robot again on my own, this time built mostly from plywood with much less 3D printing."
     ],
     problem: [
-      "Design-build competitions compress concept generation, fabrication, programming, and testing into a short, high-pressure cycle. That makes it easy to lose important lessons once the deadline passes.",
-      "This project exists to preserve those lessons in a way that is more useful than a final photo dump. The problem being solved is not just the competition task itself. It is also how to improve the engineering process from one attempt to the next."
+      "The Warman challenge packs concept, fabrication, programming and testing into a short, high-pressure cycle, and the first attempt showed where I fell short.",
+      "The second robot was not for marks. The aim was to redo the design properly with what I had learned since."
     ],
     role: [
       "Mechanical concept generation and CAD packaging",
@@ -85,25 +106,106 @@ export const projects = [
     },
     gallery: [
       {
-        src: "assets/images/projects/warman-attempts/repo/render/2025/Isometric View.png",
-        alt: "Concept overview board for Warman Attempts",
-        caption: "Archive overview showing concept branches, chassis layout, and subsystem callouts."
+        src: "assets/images/projects/warman-attempts/cad/2025-prototype-1-iso.png",
+        alt: "2025 prototype 1, isometric view",
+        caption: "2025 prototype 1, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-prototype-1-front.png",
+        alt: "2025 prototype 1, front view",
+        caption: "2025 prototype 1, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-prototype-1-top.png",
+        alt: "2025 prototype 1, top view",
+        caption: "2025 prototype 1, top view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2024-chassis-0-iso.png",
+        alt: "2024 chassis 0, isometric view",
+        caption: "2024 chassis 0, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2024-chassis-1-iso.png",
+        alt: "2024 chassis 1, isometric view",
+        caption: "2024 chassis 1, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2024-chassis-2-iso.png",
+        alt: "2024 chassis 2, isometric view",
+        caption: "2024 chassis 2, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2024-full-assembly-iso.png",
+        alt: "2024 full assembly, isometric view",
+        caption: "2024 full assembly, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2024-full-assembly-top.png",
+        alt: "2024 full assembly, top view",
+        caption: "2024 full assembly, top view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-electronics-package-iso.png",
+        alt: "2025 electronics package, isometric view",
+        caption: "2025 electronics package, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-packaging-mockup-iso.png",
+        alt: "2025 packaging mockup, isometric view",
+        caption: "2025 packaging mockup, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-scooper-iso.png",
+        alt: "2025 scooper, isometric view",
+        caption: "2025 scooper, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/warman-attempts/cad/2025-wheel-iso.png",
+        alt: "2025 wheel, isometric view",
+        caption: "2025 wheel, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
       },
       {
         src: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 assembly.jpg",
-        alt: "Assembly and packaging view for Warman Attempts",
+        alt: "Assembly and packaging view for Warman Challenge Robots",
         caption: "Assembly-focused view emphasising packaging, access, and prototype fit-up."
       },
       {
         src: "assets/images/projects/warman-attempts/repo/render/2024/Chassis 2 did not work.png",
-        alt: "Diagnostics and lessons-learned layout for Warman Attempts",
+        alt: "Diagnostics and lessons-learned layout for Warman Challenge Robots",
         caption: "Failure review board documenting geometry problems, maintenance pain points, and iteration notes."
       }
     ],
     lessonsLearned: [
-      "Simpler mechanisms with better maintenance access usually outperformed more ambitious concepts that were hard to tune under time pressure.",
-      "CAD confidence is not the same as prototype confidence. Real assembly revealed fastening, stiffness, and access problems that were easy to miss on-screen.",
-      "Post-event documentation is only useful if it is specific enough to change the next design cycle."
+      "The 2023 entry did not work at all, because its subsystems came together far too late.",
+      "The main lesson was project management: bring the subsystems together early instead of finishing each one in isolation.",
+      "The first attempt showed that my design skills, not only my time, were the limit. That is why I took on the Test-Bench Vehicle before trying again.",
+      "Building mainly from plywood, with less 3D printing, worked in my favour at uni.",
+      "CAD confidence is not the same as prototype confidence. Real assembly revealed fastening, stiffness and access problems that were easy to miss on screen."
     ],
     futureWork: [
       "Convert the archive into a more formal year-by-year attempt log with clearer subsystem comparisons.",
@@ -114,18 +216,27 @@ export const projects = [
   },
   {
     slug: "mecanum-wheel-study",
+    hiddenImages: [
+      "/images/assembly-isometric-view.png",
+      "/images/wheel-top-view-final.png"
+    ],
     featured: true,
     title: "Mecanum Wheel Study",
     subtitle:
       "An open-source exploration of low-cost, 3D-printable mecanum wheels designed to make holonomic robotics more accessible to students, hobbyists, and educators.",
-    year: "2025",
+    year: "2025-2026",
     status: "Open study",
     projectType: "Solo",
     tags: ["Robotics", "3D Printing", "Mechanisms", "Open Source", "CAD"],
-    thumbnail:
-      "assets/images/projects/mecanum-wheel-study/repo/images/wheel-top-view-final.png",
-    heroImage:
-      "assets/images/projects/mecanum-wheel-study/repo/images/assembly-isometric-view.png",
+    thumbnail: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
+    heroImage: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
+    cardImages: [
+      "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
+      "assets/images/projects/mecanum-wheel-study/cad/part-hi4-iso.png",
+      "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
+      "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png",
+      "assets/images/projects/mecanum-wheel-study/cad/wheel-part-iso.png"
+    ],
     summary:
       "An iterative, tolerance-aware mecanum wheel project focused on affordability, reproducibility, and educational value using printable components and open documentation.",
     overview: [
@@ -157,6 +268,11 @@ export const projects = [
         title: "Educational packaging",
         body:
           "The repository structure and case-study framing were treated as part of the project. The goal was not only to publish files, but to make the wheel understandable and reproducible for others."
+      },
+      {
+        title: "November 2026 rebuild",
+        body:
+          "The wheel was remodelled in SolidWorks with a cleaner design tree, so the roller, hub and mounting features are easier to change. The newest assembly in the repository is this iteration."
       }
     ],
     technicalHighlights: [
@@ -191,13 +307,63 @@ export const projects = [
       docs: "https://github.com/John-A-Chen/MechanumWheelStudy#readme",
       media: "https://github.com/John-A-Chen/MechanumWheelStudy/tree/main/images"
     },
-    gallery: [],
+    gallery: [
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-iso.png",
+        alt: "Wheel assembly latest, isometric view",
+        caption: "Wheel assembly latest, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-front.png",
+        alt: "Wheel assembly latest, front view",
+        caption: "Wheel assembly latest, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-latest-right.png",
+        alt: "Wheel assembly latest, right view",
+        caption: "Wheel assembly latest, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/part-hi4-iso.png",
+        alt: "Part hi4, isometric view",
+        caption: "Part hi4, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/part-hi5-iso.png",
+        alt: "Part hi5, isometric view",
+        caption: "Part hi5, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-assembly-earlier-iso.png",
+        alt: "Wheel assembly earlier, isometric view",
+        caption: "Wheel assembly earlier, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/mecanum-wheel-study/cad/wheel-part-iso.png",
+        alt: "Wheel part, isometric view",
+        caption: "Wheel part, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      }
+    ],
     lessonsLearned: [
-      "Printable designs become much more useful when tolerance-sensitive features are intentionally isolated from cosmetic or low-risk geometry.",
-      "Open-source accessibility is not only about publishing files. It also depends on how clearly the design intent, assembly path, and expected limitations are documented.",
-      "For educational hardware, a slightly less optimised design can be better if it is easier to reproduce and explain."
+      "I recently remodelled the wheel with fewer CAD operations. The new part is cleaner and easier to make.",
+      "The hardest parts were roller clearance and finding fasteners long enough for the assembly."
     ],
     futureWork: [
+      "Print the latest wheel and run a roll test. The profile is now circular, so it should roll smoothly.",
       "Complete repeated print-and-test cycles using multiple printers and materials to validate the tolerance assumptions.",
       "Measure practical drivetrain behaviour under load to compare the printable design against commercial wheels.",
       "Add assembly documentation and troubleshooting notes targeted at first-time student builders."
@@ -207,71 +373,71 @@ export const projects = [
   {
     slug: "robo-arm",
     featured: true,
-    title: "Robo-Arm",
-    subtitle:
-      "A lightweight robotic arm exploring actuator efficiency through mechanical optimisation and four-bar linkage refinement from Gen 1 to Gen 2.",
+    title: "Four-Bar Robot Hand",
+    subtitle: "A 3D-printable robot hand whose fingers are driven by four-bar linkages, developed over five CAD iterations from a published prosthetic hand design.",
     year: "2024-2025",
-    status: "Gen 2 concept",
+    status: "Fingers designed, thumb in progress",
     projectType: "Solo",
-    tags: ["Robotics", "Mechanisms", "Simulation", "CAD", "Optimisation"],
-    thumbnail: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
-    heroImage: "assets/images/projects/robo-arm/repo/docs/GEN2 Extended.jpg",
-    summary:
-      "A robotic arm project focused on reducing actuator load through better linkage design, cleaner geometry, and generation-over-generation refinement informed by analysis.",
+    tags: [
+      "Robotics",
+      "Mechanisms",
+      "Four-Bar Linkage",
+      "CAD",
+      "3D Printing"
+    ],
+    thumbnail: "assets/images/projects/robo-arm/cad/iteration-5-hand-iso.png",
+    heroImage: "assets/images/projects/robo-arm/cad/iteration-5-hand-iso.png",
+    cardImages: [
+      "assets/images/projects/robo-arm/cad/iteration-5-hand-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-1-finger-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-2-assembly-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-3-hand-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-4-hand-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-4-thumb-iso.png",
+      "assets/images/projects/robo-arm/cad/iteration-5-finger-iso.png"
+    ],
+    summary: "Each finger curls through a four-bar linkage, so one input moves the whole finger. Every iteration improved clearance and range of motion. The thumb is still unsolved.",
     overview: [
-      "Robo-Arm explores how much performance improvement can be extracted from mechanical layout before reaching for larger actuators or heavier structure. The project evolved from a first-generation arm into a second-generation concept that used a more deliberate four-bar linkage strategy and better geometry control.",
-      "The central idea was to improve efficiency through mechanism design rather than brute force. That made the project a useful study in how kinematics, packaging, and structural assumptions affect actuator demand across the arm's working range."
+      "This project is a robot hand built around four-bar linkage fingers. It started from a published design for a 3D-printed prosthetic hand and reworks the linkage geometry in SolidWorks.",
+      "The CAD runs through five iterations, from a single finger to a multi-finger hand. Each one adjusted the linkage to give more clearance between parts and a wider range of motion."
     ],
     problem: [
-      "Small robotic arms often become inefficient because their mechanism geometry pushes peak loads into awkward parts of the motion envelope, forcing larger actuators and heavier structure than necessary.",
-      "This project looked at how linkage layout, mass distribution, and joint geometry could reduce those demands while keeping the design compact and practical to prototype."
+      "A finger has several joints, and putting an actuator on each one makes a hand heavy and complicated. A four-bar linkage couples the joints so a single input curls the whole finger.",
+      "The published design gave a starting geometry. The work here was improving its clearance and range of motion while keeping the parts printable."
     ],
     role: [
-      "Mechanism design and CAD architecture",
-      "Generation comparison between Gen 1 and Gen 2 concepts",
-      "SolidWorks-based analysis and geometric iteration",
-      "Documentation of design reasoning and next-step opportunities"
+      "Reworked the four-bar finger linkage from the published design",
+      "Modelled the fingers and hand assemblies in SolidWorks across five iterations",
+      "Exported parts for 3D printing"
     ],
     process: [
       {
-        title: "Baseline arm review",
-        body:
-          "The first-generation arm established the initial packaging constraints and exposed where the mechanism was asking too much from the actuator. Motion quality, leverage variation, and mass placement all indicated room for a deeper redesign."
+        title: "Iteration 1: a single finger",
+        body: "The first model reproduced one linkage-driven finger to understand how the published geometry moves."
       },
       {
-        title: "Four-bar linkage refinement",
-        body:
-          "The second-generation concept reworked the arm around a more purposeful linkage arrangement. The goal was to move high-load regions into a more manageable operating envelope and smooth out the mechanical advantage through useful portions of travel."
+        title: "Iterations 2 and 3: from finger to hand",
+        body: "The finger was built into an assembly and then into a full hand layout."
       },
       {
-        title: "Analysis-supported iteration",
-        body:
-          "SolidWorks studies were used as a decision aid rather than a decorative extra. Geometry changes were compared with a focus on load paths, range of motion, and whether the redesigned linkage genuinely improved the efficiency target."
+        title: "Iterations 4 and 5: refinement and the thumb",
+        body: "Later iterations reworked the linkage for more clearance and range of motion, and included attempts at a thumb, which is not yet resolved."
       }
     ],
     technicalHighlights: [
       {
-        title: "Mechanism optimisation before motor escalation",
-        body:
-          "A guiding principle of the project was that poor geometry should not be solved immediately with a larger actuator. Mechanical redesign came first, and that exposed much clearer opportunities for efficiency gains."
+        title: "Four-bar finger linkage",
+        body: "Each finger is a four-bar linkage, so its joints move together from one input instead of needing an actuator at every joint."
       },
       {
-        title: "Gen 1 to Gen 2 comparison",
-        body:
-          "Comparing two generations side by side made the tradeoffs visible: packaging complexity versus performance, range-of-motion goals versus structural simplicity, and where the newer concept actually improved the design intent."
-      },
-      {
-        title: "Simulation tied to design questions",
-        body:
-          "Analysis was used to answer concrete engineering questions about linkage behaviour and likely load reduction, not just to create screenshots. That kept the simulation work grounded in mechanism decisions."
+        title: "Clearance and range of motion",
+        body: "The main changes between iterations were to stop links colliding with each other and to let the finger travel further."
       }
     ],
     tools: [
       "SolidWorks",
-      "SolidWorks Motion / analysis tools",
-      "CAD rendering",
-      "GitHub",
-      "3D printing"
+      "3D printing",
+      "GitHub"
     ],
     links: {
       repo: "https://github.com/John-A-Chen/Robo-Arm",
@@ -283,30 +449,92 @@ export const projects = [
     },
     gallery: [
       {
+        src: "assets/images/projects/robo-arm/cad/iteration-5-hand-iso.png",
+        alt: "Iteration 5 hand, isometric view",
+        caption: "Iteration 5 hand, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-5-hand-front.png",
+        alt: "Iteration 5 hand, front view",
+        caption: "Iteration 5 hand, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-5-hand-right.png",
+        alt: "Iteration 5 hand, right view",
+        caption: "Iteration 5 hand, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-1-finger-iso.png",
+        alt: "Iteration 1 finger, isometric view",
+        caption: "Iteration 1 finger, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-2-assembly-iso.png",
+        alt: "Iteration 2 assembly, isometric view",
+        caption: "Iteration 2 assembly, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-3-hand-iso.png",
+        alt: "Iteration 3 hand, isometric view",
+        caption: "Iteration 3 hand, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-4-hand-iso.png",
+        alt: "Iteration 4 hand, isometric view",
+        caption: "Iteration 4 hand, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-4-thumb-iso.png",
+        alt: "Iteration 4 thumb, isometric view",
+        caption: "Iteration 4 thumb, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/robo-arm/cad/iteration-5-finger-iso.png",
+        alt: "Iteration 5 finger, isometric view",
+        caption: "Iteration 5 finger, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
         src: "assets/images/projects/robo-arm/repo/docs/GEN1 compare GEN2.jpg",
-        alt: "Robo-Arm full assembly render",
+        alt: "Four-Bar Robot Hand assembly render",
         caption: "Generation overview render showing the lightweight arm architecture and linkage placement."
       },
       {
         src: "assets/images/projects/robo-arm/repo/docs/GEN2 Extended.jpg",
-        alt: "Four-bar linkage geometry study for Robo-Arm",
+        alt: "Four-bar linkage geometry study for the robot hand",
         caption: "Mechanism study focused on leverage management and actuator efficiency through the motion range."
       },
       {
         src: "assets/images/projects/robo-arm/repo/docs/progress check.png",
-        alt: "Generation comparison between Gen 1 and Gen 2 Robo-Arm designs",
+        alt: "Comparison between Gen 1 and Gen 2 hand designs",
         caption: "Side-by-side comparison used to evaluate whether the revised geometry improved the design goals."
       }
     ],
     lessonsLearned: [
-      "Mechanism refinement can materially reduce actuator demand when the geometry is doing the right work.",
-      "Generation comparisons are most valuable when the design intent is explicit; otherwise it is too easy to compare shapes without comparing engineering outcomes.",
-      "Simulation is only useful when it stays connected to a real design decision."
+      "Each generation works from a published design, improving the clearance and range of motion of its linkage: Abdul Wahit et al., <a class=\"text-link\" href=\"https://www.mdpi.com/1424-8220/20/15/4174\" target=\"_blank\" rel=\"noreferrer\">3D Printed Robot Hand Structure Using Four-Bar Linkage Mechanism for Prosthetic Application</a>, Sensors, 2020.",
+      "I designed several fingers but have not yet worked out a thumb."
     ],
     futureWork: [
-      "Prototype the Gen 2 concept physically and compare its behaviour against the analytical expectations.",
-      "Add control integration and sensing to support more realistic motion experiments.",
-      "Explore ROS-based integration for higher-level arm control and testing once the mechanical baseline is stable."
+      "Design a thumb to go with the existing fingers.",
+      "Print the latest iteration and check its motion against the CAD.",
+      "Add actuation and control once the mechanical design is settled."
     ],
     relatedProjects: ["mecanum-wheel-study", "warman-attempts"]
   },
@@ -320,10 +548,17 @@ export const projects = [
     status: "Prototype platform",
     projectType: "Project",
     tags: ["Autonomy", "Robotics", "Rapid Prototyping", "Testing", "Team Project"],
-    thumbnail: "assets/images/projects/test-bench-vehicle/repo/1719583874326.jpg",
-    heroImage: "assets/images/projects/test-bench-vehicle/repo/STEERING.webp",
-    summary:
-      "A fast-moving platform project built to get an early autonomous stack off the bench and onto a modular vehicle with practical mounting, access, and upgrade paths.",
+    thumbnail: "assets/images/projects/test-bench-vehicle/cad/chassis-7-iso.png",
+    heroImage: "assets/images/projects/test-bench-vehicle/cad/chassis-7-iso.png",
+    cardImages: [
+      "assets/images/projects/test-bench-vehicle/cad/chassis-7-iso.png",
+      "assets/images/projects/test-bench-vehicle/cad/frame-iso.png",
+      "assets/images/projects/test-bench-vehicle/cad/frontside-iso.png",
+      "assets/images/projects/test-bench-vehicle/cad/rear-assembly-iso.png",
+      "assets/images/projects/test-bench-vehicle/cad/steering-linkage-iso.png",
+      "assets/images/projects/test-bench-vehicle/cad/wheel-mount-iso.png"
+    ],
+    summary: "Designed in four days and built in two and a half for UTS Tech Fest 2024, as a platform to carry the autonomous sensor suite before the team had a software stack to run on it.",
     overview: [
       "The Test-Bench Vehicle was developed as a compact platform for early autonomous systems work and TechFest-style demonstration use. The emphasis was on rapid integration and iteration rather than a final polished vehicle architecture.",
       "That made packaging and modularity more important than cosmetic finish. The platform needed to accept sensors, tolerate rework, and provide a reasonable mechanical base for experimentation without becoming a long, fragile custom build."
@@ -389,6 +624,69 @@ export const projects = [
     },
     gallery: [
       {
+        src: "assets/images/projects/test-bench-vehicle/cad/chassis-7-iso.png",
+        alt: "Chassis 7, isometric view",
+        caption: "Chassis 7, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/chassis-7-front.png",
+        alt: "Chassis 7, front view",
+        caption: "Chassis 7, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/chassis-7-top.png",
+        alt: "Chassis 7, top view",
+        caption: "Chassis 7, top view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/chassis-7-right.png",
+        alt: "Chassis 7, right view",
+        caption: "Chassis 7, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/frame-iso.png",
+        alt: "Frame, isometric view",
+        caption: "Frame, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/frontside-iso.png",
+        alt: "Frontside, isometric view",
+        caption: "Frontside, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/rear-assembly-iso.png",
+        alt: "Rear assembly, isometric view",
+        caption: "Rear assembly, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/steering-linkage-iso.png",
+        alt: "Steering linkage, isometric view",
+        caption: "Steering linkage, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/test-bench-vehicle/cad/wheel-mount-iso.png",
+        alt: "Wheel mount, isometric view",
+        caption: "Wheel mount, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
         src: "assets/images/projects/test-bench-vehicle/repo/1719583874326.jpg",
         alt: "Compact test-bench vehicle chassis view",
         caption: "Chassis view showing the vehicle as a modular autonomous systems test platform."
@@ -405,16 +703,179 @@ export const projects = [
       }
     ],
     lessonsLearned: [
-      "Test platforms benefit from being intentionally unfinished in the right places so they can absorb future integration work.",
-      "Fast demonstration builds still need thoughtful access and mount planning if they are going to stay useful after the event.",
-      "Team-facing documentation reduces friction when a prototype becomes shared infrastructure."
+      "I designed the whole vehicle in four days and it was built in two and a half, in time for Tech Fest 2024.",
+      "Everything was mounted, but the platform was built before the team had a software stack to run on it.",
+      "With under a week from start to finish, assembly order was the hardest thing to get right.",
+      "Most of the design decisions were about how parts mount to the base board and which material to use for each, plywood or acrylic."
     ],
     futureWork: [
+      "Rebuild it almost entirely from 3D-printed parts.",
       "Expand the sensor stack and improve wiring/electronics integration for repeated autonomous experiments.",
       "Refine the platform into a more durable second-generation chassis while preserving mounting flexibility.",
       "Develop a cleaner validation workflow for perception, control, and field testing on the vehicle."
     ],
     relatedProjects: ["mecanum-wheel-study", "warman-attempts"]
+  },
+  {
+    slug: "helical-heat-exchanger",
+    course: "41057 Thermofluids A",
+    featured: false,
+    title: "Helical Heat Exchanger",
+    subtitle: "A shell-and-tube heat exchanger with a helical baffle, designed in SolidWorks with one teammate for Thermofluids A, then 3D printed.",
+    year: "2024",
+    status: "Completed coursework, 3D printed",
+    projectType: "Project",
+    tags: ["Heat Transfer", "Thermofluids", "SolidWorks", "3D Printing"],
+    thumbnail: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-iso.png",
+    heroImage: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-iso.png",
+    cardImages: [
+      "assets/images/projects/helical-heat-exchanger/cad/final-assembly-iso.png",
+      "assets/images/projects/helical-heat-exchanger/cad/assembled-he2-iso.png",
+      "assets/images/projects/helical-heat-exchanger/cad/helical-end-iso.png",
+      "assets/images/projects/helical-heat-exchanger/cad/helical-interior-iso.png",
+      "assets/images/projects/helical-heat-exchanger/cad/helical-pipe-grid-iso.png",
+      "assets/images/projects/helical-heat-exchanger/cad/helical-shell-iso.png"
+    ],
+    summary: "A tube bundle inside a flanged shell, with one continuous helical baffle guiding the shell-side flow. I modelled everything except the baffle, and we printed the final design.",
+    overview: [
+      "The brief was to design a heat exchanger that takes hot wastewater from an industrial process and cools it against a cold-water stream, improving on the concentric-tube unit tested in the lab. Each team had to build an analytical model, model the design in SolidWorks, simulate the heat transfer, and 3D print the final design.",
+      "I did this with one teammate. Our design is a shell-and-tube exchanger: a bundle of 19 tubes inside a cylindrical shell, with a single helical baffle winding around the tubes so the shell-side water follows a spiral path across them instead of flowing straight through. My teammate modelled the helical baffle and I did the rest."
+    ],
+    problem: [
+      "A plain concentric-tube exchanger has limited surface area and a short contact path between the two streams. The task was to propose a design with better thermal performance for the same duty: cooling hot wastewater before discharge while pre-heating water for the next process stage.",
+      "Our approach was to maximise heat-transfer surface area without resorting to a gyroid structure."
+    ],
+    role: [
+      "Modelled the shell, tube bundle, end caps and final assembly in SolidWorks",
+      "Designed the plate heat exchanger concept, which we did not build",
+      "My teammate modelled the helical baffle"
+    ],
+    process: [
+      {
+        title: "Lab baseline",
+        body: "The subject's lab work used a concentric-tube rig run in parallel and counter flow, varying the hot supply temperature and the cold flow rate, to give a measured baseline for the design."
+      },
+      {
+        title: "Plate concept",
+        body: "I first designed a stacked plate exchanger clamped between bolted end plates. It stayed in CAD and was never built."
+      },
+      {
+        title: "Helical shell-and-tube design",
+        body: "We went with the shell-and-tube layout and a helical baffle instead, and this became the final assembly."
+      },
+      {
+        title: "Printing",
+        body: "The shell, end caps and bores were exported as STL and 3MF files and 3D printed. The shell parts were on the print bed on 5 November 2024."
+      }
+    ],
+    technicalHighlights: [
+      {
+        title: "Helical baffle",
+        body: "One continuous perforated helix takes the place of a stack of separate flat baffles, and the tubes pass through the holes in it. This part was modelled by my teammate."
+      },
+      {
+        title: "Flanged shell and end caps",
+        body: "The shell has two side ports and flanged ends. Each end cap has a tube sheet matching the tube pattern and a single port for the tube-side stream."
+      },
+      {
+        title: "Fluid volumes",
+        body: "The hot and cold water volumes were modelled as separate bodies and exported as STEP files alongside the solid parts."
+      }
+    ],
+    tools: ["SolidWorks", "3D printing"],
+    links: {
+      repo: null,
+      cad: null,
+      drawings: null,
+      print: null,
+      docs: null,
+      media: null
+    },
+    gallery: [
+      {
+        src: "assets/images/projects/helical-heat-exchanger/photos/printed-exchanger-end-view.jpg",
+        alt: "3D printed heat exchanger seen from one end",
+        caption: "The printed exchanger from one end, with the tube bundle inside the shell.",
+        group: "Photos"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/photos/print-in-progress-camera.jpg",
+        alt: "Printer camera view of the shell parts printing",
+        caption: "Shell parts on the print bed, 5 November 2024.",
+        group: "Photos"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-iso.png",
+        alt: "Final assembly, isometric view",
+        caption: "Final assembly, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-front.png",
+        alt: "Final assembly, front view",
+        caption: "Final assembly, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-top.png",
+        alt: "Final assembly, top view",
+        caption: "Final assembly, top view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/final-assembly-right.png",
+        alt: "Final assembly, right view",
+        caption: "Final assembly, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/assembled-he2-iso.png",
+        alt: "Assembled he2, isometric view",
+        caption: "Assembled he2, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/helical-end-iso.png",
+        alt: "Helical end, isometric view",
+        caption: "Helical end, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/helical-interior-iso.png",
+        alt: "Helical interior, isometric view",
+        caption: "Helical interior, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/helical-pipe-grid-iso.png",
+        alt: "Helical pipe grid, isometric view",
+        caption: "Helical pipe grid, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/helical-heat-exchanger/cad/helical-shell-iso.png",
+        alt: "Helical shell, isometric view",
+        caption: "Helical shell, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      }
+    ],
+    lessonsLearned: [
+      "Only the helical design was built. The plate exchanger stayed a CAD concept.",
+      "The printed helical exchanger got us good marks for the project.",
+      "The exchanger was built but never tested. Its performance was assessed through simulation only.",
+      "Getting the simulation of my plate design to run was the hardest part."
+    ],
+    futureWork: [],
+    relatedProjects: ["mecanum-wheel-study", "robo-arm"]
   },
   /*
    * Temporarily hidden while these project pages are unfinished.
@@ -726,6 +1187,7 @@ export const projects = [
    */
   {
     slug: "matlab-welding-robot",
+    course: "41013 Industrial Robotics",
     featured: true,
     title: "MATLAB Welding Robot",
     subtitle:
@@ -753,11 +1215,10 @@ export const projects = [
       "From a controls perspective, the challenge was to generate smooth tool trajectories while avoiding poor Jacobian conditioning and handling obstacle-aware operation in the same workspace."
     ],
     role: [
-      "MATLAB simulation architecture and iterative class/script development",
-      "Kinematic modelling integration for UR3e and KUKA Titan variants",
-      "RMRC trajectory generation with damped least-squares Jacobian inversion",
-      "GUI workflow for free control, sequence execution, path placement, and E-stop handling",
-      "Collision-obstacle checks using ellipsoid-link approximations"
+      "Built the simulation environment and the mesh models",
+      "Worked out the DH parameters for the robot models",
+      "Wrote much of the trajectory code",
+      "Wrote the script for the team's project video"
     ],
     process: [
       {
@@ -838,7 +1299,10 @@ export const projects = [
     lessonsLearned: [
       "Class-based orchestration made the large collection of scripts much easier to run and extend than ad-hoc one-off files.",
       "Damped least squares and manipulability checks are essential for robust RMRC in mixed-geometry robot setups.",
-      "Clear UI pathways (free control, sequence, E-stop, controller mode) materially improved demo reliability under assignment time pressure."
+      "Clear UI pathways (free control, sequence, E-stop, controller mode) materially improved demo reliability under assignment time pressure.",
+      "The welding cell ran in simulation only.",
+      "The Sensors and Controls extension was about hand-eye calibration: establishing the spatial relationship between a camera and the end effector of a Dobot Magician, then tracking a pattern to guide the robot.",
+      "Hand-eye calibration was the hardest part to get working."
     ],
     futureWork: [
       "Complete the repository rename and add a top-level README that maps primary entry scripts and dependencies.",
@@ -849,6 +1313,7 @@ export const projects = [
   },
   {
     slug: "holoassist",
+    course: "41069 Robotics Studio 2",
     featured: true,
     title: "HoloAssist",
     subtitle:
@@ -1069,7 +1534,10 @@ export const projects = [
       "A perception subsystem is only useful when its outputs are framed, timed, documented, and connected clearly enough for the next subsystem to use.",
       "Narrowing the perception scope from broad RGB-D workspace understanding to AprilTag cube tracking improved reliability, testability, and integration confidence.",
       "Repository structure is a technical interface: submodules, launch scripts, Unity package paths, branch names, and documentation all affect whether another engineer can reproduce the system.",
-      "Calibration is not a side task; the TF chain determines whether a visually correct detection can become a robot-usable pose."
+      "Calibration is not a side task; the TF chain determines whether a visually correct detection can become a robot-usable pose.",
+      "The hardest problem was getting things in Unity to match what ROS 2 reported.",
+      "At the UTS Tech Fest demo I spoke with a lot of industry guests and the response was good, though the project did not win an award.",
+      "The subject plans to run the project again next year so the next cohort can build on it."
     ],
     futureWork: [
       "Add quantitative cube-pose accuracy testing against known ground-truth positions.",
@@ -1083,8 +1551,9 @@ export const projects = [
   },
   {
     slug: "holoassist-ai",
+    course: "41118 Artificial Intelligence in Robotics",
     featured: true,
-    title: "HoloAssist-AI",
+    title: "HoloAssist AI: Grasping Add-on",
     subtitle:
       "An AI extension to HoloAssist combining RGB-D point-cloud clustering, Gazebo/Isaac simulation, and reinforcement-learning experiments for robotic grasping.",
     year: "2026",
@@ -1104,10 +1573,10 @@ export const projects = [
       "HoloAssist-AI frames that challenge as an end-to-end pipeline problem: perceive cube positions from RGB-D data, feed useful observations to a learning agent, and evaluate whether reinforcement learning can support the grasping workflow."
     ],
     role: [
+      "Built all of the MuJoCo simulation work",
+      "Designed and trained the staged manipulation policies",
       "Website and documentation development for the HoloAssist-AI public project site",
-      "RL support, training-result presentation, and pipeline explanation",
-      "Cross-linking the AI extension with the base HoloAssist perception and calibration work",
-      "Teleoperation-data context from the base HoloAssist XR workflow"
+      "Cross-linking the AI extension with the base HoloAssist perception and calibration work"
     ],
     process: [
       {
@@ -1187,7 +1656,9 @@ export const projects = [
     lessonsLearned: [
       "RL progress depends heavily on observation design, action scale, and environment fidelity; training plots need interpretation, not just display.",
       "Marker-free point-cloud perception is portfolio-worthy when its limitations and calibration assumptions are made explicit.",
-      "Cross-linking the AI project to the base HoloAssist stack makes the semester sequence much clearer."
+      "Cross-linking the AI project to the base HoloAssist stack makes the semester sequence much clearer.",
+      "The policies were never run on the real arm, because we were not allowed to.",
+      "Gazebo cannot run environments in parallel unless it is headless, and a headless run cannot be checked by eye, so we used other methods for training."
     ],
     futureWork: [
       "Connect perception, policy output, and robot execution into one deployable end-to-end demonstration.",
@@ -1198,6 +1669,7 @@ export const projects = [
   },
   {
     slug: "forestguard",
+    course: "41068 Robotics Studio 1",
     featured: true,
     title: "ForestGuard",
     subtitle:
@@ -1219,10 +1691,10 @@ export const projects = [
       "ForestGuard addresses this by centralising bringup and documenting operator flow so users can run a full mission scenario from a single launch command while still exposing tuning entry points for Nav2, SLAM, perception, and autonomy."
     ],
     role: [
-      "System integration across simulation, localisation, navigation, and autonomy nodes",
-      "UI and teleop workflow definition for controller-driven and mission-driven operation",
-      "Forest world pipeline development using terrain meshes and generated tree layouts",
-      "Public-safe technical documentation for setup, debugging, and parameter tuning"
+      "Wrote all the control code for the Husky",
+      "Built the operator GUI",
+      "Set up the camera and the lidar approximation",
+      "Forest world pipeline development using terrain meshes and generated tree layouts"
     ],
     process: [
       {
@@ -1300,7 +1772,9 @@ export const projects = [
     lessonsLearned: [
       "Single-entry launch orchestration dramatically improves reproducibility for complex robotics demos.",
       "Operator controls and debug views should be designed as first-class system interfaces, not afterthought tooling.",
-      "Procedural environment generation becomes more useful when mesh alignment and asset paths are handled in scripts, not manual edits."
+      "Procedural environment generation becomes more useful when mesh alignment and asset paths are handled in scripts, not manual edits.",
+      "The state machine only came together the night before the demo.",
+      "If I started again I would begin with the Husky rather than a drone. Getting a drone URDF working cost time we did not have."
     ],
     futureWork: [
       "Replace pseudocode placeholders with publishable implementation modules when release constraints allow.",
@@ -1311,20 +1785,30 @@ export const projects = [
   },
   {
     slug: "john-stm",
+    hiddenImages: [
+      "/screenshots/Enclosure 0 CAD",
+      "/screenshots/Enclosure 1 CAD",
+      "/screenshots/Enclosure 2 CAD",
+      "/screenshots/Enclosure 3 CAD"
+    ],
     featured: true,
-    title: "John STM",
+    title: "STM32 Desk Cube",
     subtitle:
       "A compact STM32L476-based battery-powered desk device PCB, combining USB-C input, LiPo charging, 3.3 V regulation, display hardware, sensors, feedback components, enclosure CAD, and manufacturing exports.",
     year: "2026",
-    status: "PCB design and fabrication preparation",
+    status: "Board ordered, bring-up on hold",
     projectType: "Solo",
     tags: ["PCB Design", "STM32", "Embedded Hardware", "Altium", "Enclosure CAD"],
-    thumbnail: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Front.png",
-    heroImage: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
-    summary:
-      "A custom embedded hardware project focused on turning a smart desk-cube idea into a manufacturable PCB and enclosure package, with real decisions around USB-C power, LiPo charging, grounding, routing, board exports, and assembly planning.",
+    thumbnail: "assets/images/projects/john-stm/cad/enclosure-assembly-iso.png",
+    heroImage: "assets/images/projects/john-stm/cad/enclosure-assembly-iso.png",
+    cardImages: [
+      "assets/images/projects/john-stm/cad/enclosure-assembly-iso.png",
+      "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
+      "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup B.png"
+    ],
+    summary: "Started as a Pomodoro timer and grew into a general desk device: clock, timer and desk toy in one. The board has been ordered, but the wrong parts arrived, so bring-up is on hold for now.",
     overview: [
-      "John STM is a compact STM32L476-based hardware project built around a small battery-powered desk device. The repository contains Altium source files, generated PCB outputs, SolidWorks enclosure models, STEP/DXF exports, reusable part models, display module references, production files, and screenshots of PCB and enclosure iterations.",
+      "The STM32 Desk Cube is a compact STM32L476-based hardware project built around a small battery-powered desk device. The repository contains Altium source files, generated PCB outputs, SolidWorks enclosure models, STEP/DXF exports, reusable part models, display module references, production files, and screenshots of PCB and enclosure iterations.",
       "The project is not just a schematic exercise. It ties together power-system design, flat multi-sheet Altium organisation, PCB layout, ground-plane strategy, enclosure packaging, display and actuator fitment, JLCPCB fabrication workflow, stencil planning, and future firmware validation."
     ],
     problem: [
@@ -1416,131 +1900,211 @@ export const projects = [
     galleryPreviewLimit: 18,
     gallery: [
       {
+        src: "assets/images/projects/john-stm/cad/enclosure-assembly-iso.png",
+        alt: "Enclosure assembly, isometric view",
+        caption: "Enclosure assembly, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/john-stm/cad/enclosure-assembly-front.png",
+        alt: "Enclosure assembly, front view",
+        caption: "Enclosure assembly, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/john-stm/cad/enclosure-assembly-top.png",
+        alt: "Enclosure assembly, top view",
+        caption: "Enclosure assembly, top view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/john-stm/cad/enclosure-assembly-right.png",
+        alt: "Enclosure assembly, right view",
+        caption: "Enclosure assembly, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/john-stm/altium/pcb-layout-print-1.png",
+        alt: "PCB layout print from Altium, first board",
+        caption: "PCB layout print from Altium, first board.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/john-stm/altium/pcb-layout-print-2.png",
+        alt: "PCB layout print from Altium, second board",
+        caption: "PCB layout print from Altium, second board.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/john-stm/altium/schematic-mcu.png",
+        alt: "MCU schematic sheet",
+        caption: "MCU schematic sheet.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/john-stm/altium/schematic-power.png",
+        alt: "Power schematic sheet: battery sense, charger and 3.3 V regulator",
+        caption: "Power schematic sheet: battery sense, charger and 3.3 V regulator.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/john-stm/altium/schematic-peripherals.png",
+        alt: "Peripherals schematic sheet",
+        caption: "Peripherals schematic sheet.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Mockup A.png",
-        alt: "John STM PCB2 mockup view",
+        alt: "STM32 Desk Cube PCB2 mockup view",
         caption: "PCB2 mockup showing the compact board direction after layout iteration."
       },
       {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Front.png",
-        alt: "John STM PCB2 front view",
+        alt: "STM32 Desk Cube PCB2 front view",
         caption: "Front board view used to review component placement and routing density."
       },
       {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Top Signal Layer.png",
-        alt: "John STM PCB2 top signal layer",
+        alt: "STM32 Desk Cube PCB2 top signal layer",
         caption: "Top signal layer view for routing and component-side layout review."
       },
       {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/PCB2 Ground Layer.png",
-        alt: "John STM PCB2 ground layer",
+        alt: "STM32 Desk Cube PCB2 ground layer",
         caption: "Ground layer view used to check return-path quality and plane continuity."
       },
       {
-        src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 CAD A.png",
-        alt: "John STM enclosure version 3 CAD",
-        caption: "Version 3 enclosure CAD showing the physical packaging direction."
-      },
-      {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Fitment.jpg",
-        alt: "John STM enclosure fitment photo",
+        alt: "STM32 Desk Cube enclosure fitment photo",
         caption: "Printed enclosure fitment check for the display and internal hardware."
       },
       {
         src: "assets/images/projects/john-stm/repo/docs/screenshots/Enclosure 3 Buzzer Haptic.jpg",
-        alt: "John STM buzzer and haptic fitment",
+        alt: "STM32 Desk Cube buzzer and haptic fitment",
         caption: "Buzzer and haptic motor placement review inside the enclosure."
       },
       {
         src: "assets/images/projects/john-stm/repo/hardware/parts/display-1-69-st7789v2/snapshot/Top Display 1.69 ST7789V2.jpg",
-        alt: "John STM ST7789V2 display top side",
+        alt: "STM32 Desk Cube ST7789V2 display top side",
         caption: "1.69 inch ST7789V2 display module reference used for packaging and interface planning."
       }
     ],
     lessonsLearned: [
-      "PCB design is a system-level process where schematic, layout, firmware, enclosure, and manufacturing all affect one another.",
-      "Battery charging and USB-C power decisions need careful review because safety and reliability are core requirements, not optional polish.",
-      "A top-layer ground pour does not replace deliberate via placement when an internal ground plane is available.",
-      "Manufacturing feedback can reveal missing mechanical/export details that are invisible during schematic capture.",
-      "Ordering the PCB is not the end of the design process; assembly, first power-up, debugging, and revision planning are just as important."
+      "It began as a Pomodoro timer and grew into a broader desk device as I kept adding to it.",
+      "The hardest part was learning via-in-pad, power design and placement. Routing around the microcontroller was straightforward. Arranging the functional blocks so they sit well together was the harder problem.",
+      "The first order arrived with the wrong parts, so the board has not been powered up yet.",
+      "A top-layer ground pour does not replace deliberate via placement when an internal ground plane is available."
     ],
     futureWork: [
-      "Verify the board outline and full Gerber/drill/solder-mask/silkscreen export set before the next fabrication upload.",
-      "Confirm the selected LiPo capacity and adjust charger current if the cell datasheet requires it.",
-      "Prepare a first-power-up checklist and test the 3.3 V rail before powering sensitive components.",
-      "Validate USB power, battery charging, regulator output, display communication, sensor readings, buttons, buzzer, and haptic feedback one subsystem at a time.",
-      "Add firmware documentation once the assembled hardware has been brought up and tested."
+      "Use polygon pours more deliberately, now that I have learned them properly this semester.",
+      "Do impedance calculations for the routed signals.",
+      "Clean up the silkscreen so the board is easier to read and assemble.",
+      "Order the correct parts, then bring the board up one subsystem at a time, starting with the 3.3 V rail."
     ],
     relatedProjects: ["solid-connections", "robo-arm"]
   },
   {
     slug: "solid-connections",
+    hiddenImages: [
+      "/Assets/Fonts/",
+      "/Firmware/Vendor/",
+      "photo-team-member-portrait"
+    ],
+    course: "41070 Embedded Mechatronics Studio 2",
     featured: true,
-    title: "Solid Connections",
-    subtitle:
-      "A multidisciplinary mechatronic systems project integrating mechanical design, custom PCB development, embedded firmware, and iterative validation.",
+    title: "ESP32 Step Tracker",
+    subtitle: "A wearable ESP32 step tracker with a custom two-layer PCB, an analogue-filtered ADXL335 accelerometer, an OLED menu interface, and a 3D-printed Tamagotchi-style enclosure. Built by team Solid Connections.",
     year: "2025-2026",
     status: "Private repository, documented case study",
     projectType: "Project",
-    tags: ["Mechatronics", "PCB Design", "Embedded Systems", "Integration", "Iteration"],
-    thumbnail: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-hero-render-red-enclosure.png",
-    heroImage: "assets/images/projects/solid-connections/repo/Documentation/Images/render-transparent-enclosure-cutaway-01.png",
-    summary:
-      "A full-stack hardware project centered on co-design across enclosure CAD, Altium PCB revisions, firmware updates, and integration debugging.",
+    tags: [
+      "ESP32",
+      "PCB Design",
+      "Embedded Firmware",
+      "Analogue Filtering",
+      "Enclosure CAD"
+    ],
+    thumbnail: "assets/images/projects/solid-connections/cad/device-assembly-iso.png",
+    heroImage: "assets/images/projects/solid-connections/cad/device-assembly-iso.png",
+    cardImages: [
+      "assets/images/projects/solid-connections/cad/device-assembly-iso.png",
+      "assets/images/projects/solid-connections/cad/electronics-package-iso.png"
+    ],
+    summary: "Counts steps, tells walking from running, and keeps the count through power loss. Tested at under 5% step-count error on one-minute walks and runs.",
     overview: [
-      "Solid Connections is a complete mechatronic workflow project covering mechanical design, electronics development, firmware implementation, and system-level integration. The strongest value is the documented iteration process across subsystem boundaries.",
-      "The project demonstrates how professional hardware development is non-linear: schematic issues influence enclosure geometry, mechanical constraints impact layout, and firmware tuning reveals hardware assumptions."
+      "The Compact Step Tracker (CST-01) is a wearable motion-sensing device built by a four-person team, Solid Connections. An ESP32 reads an ADXL335 analogue accelerometer through a filter stage on a custom PCB, shows results on a 0.96 inch OLED, and is operated with three buttons and three status LEDs. It runs from a 9 V battery or an external supply through a barrel jack, and weighs 124.9 g in its 3D-printed enclosure.",
+      "The firmware has five modes: Sleep, Walking, Calibration, Self-Test and Battery. Walking mode counts walking and running steps separately, estimates calories burned, and saves the total to flash memory after every step so it survives a reboot."
     ],
     problem: [
-      "Multidisciplinary prototypes often fail when subsystems are designed in isolation and only merged late in the process.",
-      "This project addresses that by forcing co-design loops and treating design-rule checks, assembly fit, and debugging evidence as core engineering workflow."
+      "The brief was a step tracker that can tell whether the wearer is stationary, walking or running, count their steps, and be comfortable and simple to use.",
+      "That meant getting four things to work together in one small device: a clean accelerometer signal, a board that fits a wearable case, firmware that separates real steps from noise, and a simple interface."
     ],
     role: [
-      "Mechanical subsystem architecture and enclosure iteration",
-      "Custom PCB schematic and layout refinement in Altium",
-      "Embedded firmware implementation and calibration adjustments",
-      "Documentation of revision history and integration outcomes"
+      "Integration lead in a four-person team",
+      "Designed the I/O and battery-monitoring subcircuit",
+      "Wrote the walking-pace routine that classifies motion as stationary, walking or running",
+      "Presented the design with the team across four design reviews and a final review"
     ],
     process: [
       {
-        title: "Subsystem co-design setup",
-        body:
-          "Mechanical, electrical, and firmware workstreams were developed together with shared constraints to prevent late-stage integration surprises."
+        title: "Design 1: proof of concept",
+        body: "An Arduino Uno/Nano, a 9 V battery, a single-layer board and a basic second-order filter in a simple box. There was no user interface yet, and the connections were convoluted with no real microcontroller integration."
       },
       {
-        title: "Iterative PCB and enclosure alignment",
-        body:
-          "Multiple schematic and layout revisions were run alongside enclosure updates to resolve routing, mounting, and clearance issues."
+        title: "Design 2: moving to the ESP32",
+        body: "Switched to an ESP32 and a two-layer board, added buttons and an OLED, and moved to a Sallen-Key second-order filter. This revision had incorrect ADXL335 pin assignments and headers, and the filter had no buffer amplifier. The Tamagotchi-style enclosure idea came from this stage."
       },
       {
-        title: "Integration and validation loops",
-        body:
-          "Physical integration and firmware testing exposed assumptions, leading to repeated refinement in threshold logic, mounting geometry, and system packaging."
+        title: "Design 3: corrected and complete",
+        body: "Fixed the accelerometer connections and ESP32 pin alignment, added a buffer amplifier to the filter, and implemented the full interface of buttons, OLED and LEDs. The enclosure was refined to be more ergonomic."
+      },
+      {
+        title: "Enclosure prototypes 1 to 4",
+        body: "The enclosure was reworked when the PCB became double-sided, then gained M3 threaded inserts, button caps, an LED diffuser, an embossed logo, battery mounting and a USB port cover, with the geometry cleaned up for easy assembly."
+      },
+      {
+        title: "Testing the assembled device",
+        body: "Integration tests used an oscilloscope, a multimeter and the Arduino serial plotter. System tests were one-minute walks and runs with the Revision 2 PCB in its enclosure, comparing the device's count against steps counted by the wearer."
       }
     ],
     technicalHighlights: [
       {
-        title: "Design-rule-driven electronics iteration",
-        body:
-          "DRC feedback and routing constraints were used systematically to clean schematic and PCB issues before final integration."
+        title: "Analogue filter on the accelerometer",
+        body: "Each axis passes through a Sallen-Key second-order low-pass filter with a buffer amplifier. The design review lists 160 kΩ resistors, 33 nF capacitors and a 30 Hz cut-off. The filtered Z axis is also brought out on a BNC connector so the signal can be analysed directly."
       },
       {
-        title: "Mechanical-electrical coupling",
-        body:
-          "Mounting features, enclosure tolerances, and board placement were engineered together to improve assembly repeatability and robustness."
+        title: "Double-sided board",
+        body: "Through-hole parts sit on top and surface-mount parts underneath. The ADXL335 is mounted on top with its filter on the other side under the ESP32 to save space, and the board edges are bevelled."
       },
       {
-        title: "Structured iteration discipline",
-        body:
-          "The project captures revision decisions across CAD, PCB, and firmware to preserve engineering traceability and reduce repeated errors."
+        title: "Step detection",
+        body: "A threshold algorithm on acceleration magnitude classifies steps as walking (about 0.7 g) or running (about 2.2 g). Requiring two consecutive threshold crossings and tuning the detection window for typical walking and running speeds removed most false counts, and accelerations above 5 g are rejected."
+      },
+      {
+        title: "Calibration and self-test",
+        body: "Calibration holds the device at +1 g and -1 g on each axis for 5 seconds and averages 100 samples to find the zero-g offset and sensitivity. Self-test toggles the ADXL335 self-test pin and compares the voltage change on each axis with the expected datasheet values."
+      },
+      {
+        title: "Battery monitoring",
+        body: "A P-MOSFET switches the battery sense divider on only while Battery mode is active, so measuring the battery does not drain it. Voltages from 6.0 V to 9.0 V are read to within 0.2 V and shown as a percentage on the OLED and as a level on the LEDs."
       }
     ],
     tools: [
-      "SolidWorks",
+      "ESP32-WROOM-32",
+      "ADXL335 accelerometer",
+      "SSD1306 OLED",
       "Altium Designer",
-      "C++ / embedded firmware",
-      "Python",
-      "GitHub",
-      "System integration testing"
+      "SolidWorks",
+      "Arduino C"
     ],
     links: {
       repo: "https://github.com/John-A-Chen/Solid-Connections",
@@ -1551,6 +2115,76 @@ export const projects = [
       media: null
     },
     gallery: [
+      {
+        src: "assets/images/projects/solid-connections/cad/device-assembly-iso.png",
+        alt: "Device assembly, isometric view",
+        caption: "Device assembly, isometric view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/device-assembly-front.png",
+        alt: "Device assembly, front view",
+        caption: "Device assembly, front view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/device-assembly-top.png",
+        alt: "Device assembly, top view",
+        caption: "Device assembly, top view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/device-assembly-right.png",
+        alt: "Device assembly, right view",
+        caption: "Device assembly, right view.",
+        group: "CAD views",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/electronics-package-front.png",
+        alt: "Electronics package, front view",
+        caption: "Electronics package, front view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/electronics-package-iso.png",
+        alt: "Electronics package, isometric view",
+        caption: "Electronics package, isometric view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/cad/electronics-package-top.png",
+        alt: "Electronics package, top view",
+        caption: "Electronics package, top view.",
+        group: "Sub-assemblies and parts",
+        source: "cad-render"
+      },
+      {
+        src: "assets/images/projects/solid-connections/altium/pcb-layout-print.png",
+        alt: "PCB layout print from Altium",
+        caption: "PCB layout print from Altium.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/solid-connections/altium/schematic-top-level.png",
+        alt: "Top-level schematic sheet",
+        caption: "Top-level schematic sheet.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
+      {
+        src: "assets/images/projects/solid-connections/altium/schematic-ui-interface.png",
+        alt: "User interface schematic sheet: buttons, LEDs and display",
+        caption: "User interface schematic sheet: buttons, LEDs and display.",
+        group: "Altium",
+        source: "altium-pdf"
+      },
       {
         src: "assets/images/projects/solid-connections/repo/Documentation/Diagrams/diagram-system-block-v2.png",
         alt: "Solid Connections system block diagram",
@@ -1568,14 +2202,15 @@ export const projects = [
       }
     ],
     lessonsLearned: [
-      "Hardware projects improve when subsystem boundaries are treated as design interfaces, not handoff points.",
-      "PCB and enclosure problems are easier to solve when revision notes are explicit and traceable.",
-      "Iteration is a core engineering method, not evidence of failure."
+      "Step counts were within 5% of hand-counted steps on one-minute walks and runs.",
+      "Counting through a change between walking and running was weaker, at up to 15% deviation.",
+      "Calibration came within 10% of the ADXL335 datasheet values after increasing to 100 samples over 5 seconds.",
+      "Step counts persisted across 10 reboots, and mode switching held up through more than 50 rapid button presses with 100 ms debouncing.",
+      "One bug was never resolved: self-test fails when the Z axis points in the positive direction. The same code passes on other step trackers and replacing the accelerometer did not fix it, leaving a circuit error as the likely cause."
     ],
     futureWork: [
-      "Clean and publish a public-safe subset of the project artefacts where possible.",
-      "Expand validation coverage with repeatable subsystem test procedures.",
-      "Refine integration architecture for easier serviceability and future upgrades."
+      "Find the cause of the Z-axis self-test failure.",
+      "Improve step counting across walk-to-run transitions, the weakest test result."
     ],
     relatedProjects: ["john-stm", "robo-arm"]
   }

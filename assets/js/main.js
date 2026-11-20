@@ -5,6 +5,7 @@ import { initCursorPlus } from "./cursor-plus.js";
 import { initSiteDock } from "./dock.js";
 import { initLogoLoop } from "./logo-loop.js";
 import {
+  createProjectCard,
   initRandomProjectLink,
   initRevealAnimations,
   populateSharedProfile
@@ -29,13 +30,40 @@ function renderFocusAreas() {
   focusAreas.innerHTML = siteProfile.focusAreas
     .map(
       (item) => `
-        <article class="info-panel reveal">
-          <h3>${item.title}</h3>
-          <p>${item.body}</p>
-        </article>
+        <a class="focus-tile reveal" href="${item.href}">
+          <img src="${encodeURI(item.image)}" alt="" loading="lazy" />
+          <span class="focus-tile-text">
+            <span class="focus-tile-label">${item.label}</span>
+            <span class="focus-tile-title">${item.title}</span>
+            <span class="focus-tile-body">${item.body}</span>
+          </span>
+        </a>
       `
     )
     .join("");
+}
+
+// The three projects shown on the home page, in this order. Edit the slugs to change them.
+const homeFeaturedSlugs = ["john-stm", "holoassist", "mecanum-wheel-study"];
+const featuredProjects = document.getElementById("featured-projects");
+
+function renderFeaturedProjects() {
+  if (!featuredProjects) {
+    return;
+  }
+
+  homeFeaturedSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter(Boolean)
+    .forEach((project) => {
+      const card = createProjectCard(project, { showSummary: false });
+      const cardImage = card.querySelector(".project-card-media img");
+      // Use the project's chosen thumbnail here rather than a random gallery image.
+      if (cardImage && project.thumbnail) {
+        cardImage.src = project.thumbnail;
+      }
+      featuredProjects.appendChild(card);
+    });
 }
 
 function renderProjectCount() {
@@ -59,6 +87,7 @@ function initProfileHoverIconReveal() {
   headshotSlot.addEventListener("pointercancel", hideIcon);
 }
 
+renderFeaturedProjects();
 renderFocusAreas();
 renderProjectCount();
 initProfileHoverIconReveal();

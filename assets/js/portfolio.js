@@ -30,13 +30,15 @@ const totalCount = document.getElementById("total-count");
 
 let activeFilter = "All";
 const orderedProjects = sortProjectsByType(projects);
-const archiveCycleIntervalMs = 5000;
+const archiveCycleIntervalMs = 1800;
 const archiveFadeDurationMs = window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ? 0
   : 320;
 let archiveImageCycleId = 0;
 
 const allTags = ["All", "Solo", "Project"];
+// What the filter buttons say. "Project" in the data means a team project.
+const filterLabels = { All: "All", Solo: "Solo", Project: "Team" };
 
 function isVisibleForFilter(project, filter) {
   if (filter === "All") {
@@ -60,8 +62,11 @@ function renderFilterControls() {
       .map(
         (tag) => `
           <li class="filter-item">
-            <button class="${tag === activeFilter ? "active" : ""}" type="button" data-filter="${tag}">
-              ${tag}
+            <button class="${tag === activeFilter ? "active" : ""}" type="button" data-filter="${tag}" aria-pressed="${tag === activeFilter}">
+              ${filterLabels[tag] || tag}
+              <span class="filter-count">${
+                orderedProjects.filter((project) => isVisibleForFilter(project, tag)).length
+              }</span>
             </button>
           </li>
         `
@@ -102,6 +107,7 @@ function renderProjects() {
     if (cardImage && cardImages.length > 1) {
       const currentIndex = Number.parseInt(cardImage.dataset.imageIndex || "0", 10);
       rotatingCards.push({
+        card,
         cardImage,
         cardImages,
         imageIndex: Number.isNaN(currentIndex) ? 0 : currentIndex,
@@ -137,16 +143,33 @@ function startArchiveImageCycle(rotatingCards) {
     return;
   }
 
-  archiveImageCycleId = window.setInterval(() => {
-    rotatingCards.forEach((entry) => {
-      if (!entry.cardImage.isConnected || entry.isTransitioning) {
+  // Covers stay still; only the card under the pointer flips through its gallery,
+  // and it returns to its cover when the pointer leaves.
+  const advance = (entry) => {
+    if (!entry.cardImage.isConnected || entry.isTransitioning) {
+      return;
+    }
+    swapCardImage(entry, (entry.imageIndex + 1) % entry.cardImages.length);
+  };
+
+  rotatingCards.forEach((entry) => {
+    entry.card.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") {
         return;
       }
-
-      const nextImageIndex = (entry.imageIndex + 1) % entry.cardImages.length;
-      swapCardImage(entry, nextImageIndex);
+      stopArchiveImageCycle();
+      advance(entry);
+      archiveImageCycleId = window.setInterval(() => advance(entry), archiveCycleIntervalMs);
     });
-  }, archiveCycleIntervalMs);
+
+    entry.card.addEventListener("pointerleave", () => {
+      stopArchiveImageCycle();
+      if (entry.imageIndex !== 0) {
+        entry.isTransitioning = false;
+        swapCardImage(entry, 0);
+      }
+    });
+  });
 }
 
 function swapCardImage(entry, nextImageIndex) {

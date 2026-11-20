@@ -172,4 +172,126 @@ export function initSiteDock({
   document.body.classList.add("has-dock");
 
   initMagnify(dock, { baseItemSize, magnification, distance });
+  initAutoHide(wrap, dock);
+}
+
+// On desktop the dock tucks away off the left edge so it never covers content.
+// Hovering the edge peeks it out, and it tucks back when the pointer leaves.
+// Clicking the tab (or the pin while it is peeking) keeps it out until the
+// reader puts it away with the same button; that choice is remembered. Either
+// way the page moves over to make room. On narrow screens the dock is
+// a bottom bar and none of this applies (see the CSS).
+function initAutoHide(wrap, dock) {
+  const storageKey = "dock-pinned";
+  const body = document.body;
+  let closeTimer = 0;
+
+  const edge = document.createElement("div");
+  edge.className = "dock-edge";
+  edge.setAttribute("aria-hidden", "true");
+
+  const handle = document.createElement("button");
+  handle.type = "button";
+  handle.className = "dock-handle";
+  handle.setAttribute("aria-label", "Show navigation");
+
+  const pin = document.createElement("button");
+  pin.type = "button";
+  pin.className = "dock-pin";
+  const svgAttrs =
+    'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+  // Pin while it is only peeking out; an arrow to put it away once it is kept out.
+  const pinIcon = `<svg ${svgAttrs}><path d="M9 4h6l-1 6 3 3v2H7v-2l3-3z"/><path d="M12 15v6"/></svg>`;
+  const putAwayIcon = `<svg ${svgAttrs}><path d="M14 6l-6 6 6 6"/><path d="M19 5v14"/></svg>`;
+  dock.appendChild(pin);
+  body.append(edge, handle);
+
+  const isPinned = () => body.classList.contains("dock-pinned");
+  const sync = () => {
+    body.classList.toggle("dock-shown", isPinned() || body.classList.contains("dock-open"));
+  };
+  const setOpen = (open) => {
+    window.clearTimeout(closeTimer);
+    body.classList.toggle("dock-open", open);
+    sync();
+  };
+  const scheduleClose = () => {
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(() => {
+      const stillInUse =
+        wrap.matches(":hover") || edge.matches(":hover") || wrap.contains(document.activeElement);
+      if (!stillInUse) {
+        setOpen(false);
+      }
+    }, 450);
+  };
+  const setPinned = (pinned) => {
+    body.classList.toggle("dock-pinned", pinned);
+    pin.setAttribute("aria-pressed", String(pinned));
+    pin.innerHTML = pinned ? putAwayIcon : pinIcon;
+    const label = pinned ? "Put navigation away" : "Keep navigation open";
+    pin.setAttribute("aria-label", label);
+    pin.title = label;
+    sync();
+    try {
+      window.localStorage.setItem(storageKey, pinned ? "1" : "0");
+    } catch {
+      // Storage can be unavailable (private mode); the pin then lasts for this page only.
+    }
+  };
+
+  let startPinned = false;
+  try {
+    startPinned = window.localStorage.getItem(storageKey) === "1";
+  } catch {
+    startPinned = false;
+  }
+  setPinned(startPinned);
+
+  // Hovering the edge peeks the dock out after a beat. The short wait lets a
+  // deliberate click on the tab land first, and a click keeps the dock out.
+  let peekTimer = 0;
+  const peek = () => {
+    window.clearTimeout(peekTimer);
+    peekTimer = window.setTimeout(() => setOpen(true), 180);
+  };
+  const cancelPeek = () => window.clearTimeout(peekTimer);
+  const keepOut = () => {
+    cancelPeek();
+    setPinned(true);
+  };
+
+  edge.addEventListener("pointerenter", peek);
+  edge.addEventListener("pointerleave", () => {
+    cancelPeek();
+    scheduleClose();
+  });
+  edge.addEventListener("click", keepOut);
+  handle.addEventListener("pointerenter", peek);
+  handle.addEventListener("pointerleave", cancelPeek);
+  wrap.addEventListener("pointerenter", () => setOpen(true));
+  wrap.addEventListener("pointerleave", scheduleClose);
+  wrap.addEventListener("focusin", () => setOpen(true));
+  wrap.addEventListener("focusout", scheduleClose);
+  handle.addEventListener("click", keepOut);
+  pin.addEventListener("click", () => {
+    if (isPinned()) {
+      // Putting it away tucks it in straight away, even with the pointer on it.
+      setPinned(false);
+      setOpen(false);
+    } else {
+      setPinned(true);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !isPinned()) {
+      setOpen(false);
+    }
+  });
+  // Touch screens have no hover: tapping anywhere else puts the dock away again.
+  document.addEventListener("pointerdown", (event) => {
+    if (!isPinned() && !wrap.contains(event.target) && event.target !== handle) {
+      setOpen(false);
+    }
+  });
 }
