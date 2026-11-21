@@ -404,3 +404,96 @@
     top: 38%;
   }
 }
+
+/* Inputs panel as a floating pill, mirroring the navigation dock on the left: it
+   sits just outside the content column (not against the screen edge), is centred
+   vertically, and only takes room from the page when there is no spare margin. */
+.tool-page {
+  --calc-right: max(0.7rem, calc((100vw - 1180px) / 2 - var(--drawer-w) - 1.4rem));
+  --calc-space: clamp(0px, calc(2 * (var(--drawer-w) + 2.2rem) + 1180px - 100vw), calc(var(--drawer-w) + 1rem));
+}
+
+.calc-drawer {
+  top: 50%;
+  bottom: auto;
+  right: var(--calc-right);
+  max-height: calc(100vh - 7.5rem);
+  border: 1px solid rgba(188, 214, 238, 0.38);
+  border-radius: 1rem;
+  background: rgba(10, 32, 57, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 42px rgba(5, 21, 39, 0.38);
+  transform: translate(calc(100% + var(--calc-right) + 0.5rem), -50%);
+  transition: transform 240ms ease;
+}
+
+.calc-shown .calc-drawer {
+  transform: translate(0, -50%);
+}
+
+.calc-handle {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 104px;
+  border-radius: 0.8rem 0 0 0.8rem;
+  font-size: 0;
+}
+
+.calc-handle::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: -4px;
+  border-bottom: 2px solid var(--muted-strong);
+  border-left: 2px solid var(--muted-strong);
+  transform: rotate(45deg);
+}
+
+.calc-handle:hover,
+.calc-handle:focus-visible {
+  background: var(--surface-soft);
+}
+
+.calc-edge {
+  top: 0;
+  width: 22px;
+}
+
+@media (min-width: 1101px) {
+  .calc-pinned.tool-page main,
+  .calc-pinned.tool-page .site-footer {
+    padding-right: var(--calc-space);
+  }
+
+  .calc-pinned.tool-page {
+    --container: min(1180px, calc(100vw - 8rem - var(--calc-space)));
+  }
+}
+
+@media (max-width: 1100px) {
+  .tool-page {
+    --calc-right: 0.7rem;
+  }
+
+  .calc-drawer {
+    top: 50%;
+    max-height: calc(100vh - 12rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .calc-drawer {
+    bottom: auto;
+  }
+
+  .calc-handle {
+    top: 38%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-drawer {
+    transition: none;
+  }
+}
